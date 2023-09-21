@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		16712FB0FE448A3F31132885 /* Pods_Daeseda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2820DA79CFA6484036A9E838 /* Pods_Daeseda.framework */; };
+		8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */; };
+		8E7539D22ABBFAF3004F979D /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */; };
+		8E7539DE2ABBFB06004F979D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D52ABBFB06004F979D /* SettingsViewController.swift */; };
+		8E7539DF2ABBFB06004F979D /* MyReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D62ABBFB06004F979D /* MyReviewsViewController.swift */; };
+		8E7539E02ABBFB06004F979D /* MypageUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D72ABBFB06004F979D /* MypageUserViewController.swift */; };
+		8E7539E12ABBFB06004F979D /* CustomerServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D82ABBFB06004F979D /* CustomerServiceViewController.swift */; };
+		8E7539E22ABBFB06004F979D /* MyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539DA2ABBFB06004F979D /* MyInfoEditViewController.swift */; };
+		8E7539E32ABBFB06004F979D /* MyInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539DB2ABBFB06004F979D /* MyInfoViewController.swift */; };
+		8E7539E42ABBFB06004F979D /* MyAdressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539DC2ABBFB06004F979D /* MyAdressViewController.swift */; };
+		8E7539E52ABBFB06004F979D /* MypageGuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539DD2ABBFB06004F979D /* MypageGuestViewController.swift */; };
 		8EA5A1C62AB18E2100AAE23C /* WDFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C52AB18E2100AAE23C /* WDFont.swift */; };
 		8EA5A1D42AB18FA300AAE23C /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */; };
 		8EA5A1D52AB18FA300AAE23C /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */; };
@@ -44,6 +54,16 @@
 
 /* Begin PBXFileReference section */
 		2820DA79CFA6484036A9E838 /* Pods_Daeseda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daeseda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
+		8E7539D52ABBFB06004F979D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8E7539D62ABBFB06004F979D /* MyReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyReviewsViewController.swift; sourceTree = "<group>"; };
+		8E7539D72ABBFB06004F979D /* MypageUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MypageUserViewController.swift; sourceTree = "<group>"; };
+		8E7539D82ABBFB06004F979D /* CustomerServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewController.swift; sourceTree = "<group>"; };
+		8E7539DA2ABBFB06004F979D /* MyInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoEditViewController.swift; sourceTree = "<group>"; };
+		8E7539DB2ABBFB06004F979D /* MyInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoViewController.swift; sourceTree = "<group>"; };
+		8E7539DC2ABBFB06004F979D /* MyAdressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAdressViewController.swift; sourceTree = "<group>"; };
+		8E7539DD2ABBFB06004F979D /* MypageGuestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MypageGuestViewController.swift; sourceTree = "<group>"; };
 		8EA5A1C52AB18E2100AAE23C /* WDFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDFont.swift; sourceTree = "<group>"; };
 		8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
 		8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
@@ -94,6 +114,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E7539CE2ABBFAF3004F979D /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */,
+				8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */,
+			);
+			name = Review;
+			path = ../../../../daeseda/Daeseda/Daeseda/Review;
+			sourceTree = "<group>";
+		};
+		8E7539D32ABBFB06004F979D /* Mypage */ = {
+			isa = PBXGroup;
+			children = (
+				8E7539D72ABBFB06004F979D /* MypageUserViewController.swift */,
+				8E7539DD2ABBFB06004F979D /* MypageGuestViewController.swift */,
+				8E7539D92ABBFB06004F979D /* Info */,
+				8E7539D42ABBFB06004F979D /* Settings */,
+				8E7539D62ABBFB06004F979D /* MyReviewsViewController.swift */,
+				8E7539D82ABBFB06004F979D /* CustomerServiceViewController.swift */,
+				8E7539DC2ABBFB06004F979D /* MyAdressViewController.swift */,
+			);
+			name = Mypage;
+			path = ../../../../daeseda/Daeseda/Daeseda/Mypage;
+			sourceTree = "<group>";
+		};
+		8E7539D42ABBFB06004F979D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8E7539D52ABBFB06004F979D /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		8E7539D92ABBFB06004F979D /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				8E7539DA2ABBFB06004F979D /* MyInfoEditViewController.swift */,
+				8E7539DB2ABBFB06004F979D /* MyInfoViewController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
 		8EA5A1C42AB18DBE00AAE23C /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +219,8 @@
 				CC1183762AB14AFF00CE4BD2 /* SceneDelegate.swift */,
 				CC1183782AB14AFF00CE4BD2 /* ViewController.swift */,
 				CC11837A2AB14AFF00CE4BD2 /* Main.storyboard */,
+				8E7539D32ABBFB06004F979D /* Mypage */,
+				8E7539CE2ABBFAF3004F979D /* Review */,
 				CC62A1F72AB671700005A676 /* IdFindViewController.swift */,
 				CC62A1F92AB671AB0005A676 /* LoginViewController.swift */,
 				CC62A20B2AB7230D0005A676 /* JoinAgreeViewController.swift */,
@@ -320,21 +384,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E7539E22ABBFB06004F979D /* MyInfoEditViewController.swift in Sources */,
 				CC62A2002AB671FD0005A676 /* ResettingPasswordViewController.swift in Sources */,
 				CC62A1FA2AB671AB0005A676 /* LoginViewController.swift in Sources */,
+				8E7539E12ABBFB06004F979D /* CustomerServiceViewController.swift in Sources */,
 				CC62A1F82AB671700005A676 /* IdFindViewController.swift in Sources */,
+				8E7539DE2ABBFB06004F979D /* SettingsViewController.swift in Sources */,
 				CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */,
+				8E7539E32ABBFB06004F979D /* MyInfoViewController.swift in Sources */,
+				8E7539E42ABBFB06004F979D /* MyAdressViewController.swift in Sources */,
 				CCB27ECB2AB8A47F0053EA0B /* APICollection.swift in Sources */,
 				CC62A20C2AB7230D0005A676 /* JoinAgreeViewController.swift in Sources */,
 				CC62A2102AB7232D0005A676 /* JoinInfo1ViewController.swift in Sources */,
+				8E7539E02ABBFB06004F979D /* MypageUserViewController.swift in Sources */,
 				CC1183792AB14AFF00CE4BD2 /* ViewController.swift in Sources */,
+				8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */,
 				CC62A2122AB723390005A676 /* JoinInfo2ViewController.swift in Sources */,
 				CC62A1FC2AB671CD0005A676 /* RequestInfoViewController.swift in Sources */,
 				CCB27ED32AB8F40C0053EA0B /* Request.swift in Sources */,
 				8EA5A1C62AB18E2100AAE23C /* WDFont.swift in Sources */,
+				8E7539DF2ABBFB06004F979D /* MyReviewsViewController.swift in Sources */,
 				CC1183752AB14AFF00CE4BD2 /* AppDelegate.swift in Sources */,
 				CC62A1FE2AB671E90005A676 /* RequestViewController.swift in Sources */,
+				8E7539E52ABBFB06004F979D /* MypageGuestViewController.swift in Sources */,
 				CC1183772AB14AFF00CE4BD2 /* SceneDelegate.swift in Sources */,
+				8E7539D22ABBFAF3004F979D /* ReviewWriteViewController.swift in Sources */,
 				CCB27ECD2AB8A9A10053EA0B /* NetworkResult.swift in Sources */,
 				CC62A20E2AB7231C0005A676 /* JoinEmailViewController.swift in Sources */,
 			);
