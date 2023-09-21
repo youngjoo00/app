@@ -1,0 +1,559 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16712FB0FE448A3F31132885 /* Pods_Daeseda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2820DA79CFA6484036A9E838 /* Pods_Daeseda.framework */; };
+		8EA5A1C62AB18E2100AAE23C /* WDFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C52AB18E2100AAE23C /* WDFont.swift */; };
+		8EA5A1D42AB18FA300AAE23C /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */; };
+		8EA5A1D52AB18FA300AAE23C /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */; };
+		8EA5A1D62AB18FA300AAE23C /* NotoSansKR-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1CA2AB18FA200AAE23C /* NotoSansKR-ExtraLight.ttf */; };
+		8EA5A1D72AB18FA300AAE23C /* GmarketSansTTFLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1CB2AB18FA200AAE23C /* GmarketSansTTFLight.ttf */; };
+		8EA5A1D82AB18FA300AAE23C /* NotoSansKR-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1CC2AB18FA300AAE23C /* NotoSansKR-Black.ttf */; };
+		8EA5A1D92AB18FA300AAE23C /* NotoSansKR-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1CD2AB18FA300AAE23C /* NotoSansKR-SemiBold.ttf */; };
+		8EA5A1DA2AB18FA300AAE23C /* NotoSansKR-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1CE2AB18FA300AAE23C /* NotoSansKR-ExtraBold.ttf */; };
+		8EA5A1DB2AB18FA300AAE23C /* NotoSansKR-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1CF2AB18FA300AAE23C /* NotoSansKR-Thin.ttf */; };
+		8EA5A1DC2AB18FA300AAE23C /* NotoSansKR-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1D02AB18FA300AAE23C /* NotoSansKR-Medium.ttf */; };
+		8EA5A1DD2AB18FA300AAE23C /* NotoSansKR-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1D12AB18FA300AAE23C /* NotoSansKR-Light.ttf */; };
+		8EA5A1DE2AB18FA300AAE23C /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1D22AB18FA300AAE23C /* GmarketSansTTFBold.ttf */; };
+		8EA5A1DF2AB18FA300AAE23C /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1D32AB18FA300AAE23C /* GmarketSansTTFMedium.ttf */; };
+		CC1183752AB14AFF00CE4BD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1183742AB14AFF00CE4BD2 /* AppDelegate.swift */; };
+		CC1183772AB14AFF00CE4BD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1183762AB14AFF00CE4BD2 /* SceneDelegate.swift */; };
+		CC1183792AB14AFF00CE4BD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1183782AB14AFF00CE4BD2 /* ViewController.swift */; };
+		CC11837C2AB14AFF00CE4BD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC11837A2AB14AFF00CE4BD2 /* Main.storyboard */; };
+		CC11837E2AB14B0400CE4BD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC11837D2AB14B0400CE4BD2 /* Assets.xcassets */; };
+		CC1183812AB14B0400CE4BD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC11837F2AB14B0400CE4BD2 /* LaunchScreen.storyboard */; };
+		CC62A1F82AB671700005A676 /* IdFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A1F72AB671700005A676 /* IdFindViewController.swift */; };
+		CC62A1FA2AB671AB0005A676 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A1F92AB671AB0005A676 /* LoginViewController.swift */; };
+		CC62A1FC2AB671CD0005A676 /* RequestInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A1FB2AB671CD0005A676 /* RequestInfoViewController.swift */; };
+		CC62A1FE2AB671E90005A676 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A1FD2AB671E90005A676 /* RequestViewController.swift */; };
+		CC62A2002AB671FD0005A676 /* ResettingPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A1FF2AB671FD0005A676 /* ResettingPasswordViewController.swift */; };
+		CC62A20C2AB7230D0005A676 /* JoinAgreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A20B2AB7230D0005A676 /* JoinAgreeViewController.swift */; };
+		CC62A20E2AB7231C0005A676 /* JoinEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A20D2AB7231C0005A676 /* JoinEmailViewController.swift */; };
+		CC62A2102AB7232D0005A676 /* JoinInfo1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A20F2AB7232D0005A676 /* JoinInfo1ViewController.swift */; };
+		CC62A2122AB723390005A676 /* JoinInfo2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A2112AB723390005A676 /* JoinInfo2ViewController.swift */; };
+		CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */; };
+		CCB27ECB2AB8A47F0053EA0B /* APICollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ECA2AB8A47F0053EA0B /* APICollection.swift */; };
+		CCB27ECD2AB8A9A10053EA0B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */; };
+		CCB27ED32AB8F40C0053EA0B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ED22AB8F40C0053EA0B /* Request.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2820DA79CFA6484036A9E838 /* Pods_Daeseda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daeseda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8EA5A1C52AB18E2100AAE23C /* WDFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDFont.swift; sourceTree = "<group>"; };
+		8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
+		8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
+		8EA5A1CA2AB18FA200AAE23C /* NotoSansKR-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-ExtraLight.ttf"; sourceTree = "<group>"; };
+		8EA5A1CB2AB18FA200AAE23C /* GmarketSansTTFLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFLight.ttf; sourceTree = "<group>"; };
+		8EA5A1CC2AB18FA300AAE23C /* NotoSansKR-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Black.ttf"; sourceTree = "<group>"; };
+		8EA5A1CD2AB18FA300AAE23C /* NotoSansKR-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-SemiBold.ttf"; sourceTree = "<group>"; };
+		8EA5A1CE2AB18FA300AAE23C /* NotoSansKR-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-ExtraBold.ttf"; sourceTree = "<group>"; };
+		8EA5A1CF2AB18FA300AAE23C /* NotoSansKR-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Thin.ttf"; sourceTree = "<group>"; };
+		8EA5A1D02AB18FA300AAE23C /* NotoSansKR-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.ttf"; sourceTree = "<group>"; };
+		8EA5A1D12AB18FA300AAE23C /* NotoSansKR-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.ttf"; sourceTree = "<group>"; };
+		8EA5A1D22AB18FA300AAE23C /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
+		8EA5A1D32AB18FA300AAE23C /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFMedium.ttf; sourceTree = "<group>"; };
+		94732938D3F457F1B3DF2B28 /* Pods-Daeseda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daeseda.release.xcconfig"; path = "Target Support Files/Pods-Daeseda/Pods-Daeseda.release.xcconfig"; sourceTree = "<group>"; };
+		C2A0D6DEDDDB0CD50758AD79 /* Pods-Daeseda.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daeseda.debug.xcconfig"; path = "Target Support Files/Pods-Daeseda/Pods-Daeseda.debug.xcconfig"; sourceTree = "<group>"; };
+		CC1183712AB14AFF00CE4BD2 /* Daeseda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daeseda.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC1183742AB14AFF00CE4BD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CC1183762AB14AFF00CE4BD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		CC1183782AB14AFF00CE4BD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC11837B2AB14AFF00CE4BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CC11837D2AB14B0400CE4BD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CC1183802AB14B0400CE4BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CC1183822AB14B0400CE4BD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC62A1F72AB671700005A676 /* IdFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdFindViewController.swift; sourceTree = "<group>"; };
+		CC62A1F92AB671AB0005A676 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CC62A1FB2AB671CD0005A676 /* RequestInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestInfoViewController.swift; sourceTree = "<group>"; };
+		CC62A1FD2AB671E90005A676 /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
+		CC62A1FF2AB671FD0005A676 /* ResettingPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResettingPasswordViewController.swift; sourceTree = "<group>"; };
+		CC62A20B2AB7230D0005A676 /* JoinAgreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinAgreeViewController.swift; sourceTree = "<group>"; };
+		CC62A20D2AB7231C0005A676 /* JoinEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinEmailViewController.swift; sourceTree = "<group>"; };
+		CC62A20F2AB7232D0005A676 /* JoinInfo1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinInfo1ViewController.swift; sourceTree = "<group>"; };
+		CC62A2112AB723390005A676 /* JoinInfo2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinInfo2ViewController.swift; sourceTree = "<group>"; };
+		CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		CCB27ECA2AB8A47F0053EA0B /* APICollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollection.swift; sourceTree = "<group>"; };
+		CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
+		CCB27ED22AB8F40C0053EA0B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CC11836E2AB14AFF00CE4BD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16712FB0FE448A3F31132885 /* Pods_Daeseda.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8EA5A1C42AB18DBE00AAE23C /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				8EA5A1C52AB18E2100AAE23C /* WDFont.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		8EA5A1C72AB18F1000AAE23C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				8EA5A1D22AB18FA300AAE23C /* GmarketSansTTFBold.ttf */,
+				8EA5A1CB2AB18FA200AAE23C /* GmarketSansTTFLight.ttf */,
+				8EA5A1D32AB18FA300AAE23C /* GmarketSansTTFMedium.ttf */,
+				8EA5A1CC2AB18FA300AAE23C /* NotoSansKR-Black.ttf */,
+				8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */,
+				8EA5A1CE2AB18FA300AAE23C /* NotoSansKR-ExtraBold.ttf */,
+				8EA5A1CA2AB18FA200AAE23C /* NotoSansKR-ExtraLight.ttf */,
+				8EA5A1D12AB18FA300AAE23C /* NotoSansKR-Light.ttf */,
+				8EA5A1D02AB18FA300AAE23C /* NotoSansKR-Medium.ttf */,
+				8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */,
+				8EA5A1CD2AB18FA300AAE23C /* NotoSansKR-SemiBold.ttf */,
+				8EA5A1CF2AB18FA300AAE23C /* NotoSansKR-Thin.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+		C13D4A34B613E73F5A4A720B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2A0D6DEDDDB0CD50758AD79 /* Pods-Daeseda.debug.xcconfig */,
+				94732938D3F457F1B3DF2B28 /* Pods-Daeseda.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CC1183682AB14AFF00CE4BD2 = {
+			isa = PBXGroup;
+			children = (
+				8EA5A1C72AB18F1000AAE23C /* Font */,
+				8EA5A1C42AB18DBE00AAE23C /* Util */,
+				CC1183732AB14AFF00CE4BD2 /* Daeseda */,
+				CC1183722AB14AFF00CE4BD2 /* Products */,
+				C13D4A34B613E73F5A4A720B /* Pods */,
+				E15E55DB772BD2F86CAE26AE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CC1183722AB14AFF00CE4BD2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CC1183712AB14AFF00CE4BD2 /* Daeseda.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CC1183732AB14AFF00CE4BD2 /* Daeseda */ = {
+			isa = PBXGroup;
+			children = (
+				CC1183742AB14AFF00CE4BD2 /* AppDelegate.swift */,
+				CC1183762AB14AFF00CE4BD2 /* SceneDelegate.swift */,
+				CC1183782AB14AFF00CE4BD2 /* ViewController.swift */,
+				CC11837A2AB14AFF00CE4BD2 /* Main.storyboard */,
+				CC62A1F72AB671700005A676 /* IdFindViewController.swift */,
+				CC62A1F92AB671AB0005A676 /* LoginViewController.swift */,
+				CC62A20B2AB7230D0005A676 /* JoinAgreeViewController.swift */,
+				CC62A20D2AB7231C0005A676 /* JoinEmailViewController.swift */,
+				CC62A20F2AB7232D0005A676 /* JoinInfo1ViewController.swift */,
+				CC62A2112AB723390005A676 /* JoinInfo2ViewController.swift */,
+				CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */,
+				CC62A1FB2AB671CD0005A676 /* RequestInfoViewController.swift */,
+				CC62A1FD2AB671E90005A676 /* RequestViewController.swift */,
+				CC62A1FF2AB671FD0005A676 /* ResettingPasswordViewController.swift */,
+				CCB27ECF2AB8AD5B0053EA0B /* Network */,
+				CC11837D2AB14B0400CE4BD2 /* Assets.xcassets */,
+				CC11837F2AB14B0400CE4BD2 /* LaunchScreen.storyboard */,
+				CC1183822AB14B0400CE4BD2 /* Info.plist */,
+			);
+			path = Daeseda;
+			sourceTree = "<group>";
+		};
+		CCB27ECF2AB8AD5B0053EA0B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CCB27ED22AB8F40C0053EA0B /* Request.swift */,
+				CCB27ECA2AB8A47F0053EA0B /* APICollection.swift */,
+				CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		E15E55DB772BD2F86CAE26AE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2820DA79CFA6484036A9E838 /* Pods_Daeseda.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CC1183702AB14AFF00CE4BD2 /* Daeseda */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CC1183852AB14B0400CE4BD2 /* Build configuration list for PBXNativeTarget "Daeseda" */;
+			buildPhases = (
+				F51F71A7BCDDEA027DB8881F /* [CP] Check Pods Manifest.lock */,
+				CC11836D2AB14AFF00CE4BD2 /* Sources */,
+				CC11836E2AB14AFF00CE4BD2 /* Frameworks */,
+				CC11836F2AB14AFF00CE4BD2 /* Resources */,
+				61DBDC8EE513936D470A099E /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Daeseda;
+			productName = Daeseda;
+			productReference = CC1183712AB14AFF00CE4BD2 /* Daeseda.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CC1183692AB14AFF00CE4BD2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					CC1183702AB14AFF00CE4BD2 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = CC11836C2AB14AFF00CE4BD2 /* Build configuration list for PBXProject "Daeseda" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CC1183682AB14AFF00CE4BD2;
+			productRefGroup = CC1183722AB14AFF00CE4BD2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CC1183702AB14AFF00CE4BD2 /* Daeseda */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CC11836F2AB14AFF00CE4BD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8EA5A1DA2AB18FA300AAE23C /* NotoSansKR-ExtraBold.ttf in Resources */,
+				CC1183812AB14B0400CE4BD2 /* LaunchScreen.storyboard in Resources */,
+				8EA5A1D92AB18FA300AAE23C /* NotoSansKR-SemiBold.ttf in Resources */,
+				8EA5A1D72AB18FA300AAE23C /* GmarketSansTTFLight.ttf in Resources */,
+				CC11837E2AB14B0400CE4BD2 /* Assets.xcassets in Resources */,
+				8EA5A1DD2AB18FA300AAE23C /* NotoSansKR-Light.ttf in Resources */,
+				CC11837C2AB14AFF00CE4BD2 /* Main.storyboard in Resources */,
+				8EA5A1DE2AB18FA300AAE23C /* GmarketSansTTFBold.ttf in Resources */,
+				8EA5A1D82AB18FA300AAE23C /* NotoSansKR-Black.ttf in Resources */,
+				8EA5A1D42AB18FA300AAE23C /* NotoSansKR-Bold.ttf in Resources */,
+				8EA5A1DB2AB18FA300AAE23C /* NotoSansKR-Thin.ttf in Resources */,
+				8EA5A1DC2AB18FA300AAE23C /* NotoSansKR-Medium.ttf in Resources */,
+				8EA5A1D62AB18FA300AAE23C /* NotoSansKR-ExtraLight.ttf in Resources */,
+				8EA5A1D52AB18FA300AAE23C /* NotoSansKR-Regular.ttf in Resources */,
+				8EA5A1DF2AB18FA300AAE23C /* GmarketSansTTFMedium.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		61DBDC8EE513936D470A099E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Daeseda/Pods-Daeseda-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Daeseda/Pods-Daeseda-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Daeseda/Pods-Daeseda-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F51F71A7BCDDEA027DB8881F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Daeseda-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CC11836D2AB14AFF00CE4BD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC62A2002AB671FD0005A676 /* ResettingPasswordViewController.swift in Sources */,
+				CC62A1FA2AB671AB0005A676 /* LoginViewController.swift in Sources */,
+				CC62A1F82AB671700005A676 /* IdFindViewController.swift in Sources */,
+				CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */,
+				CCB27ECB2AB8A47F0053EA0B /* APICollection.swift in Sources */,
+				CC62A20C2AB7230D0005A676 /* JoinAgreeViewController.swift in Sources */,
+				CC62A2102AB7232D0005A676 /* JoinInfo1ViewController.swift in Sources */,
+				CC1183792AB14AFF00CE4BD2 /* ViewController.swift in Sources */,
+				CC62A2122AB723390005A676 /* JoinInfo2ViewController.swift in Sources */,
+				CC62A1FC2AB671CD0005A676 /* RequestInfoViewController.swift in Sources */,
+				CCB27ED32AB8F40C0053EA0B /* Request.swift in Sources */,
+				8EA5A1C62AB18E2100AAE23C /* WDFont.swift in Sources */,
+				CC1183752AB14AFF00CE4BD2 /* AppDelegate.swift in Sources */,
+				CC62A1FE2AB671E90005A676 /* RequestViewController.swift in Sources */,
+				CC1183772AB14AFF00CE4BD2 /* SceneDelegate.swift in Sources */,
+				CCB27ECD2AB8A9A10053EA0B /* NetworkResult.swift in Sources */,
+				CC62A20E2AB7231C0005A676 /* JoinEmailViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CC11837A2AB14AFF00CE4BD2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC11837B2AB14AFF00CE4BD2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CC11837F2AB14B0400CE4BD2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CC1183802AB14B0400CE4BD2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CC1183832AB14B0400CE4BD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CC1183842AB14B0400CE4BD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CC1183862AB14B0400CE4BD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2A0D6DEDDDB0CD50758AD79 /* Pods-Daeseda.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Daeseda/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = induk.Daeseda;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CC1183872AB14B0400CE4BD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94732938D3F457F1B3DF2B28 /* Pods-Daeseda.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Daeseda/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = induk.Daeseda;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CC11836C2AB14AFF00CE4BD2 /* Build configuration list for PBXProject "Daeseda" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC1183832AB14B0400CE4BD2 /* Debug */,
+				CC1183842AB14B0400CE4BD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CC1183852AB14B0400CE4BD2 /* Build configuration list for PBXNativeTarget "Daeseda" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CC1183862AB14B0400CE4BD2 /* Debug */,
+				CC1183872AB14B0400CE4BD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CC1183692AB14AFF00CE4BD2 /* Project object */;
+}
