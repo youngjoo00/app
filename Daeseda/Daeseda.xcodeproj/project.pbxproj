@@ -12,7 +12,7 @@
 		8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */; };
 		8E7539D22ABBFAF3004F979D /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */; };
 		8E7539DE2ABBFB06004F979D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D52ABBFB06004F979D /* SettingsViewController.swift */; };
-		8E7539DF2ABBFB06004F979D /* MyReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D62ABBFB06004F979D /* MyReviewsViewController.swift */; };
+		8E7539DF2ABBFB06004F979D /* MyReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D62ABBFB06004F979D /* MyReviewViewController.swift */; };
 		8E7539E02ABBFB06004F979D /* MypageUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D72ABBFB06004F979D /* MypageUserViewController.swift */; };
 		8E7539E12ABBFB06004F979D /* CustomerServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D82ABBFB06004F979D /* CustomerServiceViewController.swift */; };
 		8E7539E22ABBFB06004F979D /* MyInfoEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539DA2ABBFB06004F979D /* MyInfoEditViewController.swift */; };
@@ -43,6 +43,11 @@
 		8EA5A1DD2AB18FA300AAE23C /* NotoSansKR-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1D12AB18FA300AAE23C /* NotoSansKR-Light.ttf */; };
 		8EA5A1DE2AB18FA300AAE23C /* GmarketSansTTFBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1D22AB18FA300AAE23C /* GmarketSansTTFBold.ttf */; };
 		8EA5A1DF2AB18FA300AAE23C /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1D32AB18FA300AAE23C /* GmarketSansTTFMedium.ttf */; };
+		8EB01A7E2AC2E60D00DA41DC /* ReviewListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB01A7D2AC2E60D00DA41DC /* ReviewListTableViewCell.swift */; };
+		8EB01A812AC31F8800DA41DC /* MyReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB01A802AC31F8800DA41DC /* MyReviewTableViewCell.swift */; };
+		8EE728C02AC40484002C46B3 /* TestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE728BF2AC40484002C46B3 /* TestRequest.swift */; };
+		8EE728C32AC40BF4002C46B3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE728C22AC40BF4002C46B3 /* LoginModel.swift */; };
+		8EE728C52AC40C63002C46B3 /* SignupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE728C42AC40C63002C46B3 /* SignupModel.swift */; };
 		CC1183752AB14AFF00CE4BD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1183742AB14AFF00CE4BD2 /* AppDelegate.swift */; };
 		CC1183772AB14AFF00CE4BD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1183762AB14AFF00CE4BD2 /* SceneDelegate.swift */; };
 		CC1183792AB14AFF00CE4BD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1183782AB14AFF00CE4BD2 /* ViewController.swift */; };
@@ -70,7 +75,7 @@
 		8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
 		8E7539D52ABBFB06004F979D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		8E7539D62ABBFB06004F979D /* MyReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyReviewsViewController.swift; sourceTree = "<group>"; };
+		8E7539D62ABBFB06004F979D /* MyReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyReviewViewController.swift; sourceTree = "<group>"; };
 		8E7539D72ABBFB06004F979D /* MypageUserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MypageUserViewController.swift; sourceTree = "<group>"; };
 		8E7539D82ABBFB06004F979D /* CustomerServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerServiceViewController.swift; sourceTree = "<group>"; };
 		8E7539DA2ABBFB06004F979D /* MyInfoEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyInfoEditViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +106,11 @@
 		8EA5A1D12AB18FA300AAE23C /* NotoSansKR-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Light.ttf"; sourceTree = "<group>"; };
 		8EA5A1D22AB18FA300AAE23C /* GmarketSansTTFBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFBold.ttf; sourceTree = "<group>"; };
 		8EA5A1D32AB18FA300AAE23C /* GmarketSansTTFMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansTTFMedium.ttf; sourceTree = "<group>"; };
+		8EB01A7D2AC2E60D00DA41DC /* ReviewListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListTableViewCell.swift; sourceTree = "<group>"; };
+		8EB01A802AC31F8800DA41DC /* MyReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewTableViewCell.swift; sourceTree = "<group>"; };
+		8EE728BF2AC40484002C46B3 /* TestRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRequest.swift; sourceTree = "<group>"; };
+		8EE728C22AC40BF4002C46B3 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		8EE728C42AC40C63002C46B3 /* SignupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupModel.swift; sourceTree = "<group>"; };
 		94732938D3F457F1B3DF2B28 /* Pods-Daeseda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daeseda.release.xcconfig"; path = "Target Support Files/Pods-Daeseda/Pods-Daeseda.release.xcconfig"; sourceTree = "<group>"; };
 		C2A0D6DEDDDB0CD50758AD79 /* Pods-Daeseda.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daeseda.debug.xcconfig"; path = "Target Support Files/Pods-Daeseda/Pods-Daeseda.debug.xcconfig"; sourceTree = "<group>"; };
 		CC1183712AB14AFF00CE4BD2 /* Daeseda.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daeseda.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +153,7 @@
 			children = (
 				8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */,
 				8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */,
+				8EB01A7D2AC2E60D00DA41DC /* ReviewListTableViewCell.swift */,
 			);
 			name = Review;
 			path = ../../../../daeseda/Daeseda/Daeseda/Review;
@@ -156,8 +167,8 @@
 				8E7539D92ABBFB06004F979D /* Info */,
 				8E7B41872AC052E400560B86 /* CustomerService */,
 				8E7539D42ABBFB06004F979D /* Settings */,
-				8E7539D62ABBFB06004F979D /* MyReviewsViewController.swift */,
-				8E7539DC2ABBFB06004F979D /* MyAdressViewController.swift */,
+				8EB01A7F2AC31EB500DA41DC /* MyReviews */,
+				8EB01A822AC3261B00DA41DC /* MyAdres */,
 			);
 			name = Mypage;
 			path = ../../../../daeseda/Daeseda/Daeseda/Mypage;
@@ -250,6 +261,32 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		8EB01A7F2AC31EB500DA41DC /* MyReviews */ = {
+			isa = PBXGroup;
+			children = (
+				8E7539D62ABBFB06004F979D /* MyReviewViewController.swift */,
+				8EB01A802AC31F8800DA41DC /* MyReviewTableViewCell.swift */,
+			);
+			path = MyReviews;
+			sourceTree = "<group>";
+		};
+		8EB01A822AC3261B00DA41DC /* MyAdres */ = {
+			isa = PBXGroup;
+			children = (
+				8E7539DC2ABBFB06004F979D /* MyAdressViewController.swift */,
+			);
+			path = MyAdres;
+			sourceTree = "<group>";
+		};
+		8EE728C12AC40BBD002C46B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8EE728C22AC40BF4002C46B3 /* LoginModel.swift */,
+				8EE728C42AC40C63002C46B3 /* SignupModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		C13D4A34B613E73F5A4A720B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +319,7 @@
 		CC1183732AB14AFF00CE4BD2 /* Daeseda */ = {
 			isa = PBXGroup;
 			children = (
+				8EE728C12AC40BBD002C46B3 /* Model */,
 				CC1183742AB14AFF00CE4BD2 /* AppDelegate.swift */,
 				CC1183762AB14AFF00CE4BD2 /* SceneDelegate.swift */,
 				CC1183782AB14AFF00CE4BD2 /* ViewController.swift */,
@@ -313,6 +351,7 @@
 				CCB27ED22AB8F40C0053EA0B /* Request.swift */,
 				CCB27ECA2AB8A47F0053EA0B /* APICollection.swift */,
 				CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */,
+				8EE728BF2AC40484002C46B3 /* TestRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -455,12 +494,15 @@
 				8E7539E22ABBFB06004F979D /* MyInfoEditViewController.swift in Sources */,
 				CC62A2002AB671FD0005A676 /* ResettingPasswordViewController.swift in Sources */,
 				CC62A1FA2AB671AB0005A676 /* LoginViewController.swift in Sources */,
+				8EE728C02AC40484002C46B3 /* TestRequest.swift in Sources */,
 				8E94FFF62AC1D2B5006B8E9E /* ShowQnaViewController.swift in Sources */,
 				8E7B41862AC04DAA00560B86 /* CompanyInfoViewController.swift in Sources */,
 				8E7B41842AC04C6F00560B86 /* PrivacyPolicyViewController.swift in Sources */,
+				8EE728C52AC40C63002C46B3 /* SignupModel.swift in Sources */,
 				8E7539E12ABBFB06004F979D /* CustomerServiceViewController.swift in Sources */,
 				8E7539EB2ABDDA18004F979D /* TestViewController.swift in Sources */,
 				CC62A1F82AB671700005A676 /* IdFindViewController.swift in Sources */,
+				8EB01A7E2AC2E60D00DA41DC /* ReviewListTableViewCell.swift in Sources */,
 				8E7539DE2ABBFB06004F979D /* SettingsViewController.swift in Sources */,
 				8E94FFFA2AC1F5D0006B8E9E /* ComentTableViewCell.swift in Sources */,
 				CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */,
@@ -476,16 +518,18 @@
 				8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */,
 				CC62A2122AB723390005A676 /* JoinInfo2ViewController.swift in Sources */,
 				CC62A1FC2AB671CD0005A676 /* RequestInfoViewController.swift in Sources */,
+				8EB01A812AC31F8800DA41DC /* MyReviewTableViewCell.swift in Sources */,
 				CCB27ED32AB8F40C0053EA0B /* Request.swift in Sources */,
 				8E7B41912AC0806900560B86 /* NoticeTableViewCell.swift in Sources */,
 				8E7539E72ABC0CE9004F979D /* ServiceViewController.swift in Sources */,
 				8E7B41892AC052FD00560B86 /* NoticeViewController.swift in Sources */,
 				8EA5A1C62AB18E2100AAE23C /* WDFont.swift in Sources */,
 				8E546DF72AC13C8B00DD353E /* ShowNoticeViewController.swift in Sources */,
-				8E7539DF2ABBFB06004F979D /* MyReviewsViewController.swift in Sources */,
+				8E7539DF2ABBFB06004F979D /* MyReviewViewController.swift in Sources */,
 				CC1183752AB14AFF00CE4BD2 /* AppDelegate.swift in Sources */,
 				CC62A1FE2AB671E90005A676 /* RequestViewController.swift in Sources */,
 				8E94FFF82AC1DBB2006B8E9E /* QnaTableViewCell.swift in Sources */,
+				8EE728C32AC40BF4002C46B3 /* LoginModel.swift in Sources */,
 				8E7539E52ABBFB06004F979D /* MypageGuestViewController.swift in Sources */,
 				CC1183772AB14AFF00CE4BD2 /* SceneDelegate.swift in Sources */,
 				8E7539D22ABBFAF3004F979D /* ReviewWriteViewController.swift in Sources */,
