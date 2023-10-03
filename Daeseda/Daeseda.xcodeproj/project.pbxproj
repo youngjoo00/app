@@ -155,8 +155,7 @@
 				8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */,
 				8EB01A7D2AC2E60D00DA41DC /* ReviewListTableViewCell.swift */,
 			);
-			name = Review;
-			path = ../../../../daeseda/Daeseda/Daeseda/Review;
+			path = Review;
 			sourceTree = "<group>";
 		};
 		8E7539D32ABBFB06004F979D /* Mypage */ = {
@@ -171,7 +170,7 @@
 				8EB01A822AC3261B00DA41DC /* MyAdres */,
 			);
 			name = Mypage;
-			path = ../../../../daeseda/Daeseda/Daeseda/Mypage;
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		8E7539D42ABBFB06004F979D /* Settings */ = {
@@ -296,6 +295,36 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		CC056ABF2ACC956E00593174 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				CC62A20B2AB7230D0005A676 /* JoinAgreeViewController.swift */,
+				CC62A20D2AB7231C0005A676 /* JoinEmailViewController.swift */,
+				CC62A20F2AB7232D0005A676 /* JoinInfo1ViewController.swift */,
+				CC62A2112AB723390005A676 /* JoinInfo2ViewController.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		CC056AC02ACC958000593174 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CC62A1F92AB671AB0005A676 /* LoginViewController.swift */,
+				CC62A1F72AB671700005A676 /* IdFindViewController.swift */,
+				CC62A1FF2AB671FD0005A676 /* ResettingPasswordViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		CC056AC12ACC958F00593174 /* Apply */ = {
+			isa = PBXGroup;
+			children = (
+				CC62A1FB2AB671CD0005A676 /* RequestInfoViewController.swift */,
+				CC62A1FD2AB671E90005A676 /* RequestViewController.swift */,
+			);
+			path = Apply;
+			sourceTree = "<group>";
+		};
 		CC1183682AB14AFF00CE4BD2 = {
 			isa = PBXGroup;
 			children = (
@@ -319,24 +348,18 @@
 		CC1183732AB14AFF00CE4BD2 /* Daeseda */ = {
 			isa = PBXGroup;
 			children = (
-				8EE728C12AC40BBD002C46B3 /* Model */,
 				CC1183742AB14AFF00CE4BD2 /* AppDelegate.swift */,
 				CC1183762AB14AFF00CE4BD2 /* SceneDelegate.swift */,
-				CC1183782AB14AFF00CE4BD2 /* ViewController.swift */,
 				CC11837A2AB14AFF00CE4BD2 /* Main.storyboard */,
+				CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */,
+				CC1183782AB14AFF00CE4BD2 /* ViewController.swift */,
 				8E7539EA2ABDDA18004F979D /* TestViewController.swift */,
+				CC056AC02ACC958000593174 /* Login */,
+				CC056ABF2ACC956E00593174 /* Signup */,
+				CC056AC12ACC958F00593174 /* Apply */,
 				8E7539D32ABBFB06004F979D /* Mypage */,
 				8E7539CE2ABBFAF3004F979D /* Review */,
-				CC62A1F72AB671700005A676 /* IdFindViewController.swift */,
-				CC62A1F92AB671AB0005A676 /* LoginViewController.swift */,
-				CC62A20B2AB7230D0005A676 /* JoinAgreeViewController.swift */,
-				CC62A20D2AB7231C0005A676 /* JoinEmailViewController.swift */,
-				CC62A20F2AB7232D0005A676 /* JoinInfo1ViewController.swift */,
-				CC62A2112AB723390005A676 /* JoinInfo2ViewController.swift */,
-				CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */,
-				CC62A1FB2AB671CD0005A676 /* RequestInfoViewController.swift */,
-				CC62A1FD2AB671E90005A676 /* RequestViewController.swift */,
-				CC62A1FF2AB671FD0005A676 /* ResettingPasswordViewController.swift */,
+				8EE728C12AC40BBD002C46B3 /* Model */,
 				CCB27ECF2AB8AD5B0053EA0B /* Network */,
 				CC11837D2AB14B0400CE4BD2 /* Assets.xcassets */,
 				CC11837F2AB14B0400CE4BD2 /* LaunchScreen.storyboard */,
