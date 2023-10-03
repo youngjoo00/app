@@ -220,7 +220,7 @@
             </objects>
             <point key="canvasLocation" x="-583" y="1497"/>
         </scene>
-        <!--Mypage User View Controller-->
+        <!--마이페이지-->
         <scene sceneID="0VN-bF-Xpa">
             <objects>
                 <viewController storyboardIdentifier="MypageUser" id="0jU-PO-fpk" customClass="MypageUserViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
@@ -230,7 +230,7 @@
                         <viewLayoutGuide key="safeArea" id="UAY-aZ-Exo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="enY-tU-pd1"/>
+                    <navigationItem key="navigationItem" title="마이페이지" id="bIE-28-wFx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JN-by-duc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
