@@ -23,16 +23,16 @@ class ResettingPasswordViewController: UIViewController {
         //        guard let name = nameTextField.text else { return }
         
         let otherParameters: [String: Any] = [
-            "userId": 2,
-            "userEmail": "aaaaaaaa@example.com",
-            "userName": "John So",
-            "userNickname": "johndoe1231",
-            "userPhone": "123-4561-7890",
-            "userPassword": "securepassword12311"
+            "userEmail": "use234@example.com",
+            "userName": "JohneA",
+            "userNickname": "johndoe00",
+            "userPhone": "123-456-1234",
+            "userPassword": "securepassword"
         ]
         
         
-        Request.shared.requestPost(url: APICollection.postURL, param: otherParameters) { response in
+        Request.shared.requestPost(url: "http://localhost:8088/users/signup", param: otherParameters) { response in
+            
             switch response {
             case .success(let data):
                 guard let data = data as? Response else { return }

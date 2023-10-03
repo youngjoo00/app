@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         d()
         but()
         banner()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

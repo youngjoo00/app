@@ -8,14 +8,15 @@
 import Foundation
 
 struct APICollection {
-    static let baseURL = "http://13.124.62.236"
+    static let baseURL = "http://localhost:8088"
     
-    // loginURL = http://13.124.62.236/auth/login
-    static let loginURL = "http://localhost"
+    // "http://localhost:8088/users/signup"
+    static let loginURL = baseURL + "/users/authenticate"
     
-    // signUpURL = http://13.124.62.236/auth/signUp
-    static let signUpURL = "/auth/signUp"
+    // "http://localhost:8088/users/signup"
+    static let signUpURL = baseURL + "/users/signup"
     
-    static let postURL = "http://localhost:8888/users/register"
+    
+//    static let postURL = "http://localhost:8888/users/register"
 
 }
