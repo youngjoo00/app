@@ -67,6 +67,7 @@
 		CCB27ECB2AB8A47F0053EA0B /* APICollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ECA2AB8A47F0053EA0B /* APICollection.swift */; };
 		CCB27ECD2AB8A9A10053EA0B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */; };
 		CCB27ED32AB8F40C0053EA0B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ED22AB8F40C0053EA0B /* Request.swift */; };
+		CCE9847C2ACE92EE0005F97F /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9847B2ACE92EE0005F97F /* AddressSearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,7 @@
 		CCB27ECA2AB8A47F0053EA0B /* APICollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollection.swift; sourceTree = "<group>"; };
 		CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		CCB27ED22AB8F40C0053EA0B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		CCE9847B2ACE92EE0005F97F /* AddressSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,6 +356,7 @@
 				CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */,
 				CC1183782AB14AFF00CE4BD2 /* ViewController.swift */,
 				8E7539EA2ABDDA18004F979D /* TestViewController.swift */,
+				CCE9847B2ACE92EE0005F97F /* AddressSearchViewController.swift */,
 				CC056AC02ACC958000593174 /* Login */,
 				CC056ABF2ACC956E00593174 /* Signup */,
 				CC056AC12ACC958F00593174 /* Apply */,
@@ -537,6 +540,7 @@
 				8E7B418B2AC0532B00560B86 /* FaqViewController.swift in Sources */,
 				8E7539E02ABBFB06004F979D /* MypageUserViewController.swift in Sources */,
 				8E7B418F2AC0536200560B86 /* QnaViewController.swift in Sources */,
+				CCE9847C2ACE92EE0005F97F /* AddressSearchViewController.swift in Sources */,
 				CC1183792AB14AFF00CE4BD2 /* ViewController.swift in Sources */,
 				8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */,
 				CC62A2122AB723390005A676 /* JoinInfo2ViewController.swift in Sources */,
