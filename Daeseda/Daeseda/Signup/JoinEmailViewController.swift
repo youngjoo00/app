@@ -13,60 +13,99 @@ class JoinEmailViewController: UIViewController {
         super.viewDidLoad()
         
         label()
-        nextButton()
 
     }
+    
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var emailErrorMessage: UILabel!
+    
+    var postId: String = ""
+    
     func label(){
+        
+        let title = UILabel()
+        title.frame = CGRect(x: 0, y: 0, width: 300, height: 50)
+        title.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        title.font = UIFont(name: "GmarketSansTTFMedium", size: 30)
+        title.numberOfLines = 0
+        title.lineBreakMode = .byWordWrapping
+        // Line height: 25 pt
+        title.text = "Welcome!"
+
+        self.view.addSubview(title)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        title.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        title.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 38).isActive = true
+        title.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true
+        
+        let subTitle = UILabel()
+        subTitle.frame = CGRect(x: 0, y: 0, width: 300, height: 50)
+        subTitle.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        subTitle.font = UIFont(name: "GmarketSansTTFLight", size: 15)
+        subTitle.numberOfLines = 0
+        subTitle.lineBreakMode = .byWordWrapping
+        // Line height: 25 pt
+        subTitle.text = "양식에 맞추어 회원정보를 입력해주세요."
+
+        self.view.addSubview(subTitle)
+        subTitle.translatesAutoresizingMaskIntoConstraints = false
+        subTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 38).isActive = true
+        subTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 150).isActive = true
+        
         let email = UILabel()
         email.frame = CGRect(x: 0, y: 0, width: 98.51, height: 41.11)
         email.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        email.font = UIFont(name: "Inter-Regular", size: 20)
+        email.font = UIFont(name: "NotoSansKR-Regular", size: 20)
         // Line height: 24.2 pt
         email.text = "이메일"
 
         self.view.addSubview(email)
         email.translatesAutoresizingMaskIntoConstraints = false
-        email.widthAnchor.constraint(equalToConstant: 98.51).isActive = true
-        email.heightAnchor.constraint(equalToConstant: 41.11).isActive = true
         email.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        email.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 150).isActive = true
+        email.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200).isActive = true
         
         // Auto layout, variables, and unit scale are not yet supported
         let check = UILabel()
         check.frame = CGRect(x: 0, y: 0, width: 82.22, height: 42.66)
         check.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        check.font = UIFont(name: "Inter-Regular", size: 20)
+        check.font = UIFont(name: "NotoSansKR-Regular", size: 20)
         // Line height: 24.2 pt
         check.text = "인증번호"
 
         self.view.addSubview(check)
         check.translatesAutoresizingMaskIntoConstraints = false
         check.widthAnchor.constraint(equalToConstant: 82.22).isActive = true
-        check.heightAnchor.constraint(equalToConstant: 42.66).isActive = true
+        check.heightAnchor.constraint(equalToConstant: 42).isActive = true
         check.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        check.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 230).isActive = true
+        check.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 310).isActive = true
+        
     }
-    
-    func checkButton(){
-        let checkButton = UIButton()
-        checkButton.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
-        checkButton.setTitle("인증", for: .normal) // 버튼 텍스트 설정
-        checkButton.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        checkButton.titleLabel?.font = UIFont(name: "NotoSans-Regular", size: 10)
-        checkButton.addTarget(self, action: #selector(checkEmail), for: .touchUpInside)
 
-        self.view.addSubview(checkButton)
-        checkButton.translatesAutoresizingMaskIntoConstraints = false
-        checkButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        checkButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        checkButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 235).isActive = true
-        checkButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 474).isActive = true
+    // 입력에 따라 이메일 형식 확인
+    @IBAction func emailTextFieldEditingChanged(_ sender: Any) {
+        
+        if let email = emailTextField.text {
+            let pattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            let regex = try! NSRegularExpression(pattern: pattern)
+            
+            let match = regex.firstMatch(in: email, range: NSRange(email.startIndex..., in: email))
+            
+            if match == nil {
+                emailErrorMessage.text = "이메일을 정확히 입력해주세요."
+            } else {
+                emailErrorMessage.text = " "
+                nextButton()
+            }
+        }
     }
     
-    @objc func checkEmail() {
-        guard  let joinAgreeVC = storyboard?.instantiateViewController(withIdentifier: "joinAgree") as? JoinAgreeViewController else { return }
-        self.navigationController?.pushViewController(joinAgreeVC, animated: true)
-    }
+    // 입력이 끝난 후 중복 이메일 확인하는 코드 구현
+//    @IBAction func emailTextFieldDidEndOnExit(_ sender: UITextField) {
+//
+//    }
+
     
     func nextButton(){
         var nextButton = UIButton()
@@ -99,7 +138,9 @@ class JoinEmailViewController: UIViewController {
         naxtText.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
     }
     @objc func joinInfo1VC() {
-        guard  let joinInfo1VC = storyboard?.instantiateViewController(withIdentifier: "joinInfo1") as? JoinInfo1ViewController else { return }
-        self.navigationController?.pushViewController(joinInfo1VC, animated: true)
+//        guard  let joinInfo1VC = storyboard?.instantiateViewController(withIdentifier: "joinInfo1") as? JoinInfo1ViewController else { return }
+//        joinInfo1VC.postId = self.emailTextField.text!
+//        self.navigationController?.pushViewController(joinInfo1VC, animated: true)
     }
+    
 }
