@@ -9,6 +9,8 @@ import UIKit
 
 class MoreAdressViewController: UIViewController {
 
+    var indexPath: IndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

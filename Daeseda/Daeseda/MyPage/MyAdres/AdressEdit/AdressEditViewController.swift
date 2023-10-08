@@ -2,6 +2,8 @@ import UIKit
 
 class AdressEditViewController: UIViewController {
     
+    var indexPath: IndexPath?
+    
     let homeTitle = "우리 집"
     let homeAdress = "서울시 노원구 초안산로 12"
 
@@ -27,7 +29,17 @@ class AdressEditViewController: UIViewController {
         self.title = "주소 관리"
     }
     
-    
+    @IBAction func editButtonTapped(_ sender: UIButton) {
+        let indexPath = IndexPath(row: sender.tag, section: 0)
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let moreAdressVC = storyboard.instantiateViewController(withIdentifier: "MoreAdressVC") as? MoreAdressViewController {
+            moreAdressVC.indexPath = indexPath
+            self.navigationController?.pushViewController(moreAdressVC, animated: true)
+        }
+    }
+
+
 }
 
 
