@@ -73,8 +73,7 @@ extension AddressSearchViewController: WKScriptMessageHandler {
         }
         
         NotificationCenter.default.post(name: NSNotification.Name("postAddressNotification"), object: address)
-        
-        guard let requestInfoVC = storyboard?.instantiateViewController(withIdentifier: "requestInfo") as? RequestInfoViewController else { return }
+
         self.dismiss(animated: true, completion: nil)
 
     }

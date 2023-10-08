@@ -138,9 +138,9 @@ class JoinEmailViewController: UIViewController {
         naxtText.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
     }
     @objc func joinInfo1VC() {
-//        guard  let joinInfo1VC = storyboard?.instantiateViewController(withIdentifier: "joinInfo1") as? JoinInfo1ViewController else { return }
-//        joinInfo1VC.postId = self.emailTextField.text!
-//        self.navigationController?.pushViewController(joinInfo1VC, animated: true)
+        guard  let joinInfo1VC = storyboard?.instantiateViewController(withIdentifier: "joinInfo1") as? JoinInfo1ViewController else { return }
+        joinInfo1VC.postId = self.emailTextField.text!
+        self.navigationController?.pushViewController(joinInfo1VC, animated: true)
     }
     
 }

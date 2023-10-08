@@ -72,6 +72,9 @@
 		CC62A2102AB7232D0005A676 /* JoinInfo1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A20F2AB7232D0005A676 /* JoinInfo1ViewController.swift */; };
 		CC62A2122AB723390005A676 /* JoinInfo2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A2112AB723390005A676 /* JoinInfo2ViewController.swift */; };
 		CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */; };
+		CC6C34BF2AD297DB000A420F /* AllIdFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C34BE2AD297DB000A420F /* AllIdFindViewController.swift */; };
+		CC6C34C32AD29A04000A420F /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C34C22AD29A04000A420F /* PaymentViewController.swift */; };
+		CC6C34C52AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C34C42AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift */; };
 		CCB27ECB2AB8A47F0053EA0B /* APICollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ECA2AB8A47F0053EA0B /* APICollection.swift */; };
 		CCB27ECD2AB8A9A10053EA0B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */; };
 		CCB27ED32AB8F40C0053EA0B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ED22AB8F40C0053EA0B /* Request.swift */; };
@@ -148,6 +151,9 @@
 		CC62A20F2AB7232D0005A676 /* JoinInfo1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinInfo1ViewController.swift; sourceTree = "<group>"; };
 		CC62A2112AB723390005A676 /* JoinInfo2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinInfo2ViewController.swift; sourceTree = "<group>"; };
 		CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		CC6C34BE2AD297DB000A420F /* AllIdFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllIdFindViewController.swift; sourceTree = "<group>"; };
+		CC6C34C22AD29A04000A420F /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		CC6C34C42AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResettingPasswordInfoViewController.swift; sourceTree = "<group>"; };
 		CCB27ECA2AB8A47F0053EA0B /* APICollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollection.swift; sourceTree = "<group>"; };
 		CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		CCB27ED22AB8F40C0053EA0B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -353,6 +359,8 @@
 			children = (
 				CC62A1F92AB671AB0005A676 /* LoginViewController.swift */,
 				CC62A1F72AB671700005A676 /* IdFindViewController.swift */,
+				CC6C34BE2AD297DB000A420F /* AllIdFindViewController.swift */,
+				CC6C34C42AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift */,
 				CC62A1FF2AB671FD0005A676 /* ResettingPasswordViewController.swift */,
 			);
 			path = Login;
@@ -361,8 +369,9 @@
 		CC056AC12ACC958F00593174 /* Apply */ = {
 			isa = PBXGroup;
 			children = (
-				CC62A1FB2AB671CD0005A676 /* RequestInfoViewController.swift */,
 				CC62A1FD2AB671E90005A676 /* RequestViewController.swift */,
+				CC62A1FB2AB671CD0005A676 /* RequestInfoViewController.swift */,
+				CC6C34C22AD29A04000A420F /* PaymentViewController.swift */,
 			);
 			path = Apply;
 			sourceTree = "<group>";
@@ -397,6 +406,7 @@
 				CC1183782AB14AFF00CE4BD2 /* ViewController.swift */,
 				8E7539EA2ABDDA18004F979D /* TestViewController.swift */,
 				CCE9847B2ACE92EE0005F97F /* AddressSearchViewController.swift */,
+				CC90BE9B2AD1555F0054113E /* ApplyList */,
 				CC056AC02ACC958000593174 /* Login */,
 				CC056ABF2ACC956E00593174 /* Signup */,
 				CC056AC12ACC958F00593174 /* Apply */,
@@ -409,6 +419,13 @@
 				CC1183822AB14B0400CE4BD2 /* Info.plist */,
 			);
 			path = Daeseda;
+			sourceTree = "<group>";
+		};
+		CC90BE9B2AD1555F0054113E /* ApplyList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ApplyList;
 			sourceTree = "<group>";
 		};
 		CCB27ECF2AB8AD5B0053EA0B /* Network */ = {
@@ -571,6 +588,7 @@
 				8EE855F02AD0540B007ECE13 /* MyHomeTableViewCell.swift in Sources */,
 				8EF3BCE82ACD5AE70022DBC8 /* ShowFaqViewController.swift in Sources */,
 				8E7539EB2ABDDA18004F979D /* TestViewController.swift in Sources */,
+				CC6C34BF2AD297DB000A420F /* AllIdFindViewController.swift in Sources */,
 				CC62A1F82AB671700005A676 /* IdFindViewController.swift in Sources */,
 				8EB01A7E2AC2E60D00DA41DC /* ReviewListTableViewCell.swift in Sources */,
 				8E7539DE2ABBFB06004F979D /* SettingsViewController.swift in Sources */,
@@ -579,10 +597,12 @@
 				CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */,
 				8E7539E32ABBFB06004F979D /* MyInfoViewController.swift in Sources */,
 				8E7539E42ABBFB06004F979D /* MyAdressViewController.swift in Sources */,
+				CC6C34C32AD29A04000A420F /* PaymentViewController.swift in Sources */,
 				CCB27ECB2AB8A47F0053EA0B /* APICollection.swift in Sources */,
 				CC62A20C2AB7230D0005A676 /* JoinAgreeViewController.swift in Sources */,
 				CC62A2102AB7232D0005A676 /* JoinInfo1ViewController.swift in Sources */,
 				8E7B418B2AC0532B00560B86 /* FaqViewController.swift in Sources */,
+				CC6C34C52AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift in Sources */,
 				8E7539E02ABBFB06004F979D /* MypageUserViewController.swift in Sources */,
 				8E7B418F2AC0536200560B86 /* QnaViewController.swift in Sources */,
 				CCE9847C2ACE92EE0005F97F /* AddressSearchViewController.swift in Sources */,
