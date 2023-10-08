@@ -57,6 +57,8 @@ class QnaViewController: UIViewController {
         qnaTableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
+    
+    
 }
 
 extension QnaViewController: UITableViewDelegate {
