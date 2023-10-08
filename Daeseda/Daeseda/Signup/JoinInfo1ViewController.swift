@@ -124,7 +124,7 @@ class JoinInfo1ViewController: UIViewController {
     }
     
     func nextButton(){
-        var nextButton = UIButton()
+        let nextButton = UIButton()
         nextButton.frame = CGRect(x: 0, y: 0, width: 250, height: 34)
         nextButton.layer.backgroundColor = UIColor(red: 0.365, green: 0.553, blue: 0.949, alpha: 1).cgColor
         nextButton.layer.cornerRadius = 10
@@ -161,7 +161,7 @@ class JoinInfo1ViewController: UIViewController {
         joinInfo2VC.userNicName = self.nicNameTextField.text!
         joinInfo2VC.userPassword = self.passwordTextField.text!
         joinInfo2VC.userEmail = self.postId
-//
+
         self.navigationController?.pushViewController(joinInfo2VC, animated: true)
     }
 }

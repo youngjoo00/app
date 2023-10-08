@@ -65,8 +65,8 @@
 		CC62A2122AB723390005A676 /* JoinInfo2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A2112AB723390005A676 /* JoinInfo2ViewController.swift */; };
 		CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */; };
 		CC6C34BF2AD297DB000A420F /* AllIdFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C34BE2AD297DB000A420F /* AllIdFindViewController.swift */; };
-		CC6C34C12AD298AD000A420F /* ResettingPasswordInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C34C02AD298AD000A420F /* ResettingPasswordInfoViewController.swift */; };
 		CC6C34C32AD29A04000A420F /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C34C22AD29A04000A420F /* PaymentViewController.swift */; };
+		CC6C34C52AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C34C42AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift */; };
 		CCB27ECB2AB8A47F0053EA0B /* APICollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ECA2AB8A47F0053EA0B /* APICollection.swift */; };
 		CCB27ECD2AB8A9A10053EA0B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */; };
 		CCB27ED32AB8F40C0053EA0B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ED22AB8F40C0053EA0B /* Request.swift */; };
@@ -136,8 +136,8 @@
 		CC62A2112AB723390005A676 /* JoinInfo2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinInfo2ViewController.swift; sourceTree = "<group>"; };
 		CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		CC6C34BE2AD297DB000A420F /* AllIdFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllIdFindViewController.swift; sourceTree = "<group>"; };
-		CC6C34C02AD298AD000A420F /* ResettingPasswordInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResettingPasswordInfoViewController.swift; sourceTree = "<group>"; };
 		CC6C34C22AD29A04000A420F /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		CC6C34C42AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResettingPasswordInfoViewController.swift; sourceTree = "<group>"; };
 		CCB27ECA2AB8A47F0053EA0B /* APICollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICollection.swift; sourceTree = "<group>"; };
 		CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		CCB27ED22AB8F40C0053EA0B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -320,8 +320,8 @@
 				CC62A1F92AB671AB0005A676 /* LoginViewController.swift */,
 				CC62A1F72AB671700005A676 /* IdFindViewController.swift */,
 				CC6C34BE2AD297DB000A420F /* AllIdFindViewController.swift */,
+				CC6C34C42AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift */,
 				CC62A1FF2AB671FD0005A676 /* ResettingPasswordViewController.swift */,
-				CC6C34C02AD298AD000A420F /* ResettingPasswordInfoViewController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -540,7 +540,6 @@
 				8EE728C02AC40484002C46B3 /* TestRequest.swift in Sources */,
 				8E94FFF62AC1D2B5006B8E9E /* ShowQnaViewController.swift in Sources */,
 				8E7B41862AC04DAA00560B86 /* CompanyInfoViewController.swift in Sources */,
-				CC6C34C12AD298AD000A420F /* ResettingPasswordInfoViewController.swift in Sources */,
 				8E7B41842AC04C6F00560B86 /* PrivacyPolicyViewController.swift in Sources */,
 				8EE728C52AC40C63002C46B3 /* SignupModel.swift in Sources */,
 				8E7539E12ABBFB06004F979D /* CustomerServiceViewController.swift in Sources */,
@@ -558,6 +557,7 @@
 				CC62A20C2AB7230D0005A676 /* JoinAgreeViewController.swift in Sources */,
 				CC62A2102AB7232D0005A676 /* JoinInfo1ViewController.swift in Sources */,
 				8E7B418B2AC0532B00560B86 /* FaqViewController.swift in Sources */,
+				CC6C34C52AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift in Sources */,
 				8E7539E02ABBFB06004F979D /* MypageUserViewController.swift in Sources */,
 				8E7B418F2AC0536200560B86 /* QnaViewController.swift in Sources */,
 				CCE9847C2ACE92EE0005F97F /* AddressSearchViewController.swift in Sources */,

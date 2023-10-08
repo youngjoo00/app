@@ -115,7 +115,7 @@ class LoginViewController: UIViewController {
     }
     
     @objc func passwordResetting() {
-        guard  let passwordVC = storyboard?.instantiateViewController(withIdentifier: "resettingPassword") as? ResettingPasswordViewController else { return }
+        guard  let passwordVC = storyboard?.instantiateViewController(withIdentifier: "resettingPasswordInfo") as? ResettingPasswordInfoViewController else { return }
         self.navigationController?.pushViewController(passwordVC, animated: true)
     }
 }

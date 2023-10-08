@@ -187,7 +187,8 @@ class RequestViewController: UIViewController {
                 
                 switch sender {
                 case generalButton : way = "일반세탁"
-                default : way = "특수세탁"
+                case specialButton :  way = "특수세탁"
+                default : break
                 }
             } else {
                 Btn.isSelected = false
