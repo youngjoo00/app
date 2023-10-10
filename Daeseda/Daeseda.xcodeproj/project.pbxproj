@@ -49,6 +49,7 @@
 		8EE728C32AC40BF4002C46B3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE728C22AC40BF4002C46B3 /* LoginModel.swift */; };
 		8EE728C52AC40C63002C46B3 /* SignupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE728C42AC40C63002C46B3 /* SignupModel.swift */; };
 		8EE7E6282AD2A7B000700A82 /* MoreAdressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE7E6272AD2A7B000700A82 /* MoreAdressViewController.swift */; };
+		8EE7E62A2AD2FF9900700A82 /* EditMoreAdressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE7E6292AD2FF9900700A82 /* EditMoreAdressViewController.swift */; };
 		8EE855EE2AD04928007ECE13 /* AdressEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE855ED2AD04928007ECE13 /* AdressEditViewController.swift */; };
 		8EE855F02AD0540B007ECE13 /* MyHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE855EF2AD0540B007ECE13 /* MyHomeTableViewCell.swift */; };
 		8EE855F22AD05BD1007ECE13 /* MyAdressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE855F12AD05BD1007ECE13 /* MyAdressTableViewCell.swift */; };
@@ -124,6 +125,7 @@
 		8EE728C22AC40BF4002C46B3 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		8EE728C42AC40C63002C46B3 /* SignupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupModel.swift; sourceTree = "<group>"; };
 		8EE7E6272AD2A7B000700A82 /* MoreAdressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreAdressViewController.swift; sourceTree = "<group>"; };
+		8EE7E6292AD2FF9900700A82 /* EditMoreAdressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMoreAdressViewController.swift; sourceTree = "<group>"; };
 		8EE855ED2AD04928007ECE13 /* AdressEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdressEditViewController.swift; sourceTree = "<group>"; };
 		8EE855EF2AD0540B007ECE13 /* MyHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHomeTableViewCell.swift; sourceTree = "<group>"; };
 		8EE855F12AD05BD1007ECE13 /* MyAdressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressTableViewCell.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				8E7539DC2ABBFB06004F979D /* MyAdressViewController.swift */,
 				8EE855EF2AD0540B007ECE13 /* MyHomeTableViewCell.swift */,
 				8EE855F12AD05BD1007ECE13 /* MyAdressTableViewCell.swift */,
+				CCE9847B2ACE92EE0005F97F /* AddressSearchViewController.swift */,
 				8EE855F32AD0690F007ECE13 /* AdressEdit */,
 				8EE7E6262AD2A77600700A82 /* MoreAdress */,
 			);
@@ -320,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				8EE7E6272AD2A7B000700A82 /* MoreAdressViewController.swift */,
+				8EE7E6292AD2FF9900700A82 /* EditMoreAdressViewController.swift */,
 			);
 			path = MoreAdress;
 			sourceTree = "<group>";
@@ -405,7 +409,6 @@
 				CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */,
 				CC1183782AB14AFF00CE4BD2 /* ViewController.swift */,
 				8E7539EA2ABDDA18004F979D /* TestViewController.swift */,
-				CCE9847B2ACE92EE0005F97F /* AddressSearchViewController.swift */,
 				CC90BE9B2AD1555F0054113E /* ApplyList */,
 				CC056AC02ACC958000593174 /* Login */,
 				CC056ABF2ACC956E00593174 /* Signup */,
@@ -606,6 +609,7 @@
 				8E7539E02ABBFB06004F979D /* MypageUserViewController.swift in Sources */,
 				8E7B418F2AC0536200560B86 /* QnaViewController.swift in Sources */,
 				CCE9847C2ACE92EE0005F97F /* AddressSearchViewController.swift in Sources */,
+				8EE7E62A2AD2FF9900700A82 /* EditMoreAdressViewController.swift in Sources */,
 				CC1183792AB14AFF00CE4BD2 /* ViewController.swift in Sources */,
 				8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */,
 				CC62A2122AB723390005A676 /* JoinInfo2ViewController.swift in Sources */,

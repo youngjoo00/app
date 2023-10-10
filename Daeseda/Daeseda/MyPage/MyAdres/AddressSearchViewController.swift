@@ -1,16 +1,9 @@
-//
-//  AddressSearchViewController.swift
-//  Daeseda
-//
-//  Created by 축신효상 on 2023/10/05.
-//
-
 import UIKit
 import WebKit
 
 class AddressSearchViewController: UIViewController {
     
-
+    
     var webView: WKWebView?
     let indicator = UIActivityIndicatorView(style: .medium)
     var address = ""
@@ -18,6 +11,15 @@ class AddressSearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAddressSearchNotification(_:)), name: NSNotification.Name("postAddressNotification"), object: nil)
+    }
+    
+    @objc func handleAddressSearchNotification(_ notification: Notification) {
+        if let searchText = notification.object as? String {
+            // 검색어를 사용하여 필요한 작업을 수행
+            print("검색어: \(searchText)")
+        }
     }
     
     func configureUI() {
@@ -29,10 +31,10 @@ class AddressSearchViewController: UIViewController {
     func setAttributes() {
         let contentController = WKUserContentController()
         contentController.add(self, name: "callBackHandler")
-
+        
         let configuration = WKWebViewConfiguration()
         configuration.userContentController = contentController
-
+        
         webView = WKWebView(frame: .zero, configuration: configuration)
         webView?.navigationDelegate = self
         
@@ -56,12 +58,16 @@ class AddressSearchViewController: UIViewController {
         
         webView.addSubview(indicator)
         indicator.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        
-        
+    }
+    
+    // 검색이 끝난 후 MoreAdressVC로 화면 전환
+    func transitionToMoreAdressVC() {
+        guard let moreAdressVC = storyboard?.instantiateViewController(withIdentifier: "MoreAdressVC") as? MoreAdressViewController else { return }
+        moreAdressVC.address = address
+        navigationController?.pushViewController(moreAdressVC, animated: true)
     }
 }
+
 // 주소 검색 후 선택하였을 경우 호출
 extension AddressSearchViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -73,9 +79,9 @@ extension AddressSearchViewController: WKScriptMessageHandler {
         }
         
         NotificationCenter.default.post(name: NSNotification.Name("postAddressNotification"), object: address)
-
-        self.dismiss(animated: true, completion: nil)
-
+        
+        transitionToMoreAdressVC()
+        
     }
 }
 
