@@ -39,18 +39,35 @@ class MyAdressViewController: UIViewController {
             action: #selector(adressEditBarBtnTab)
         )
 
+        
         navigationItem.rightBarButtonItem = adressEditBarBtn
 
         selectedIndexPath = IndexPath(row: 0, section: 0)
         
         myAdressTableView.delegate = self
         myAdressTableView.dataSource = self
+        myAdresSearchBar.delegate = self
+        
+        
     }
 
     @objc func adressEditBarBtnTab(_ sender: UIBarButtonItem) {
         guard let adressEditVC = storyboard?.instantiateViewController(withIdentifier: "AdressEdit") as? AdressEditViewController else { return }
         navigationController?.pushViewController(adressEditVC, animated: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 탭 바를 숨깁니다.
+        tabBarController?.tabBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // 다른 화면으로 이동할 때 탭 바를 다시 보이게 합니다.
+        tabBarController?.tabBar.isHidden = false
+    }
+
 }
 
 extension MyAdressViewController: UITableViewDelegate {
@@ -107,5 +124,15 @@ extension MyAdressViewController: UITableViewDataSource {
 
             return myAdressCell
         }
+    }
+}
+
+extension MyAdressViewController: UISearchBarDelegate {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        // 서치바를 터치하면 AddressSearchVC로 화면 전환
+        if let addressSearchVC = storyboard?.instantiateViewController(withIdentifier: "AddressSearchVC") as? AddressSearchViewController {
+            navigationController?.pushViewController(addressSearchVC, animated: true)
+        }
+        return false // false를 반환하여 서치바가 편집 모드로 들어가지 않도록 합니다.
     }
 }
