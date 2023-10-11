@@ -4,6 +4,8 @@ class EditOtherAdressTableViewCell: UITableViewCell {
 
     var indexPath: IndexPath?
     
+    @IBOutlet weak var editOtherDelBtn: UIButton!
+    @IBOutlet weak var editOtherEditBtn: UIButton!
     @IBOutlet weak var editOtherImageView: UIImageView!
     @IBOutlet weak var editOtherAdressLabel: UILabel!
     @IBOutlet weak var editOtherTitleLabel: UILabel!
