@@ -1,30 +1,22 @@
 import UIKit
+import Alamofire
 
-struct FAQItem {
-    let title: String
-    let text: String
-    let category: String
+struct FAQItem : Codable {
+    var noticeId: Int
+    var noticeCategory: String
+    var noticeTitle: String
+    var noticeContent: String
+    var regDate: String
+    var modDate: String
 }
 
 class FaqViewController: UIViewController {
     
     var faqItems = [FAQItem]()
+    var filteredFAQItems = [FAQItem]()  // 필터링된 결과를 저장할 배열
     var currentCategory: String?
     
-    let dummyData: [FAQItem] = [
-        FAQItem(title: "설 연휴 배송 안내1", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리1"),
-        FAQItem(title: "설 연휴 배송 안내2", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리2"),
-        FAQItem(title: "설 연휴 배송 안내3", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리3"),
-        FAQItem(title: "설 연휴 배송 안내4", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리4"),
-        FAQItem(title: "설 연휴 배송 안내5", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리5"),
-        FAQItem(title: "설 연휴 배송 안내6", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리6"),
-        FAQItem(title: "추석 연휴 배송 안내1", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리1"),
-        FAQItem(title: "추석 연휴 배송 안내2", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리2"),
-        FAQItem(title: "추석 연휴 배송 안내3", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리3"),
-        FAQItem(title: "추석 연휴 배송 안내4", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리4"),
-        FAQItem(title: "추석 연휴 배송 안내5", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리5"),
-        FAQItem(title: "추석 연휴 배송 안내6", text: "대세다를 이용해 주셔서 감사합니다. 대세다는 세탁 서비스를 중심으로 여러분이 더욱 쉽고 편리하게 의생활을 누릴 수 있도록 서비스를 제공하여 편리한 삶을 지향하기 위해 탄생한 서비스입니다.", category: "카테고리6")
-    ]
+    let url: String = "http://localhost:8081/notice/list"
     
     @IBOutlet var faqCategoryBtns: [UIButton]!
     @IBOutlet weak var faqSearchBar: UISearchBar!
@@ -34,50 +26,104 @@ class FaqViewController: UIViewController {
         super.viewDidLoad()
         
         self.faqSearchBar.searchBarStyle = .minimal
-        // Initially load data for the first category
-        loadFAQData(category: "카테고리1")
+        
+        // Initially load data for the first category (전체)
+        loadFAQData(category: "전체")
         
         faqTableView.delegate = self
         faqTableView.dataSource = self
         faqSearchBar.delegate = self
+        
+        // 화면이 로드될 때 FAQ 데이터를 서버에서 가져옴
+        getFAQData()
+        
+        // 모든 데이터를 화면에 표시
+        filteredFAQItems = faqItems
+        faqTableView.reloadData()
+    }
+    
+    @IBAction func categoryButtonTapped(_ sender: UIButton) {
+        if let category = sender.titleLabel?.text {
+            loadFAQData(category: category)
+        }
+    }
+    
+    // 서버에서 FAQ 데이터를 가져오는 함수
+    func getFAQData() {
+        let getUrl = url
+        
+        AF.request(getUrl).responseDecodable(of: [FAQItem].self) { response in
+            switch response.result {
+            case .success(let fetchedFAQ):
+                self.faqItems = fetchedFAQ
+                
+                // 모든 데이터를 화면에 표시
+                self.filteredFAQItems = self.faqItems
+                self.faqTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func loadFAQData(category: String) {
-        // filter 를 이용해 다른 카테고리 배열 제외
-        faqItems = dummyData.filter { $0.category == category }
-        currentCategory = category
+        if category == "전체" {
+            currentCategory = nil
+            // 전체 카테고리를 선택한 경우, 로컬 데이터에서 필터링하지 않고 전체 데이터를 사용
+            filteredFAQItems = faqItems
+        } else {
+            currentCategory = category
+            // 선택한 카테고리에 해당하는 FAQ 데이터만 필터링하여 배열에 저장
+            filteredFAQItems = faqItems.filter { $0.noticeCategory == category }
+        }
         faqTableView.reloadData()
     }
     
+    
+    
     func filterFAQData(searchText: String) {
-        faqItems = dummyData.filter { $0.category == currentCategory && $0.title.contains(searchText) }
+        if searchText.isEmpty {
+            if let currentCategory = currentCategory {
+                // 검색어가 비어있는 경우, 현재 카테고리의 필터된 데이터를 사용
+                if currentCategory == "전체" {
+                    filteredFAQItems = faqItems
+                } else {
+                    filteredFAQItems = faqItems.filter { $0.noticeCategory == currentCategory }
+                }
+            }
+        } else {
+            if let currentCategory = currentCategory, currentCategory != "전체" {
+                // 현재 카테고리에서 검색어를 포함하는 데이터만 필터링하여 배열에 저장
+                filteredFAQItems = faqItems.filter { $0.noticeCategory == currentCategory && ($0.noticeTitle.contains(searchText) || $0.noticeContent.contains(searchText)) }
+            } else {
+                // 전체 카테고리에서 검색어를 포함하는 데이터만 필터링하여 배열에 저장
+                filteredFAQItems = faqItems.filter { $0.noticeTitle.contains(searchText) || $0.noticeContent.contains(searchText) }
+            }
+        }
         faqTableView.reloadData()
     }
+
+
 }
 
 extension FaqViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let currentCategory = currentCategory {
-            if searchText.isEmpty {
-                loadFAQData(category: currentCategory)
-            } else {
-                filterFAQData(searchText: searchText)
-                print(searchText)
-            }
-        }
+        filterFAQData(searchText: searchText)
+        print(searchText)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
     }
 }
+
 extension FaqViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let showFaqVC = self.storyboard?.instantiateViewController(withIdentifier: "ShowFaq") as! ShowFaqViewController
         
-        let selectedItem = faqItems[indexPath.row]
-        showFaqVC.faqTitleString = selectedItem.title
-        showFaqVC.faqTextString = selectedItem.text
+        let selectedItem = filteredFAQItems[indexPath.row]
+        showFaqVC.faqTitleString = selectedItem.noticeTitle
+        showFaqVC.faqTextString = selectedItem.noticeContent
         
         self.present(showFaqVC, animated: true, completion: nil)
     }
@@ -89,25 +135,15 @@ extension FaqViewController: UITableViewDelegate {
 
 extension FaqViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return faqItems.count
+        return filteredFAQItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let faqCell = tableView.dequeueReusableCell(withIdentifier: "faqCell", for: indexPath) as! FaqTableViewCell
         
-        let selectedItem = faqItems[indexPath.row]
-        faqCell.faqTitleLabel.text = selectedItem.title
+        let selectedItem = filteredFAQItems[indexPath.row]
+        faqCell.faqTitleLabel.text = selectedItem.noticeTitle
         
         return faqCell
-    }
-    
-}
-
-// Handle category button tap
-extension FaqViewController {
-    @IBAction func categoryButtonTapped(_ sender: UIButton) {
-        if let category = sender.titleLabel?.text {
-            loadFAQData(category: category)
-        }
     }
 }
