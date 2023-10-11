@@ -11,10 +11,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = false
 
         d()
         but()
         banner()
+        loginButton()
 
     }
     
@@ -190,6 +192,16 @@ class ViewController: UIViewController {
     @objc func showRequestViewController() {
         guard  let requestVC = storyboard?.instantiateViewController(withIdentifier: "request") as? RequestViewController else { return }
         self.navigationController?.pushViewController(requestVC, animated: true)
+    }
+    
+    func loginButton(){
+        let nextButton = UIBarButtonItem(title: "로그인", style: .plain, target: self, action: #selector(LoginVC))
+        navigationItem.rightBarButtonItem = nextButton
+    }
+    
+    @objc func LoginVC() {
+        guard let loginVC = storyboard?.instantiateViewController(withIdentifier: "Login") as? LoginViewController else { return }
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
 
     let scrollView = UIScrollView()
