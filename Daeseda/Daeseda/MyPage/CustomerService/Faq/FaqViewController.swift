@@ -16,7 +16,7 @@ class FaqViewController: UIViewController {
     var filteredFAQItems = [FAQItem]()  // 필터링된 결과를 저장할 배열
     var currentCategory: String?
     
-    let url: String = "http://localhost:8081/notice/list"
+    let url: String = "http://localhost:8888/notice/list"
     
     @IBOutlet var faqCategoryBtns: [UIButton]!
     @IBOutlet weak var faqSearchBar: UISearchBar!
@@ -48,7 +48,6 @@ class FaqViewController: UIViewController {
         }
     }
     
-    // 서버에서 FAQ 데이터를 가져오는 함수
     func getFAQData() {
         let getUrl = url
         
@@ -56,6 +55,9 @@ class FaqViewController: UIViewController {
             switch response.result {
             case .success(let fetchedFAQ):
                 self.faqItems = fetchedFAQ
+                
+                // 데이터를 noticeId를 기준으로 내림차순으로 정렬
+                self.faqItems.sort { $0.noticeId > $1.noticeId }
                 
                 // 모든 데이터를 화면에 표시
                 self.filteredFAQItems = self.faqItems

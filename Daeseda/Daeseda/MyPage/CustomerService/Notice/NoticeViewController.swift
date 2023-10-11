@@ -12,7 +12,7 @@ struct noticeData: Codable {
 
 class NoticeViewController: UIViewController {
     
-    let url: String = "http://localhost:8081/notice/list"
+    let url: String = "http://localhost:8888/notice/list"
     var notices: [noticeData] = []
     
     @IBOutlet weak var noticeTableView: UITableView!
