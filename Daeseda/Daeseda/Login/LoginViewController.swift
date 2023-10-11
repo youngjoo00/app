@@ -6,18 +6,36 @@
 //
 
 import UIKit
+import Alamofire
+
+
+struct UserLoginData: Codable {
+    var userEmail: String
+    var userPassword: String
+}
+
+struct ResponseType: Codable {
+    var token: String
+}
 
 class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarController?.tabBar.isHidden = true
 
         loginButton()
         joinButton()
         forgetButton()
     }
     
-
+    let url = "http://localhost:8888/users/authenticate"
+    
+    @IBOutlet weak var idTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var errorMessage: UILabel!
+    
     func loginButton(){
         let loginButton = UIButton()
         loginButton.frame = CGRect(x: 0, y: 0, width: 250, height: 34)
@@ -30,8 +48,10 @@ class LoginViewController: UIViewController {
         loginButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
         loginButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70).isActive = true
         loginButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 512).isActive = true
+        // 버튼에 대한 타깃과 액션 설정
+        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+
         
-        // Auto layout, variables, and unit scale are not yet supported
         let loginLabel = UILabel()
         loginLabel.frame = CGRect(x: 0, y: 0, width: 56, height: 27)
         loginLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
@@ -47,6 +67,38 @@ class LoginViewController: UIViewController {
         loginLabel.centerXAnchor.constraint(equalTo: loginButton.centerXAnchor).isActive = true
         loginLabel.centerYAnchor.constraint(equalTo: loginButton.centerYAnchor).isActive = true
     }
+    
+    @objc func login() {
+        var id = idTextField.text
+        var password = passwordTextField.text
+        
+        guard let id = idTextField.text,
+            let password = passwordTextField.text else { return }
+        
+        let userData = UserLoginData(userEmail: id, userPassword: password)
+        
+        guard let mainVC = storyboard?.instantiateViewController(withIdentifier: "MainTabBar") as? MainTabBarViewController else { return }
+        
+        AF.request(url, method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: ResponseType.self) { (response: AFDataResponse<ResponseType>) in
+                switch response.result {
+                case .success(let result):
+                    if let token = response.value?.token {
+                        UserTokenManager.shared.saveToken(token: token)
+                        print("토큰 값 : \(token)")
+                        
+                        mainVC.modalPresentationStyle = .fullScreen
+                        self.present(mainVC, animated: true, completion: nil)
+                        
+                    }
+                case .failure(let error):
+                    print("Error: \(error)")
+                }
+            }
+
+    }
+
     
     func joinButton(){
         let joinButton = UIButton()

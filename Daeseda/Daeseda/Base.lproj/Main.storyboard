@@ -105,13 +105,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahi-xK-1Qt">
+                                <rect key="frame" x="158" y="439" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ara-Ws-uu7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="errorMessage" destination="ahi-xK-1Qt" id="jEA-vr-hjh"/>
                         <outlet property="segmentedControl" destination="1i9-fc-LYA" id="9gt-8q-fpP"/>
                         <outlet property="typeLabel" destination="j0K-Gw-FyG" id="HSj-ST-d6f"/>
+                        <outlet property="typeTextField" destination="Lec-LM-xWq" id="wbV-SY-OnQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="haz-39-J5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -277,7 +286,7 @@
         <!--Main Tab Bar View Controller-->
         <scene sceneID="jgb-aU-HjX">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="KXF-dI-knK" customClass="MainTabBarViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBar" automaticallyAdjustsScrollViewInsets="NO" id="KXF-dI-knK" customClass="MainTabBarViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ben-D3-uJd">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -361,7 +370,7 @@
         <!--Login View Controller-->
         <scene sceneID="RVj-oP-ML3">
             <objects>
-                <viewController id="l1j-Qo-2Vh" customClass="LoginViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="l1j-Qo-2Vh" customClass="LoginViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iu4-En-DNh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -382,11 +391,23 @@
                                 <rect key="frame" x="83" y="182" width="208" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gje-8J-wgy">
+                                <rect key="frame" x="75" y="452" width="225" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YO0-nN-TO6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="eKg-B6-bO6"/>
+                    <connections>
+                        <outlet property="errorMessage" destination="Gje-8J-wgy" id="kdP-3x-kCZ"/>
+                        <outlet property="idTextField" destination="IiC-zb-Su7" id="wUS-VG-CFd"/>
+                        <outlet property="passwordTextField" destination="0hp-zm-Oka" id="8ag-7j-bXv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rS8-XS-yAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3433,12 +3454,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="passwordTextFieldEditingChanged:" destination="o56-Pe-xsy" eventType="editingChanged" id="MRf-mb-Fhz"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pfr-ee-nbr">
                                 <rect key="frame" x="119" y="471" width="183" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="password2TextFieldDidEndOnExit:" destination="o56-Pe-xsy" eventType="editingDidEndOnExit" id="ob5-mj-h3w"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uik-of-Xnq">
                                 <rect key="frame" x="119" y="381" width="42" height="21"/>
@@ -3458,6 +3485,12 @@
                         <viewLayoutGuide key="safeArea" id="bhL-eg-xSi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="password2ErrorMessage" destination="Zaa-eM-RKm" id="5Tl-5t-jNW"/>
+                        <outlet property="password2TextField" destination="pfr-ee-nbr" id="XCf-qe-M7D"/>
+                        <outlet property="passwordErrorMessage" destination="Uik-of-Xnq" id="NVM-aJ-0hT"/>
+                        <outlet property="passwordTextField" destination="3ER-2j-ZEA" id="feR-Wk-iRl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSH-Fr-zKG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3552,10 +3585,10 @@
             </objects>
             <point key="canvasLocation" x="-4436" y="-797"/>
         </scene>
-        <!--View Controller-->
+        <!--Resetting Password End View Controller-->
         <scene sceneID="VJI-ge-O0W">
             <objects>
-                <viewController id="BvI-QX-j6b" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResettingPasswordEnd" id="BvI-QX-j6b" customClass="ResettingPasswordEndViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S1q-sm-QrS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

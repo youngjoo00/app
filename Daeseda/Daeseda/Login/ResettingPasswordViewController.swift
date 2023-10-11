@@ -16,6 +16,31 @@ class ResettingPasswordViewController: UIViewController {
         
     }
     
+    
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var password2TextField: UITextField!
+    
+    @IBOutlet weak var passwordErrorMessage: UILabel!
+    @IBOutlet weak var password2ErrorMessage: UILabel!
+    
+    
+    @IBAction func passwordTextFieldEditingChanged(_ sender: Any) {
+        let errorMessage = passwordMatch(passwordTextField.text!)
+        
+        passwordErrorMessage.text = errorMessage
+
+    }
+    
+    @IBAction func password2TextFieldDidEndOnExit(_ sender: Any) {
+        if password2TextField.text != passwordTextField.text {
+            password2ErrorMessage.text = "설정한 비밀번호와 일치하지 않습니다."
+        } else {
+            password2ErrorMessage.text = " "
+            endButton()
+        }
+    }
+    
+    
     func label() {
         let title = UILabel()
         title.frame = CGRect(x: 0, y: 0, width: 300, height: 50)
@@ -57,6 +82,18 @@ class ResettingPasswordViewController: UIViewController {
         check.heightAnchor.constraint(equalToConstant: 42).isActive = true
         check.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
         check.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 310).isActive = true
+    }
+    
+    func endButton(){
+        let nextButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(EndVC))
+        navigationItem.rightBarButtonItem = nextButton
+    }
+    
+    @objc func EndVC() {
+        
+        guard let endVC = storyboard?.instantiateViewController(withIdentifier: "ResettingPasswordEnd") as? ResettingPasswordEndViewController else { return }
+        
+        self.navigationController?.pushViewController(endVC, animated: true)
     }
     
 }
