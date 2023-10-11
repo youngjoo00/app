@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3UO-3B-lom">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="KXF-dI-knK">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
@@ -105,13 +105,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahi-xK-1Qt">
+                                <rect key="frame" x="158" y="439" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ara-Ws-uu7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="errorMessage" destination="ahi-xK-1Qt" id="jEA-vr-hjh"/>
                         <outlet property="segmentedControl" destination="1i9-fc-LYA" id="9gt-8q-fpP"/>
                         <outlet property="typeLabel" destination="j0K-Gw-FyG" id="HSj-ST-d6f"/>
+                        <outlet property="typeTextField" destination="Lec-LM-xWq" id="wbV-SY-OnQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="haz-39-J5c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -277,7 +286,7 @@
         <!--Main Tab Bar View Controller-->
         <scene sceneID="jgb-aU-HjX">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="KXF-dI-knK" customClass="MainTabBarViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBar" automaticallyAdjustsScrollViewInsets="NO" id="KXF-dI-knK" customClass="MainTabBarViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ben-D3-uJd">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -361,7 +370,7 @@
         <!--Login View Controller-->
         <scene sceneID="RVj-oP-ML3">
             <objects>
-                <viewController id="l1j-Qo-2Vh" customClass="LoginViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="l1j-Qo-2Vh" customClass="LoginViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iu4-En-DNh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -382,11 +391,23 @@
                                 <rect key="frame" x="83" y="182" width="208" height="111"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gje-8J-wgy">
+                                <rect key="frame" x="75" y="452" width="225" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YO0-nN-TO6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="eKg-B6-bO6"/>
+                    <connections>
+                        <outlet property="errorMessage" destination="Gje-8J-wgy" id="kdP-3x-kCZ"/>
+                        <outlet property="idTextField" destination="IiC-zb-Su7" id="wUS-VG-CFd"/>
+                        <outlet property="passwordTextField" destination="0hp-zm-Oka" id="8ag-7j-bXv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rS8-XS-yAi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2391,7 +2412,7 @@
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oAV-MI-aV9">
-                                <rect key="frame" x="342.66666666666669" y="255.33333333333329" width="12.333333333333314" height="16.666666666666828"/>
+                                <rect key="frame" x="342.66666666666669" y="255.33333333333334" width="12.333333333333314" height="16.666666666666657"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BFa-1L-lw4">
@@ -2523,10 +2544,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="tev-gb-C28">
                                 <rect key="frame" x="12" y="104" width="351" height="77"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dbF-wq-MCw">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dbF-wq-MCw">
                                         <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="77"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJo-eQ-bow">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJo-eQ-bow">
                                                 <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="36"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="카테고리1">
@@ -2540,7 +2561,7 @@
                                                     <action selector="categoryButtonTapped:" destination="m03-41-VUX" eventType="touchUpInside" id="I6h-LT-sez"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJi-Hw-KXA">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJi-Hw-KXA">
                                                 <rect key="frame" x="0.0" y="41" width="113.66666666666667" height="36"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="카테고리4">
@@ -2564,10 +2585,10 @@
                                             <constraint firstItem="fJi-Hw-KXA" firstAttribute="trailing" secondItem="dbF-wq-MCw" secondAttribute="trailingMargin" id="sqa-kT-mwx"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Cjr-hT-IRw">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Cjr-hT-IRw">
                                         <rect key="frame" x="118.66666666666666" y="0.0" width="113.66666666666666" height="77"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yA8-Sb-Ka6">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yA8-Sb-Ka6">
                                                 <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="36"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="카테고리2">
@@ -2581,7 +2602,7 @@
                                                     <action selector="categoryButtonTapped:" destination="m03-41-VUX" eventType="touchUpInside" id="iXw-rm-6VT"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB0-K2-Hw9">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JB0-K2-Hw9">
                                                 <rect key="frame" x="0.0" y="41" width="113.66666666666667" height="36"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="카테고리5">
@@ -2601,10 +2622,10 @@
                                             <constraint firstItem="JB0-K2-Hw9" firstAttribute="trailing" secondItem="yA8-Sb-Ka6" secondAttribute="trailing" id="vjs-BP-Qi9"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TBh-OL-AvZ">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="TBh-OL-AvZ">
                                         <rect key="frame" x="237.33333333333334" y="0.0" width="113.66666666666666" height="77"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DC-XZ-weM">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8DC-XZ-weM">
                                                 <rect key="frame" x="0.0" y="0.0" width="113.66666666666667" height="36"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="카테고리3">
@@ -2618,7 +2639,7 @@
                                                     <action selector="categoryButtonTapped:" destination="m03-41-VUX" eventType="touchUpInside" id="Z7d-c0-WFA"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkj-BJ-mPG">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkj-BJ-mPG">
                                                 <rect key="frame" x="0.0" y="41" width="113.66666666666667" height="36"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="카테고리6">
@@ -3319,12 +3340,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="passwordTextFieldEditingChanged:" destination="o56-Pe-xsy" eventType="editingChanged" id="MRf-mb-Fhz"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pfr-ee-nbr">
                                 <rect key="frame" x="119" y="471" width="183" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="password2TextFieldDidEndOnExit:" destination="o56-Pe-xsy" eventType="editingDidEndOnExit" id="ob5-mj-h3w"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uik-of-Xnq">
                                 <rect key="frame" x="119" y="381" width="42" height="21"/>
@@ -3344,6 +3371,12 @@
                         <viewLayoutGuide key="safeArea" id="bhL-eg-xSi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="password2ErrorMessage" destination="Zaa-eM-RKm" id="5Tl-5t-jNW"/>
+                        <outlet property="password2TextField" destination="pfr-ee-nbr" id="XCf-qe-M7D"/>
+                        <outlet property="passwordErrorMessage" destination="Uik-of-Xnq" id="NVM-aJ-0hT"/>
+                        <outlet property="passwordTextField" destination="3ER-2j-ZEA" id="feR-Wk-iRl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SSH-Fr-zKG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3438,10 +3471,10 @@
             </objects>
             <point key="canvasLocation" x="-4436" y="-797"/>
         </scene>
-        <!--View Controller-->
+        <!--Resetting Password End View Controller-->
         <scene sceneID="VJI-ge-O0W">
             <objects>
-                <viewController id="BvI-QX-j6b" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResettingPasswordEnd" id="BvI-QX-j6b" customClass="ResettingPasswordEndViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="S1q-sm-QrS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

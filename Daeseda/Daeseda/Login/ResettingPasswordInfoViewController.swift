@@ -8,26 +8,67 @@
 import UIKit
 
 class ResettingPasswordInfoViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         label()
         nextButton()
     }
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var errorMessage: UILabel!
+    @IBOutlet weak var typeTextField: UITextField!
     
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             typeLabel.text = "휴대전화"
+            errorMessage.text = " "
+            typeTextField.addTarget(self, action: #selector(textFieldDidChangeForSegmentA(_:)), for: .editingChanged)
+            
         case 1:
             typeLabel.text = "이메일"
+            errorMessage.text = " "
+            typeTextField.addTarget(self, action: #selector(textFieldDidChangeForSegmentB(_:)), for: .editingChanged)
+            
         default:
             break
         }
+    }
+    
+    @objc func textFieldDidChangeForSegmentA(_ sender: UITextField) {
+        if let phone = typeTextField.text{
+            let pattern = "^01[0-1, 7][0-9]{7,8}$"
+            let regex = try!NSRegularExpression(pattern: pattern)
+            
+            let match = regex.firstMatch(in: phone, range: NSRange(phone.startIndex..., in: phone))
+            
+            if match == nil {
+                errorMessage.text = "휴대번호를 정확히 입력해주세요."
+            } else {
+                errorMessage.text = " "
+                nextButton()
+            }
+        }
+    }
+    
+    @objc func textFieldDidChangeForSegmentB(_ sender: UITextField) {
+        if let email = typeTextField.text {
+            let pattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+            let regex = try! NSRegularExpression(pattern: pattern)
+            
+            let match = regex.firstMatch(in: email, range: NSRange(email.startIndex..., in: email))
+            
+            if match == nil {
+                errorMessage.text = "이메일을 정확히 입력해주세요."
+            } else {
+                errorMessage.text = " "
+                nextButton()
+            }
+        }
+        
     }
     
     func label() {
@@ -39,7 +80,7 @@ class ResettingPasswordInfoViewController: UIViewController {
         title.lineBreakMode = .byWordWrapping
         // Line height: 25 pt
         title.text = "비밀번호를 잊으셨다면\n재설정할 수 있어요."
-
+        
         self.view.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
