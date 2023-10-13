@@ -55,6 +55,7 @@
 		8EE855F22AD05BD1007ECE13 /* MyAdressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE855F12AD05BD1007ECE13 /* MyAdressTableViewCell.swift */; };
 		8EE855F52AD06B38007ECE13 /* EditHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE855F42AD06B38007ECE13 /* EditHomeTableViewCell.swift */; };
 		8EE855F72AD06B42007ECE13 /* EditOtherAdressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE855F62AD06B42007ECE13 /* EditOtherAdressTableViewCell.swift */; };
+		8EF312CE2AD94C3000E9D682 /* ShowUserDelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF312CD2AD94C3000E9D682 /* ShowUserDelViewController.swift */; };
 		8EF3BCE82ACD5AE70022DBC8 /* ShowFaqViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF3BCE72ACD5AE70022DBC8 /* ShowFaqViewController.swift */; };
 		8EF3BCEA2ACD5B010022DBC8 /* FaqTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF3BCE92ACD5B010022DBC8 /* FaqTableViewCell.swift */; };
 		CC1183752AB14AFF00CE4BD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1183742AB14AFF00CE4BD2 /* AppDelegate.swift */; };
@@ -134,6 +135,7 @@
 		8EE855F12AD05BD1007ECE13 /* MyAdressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAdressTableViewCell.swift; sourceTree = "<group>"; };
 		8EE855F42AD06B38007ECE13 /* EditHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHomeTableViewCell.swift; sourceTree = "<group>"; };
 		8EE855F62AD06B42007ECE13 /* EditOtherAdressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOtherAdressTableViewCell.swift; sourceTree = "<group>"; };
+		8EF312CD2AD94C3000E9D682 /* ShowUserDelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowUserDelViewController.swift; sourceTree = "<group>"; };
 		8EF3BCE72ACD5AE70022DBC8 /* ShowFaqViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowFaqViewController.swift; sourceTree = "<group>"; };
 		8EF3BCE92ACD5B010022DBC8 /* FaqTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaqTableViewCell.swift; sourceTree = "<group>"; };
 		94732938D3F457F1B3DF2B28 /* Pods-Daeseda.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daeseda.release.xcconfig"; path = "Target Support Files/Pods-Daeseda/Pods-Daeseda.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				8E7539E62ABC0CE9004F979D /* ServiceViewController.swift */,
 				8E7B41832AC04C6F00560B86 /* PrivacyPolicyViewController.swift */,
 				8E7B41852AC04DAA00560B86 /* CompanyInfoViewController.swift */,
+				8EF312CD2AD94C3000E9D682 /* ShowUserDelViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				8EE7E62A2AD2FF9900700A82 /* EditMoreAdressViewController.swift in Sources */,
 				CC1183792AB14AFF00CE4BD2 /* ViewController.swift in Sources */,
 				8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */,
+				8EF312CE2AD94C3000E9D682 /* ShowUserDelViewController.swift in Sources */,
 				CC62A2122AB723390005A676 /* JoinInfo2ViewController.swift in Sources */,
 				CC62A1FC2AB671CD0005A676 /* RequestInfoViewController.swift in Sources */,
 				8EB01A812AC31F8800DA41DC /* MyReviewTableViewCell.swift in Sources */,
