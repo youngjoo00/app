@@ -1,12 +1,22 @@
 import UIKit
+import Alamofire
+
+struct addressCreateData : Codable {
+    var addressName : String
+    var addressDetail : String
+    var addressZipcode : String
+}
 
 class MoreAdressViewController: UIViewController {
     
     var indexPath: IndexPath?
     var address: String?
+    var zonecode: String?
     var isHome: Bool?
     var isHomeButtonSelected = false
     var isOtherButtonSelected = false
+    
+    let url = "http://localhost:8888/users/address/create"
     
     @IBOutlet weak var moreAdressStackView: UIStackView!
     @IBOutlet weak var moreAdressOtherBtn: UIButton!
@@ -32,7 +42,7 @@ class MoreAdressViewController: UIViewController {
         
         removeBorderFromButton(moreAdressHomeBtn)
         removeBorderFromButton(moreAdressOtherBtn)
-
+        
     }
     
     
@@ -49,7 +59,7 @@ class MoreAdressViewController: UIViewController {
         
         moreAdressNicknameTF.isHidden = true
     }
-
+    
     @IBAction func MoreAdressOtherBtn(_ sender: UIButton) {
         if isOtherButtonSelected {
             return
@@ -63,21 +73,48 @@ class MoreAdressViewController: UIViewController {
         
         moreAdressNicknameTF.isHidden = false
     }
-
+    
     
     @IBAction func moreAdressCompleteBtn(_ sender: UIButton) {
-        if let nickname = moreAdressNicknameTF.text {
-            print("주소 별명: \(nickname)")
-        }
-        
-        if let detailAddress = moreAdressTF.text {
-            print("세부 주소: \(detailAddress)")
-        }
+        // 주소 등록에 필요한 데이터 생성
+        if let nickname = moreAdressNicknameTF.text,
+           let detailAddress = moreAdressTF.text,
+           let labelText = moreAdressLabel.text {
+            
+            let addressData = addressCreateData(addressName: nickname,
+                                                addressDetail: detailAddress,
+                                                addressZipcode: zonecode ?? "")
+            
+            // 1. 토큰 가져오기
+            if let token = UserTokenManager.shared.getToken() {
+                print("Token: \(token)")
+                
+                // 2. Bearer Token을 설정합니다.
+                let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+                
+                // 3. 서버에 주소 등록 요청을 보냅니다.
+                AF.request(url, method: .post, parameters: addressData, encoder: JSONParameterEncoder.default, headers: headers)
+                    .validate(statusCode: 200..<300)
+                    .response { response in
+                        switch response.result {
+                        case .success:
+                            print("Address registration successful")
+                            
+                            // 주소 등록이 완료된 후
+                            NotificationCenter.default.post(name: NSNotification.Name("AddressDataUpdated"), object: nil)
 
-        if let labelText = moreAdressLabel.text {
-            print("레이블 텍스트: \(labelText)")
+                            self.navigationController?.popToRootViewController(animated: true)
+                            
+                        case .failure(let error):
+                            print("Error: \(error.localizedDescription)")
+                        }
+                    }
+            } else {
+                print("Token not available.")
+            }
         }
         
+        // 나머지 코드는 그대로 유지
         if let isHomeBtn = isHome {
             print("우리 집? : \(isHomeBtn)")
         }
@@ -92,7 +129,7 @@ class MoreAdressViewController: UIViewController {
             }
         }
     }
-
+    
     
     @objc func handleBackgroundTap() {
         moreAdressNicknameTF.resignFirstResponder()
@@ -104,7 +141,7 @@ class MoreAdressViewController: UIViewController {
         button.layer.borderColor = UIColor(red: 0.36, green: 0.55, blue: 0.95, alpha: 1.0).cgColor
         button.layer.cornerRadius = 5.0
     }
-
+    
     func removeBorderFromButton(_ button: UIButton) {
         button.layer.borderWidth = 1.0 // 보더의 두께를 조절할 수 있습니다.
         button.layer.borderColor = UIColor.lightGray.cgColor // 보더의 색상을 설정할 수 있습니다.
@@ -114,7 +151,7 @@ class MoreAdressViewController: UIViewController {
 
 extension MoreAdressViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            return true
-        }
+        textField.resignFirstResponder()
+        return true
+    }
 }
