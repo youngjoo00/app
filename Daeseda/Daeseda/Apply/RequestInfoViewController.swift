@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 struct Order: Codable {
-    var address: AddressD
+    var address: Address
     let clothesCount: [ClothesCount]
     let totalPrice: Int
     let washingMethod: String
@@ -18,7 +18,7 @@ struct Order: Codable {
     let deliveryLocation: String
 }
 
-struct AddressD: Codable {
+struct Address: Codable {
     var addressId: Int
     var addressName: String
     var addressDetail: String
@@ -48,9 +48,9 @@ class RequestInfoViewController: UIViewController {
     var totalPrdeliveryLocationice : String = ""
     var selectedClothesCount: [ClothesCount] = []
     var deliveryLocation : String = ""
-    var selectedAdderss: [AddressD] = []
+    var selectedAdderss: [Address] = []
     
-    var addressInfo = AddressD(addressId: 0, addressName: "집", addressDetail: "경기도 동두천시", addressZipcode: "12345")
+    var addressInfo = Address(addressId: 0, addressName: "집", addressDetail: "경기도 동두천시", addressZipcode: "12345")
     
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var addressDetailTextField: UITextField!
