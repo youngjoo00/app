@@ -6,6 +6,22 @@
 //
 
 import UIKit
+import Alamofire
+
+struct User : Codable {
+    var id: Int
+    var name: String
+    var username: String
+    var email: String
+    var address: Address
+    var phone: String
+}
+
+struct Address: Codable {
+    var street: String
+    var city: String
+    var zipcode: String
+}
 
 class IdFindViewController: UIViewController {
 
@@ -14,6 +30,7 @@ class IdFindViewController: UIViewController {
 
         titleLabel()
         nextButton()
+
     }
     
     func titleLabel(){

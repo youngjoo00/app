@@ -7,6 +7,7 @@ class AddressSearchViewController: UIViewController {
     var webView: WKWebView?
     let indicator = UIActivityIndicatorView(style: .medium)
     var address = ""
+    var zonecode = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,8 +75,7 @@ extension AddressSearchViewController: WKScriptMessageHandler {
         // data에는 zonecode,jibunAddress, roadAddress 담아있음
         if let data = message.body as? [String: Any] {
             address = data["roadAddress"] as? String ?? ""
-            print(data)
-            print(address)
+            zonecode = data["zonecode"] as? String ?? ""
         }
         
         NotificationCenter.default.post(name: NSNotification.Name("postAddressNotification"), object: address)
