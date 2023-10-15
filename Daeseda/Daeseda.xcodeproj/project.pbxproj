@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		16712FB0FE448A3F31132885 /* Pods_Daeseda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2820DA79CFA6484036A9E838 /* Pods_Daeseda.framework */; };
+		8E0127272ADC0C25006CDDB1 /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0127262ADC0C25006CDDB1 /* UserInfoData.swift */; };
+		8E0127292ADC0C4E006CDDB1 /* AuthorityDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0127282ADC0C4E006CDDB1 /* AuthorityDto.swift */; };
 		8E546DF72AC13C8B00DD353E /* ShowNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E546DF62AC13C8B00DD353E /* ShowNoticeViewController.swift */; };
 		8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */; };
 		8E7539D22ABBFAF3004F979D /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */; };
@@ -88,6 +90,8 @@
 
 /* Begin PBXFileReference section */
 		2820DA79CFA6484036A9E838 /* Pods_Daeseda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daeseda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E0127262ADC0C25006CDDB1 /* UserInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
+		8E0127282ADC0C4E006CDDB1 /* AuthorityDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorityDto.swift; sourceTree = "<group>"; };
 		8E546DF62AC13C8B00DD353E /* ShowNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNoticeViewController.swift; sourceTree = "<group>"; };
 		8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
@@ -222,8 +226,8 @@
 		8E7539D92ABBFB06004F979D /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				8E7539DA2ABBFB06004F979D /* MyInfoEditViewController.swift */,
 				8E7539DB2ABBFB06004F979D /* MyInfoViewController.swift */,
+				8E7539DA2ABBFB06004F979D /* MyInfoEditViewController.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -378,6 +382,8 @@
 				CC334FE22AD3FB36000243B5 /* ResettingPasswordEndViewController.swift */,
 				CC334FE02AD3F993000243B5 /* Match.swift */,
 				CC2FDCD92AD597FC004537C7 /* UserTokenManager.swift */,
+				8E0127262ADC0C25006CDDB1 /* UserInfoData.swift */,
+				8E0127282ADC0C4E006CDDB1 /* AuthorityDto.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -599,6 +605,7 @@
 				8E7B41862AC04DAA00560B86 /* CompanyInfoViewController.swift in Sources */,
 				CC334FE12AD3F993000243B5 /* Match.swift in Sources */,
 				8E7B41842AC04C6F00560B86 /* PrivacyPolicyViewController.swift in Sources */,
+				8E0127272ADC0C25006CDDB1 /* UserInfoData.swift in Sources */,
 				8EE728C52AC40C63002C46B3 /* SignupModel.swift in Sources */,
 				8E7539E12ABBFB06004F979D /* CustomerServiceViewController.swift in Sources */,
 				8EE855F02AD0540B007ECE13 /* MyHomeTableViewCell.swift in Sources */,
@@ -609,6 +616,7 @@
 				CC62A1F82AB671700005A676 /* IdFindViewController.swift in Sources */,
 				8EB01A7E2AC2E60D00DA41DC /* ReviewListTableViewCell.swift in Sources */,
 				8E7539DE2ABBFB06004F979D /* SettingsViewController.swift in Sources */,
+				8E0127292ADC0C4E006CDDB1 /* AuthorityDto.swift in Sources */,
 				8E94FFFA2AC1F5D0006B8E9E /* ComentTableViewCell.swift in Sources */,
 				8EE855EE2AD04928007ECE13 /* AdressEditViewController.swift in Sources */,
 				CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */,

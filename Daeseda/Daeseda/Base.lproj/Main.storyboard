@@ -536,10 +536,108 @@
                     <view key="view" contentMode="scaleToFill" id="nuR-vK-HDm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMq-4y-NBq">
+                                <rect key="frame" x="16" y="144" width="73" height="25"/>
+                                <fontDescription key="fontDescription" name="GmarketSansTTFMedium" family="Gmarket Sans TTF" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="010-0000-0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZQ-Dm-GFK">
+                                <rect key="frame" x="16" y="185" width="136" height="29"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 선택된 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glw-Sd-PEb">
+                                <rect key="frame" x="16" y="230" width="141" height="29"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIR-4h-eak">
+                                <rect key="frame" x="16" y="388" width="104" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="주소 설정">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showMyAdressViewController" destination="0jU-PO-fpk" eventType="touchUpInside" id="wzv-Fk-ARj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUc-Lo-NKE">
+                                <rect key="frame" x="16" y="447" width="128" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="내가 쓴 리뷰">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showMyReviewsViewController" destination="0jU-PO-fpk" eventType="touchUpInside" id="8C7-lx-5be"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPw-hJ-g4g">
+                                <rect key="frame" x="16" y="506" width="98" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="고객센터">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showCustomerServiceViewController" destination="0jU-PO-fpk" eventType="touchUpInside" id="I9E-OE-gIf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BpK-XG-Py6">
+                                <rect key="frame" x="16" y="565" width="61" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="설정">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showSettingsViewController" destination="0jU-PO-fpk" eventType="touchUpInside" id="iww-Ij-lZY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3KJ-MF-ccV">
+                                <rect key="frame" x="16" y="329" width="85" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="내 정보">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showMyInfoViewController" destination="0jU-PO-fpk" eventType="touchUpInside" id="oF2-eu-wyI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="UAY-aZ-Exo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sZQ-Dm-GFK" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="0dw-n8-7K2"/>
+                            <constraint firstItem="eUc-Lo-NKE" firstAttribute="top" secondItem="dIR-4h-eak" secondAttribute="bottom" constant="16" id="2UK-CB-cai"/>
+                            <constraint firstItem="dIR-4h-eak" firstAttribute="top" secondItem="3KJ-MF-ccV" secondAttribute="bottom" constant="16" id="47g-Jc-ERM"/>
+                            <constraint firstItem="sZQ-Dm-GFK" firstAttribute="top" secondItem="yMq-4y-NBq" secondAttribute="bottom" constant="16" id="5Tv-0o-SVy"/>
+                            <constraint firstItem="yMq-4y-NBq" firstAttribute="top" secondItem="UAY-aZ-Exo" secondAttribute="top" constant="50" id="96v-BF-A95"/>
+                            <constraint firstItem="glw-Sd-PEb" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="Dkg-9M-omN"/>
+                            <constraint firstItem="kPw-hJ-g4g" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="G4x-lo-NGe"/>
+                            <constraint firstItem="glw-Sd-PEb" firstAttribute="top" secondItem="sZQ-Dm-GFK" secondAttribute="bottom" constant="16" id="Lr4-GA-ahv"/>
+                            <constraint firstItem="dIR-4h-eak" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="MKm-AX-luo"/>
+                            <constraint firstItem="BpK-XG-Py6" firstAttribute="top" secondItem="kPw-hJ-g4g" secondAttribute="bottom" constant="16" id="Ppn-zu-ffn"/>
+                            <constraint firstItem="kPw-hJ-g4g" firstAttribute="top" secondItem="eUc-Lo-NKE" secondAttribute="bottom" constant="16" id="bln-FC-TaY"/>
+                            <constraint firstItem="BpK-XG-Py6" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="fKX-6a-tQN"/>
+                            <constraint firstItem="eUc-Lo-NKE" firstAttribute="leading" secondItem="nuR-vK-HDm" secondAttribute="leading" constant="16" id="n1l-3x-Axw"/>
+                            <constraint firstItem="3KJ-MF-ccV" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="uTr-it-Wt5"/>
+                            <constraint firstItem="yMq-4y-NBq" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="v1V-yj-X2F"/>
+                            <constraint firstItem="3KJ-MF-ccV" firstAttribute="top" secondItem="glw-Sd-PEb" secondAttribute="bottom" constant="70" id="zcO-na-iZ7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="마이페이지" id="bIE-28-wFx"/>
+                    <connections>
+                        <outlet property="myAddressLabel" destination="glw-Sd-PEb" id="JMM-UM-sxu"/>
+                        <outlet property="myNicknameLabel" destination="yMq-4y-NBq" id="rcI-8m-t4c"/>
+                        <outlet property="myPhoneLabel" destination="sZQ-Dm-GFK" id="Zvf-GR-7tI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JN-by-duc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

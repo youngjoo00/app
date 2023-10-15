@@ -4,8 +4,9 @@ import Alamofire
 class AdressEditViewController: UIViewController {
     
     let url = "http://localhost:8888/users/address/list"
+    
     var selectedIndexPath: IndexPath?
-    var addressData = [AddressData.Address]()
+    var addressData = [AddressData]()
     var homeTitle = "우리 집"
     var homeAddress = "서울시 노원구 초안산로 12"
     
@@ -36,7 +37,7 @@ class AdressEditViewController: UIViewController {
                 switch response.result {
                 case .success(let addressData):
                     // 요청이 성공한 경우
-                    self.addressData = addressData.first?.addressList ?? []
+                    self.addressData = addressData
                     self.addressEditTableView.reloadData()
                 case .failure(let error):
                     // 요청이 실패한 경우
@@ -95,6 +96,33 @@ class AdressEditViewController: UIViewController {
             } else {
                 let otherAddressIndex = indexPath.row - 1
                 self?.addressData.remove(at: otherAddressIndex)
+                
+                let delUrl = "http://localhost:8888/users/address/delete"
+                
+                // 1. 토큰 가져오기
+                if let token = UserTokenManager.shared.getToken() {
+                    
+                    // 2. Bearer Token을 설정합니다.
+                    let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+                    
+                    // 3. 서버에서 삭제 요청을 보냅니다.
+                    AF.request(delUrl, method: .delete, headers: headers).response { response in
+                        switch response.result {
+                        case .success:
+                            // 요청이 성공한 경우
+                            print("userDel Successful")
+                            
+                            // 토큰 삭제
+                            UserTokenManager.shared.clearToken()
+                            
+                        case .failure(let error):
+                            // 요청이 실패한 경우
+                            print("Error: \(error.localizedDescription)")
+                        }
+                    }
+                } else {
+                    print("Token not available.")
+                }
             }
             
             // 삭제 작업 후 테이블 뷰 업데이트

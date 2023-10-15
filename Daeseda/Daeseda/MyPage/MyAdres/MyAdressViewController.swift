@@ -2,22 +2,19 @@ import UIKit
 import Alamofire
 
 struct AddressData: Codable {
-    var addressList: [Address]
-    
-    struct Address: Codable {
-        var addressId: Int
-        var addressName: String
-        var addressDetail: String
-        var addressZipcode: String
-    }
+    var addressId: Int
+    var addressName: String
+    var addressDetail: String
+    var addressZipcode: String
 }
+
 
 
 class MyAdressViewController: UIViewController {
     
     let url = "http://localhost:8888/users/address/list"
     var selectedIndexPath: IndexPath?
-    var adressArr = [AddressData.Address]()
+    var adressArr = [AddressData]()
     let homeTitle = "우리 집"
     let homeAdress = "서울시 노원구 초안산로 12"
     
@@ -69,7 +66,7 @@ class MyAdressViewController: UIViewController {
                 switch response.result {
                 case .success(let addressData):
                     // 요청이 성공한 경우
-                    self.adressArr = addressData.first?.addressList ?? []
+                    self.adressArr = addressData
                     self.myAdressTableView.reloadData() // 테이블 뷰를 업데이트
                 case .failure(let error):
                     // 요청이 실패한 경우
