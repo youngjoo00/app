@@ -35,11 +35,11 @@ class RequestInfoViewController: UIViewController {
         endButton()
         
         addressTextField.isEnabled = false
-
+        
         print(selectedClothesCount)
     }
     
-   
+    
     
     var selectDate : String = ""
     var selectTime : String = ""
@@ -49,7 +49,8 @@ class RequestInfoViewController: UIViewController {
     var selectedClothesCount: [ClothesCount] = []
     var deliveryLocation : String = ""
     var selectedAdderss: [AddressD] = []
-        
+    
+    var addressInfo = AddressD(addressId: 0, addressName: "집", addressDetail: "경기도 동두천시", addressZipcode: "12345")
     
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var addressDetailTextField: UITextField!
@@ -106,11 +107,14 @@ class RequestInfoViewController: UIViewController {
     }
     
     @objc func addressNotification(_ notification: Notification) {
-        if let data = notification.object as? String {
-            addressTextField.text = data
-            
-            self.dismiss(animated: true, completion: nil)
-            
+        if let data = notification.userInfo as? [String: Any] {
+            if let address = data["address"] as? String,
+               let zonecode = data["zonecode"] as? String {
+                addressTextField.text = address
+                print("주소: \(address), 우편번호: \(zonecode)")
+                self.dismiss(animated: true, completion: nil)
+                
+            }
         }
     }
     
@@ -126,10 +130,8 @@ class RequestInfoViewController: UIViewController {
         
         let alert = UIAlertController(title:"완료되었습니다!",message: "세탁 주문이 완료되었습니다. \n이후 결제를 진행해주세요.",preferredStyle: UIAlertController.Style.alert)
         
-//        let newClothesCount = ClothesCount(clothes: selectedClothes!, count: count)
-
-//        let newOrder = Order(address: , clothesCount: ClothesCount(clothes: selectedClothes!, count: count), totalPrice: 0, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: self.deliveryLocation)
-
+        let newOrder = Order(address: addressInfo, clothesCount: selectedClothesCount, totalPrice: 0, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: totalPrdeliveryLocationice)
+        
         
         //확인 버튼 만들기
         let ok = UIAlertAction(title: "확인", style: .default, handler: { action in
@@ -158,7 +160,8 @@ class RequestInfoViewController: UIViewController {
             //                        print("Error: \(error)")
             //                    }
             //                }
-            //
+            
+            print(newOrder)
         })
         
         //확인 버튼 경고창에 추가하기
@@ -232,6 +235,5 @@ extension RequestInfoViewController : UITextFieldDelegate, UIPickerViewDelegate,
         let etc = etcTextField.text
         let place = placeTextField.text
         
-        deliveryLocation = "\(etc) \(place)"
-       }
+    }
 }
