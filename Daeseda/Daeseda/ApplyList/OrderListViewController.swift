@@ -17,7 +17,7 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
         
     }
     
-    let num = ["1","2", "3"]
+    let num = ["000001","000002", "000003"]
     let orderDate = ["2023-10-10", "2023-10-15", "2023-10-15"]
     let service = ["일반","특수", "일반"]
     let price = ["30000", "5000", "10000"]
