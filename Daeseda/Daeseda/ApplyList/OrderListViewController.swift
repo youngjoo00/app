@@ -17,12 +17,12 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
         
     }
     
-    let num = ["1","2"]
-    let orderDate = ["2023-10-10", "2023-10-15"]
-    let service = ["일반","특수"]
-    let price = ["30000", "5000"]
-    let state = ["배송대기", "배송중"]
-    let finish = ["2023-10-13", "2023-10-19"]
+    let num = ["1","2", "3"]
+    let orderDate = ["2023-10-10", "2023-10-15", "2023-10-15"]
+    let service = ["일반","특수", "일반"]
+    let price = ["30000", "5000", "10000"]
+    let state = ["결제대기", "배송중", "배송대기"]
+    let finish = ["2023-10-13", "2023-10-19", "2023-10-19"]
     
     @IBOutlet weak var orderListTableView: UITableView!
     

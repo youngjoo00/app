@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (5.8.0)
+  - TossPayments (0.1.24)
 
 DEPENDENCIES:
   - Alamofire (~> 5.7)
+  - TossPayments
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - TossPayments
 
 SPEC CHECKSUMS:
   Alamofire: 0e92e751b3e9e66d7982db43919d01f313b8eb91
+  TossPayments: cc76425ab584eaa0d9ff1871d48fc5c1850a0f8f
 
-PODFILE CHECKSUM: f6587912af80e690802f254ddd65b61efdf29839
+PODFILE CHECKSUM: 8ac7657cd479002366d37bae89466a0c69f90103
 
 COCOAPODS: 1.12.1
