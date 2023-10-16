@@ -3,12 +3,12 @@ import WebKit
 
 class AddressSearchViewController: UIViewController {
     
-    
     var webView: WKWebView?
     let indicator = UIActivityIndicatorView(style: .medium)
     var address = ""
     var zonecode = ""
-    
+    var roadAddress = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -65,6 +65,7 @@ class AddressSearchViewController: UIViewController {
     func transitionToMoreAdressVC() {
         guard let moreAdressVC = storyboard?.instantiateViewController(withIdentifier: "MoreAdressVC") as? MoreAdressViewController else { return }
         moreAdressVC.address = address
+        moreAdressVC.zonecode = zonecode
         navigationController?.pushViewController(moreAdressVC, animated: true)
     }
 }
@@ -80,11 +81,16 @@ extension AddressSearchViewController: WKScriptMessageHandler {
         
         let userInfo: [String: Any] = ["address": address, "zonecode": zonecode]
         NotificationCenter.default.post(name:NSNotification.Name("postAddressNotification"), object: nil, userInfo: userInfo)
-
-
-        transitionToMoreAdressVC()
         
+        let addressData : [String: Any] = ["address" : roadAddress, "zonecode" : zonecode]
+        
+        NotificationCenter.default.post(name: NSNotification.Name("postAddressNotification"), object: addressData)
+        
+        transitionToMoreAdressVC()
     }
+    
+    
+    
 }
 
 // webView가 로드될 때 indicator을 보여주기 위함

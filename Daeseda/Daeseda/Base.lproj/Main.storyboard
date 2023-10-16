@@ -310,6 +310,7 @@
                         <segue destination="20a-jw-U2m" kind="relationship" relationship="viewControllers" id="I9Z-Lo-MMg"/>
                         <segue destination="3kG-qM-dYl" kind="relationship" relationship="viewControllers" id="Iv6-IJ-uaV"/>
                         <segue destination="o9D-iW-fKG" kind="relationship" relationship="viewControllers" id="Zj5-Xw-TJb"/>
+                        <segue destination="4FG-cc-rQD" kind="relationship" relationship="viewControllers" id="24y-wn-WP1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sEc-xH-qhT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -428,7 +429,7 @@
         <!--main-->
         <scene sceneID="tXQ-Kd-syW">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CdD-Bi-T4U" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNC" automaticallyAdjustsScrollViewInsets="NO" id="CdD-Bi-T4U" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="main" id="0rH-Xj-9Nq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PNC-Oi-OXT">
@@ -447,7 +448,7 @@
         <!--orderList-->
         <scene sceneID="YQE-bW-Fnj">
             <objects>
-                <viewController storyboardIdentifier="OrderListView" id="20a-jw-U2m" customClass="OrderListViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderList" id="20a-jw-U2m" customClass="OrderListViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CaA-do-6V7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -613,10 +614,108 @@
                     <view key="view" contentMode="scaleToFill" id="nuR-vK-HDm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMq-4y-NBq">
+                                <rect key="frame" x="16" y="144" width="72.333333333333329" height="25"/>
+                                <fontDescription key="fontDescription" name="GmarketSansTTFMedium" family="Gmarket Sans TTF" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="010-0000-0000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZQ-Dm-GFK">
+                                <rect key="frame" x="16" y="185" width="136" height="29"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="현재 선택된 주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glw-Sd-PEb">
+                                <rect key="frame" x="16" y="230" width="140.33333333333334" height="29"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIR-4h-eak">
+                                <rect key="frame" x="15.999999999999993" y="388" width="103.33333333333331" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="주소 설정">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showMyAdressViewController" destination="0jU-PO-fpk" eventType="touchUpInside" id="wzv-Fk-ARj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUc-Lo-NKE">
+                                <rect key="frame" x="15.999999999999993" y="447" width="127.33333333333331" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="내가 쓴 리뷰">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showMyReviewsViewController" destination="0jU-PO-fpk" eventType="touchUpInside" id="8C7-lx-5be"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kPw-hJ-g4g">
+                                <rect key="frame" x="16.000000000000007" y="506" width="97.666666666666686" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="고객센터">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showCustomerServiceViewController" destination="0jU-PO-fpk" eventType="touchUpInside" id="I9E-OE-gIf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BpK-XG-Py6">
+                                <rect key="frame" x="16" y="565" width="61" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="설정">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showSettingsViewController" destination="0jU-PO-fpk" eventType="touchUpInside" id="iww-Ij-lZY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3KJ-MF-ccV">
+                                <rect key="frame" x="16" y="329" width="85" height="43"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="내 정보">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showMyInfoViewController" destination="0jU-PO-fpk" eventType="touchUpInside" id="oF2-eu-wyI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="UAY-aZ-Exo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sZQ-Dm-GFK" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="0dw-n8-7K2"/>
+                            <constraint firstItem="eUc-Lo-NKE" firstAttribute="top" secondItem="dIR-4h-eak" secondAttribute="bottom" constant="16" id="2UK-CB-cai"/>
+                            <constraint firstItem="dIR-4h-eak" firstAttribute="top" secondItem="3KJ-MF-ccV" secondAttribute="bottom" constant="16" id="47g-Jc-ERM"/>
+                            <constraint firstItem="sZQ-Dm-GFK" firstAttribute="top" secondItem="yMq-4y-NBq" secondAttribute="bottom" constant="16" id="5Tv-0o-SVy"/>
+                            <constraint firstItem="yMq-4y-NBq" firstAttribute="top" secondItem="UAY-aZ-Exo" secondAttribute="top" constant="50" id="96v-BF-A95"/>
+                            <constraint firstItem="glw-Sd-PEb" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="Dkg-9M-omN"/>
+                            <constraint firstItem="kPw-hJ-g4g" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="G4x-lo-NGe"/>
+                            <constraint firstItem="glw-Sd-PEb" firstAttribute="top" secondItem="sZQ-Dm-GFK" secondAttribute="bottom" constant="16" id="Lr4-GA-ahv"/>
+                            <constraint firstItem="dIR-4h-eak" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="MKm-AX-luo"/>
+                            <constraint firstItem="BpK-XG-Py6" firstAttribute="top" secondItem="kPw-hJ-g4g" secondAttribute="bottom" constant="16" id="Ppn-zu-ffn"/>
+                            <constraint firstItem="kPw-hJ-g4g" firstAttribute="top" secondItem="eUc-Lo-NKE" secondAttribute="bottom" constant="16" id="bln-FC-TaY"/>
+                            <constraint firstItem="BpK-XG-Py6" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="fKX-6a-tQN"/>
+                            <constraint firstItem="eUc-Lo-NKE" firstAttribute="leading" secondItem="nuR-vK-HDm" secondAttribute="leading" constant="16" id="n1l-3x-Axw"/>
+                            <constraint firstItem="3KJ-MF-ccV" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="uTr-it-Wt5"/>
+                            <constraint firstItem="yMq-4y-NBq" firstAttribute="leading" secondItem="UAY-aZ-Exo" secondAttribute="leading" constant="16" id="v1V-yj-X2F"/>
+                            <constraint firstItem="3KJ-MF-ccV" firstAttribute="top" secondItem="glw-Sd-PEb" secondAttribute="bottom" constant="70" id="zcO-na-iZ7"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="마이페이지" id="bIE-28-wFx"/>
+                    <connections>
+                        <outlet property="myAddressLabel" destination="glw-Sd-PEb" id="JMM-UM-sxu"/>
+                        <outlet property="myNicknameLabel" destination="yMq-4y-NBq" id="rcI-8m-t4c"/>
+                        <outlet property="myPhoneLabel" destination="sZQ-Dm-GFK" id="Zvf-GR-7tI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JN-by-duc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -625,7 +724,7 @@
         <!--review-->
         <scene sceneID="Pvd-8x-P73">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3kG-qM-dYl" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ReviewNC" automaticallyAdjustsScrollViewInsets="NO" id="3kG-qM-dYl" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="review" id="mdK-0m-DDf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="G5K-1I-uP6">
@@ -644,7 +743,7 @@
         <!--mypage-->
         <scene sceneID="ptt-Dk-mAc">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="o9D-iW-fKG" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MypageUserNC" automaticallyAdjustsScrollViewInsets="NO" id="o9D-iW-fKG" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="mypage" id="8QA-1D-05K"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QmL-G4-h4N">
@@ -653,7 +752,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="0jU-PO-fpk" kind="relationship" relationship="rootViewController" id="2lv-rb-SW6"/>
+                        <segue destination="0jU-PO-fpk" kind="relationship" relationship="rootViewController" id="zlB-Ct-oQY"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3n-mv-YUQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1664,7 +1763,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="a4U-B3-igL"/>
                     <connections>
-                        <outlet property="adressEditTableView" destination="peS-bv-WRW" id="vWn-HJ-PwO"/>
+                        <outlet property="addressEditTableView" destination="peS-bv-WRW" id="KEs-vp-lxD"/>
                         <segue destination="JR7-Dj-fRa" kind="show" id="ke9-KD-Ivq"/>
                     </connections>
                 </viewController>
@@ -1806,37 +1905,71 @@
             </objects>
             <point key="canvasLocation" x="1524" y="2243"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="qTl-qv-GcR">
-            <objects>
-                <navigationController id="KLY-vt-JTl" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fZU-K2-ZsW">
-                        <rect key="frame" x="0.0" y="50" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ztR-n7-9XZ" kind="relationship" relationship="rootViewController" id="rNN-5n-7ER"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NH7-Q5-tI6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2406" y="1496"/>
-        </scene>
         <!--My Page Guest View Controller-->
         <scene sceneID="Osy-bD-5PT">
             <objects>
-                <viewController id="ztR-n7-9XZ" customClass="MyPageGuestViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MypageGuest" id="ztR-n7-9XZ" customClass="MyPageGuestViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g6p-UL-y5C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ob-sp-sSj">
+                                <rect key="frame" x="16" y="124.00000000000001" width="199" height="57.666666666666671"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="로그인하기   &gt;">
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="30"/>
+                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showLoginBtn:" destination="ztR-n7-9XZ" eventType="touchUpInside" id="DW4-mu-fBH"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대세다 회원만의" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpP-RB-7aL">
+                                <rect key="frame" x="16" y="201.66666666666666" width="126" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="편리한 세탁을 이용해보세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ELa-NE-09c">
+                                <rect key="frame" x="16" y="241.66666666666666" width="223" height="23.999999999999972"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="8Xb-aq-BK7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1ob-sp-sSj" firstAttribute="top" secondItem="8Xb-aq-BK7" secondAttribute="top" constant="30" id="9Zf-54-cRa"/>
+                            <constraint firstItem="wpP-RB-7aL" firstAttribute="leading" secondItem="8Xb-aq-BK7" secondAttribute="leading" constant="16" id="h7U-7r-tcD"/>
+                            <constraint firstItem="ELa-NE-09c" firstAttribute="leading" secondItem="8Xb-aq-BK7" secondAttribute="leading" constant="16" id="hFr-mZ-zDD"/>
+                            <constraint firstItem="wpP-RB-7aL" firstAttribute="top" secondItem="1ob-sp-sSj" secondAttribute="bottom" constant="20" id="kRy-Yu-M4l"/>
+                            <constraint firstItem="1ob-sp-sSj" firstAttribute="leading" secondItem="8Xb-aq-BK7" secondAttribute="leading" constant="16" id="qmW-MI-pyz"/>
+                            <constraint firstItem="ELa-NE-09c" firstAttribute="top" secondItem="wpP-RB-7aL" secondAttribute="bottom" constant="16" id="rqb-CX-Atx"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7AM-Z2-YFo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYp-p8-rYN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3174" y="1496"/>
+            <point key="canvasLocation" x="3182" y="1496"/>
+        </scene>
+        <!--mypage-->
+        <scene sceneID="hW1-Le-Vmr">
+            <objects>
+                <navigationController storyboardIdentifier="MypageGuestNC" id="4FG-cc-rQD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="mypage" id="m3L-zx-Ckg"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="taS-Up-moT">
+                        <rect key="frame" x="0.0" y="50" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ztR-n7-9XZ" kind="relationship" relationship="rootViewController" id="RkK-FR-kbz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aB6-es-dmo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2406" y="1496"/>
         </scene>
         <!--My Info Edit View Controller-->
         <scene sceneID="nnt-7u-tl0">
@@ -2211,6 +2344,9 @@
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="userLogoutBtn:" destination="gLE-Sj-Ezi" eventType="touchUpInside" id="cAt-f0-h3y"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMh-kd-36w">
                                 <rect key="frame" x="20" y="587" width="335" height="4"/>
@@ -2227,6 +2363,9 @@
                                     <color key="baseForegroundColor" systemColor="systemRedColor"/>
                                     <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="userDelBtn:" destination="gLE-Sj-Ezi" eventType="touchUpInside" id="Umk-7I-25H"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FNn-fb-9Q5"/>
@@ -2533,6 +2672,96 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MnI-yv-KfM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3854" y="5902"/>
+        </scene>
+        <!--Show User Del View Controller-->
+        <scene sceneID="kdp-pV-YgB">
+            <objects>
+                <viewController storyboardIdentifier="ShowUserDelVC" id="DbZ-uz-PeE" customClass="ShowUserDelViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h9w-Nn-MNk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정말 탈퇴할까요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbm-Ly-rDE">
+                                <rect key="frame" x="84" y="120" width="207" height="35"/>
+                                <fontDescription key="fontDescription" name="GmarketSansTTFMedium" family="Gmarket Sans TTF" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vf-F1-qA3">
+                                <rect key="frame" x="16" y="729" width="343" height="49"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="탈퇴하기">
+                                    <backgroundConfiguration key="background" cornerRadius="25">
+                                        <color key="backgroundColor" red="0.40784314269999999" green="0.54901963470000004" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </backgroundConfiguration>
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="30"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="lastUserDelBtn:" destination="DbZ-uz-PeE" eventType="touchUpInside" id="TcK-4Y-CNU"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="탈퇴 사유를 알려주시면 반영하여 더 나은 대세다를 만들겠습니다." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Y-xA-hSU">
+                                <rect key="frame" x="11" y="229" width="348" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="BEy-1X-HnC"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="불편을 드려 죄송합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NAf-Ai-dMm">
+                                <rect key="frame" x="16" y="195" width="188" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="의견을 남겨주세요" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fo2-3s-VI2">
+                                <rect key="frame" x="16" y="349" width="343" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="cJ5-qa-0MH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iea-u3-ujJ">
+                                <rect key="frame" x="8" y="60" width="39.333333333333336" height="43.333333333333343"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="X">
+                                    <fontDescription key="titleFontDescription" name="GmarketSansTTFMedium" family="Gmarket Sans TTF" pointSize="25"/>
+                                    <color key="baseForegroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="closeBtn:" destination="DbZ-uz-PeE" eventType="touchUpInside" id="ZKw-kL-8pq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="pkU-ez-UvM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="dbm-Ly-rDE" firstAttribute="centerX" secondItem="h9w-Nn-MNk" secondAttribute="centerX" id="12a-2W-4EE"/>
+                            <constraint firstItem="pkU-ez-UvM" firstAttribute="trailing" secondItem="Z7Y-xA-hSU" secondAttribute="trailing" constant="16" id="3nW-Jx-WoQ"/>
+                            <constraint firstItem="fo2-3s-VI2" firstAttribute="top" secondItem="Z7Y-xA-hSU" secondAttribute="bottom" constant="20" id="7OB-bE-fjE"/>
+                            <constraint firstItem="dbm-Ly-rDE" firstAttribute="top" secondItem="pkU-ez-UvM" secondAttribute="top" constant="70" id="KQn-2u-wog"/>
+                            <constraint firstItem="fo2-3s-VI2" firstAttribute="leading" secondItem="pkU-ez-UvM" secondAttribute="leading" constant="16" id="O3Q-Rs-1Ww"/>
+                            <constraint firstItem="Iea-u3-ujJ" firstAttribute="top" secondItem="pkU-ez-UvM" secondAttribute="top" constant="10" id="Pbw-jz-BUi"/>
+                            <constraint firstItem="Z7Y-xA-hSU" firstAttribute="leading" secondItem="NAf-Ai-dMm" secondAttribute="leading" constant="-5" id="akG-P4-h2O"/>
+                            <constraint firstItem="Z7Y-xA-hSU" firstAttribute="top" secondItem="NAf-Ai-dMm" secondAttribute="bottom" constant="10" id="fy8-H3-HvY"/>
+                            <constraint firstItem="NAf-Ai-dMm" firstAttribute="top" secondItem="dbm-Ly-rDE" secondAttribute="bottom" constant="40" id="hdr-WX-CXg"/>
+                            <constraint firstItem="5Vf-F1-qA3" firstAttribute="leading" secondItem="pkU-ez-UvM" secondAttribute="leading" constant="16" id="oVx-E2-26x"/>
+                            <constraint firstItem="pkU-ez-UvM" firstAttribute="bottom" secondItem="5Vf-F1-qA3" secondAttribute="bottom" id="qnK-Bz-Q9r"/>
+                            <constraint firstItem="pkU-ez-UvM" firstAttribute="trailing" secondItem="5Vf-F1-qA3" secondAttribute="trailing" constant="16" id="sFO-EQ-SHg"/>
+                            <constraint firstItem="NAf-Ai-dMm" firstAttribute="leading" secondItem="pkU-ez-UvM" secondAttribute="leading" constant="16" id="tBG-s0-TaR"/>
+                            <constraint firstItem="pkU-ez-UvM" firstAttribute="trailing" secondItem="fo2-3s-VI2" secondAttribute="trailing" constant="16" id="vm9-Ba-DAy"/>
+                            <constraint firstItem="Iea-u3-ujJ" firstAttribute="leading" secondItem="pkU-ez-UvM" secondAttribute="leading" constant="8" id="yJ7-fl-qYo"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M93-dk-BWs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4576.8000000000002" y="5876.6009852216748"/>
         </scene>
         <!--고객센터-->
         <scene sceneID="KWB-gH-bsA">
@@ -2959,7 +3188,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="closeButton:" destination="aPB-jS-4lE" eventType="touchUpInside" id="324-yg-mGn"/>
-                                                    <action selector="closeButton:" destination="81h-Dy-MQT" eventType="touchUpInside" id="WKR-UZ-U3c"/>
                                                     <action selector="closeButton:" destination="OP7-Lx-82K" eventType="touchUpInside" id="iBK-s1-R3C"/>
                                                 </connections>
                                             </button>
@@ -3367,7 +3595,6 @@
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="closeButton:" destination="aPB-jS-4lE" eventType="touchUpInside" id="eJl-5k-lz9"/>
-                                                    <action selector="closeButton:" destination="81h-Dy-MQT" eventType="touchUpInside" id="hSg-NB-wqX"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSM-Ul-m3h">
@@ -3699,7 +3926,7 @@
         <!--Edit More Adress View Controller-->
         <scene sceneID="q6h-0l-6gS">
             <objects>
-                <viewController storyboardIdentifier="EditMoreAdressVC" id="JR7-Dj-fRa" customClass="EditMoreAdressViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditMoreAdress" id="JR7-Dj-fRa" customClass="EditMoreAdressViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rgt-P2-F9h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

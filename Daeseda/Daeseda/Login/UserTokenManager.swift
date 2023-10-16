@@ -22,4 +22,8 @@ class UserTokenManager {
     func getToken() -> String? {
         return authToken
     }
+    
+    func clearToken() {
+        authToken = nil
+    }
 }

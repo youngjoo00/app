@@ -1,37 +1,63 @@
 import UIKit
+import Alamofire
 
 class MyInfoViewController: UIViewController {
+    
+    let url = "http://localhost:8888/users/myInfo"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupUI()
+        getMyInfo()
     }
     
-    func setupUI() {
+    func getMyInfo() {
+        // 1. 토큰 가져오기
+        if let token = UserTokenManager.shared.getToken() {
+            print("Token: \(token)")
+            
+            // 2. Bearer Token을 설정합니다.
+            let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+            
+            // 3. 서버에서 유저 정보를 가져오는 요청
+            AF.request(url, headers: headers).responseDecodable(of: UserInfoData.self) { response in
+                switch response.result {
+                case .success(let userInfo):
+                    // 요청이 성공한 경우
+                    self.updateUI(with: userInfo)
+                case .failure(let error):
+                    // 요청이 실패한 경우
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
+        } else {
+            print("Token not available.")
+        }
+    }
+    
+    func updateUI(with userInfo: UserInfoData) {
         // UI 요소 생성
+        
+        
         let idLabel = createLabel(text: "아이디", textColor: .black, font: UIFont.systemFont(ofSize: 16))
         
-        let userIdLabel = createLabel(text: "youngjoo@naver.com", textColor: UIColor(red: 0.839, green: 0.839, blue: 0.839, alpha: 1), font: UIFont.systemFont(ofSize: 16))
+        let userIdLabel = createLabel(text: userInfo.userEmail, textColor: UIColor(red: 0.839, green: 0.839, blue: 0.839, alpha: 1), font: UIFont.systemFont(ofSize: 16))
         
         let nameLabel = createLabel(text: "이름", textColor: .black, font: UIFont.systemFont(ofSize: 16))
         
-        let userNameLabel = createLabel(text: "권영주", textColor: UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1), font: UIFont.systemFont(ofSize: 16))
+        let userNameLabel = createLabel(text: userInfo.userName, textColor: UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1), font: UIFont.systemFont(ofSize: 16))
         
         let nickNameLabel = createLabel(text: "닉네임", textColor: .black, font: UIFont.systemFont(ofSize: 16))
         
-        let userNickNameLabel = createLabel(text: "땡주", textColor: UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1), font: UIFont.systemFont(ofSize: 16))
-        
-        let emailLabel = createLabel(text: "이메일", textColor: .black, font: UIFont.systemFont(ofSize: 16))
-        
-        let userEmailLabel = createLabel(text: "youngjoo@naver.com", textColor: UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1), font: UIFont.systemFont(ofSize: 16))
+        let userNickNameLabel = createLabel(text: userInfo.userNickname, textColor: UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1), font: UIFont.systemFont(ofSize: 16))
         
         let phoneNumberLabel = createLabel(text: "휴대번호", textColor: .black, font: UIFont.systemFont(ofSize: 16))
         
-        let userPhoneNumberLabel = createLabel(text: "010-0000-0000", textColor: UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1), font: UIFont.systemFont(ofSize: 16))
+        let userPhoneNumberLabel = createLabel(text: userInfo.userPhone, textColor: UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 1), font: UIFont.systemFont(ofSize: 16))
         
         let editButton = createButton(title: "수정", backgroundColor: UIColor(red: 0.365, green: 0.553, blue: 0.949, alpha: 1), titleColor: .white, font: UIFont.systemFont(ofSize: 16), cornerRadius: 15)
         editButton.addTarget(self, action: #selector(showMyInfoEditViewController), for: .touchUpInside)
-
+        
         
         let userIdField = createTextField(placeholder: "", placeholderTextColor: .gray, underlineColor: .black, font: UIFont.systemFont(ofSize: 16))
         
@@ -39,7 +65,6 @@ class MyInfoViewController: UIViewController {
         let userIdUnderLine = createLineView(on: userIdLabel, color: .black, lineWidth: 1, topConstant: 25, leadingConstant: 0, widthConstant: 200, heightConstant: 1)
         let userNameUnderLine = createLineView(on: userNameLabel, color: .black, lineWidth: 1, topConstant: 25, leadingConstant: 0, widthConstant: 200, heightConstant: 1)
         let userNickNameUnderLine = createLineView(on: userNickNameLabel, color: .black, lineWidth: 1, topConstant: 25, leadingConstant: 0, widthConstant: 200, heightConstant: 1)
-        let userEmailUnderLine = createLineView(on: userEmailLabel, color: .black, lineWidth: 1, topConstant: 25, leadingConstant: 0, widthConstant: 200, heightConstant: 1)
         let userPhoneNumberUnderLine = createLineView(on: userPhoneNumberLabel, color: .black, lineWidth: 1, topConstant: 25, leadingConstant: 0, widthConstant: 200, heightConstant: 1)
         
         
@@ -70,16 +95,10 @@ class MyInfoViewController: UIViewController {
             userNickNameLabel.topAnchor.constraint(equalTo: userNameLabel.topAnchor, constant: 75),
             userNickNameLabel.leadingAnchor.constraint(equalTo: idLabel.trailingAnchor, constant: 20),
             
-            emailLabel.topAnchor.constraint(equalTo: nickNameLabel.topAnchor, constant: 75),
-            emailLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-            
-            userEmailLabel.topAnchor.constraint(equalTo: userNickNameLabel.topAnchor, constant: 75),
-            userEmailLabel.leadingAnchor.constraint(equalTo: idLabel.trailingAnchor, constant: 20),
-            
-            phoneNumberLabel.topAnchor.constraint(equalTo: emailLabel.topAnchor, constant: 75),
+            phoneNumberLabel.topAnchor.constraint(equalTo: nickNameLabel.topAnchor, constant: 75),
             phoneNumberLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
             
-            userPhoneNumberLabel.topAnchor.constraint(equalTo: userEmailLabel.topAnchor, constant: 75),
+            userPhoneNumberLabel.topAnchor.constraint(equalTo: userNickNameLabel.topAnchor, constant: 75),
             userPhoneNumberLabel.leadingAnchor.constraint(equalTo: idLabel.trailingAnchor, constant: 20),
         ])
     }
@@ -135,7 +154,7 @@ class MyInfoViewController: UIViewController {
         // MyInfoEditViewController로 화면을 전환합니다.
         navigationController?.pushViewController(myInfoEditVC, animated: true)
     }
-
+    
 }
 
 func createLineView(on view: UIView, color: UIColor, lineWidth: CGFloat, topConstant: CGFloat, leadingConstant: CGFloat, widthConstant: CGFloat, heightConstant: CGFloat) -> UIView {

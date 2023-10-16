@@ -1,10 +1,3 @@
-//
-//  MainTabBarViewController.swift
-//  Daeseda
-//
-//  Created by 축신효상 on 2023/09/17.
-//
-
 import UIKit
 
 class MainTabBarViewController: UITabBarController {
@@ -12,18 +5,26 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        showPage()
     }
-    
 
-    /*
-    // MARK: - Navigation
+    func showPage() {
+        print("showPage OK")
+        // 메인, 주문 목록, 리뷰 뷰 컨트롤러를 먼저 생성
+        let mainNC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainNC")
+        let orderListVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OrderList")
+        let reviewNC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ReviewNC")
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let token = UserTokenManager.shared.getToken() {
+            print("MainTabBarVC token : \(token)")
+            // 토큰이 있는 경우 MypageUserVC를 표시
+            let myPageUserNC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MypageUserNC")
+            setViewControllers([mainNC, orderListVC, reviewNC, myPageUserNC], animated: false)
+        } else {
+            // 토큰이 없는 경우 MypageGuestVC를 표시
+            let myPageGuestNC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MypageGuestNC")
+            setViewControllers([mainNC, orderListVC, reviewNC, myPageGuestNC], animated: false)
+        }
     }
-    */
 
 }

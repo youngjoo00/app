@@ -19,11 +19,13 @@ class EditMoreAdressViewController: UIViewController {
     @IBOutlet weak var editMoreAdressTF: UITextField!
     @IBOutlet weak var editMoreAdressLabel: UILabel!
     @IBOutlet weak var editMoreAdressTitle: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
         editMoreAdressTitle.text = titleText
+        editMoreAdressLabel.text = adressText
         editMoreAdressTF.text = adressText
         isEditHome = isHome
         editMoreAdressNicknameTF.text = nickname
