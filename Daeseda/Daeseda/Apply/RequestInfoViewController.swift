@@ -6,9 +6,27 @@
 //
 
 import UIKit
+import Alamofire
+
+struct Order: Codable {
+    var address: Address
+    let clothesCount: [ClothesCount]
+    let totalPrice: Int
+    let washingMethod: String
+    let pickupDate: String
+    let deliveryDate: String
+    let deliveryLocation: String
+}
+
+struct Address: Codable {
+    var addressId: Int
+    var addressName: String
+    var addressDetail: String
+    var addressZipcode: String
+}
 
 class RequestInfoViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         textLabel()
@@ -18,13 +36,21 @@ class RequestInfoViewController: UIViewController {
         
         addressTextField.isEnabled = false
         
+        print(selectedClothesCount)
     }
+    
     
     
     var selectDate : String = ""
     var selectTime : String = ""
     var selectWay : String = ""
+    var deliveryDate : String = ""
+    var totalPrdeliveryLocationice : String = ""
+    var selectedClothesCount: [ClothesCount] = []
+    var deliveryLocation : String = ""
+    var selectedAdderss: [Address] = []
     
+    var addressInfo = Address(addressId: 0, addressName: "집", addressDetail: "경기도 동두천시", addressZipcode: "12345")
     
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var addressDetailTextField: UITextField!
@@ -48,22 +74,6 @@ class RequestInfoViewController: UIViewController {
         nameLabel.textAlignment = .center
         nameLabel.text = "이름"
         
-        
-        let phoneLabel = UILabel()
-        phoneLabel.frame = CGRect(x: 0, y: 0, width: 74, height: 27)
-        phoneLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        phoneLabel.font = UIFont(name: "NotoSans-Regular", size: 20)
-        // Line height: 27.24 pt
-        phoneLabel.textAlignment = .center
-        phoneLabel.text = "전화번호"
-        
-        self.view.addSubview(phoneLabel)
-        phoneLabel.translatesAutoresizingMaskIntoConstraints = false
-        phoneLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
-        phoneLabel.heightAnchor.constraint(equalToConstant: 27).isActive = true
-        phoneLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        phoneLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 220).isActive = true
-        
         let addressLabel = UILabel()
         addressLabel.frame = CGRect(x: 0, y: 0, width: 131, height: 27)
         addressLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
@@ -76,73 +86,83 @@ class RequestInfoViewController: UIViewController {
         addressLabel.widthAnchor.constraint(equalToConstant: 131).isActive = true
         addressLabel.heightAnchor.constraint(equalToConstant: 27).isActive = true
         addressLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        addressLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 290).isActive = true
-        
-        let searchView = UIView()
-        searchView.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
-        let searchImage = UIImage(systemName: "magnifyingglass")?.cgImage
-        let layer1 = CALayer()
-        layer1.contents = searchImage
-        layer1.bounds = searchView.bounds
-        layer1.position = searchView.center
-        searchView.layer.addSublayer(layer1)
-        
-        self.view.addSubview(searchView)
-        searchView.translatesAutoresizingMaskIntoConstraints = false
-        searchView.widthAnchor.constraint(equalToConstant: 27).isActive = true
-        searchView.heightAnchor.constraint(equalToConstant: 27).isActive = true
-        searchView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        searchView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 330).isActive = true
+        addressLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 220).isActive = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(addressNotification(_:)), name: NSNotification.Name("postAddressNotification"), object: nil)
+        
+        let placeLabel = UILabel()
+        placeLabel.frame = CGRect(x: 0, y: 0, width: 131, height: 27)
+        placeLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        placeLabel.font = UIFont(name: "NotoSans-Regular", size: 20)
+        // Line height: 27.24 pt
+        placeLabel.text = "베송 위치"
+        
+        self.view.addSubview(placeLabel)
+        placeLabel.translatesAutoresizingMaskIntoConstraints = false
+        placeLabel.widthAnchor.constraint(equalToConstant: 131).isActive = true
+        placeLabel.heightAnchor.constraint(equalToConstant: 27).isActive = true
+        placeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
+        placeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 320).isActive = true
         
     }
     
     @objc func addressNotification(_ notification: Notification) {
-        if let data = notification.object as? String {
-            addressTextField.text = data
+        if let data = notification.userInfo as? [String: Any] {
+            if let address = data["address"] as? String,
+               let zonecode = data["zonecode"] as? String {
+                addressTextField.text = address
+                print("주소: \(address), 우편번호: \(zonecode)")
+                self.dismiss(animated: true, completion: nil)
+                
+            }
         }
     }
     
     func endButton(){
-        let nextButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(ApplyListVC))
+        let nextButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(endVC))
         navigationItem.rightBarButtonItem = nextButton
     }
     
-    @objc func ApplyListVC() {
+    
+    @objc func endVC() {
+        
+        totalPrdeliveryLocationice =  "\(placeTextField.text!), \(etcTextField.text!)"
+        
         let alert = UIAlertController(title:"완료되었습니다!",message: "세탁 주문이 완료되었습니다. \n이후 결제를 진행해주세요.",preferredStyle: UIAlertController.Style.alert)
         
-//        let userData = UserData(userEmail: userEmail, userName: userName, userNickname: userNicName, userPhone: userPhone, userPassword: userPassword)
+        let newOrder = Order(address: addressInfo, clothesCount: selectedClothesCount, totalPrice: 0, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: totalPrdeliveryLocationice)
+        
         
         //확인 버튼 만들기
         let ok = UIAlertAction(title: "확인", style: .default, handler: { action in
-//            AF.request(self.url, method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
-//                .validate(statusCode: 200..<300)
-//                .response { response in
-//                    switch response.result {
-//                    case .success:
-//                        // status code만 뽑아오기
-//                        if let statusCode = response.response?.statusCode {
-//                            print("HTTP Status Code: \(statusCode)")
-//                            print("response 란 무엇인가 : \(response)")
-//                            print("response.response 란 무엇인가 : \(response.response!)")
-//                            print("\n")
-//                        }
-//
-//                        // 헤더 값 뽑아오기
-//                        if let responseHeaders = response.response?.allHeaderFields as? [String: String] {
-//                            for (key, value) in responseHeaders {
-//                                print("Header \(key): \(value)")
-//                            }
-//                        }
-//
-//
-//                    case .failure(let error):
-//                        print("Error: \(error)")
-//                    }
-//                }
-//
-            })
+            //            AF.request(self.url, method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
+            //                .validate(statusCode: 200..<300)
+            //                .response { response in
+            //                    switch response.result {
+            //                    case .success:
+            //                        // status code만 뽑아오기
+            //                        if let statusCode = response.response?.statusCode {
+            //                            print("HTTP Status Code: \(statusCode)")
+            //                            print("response 란 무엇인가 : \(response)")
+            //                            print("response.response 란 무엇인가 : \(response.response!)")
+            //                            print("\n")
+            //                        }
+            //
+            //                        // 헤더 값 뽑아오기
+            //                        if let responseHeaders = response.response?.allHeaderFields as? [String: String] {
+            //                            for (key, value) in responseHeaders {
+            //                                print("Header \(key): \(value)")
+            //                            }
+            //                        }
+            //
+            //
+            //                    case .failure(let error):
+            //                        print("Error: \(error)")
+            //                    }
+            //                }
+            
+            print(newOrder)
+        })
         
         //확인 버튼 경고창에 추가하기
         alert.addAction(ok)
@@ -150,7 +170,7 @@ class RequestInfoViewController: UIViewController {
     }
 }
 
-// 위탁 장소 선택
+// 배송 장소 선택
 extension RequestInfoViewController : UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -181,6 +201,7 @@ extension RequestInfoViewController : UITextFieldDelegate, UIPickerViewDelegate,
         } else {
             etcTextField.isEnabled = false
             etcTextField.placeholder = ""
+            etcTextField.text = ""
         }
     }
     
@@ -195,7 +216,7 @@ extension RequestInfoViewController : UITextFieldDelegate, UIPickerViewDelegate,
         
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let placeDoneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(placeDoneButtonHandeler))
-
+        
         
         palceToolBar.items = [flexibleSpace, placeDoneButton]
         palceToolBar.sizeToFit()
@@ -210,4 +231,9 @@ extension RequestInfoViewController : UITextFieldDelegate, UIPickerViewDelegate,
         placeTextField.resignFirstResponder()
     }
     
+    @IBAction func etcTextFieldEditingDidEnd(_ sender: Any) {
+        let etc = etcTextField.text
+        let place = placeTextField.text
+        
+    }
 }
