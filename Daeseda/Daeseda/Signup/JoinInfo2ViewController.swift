@@ -16,7 +16,6 @@ struct UserData: Codable {
     let userPassword: String
 }
 
-
 class JoinInfo2ViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -166,11 +165,11 @@ class JoinInfo2ViewController: UIViewController {
                             }
                         }
                         
-                        
                     case .failure(let error):
                         print("Error: \(error)")
                     }
                 }
+            self.navigationController?.popToRootViewController(animated: true)
             
             })
         

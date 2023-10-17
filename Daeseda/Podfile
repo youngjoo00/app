@@ -8,4 +8,6 @@ target 'Daeseda' do
   # Pods for Daeseda
   # HTTP 네트워킹 라이브러리
   pod 'Alamofire', '~> 5.7'
+  pod 'TossPayments'
+
 end

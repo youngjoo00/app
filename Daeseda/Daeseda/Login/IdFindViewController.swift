@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class IdFindViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class IdFindViewController: UIViewController {
 
         titleLabel()
         nextButton()
+
     }
     
     func titleLabel(){

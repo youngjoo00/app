@@ -27,6 +27,8 @@ class LoginViewController: UIViewController {
         loginButton()
         joinButton()
         forgetButton()
+        
+        passwordTextField.isSecureTextEntry = true
     }
     
     let url = "http://localhost:8888/users/authenticate"
