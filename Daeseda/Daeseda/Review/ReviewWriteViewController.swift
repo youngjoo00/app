@@ -1,6 +1,10 @@
 import UIKit
+import Photos
+import Alamofire
 
 class ReviewWriteViewController: UIViewController {
+    
+    var reviewViewController: ReviewViewController?
     
     let allCategorys = [
         "전체",
@@ -14,12 +18,12 @@ class ReviewWriteViewController: UIViewController {
         "등등등3",
     ]
     
+    @IBOutlet weak var reviewUploadImage: UIImageView!
     @IBOutlet var reviewStarRatingBtns: [UIButton]!
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var reviewWriteCategoryBtn: UIButton!
-    
     @IBOutlet weak var reviewWriteCategoryPickerView: UIPickerView!
-    var rating: Int = 1 // 최소 별점을 1로 설정
+    var rating: Float = 1.0 // 최소 별점을 1로 설정
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,23 +32,18 @@ class ReviewWriteViewController: UIViewController {
             title: "등록",
             style: .plain,
             target: self,
-            action: #selector(reviewWriteBarBtnTab) // 오른쪽 아이템 탭 시 실행할 메서드
+            action: #selector(reviewPostBtn)
         )
-        
-        // 네비게이션 바에 오른쪽 아이템 설정
         navigationItem.rightBarButtonItem = reviewWriteBarBtnItem
-        
         
         self.reviewTextView.layer.borderWidth = 1.0
         self.reviewTextView.layer.borderColor = UIColor.black.cgColor
         
-        // 별점 버튼에 액션 추가
         for (index, button) in reviewStarRatingBtns.enumerated() {
             button.tag = index
             button.addTarget(self, action: #selector(starButtonTapped(_:)), for: .touchUpInside)
         }
         
-        // 초기 별점 UI 업데이트
         updateStarUI()
         
         reviewWriteCategoryPickerView.delegate = self
@@ -56,36 +55,88 @@ class ReviewWriteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // 탭 바를 숨깁니다.
         tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // 다른 화면으로 이동할 때 탭 바를 다시 보이게 합니다.
         tabBarController?.tabBar.isHidden = false
     }
     
-    @objc func reviewWriteBarBtnTab(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
+    // 리뷰 등록
+    @objc func reviewPostBtn(_ sender: UIBarButtonItem) {
+        let url = "http://localhost:8888/review/register"
+        
+        // 이미지 파일 (이미지 파일을 준비하고, 이미지 데이터로 변환해야 함)
+        guard let image = reviewUploadImage.image, let imageData = image.jpegData(compressionQuality: 1) else {
+            print("Please select an image or failed to convert image to data.")
+            return
+        }
+        
+        // 리뷰 데이터 생성
+        guard let reviewTitle = title else {
+            print("Please enter a review title.")
+            return
+        }
+        guard let reviewContent = reviewTextView.text else {
+            print("Please enter review content.")
+            return
+        }
+        let orderId: Int = 2 // orderId는 가져와서 써야하는데 임의로 설정
+        
+        // 토큰 가져오기
+        if let token = UserTokenManager.shared.getToken() {
+            let headers: HTTPHeaders = [
+                "Authorization": "Bearer " + token,
+                "Content-Type": "multipart/form-data"
+            ]
+            
+            AF.upload(
+                multipartFormData: { multipartFormData in
+                    // 이미지를 추가하는 부분은 그대로 둡니다.
+                    multipartFormData.append(imageData, withName: "image", fileName: "reviewImage.jpg", mimeType: "image/jpeg")
+                    
+                    // 리뷰 데이터를 `multipart/form-data` 형식으로 보냅니다.
+                    if let reviewTitleData = reviewTitle.data(using: .utf8) {
+                        multipartFormData.append(reviewTitleData, withName: "reviewTitle")
+                    }
+                    if let reviewContentData = reviewContent.data(using: .utf8) {
+                        multipartFormData.append(reviewContentData, withName: "reviewContent")
+                    }
+                    if let orderIdData = "\(orderId)".data(using: .utf8) {
+                        multipartFormData.append(orderIdData, withName: "orderId")
+                    }
+                    if let ratingData = "\(self.rating)".data(using: .utf8) {
+                        multipartFormData.append(ratingData, withName: "rating")
+                    }
+                },
+                to: url,
+                method: .post,
+                headers: headers
+            )
+            .response { response in
+                switch response.result {
+                case .success:
+                    print("ReviewWrite Success")
+                    self.navigationController?.popViewController(animated: true)
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
+            .validate(statusCode: 200..<300)
+        } else {
+            print("Token not available.")
+        }
     }
-
     
     @objc func starButtonTapped(_ sender: UIButton) {
-        // 별점 버튼을 터치했을 때 호출되는 메서드
-        if sender.tag == rating - 1 {
-            // 이미 선택된 별점 버튼을 다시 선택하면 별점을 0으로 설정
-            rating = 0
-        } else {
-            rating = sender.tag + 1
-        }
+        rating = Float(sender.tag) + 1.0
         updateStarUI()
     }
     
     func updateStarUI() {
-        // 별점 선택을 표시하기 위한 UI 업데이트
         for (index, button) in reviewStarRatingBtns.enumerated() {
-            if index < rating {
+            if Float(index) < rating {
                 button.setImage(UIImage(systemName: "star.fill"), for: .normal)
             } else {
                 button.setImage(UIImage(systemName: "star"), for: .normal)
@@ -93,6 +144,15 @@ class ReviewWriteViewController: UIViewController {
         }
     }
     
+    @IBAction func reviewUploadImageBtn(_ sender: UIButton) {
+        // 사진 라이브러리 권한 확인
+        authPhotoLibrary(self) {
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.delegate = self
+            self.present(imagePickerController, animated: true, completion: nil)
+        }
+    }
     
     @IBAction func reviewWriteCategoryBtn(_ sender: UIButton) {
         showWriteCategoryPicker()
@@ -115,8 +175,7 @@ extension ReviewWriteViewController: UIPickerViewDelegate {
     }
 }
 
-
-extension ReviewWriteViewController : UIPickerViewDataSource {
+extension ReviewWriteViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -124,6 +183,17 @@ extension ReviewWriteViewController : UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return allCategorys.count
     }
+}
+
+extension ReviewWriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let pickedImage = info[.originalImage] as? UIImage {
+            reviewUploadImage.image = pickedImage
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
     
-    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
