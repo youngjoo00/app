@@ -8,14 +8,6 @@
 import UIKit
 import Alamofire
 
-struct UserData: Codable {
-    let userEmail: String
-    let userName: String
-    let userNickname: String
-    let userPhone: String
-    let userPassword: String
-}
-
 class JoinInfo2ViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -151,18 +143,20 @@ class JoinInfo2ViewController: UIViewController {
                     switch response.result {
                     case .success:
                         // status code만 뽑아오기
-                        if let statusCode = response.response?.statusCode {
-                            print("HTTP Status Code: \(statusCode)")
-                            print("response 란 무엇인가 : \(response)")
-                            print("response.response 란 무엇인가 : \(response.response!)")
-                            print("\n")
-                        }
+//                        if let statusCode = response.response?.statusCode {
+//                            print("HTTP Status Code: \(statusCode)")
+//                            print("response 란 무엇인가 : \(response)")
+//                            print("response.response 란 무엇인가 : \(response.response!)")
+//                            print("\n")
+//                        }
                         
                         // 헤더 값 뽑아오기
                         if let responseHeaders = response.response?.allHeaderFields as? [String: String] {
                             for (key, value) in responseHeaders {
                                 print("Header \(key): \(value)")
                             }
+                            
+                        print("회원가입 성공")
                         }
                         
                     case .failure(let error):

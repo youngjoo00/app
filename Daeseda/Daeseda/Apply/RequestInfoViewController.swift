@@ -8,23 +8,6 @@
 import UIKit
 import Alamofire
 
-struct Order: Codable {
-    var address: Address
-    let clothesCount: [ClothesCount]
-    let totalPrice: Int
-    let washingMethod: String
-    let pickupDate: String
-    let deliveryDate: String
-    let deliveryLocation: String
-}
-
-struct Address: Codable {
-    var addressId: Int
-    var addressName: String
-    var addressDetail: String
-    var addressZipcode: String
-}
-
 class RequestInfoViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -39,8 +22,6 @@ class RequestInfoViewController: UIViewController {
         print(selectedClothesCount)
     }
     
-    
-    
     var selectDate : String = ""
     var selectTime : String = ""
     var selectWay : String = ""
@@ -48,7 +29,7 @@ class RequestInfoViewController: UIViewController {
     var totalPrdeliveryLocationice : String = ""
     var selectedClothesCount: [ClothesCount] = []
     var deliveryLocation : String = ""
-    var selectedAdderss: [Address] = []
+    var selectedAddress: [Address] = []
     
     var addressInfo = Address(addressId: 0, addressName: "집", addressDetail: "경기도 동두천시", addressZipcode: "12345")
     
@@ -56,12 +37,42 @@ class RequestInfoViewController: UIViewController {
     @IBOutlet weak var addressDetailTextField: UITextField!
     @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var etcTextField: UITextField!
+    
     let placePicker = UIPickerView()
     let place = ["현관문 앞(공동현관X)", "현관문 앞(공동현관O)", "경비실", "기타"]
     
     @IBAction func addressSearchButton(_ sender: Any) {
         guard let addressSearchVC = storyboard?.instantiateViewController(withIdentifier: "addressSearch") as? AddressSearchViewController else { return }
         self.present(addressSearchVC, animated: true)
+    }
+    
+    @objc func addressNotification(_ notification: Notification) {
+        if let data = notification.userInfo as? [String: Any] {
+            if let address = data["address"] as? String,
+               let zonecode = data["zonecode"] as? String {
+                addressTextField.text = address
+                addressInfo = Address(addressId: 0, addressName: "", addressDetail: address, addressZipcode: zonecode)
+                self.dismiss(animated: true, completion: nil)
+                
+            }
+        }
+    }
+    
+    @IBAction func goAddress(_ sender: Any) {
+        guard let addressVC = storyboard?.instantiateViewController(withIdentifier: "MyAdress") as? MyAdressViewController else { return }
+        self.present(addressVC, animated: true)
+    }
+    
+    @objc func postAddressData(_ notification: Notification) {
+        if let data = notification.userInfo as? [String: Any] {
+            if let address = data["address"] as? String,
+               let zonecode = data["zonecode"] as? String {
+                addressTextField.text = address
+                addressInfo = Address(addressId: 0, addressName: "", addressDetail: address, addressZipcode: zonecode)
+                self.dismiss(animated: true, completion: nil)
+                
+            }
+        }
     }
     
     func textLabel(){
@@ -106,23 +117,10 @@ class RequestInfoViewController: UIViewController {
         
     }
     
-    @objc func addressNotification(_ notification: Notification) {
-        if let data = notification.userInfo as? [String: Any] {
-            if let address = data["address"] as? String,
-               let zonecode = data["zonecode"] as? String {
-                addressTextField.text = address
-                print("주소: \(address), 우편번호: \(zonecode)")
-                self.dismiss(animated: true, completion: nil)
-                
-            }
-        }
-    }
-    
     func endButton(){
         let nextButton = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(endVC))
         navigationItem.rightBarButtonItem = nextButton
     }
-    
     
     @objc func endVC() {
         
