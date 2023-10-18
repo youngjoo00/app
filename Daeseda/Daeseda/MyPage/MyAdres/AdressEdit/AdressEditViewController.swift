@@ -6,7 +6,7 @@ class AdressEditViewController: UIViewController {
     let url = "http://localhost:8888/users/address/list"
     
     var selectedIndexPath: IndexPath?
-    var addressData = [AddressData]()
+    var addressData = [Address]()
     var homeTitle = "우리 집"
     var homeAddress = "서울시 노원구 초안산로 12"
     
@@ -33,7 +33,7 @@ class AdressEditViewController: UIViewController {
         if let token = UserTokenManager.shared.getToken() {
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
             
-            AF.request(url, headers: headers).responseDecodable(of: [AddressData].self) { response in
+            AF.request(url, headers: headers).responseDecodable(of: [Address].self) { response in
                 switch response.result {
                 case .success(let addressData):
                     // 요청이 성공한 경우

@@ -51,7 +51,6 @@
 		8EA5A1DF2AB18FA300AAE23C /* GmarketSansTTFMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1D32AB18FA300AAE23C /* GmarketSansTTFMedium.ttf */; };
 		8EB01A7E2AC2E60D00DA41DC /* ReviewListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB01A7D2AC2E60D00DA41DC /* ReviewListTableViewCell.swift */; };
 		8EB01A812AC31F8800DA41DC /* MyReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB01A802AC31F8800DA41DC /* MyReviewTableViewCell.swift */; };
-		8EB204F72ADF7E4300760A3F /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB204F62ADF7E4300760A3F /* AlbumInfo.swift */; };
 		8EE728C02AC40484002C46B3 /* TestRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE728BF2AC40484002C46B3 /* TestRequest.swift */; };
 		8EE728C32AC40BF4002C46B3 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE728C22AC40BF4002C46B3 /* LoginModel.swift */; };
 		8EE728C52AC40C63002C46B3 /* SignupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE728C42AC40C63002C46B3 /* SignupModel.swift */; };
@@ -222,7 +221,6 @@
 				8EB01A7D2AC2E60D00DA41DC /* ReviewListTableViewCell.swift */,
 				8E0127302ADC2DE4006CDDB1 /* Auth.swift */,
 				8E01272C2ADC2DA4006CDDB1 /* PhotoService.swift */,
-
 				CC98661E2ADF7BA400CCD67B /* AlbumInfo.swift */,
 			);
 			path = Review;
@@ -356,6 +354,14 @@
 			path = MyAdres;
 			sourceTree = "<group>";
 		};
+		8EB204FD2ADFA68700760A3F /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				8EB204F62ADF7E4300760A3F /* AlbumInfo.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		8EE728C12AC40BBD002C46B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +443,7 @@
 				CC1183722AB14AFF00CE4BD2 /* Products */,
 				C13D4A34B613E73F5A4A720B /* Pods */,
 				E15E55DB772BD2F86CAE26AE /* Frameworks */,
+				8EB204FD2ADFA68700760A3F /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -696,7 +703,6 @@
 				8E7539DF2ABBFB06004F979D /* MyReviewViewController.swift in Sources */,
 				CC1183752AB14AFF00CE4BD2 /* AppDelegate.swift in Sources */,
 				CC62A1FE2AB671E90005A676 /* RequestViewController.swift in Sources */,
-				8EB204F72ADF7E4300760A3F /* AlbumInfo.swift in Sources */,
 				8E94FFF82AC1DBB2006B8E9E /* QnaTableViewCell.swift in Sources */,
 				8EE728C32AC40BF4002C46B3 /* LoginModel.swift in Sources */,
 				CC334FE32AD3FB36000243B5 /* ResettingPasswordEndViewController.swift in Sources */,
