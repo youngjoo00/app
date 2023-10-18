@@ -10,6 +10,10 @@
 		16712FB0FE448A3F31132885 /* Pods_Daeseda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2820DA79CFA6484036A9E838 /* Pods_Daeseda.framework */; };
 		8E0127272ADC0C25006CDDB1 /* UserInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0127262ADC0C25006CDDB1 /* UserInfoData.swift */; };
 		8E0127292ADC0C4E006CDDB1 /* AuthorityDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0127282ADC0C4E006CDDB1 /* AuthorityDto.swift */; };
+		8E01272D2ADC2DA4006CDDB1 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01272C2ADC2DA4006CDDB1 /* PhotoService.swift */; };
+		8E01272F2ADC2DAA006CDDB1 /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01272E2ADC2DAA006CDDB1 /* AlbumInfo.swift */; };
+		8E0127312ADC2DE4006CDDB1 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0127302ADC2DE4006CDDB1 /* Auth.swift */; };
+		8E146DA02ADE76820002A120 /* QnaWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E146D9F2ADE76820002A120 /* QnaWriteViewController.swift */; };
 		8E546DF72AC13C8B00DD353E /* ShowNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E546DF62AC13C8B00DD353E /* ShowNoticeViewController.swift */; };
 		8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */; };
 		8E7539D22ABBFAF3004F979D /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */; };
@@ -32,6 +36,7 @@
 		8E94FFF62AC1D2B5006B8E9E /* ShowQnaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94FFF52AC1D2B5006B8E9E /* ShowQnaViewController.swift */; };
 		8E94FFF82AC1DBB2006B8E9E /* QnaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94FFF72AC1DBB2006B8E9E /* QnaTableViewCell.swift */; };
 		8E94FFFA2AC1F5D0006B8E9E /* ComentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94FFF92AC1F5D0006B8E9E /* ComentTableViewCell.swift */; };
+		8E9B42982ADD8C3C00CD5012 /* ReviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9B42972ADD8C3C00CD5012 /* ReviewData.swift */; };
 		8EA5A1C62AB18E2100AAE23C /* WDFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C52AB18E2100AAE23C /* WDFont.swift */; };
 		8EA5A1D42AB18FA300AAE23C /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */; };
 		8EA5A1D52AB18FA300AAE23C /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */; };
@@ -95,6 +100,10 @@
 		2820DA79CFA6484036A9E838 /* Pods_Daeseda.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Daeseda.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E0127262ADC0C25006CDDB1 /* UserInfoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoData.swift; sourceTree = "<group>"; };
 		8E0127282ADC0C4E006CDDB1 /* AuthorityDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorityDto.swift; sourceTree = "<group>"; };
+		8E01272C2ADC2DA4006CDDB1 /* PhotoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
+		8E01272E2ADC2DAA006CDDB1 /* AlbumInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlbumInfo.swift; path = ../../../../../../../Downloads/photo/AlbumInfo.swift; sourceTree = "<group>"; };
+		8E0127302ADC2DE4006CDDB1 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		8E146D9F2ADE76820002A120 /* QnaWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnaWriteViewController.swift; sourceTree = "<group>"; };
 		8E546DF62AC13C8B00DD353E /* ShowNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNoticeViewController.swift; sourceTree = "<group>"; };
 		8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +126,7 @@
 		8E94FFF52AC1D2B5006B8E9E /* ShowQnaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowQnaViewController.swift; sourceTree = "<group>"; };
 		8E94FFF72AC1DBB2006B8E9E /* QnaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnaTableViewCell.swift; sourceTree = "<group>"; };
 		8E94FFF92AC1F5D0006B8E9E /* ComentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComentTableViewCell.swift; sourceTree = "<group>"; };
+		8E9B42972ADD8C3C00CD5012 /* ReviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewData.swift; sourceTree = "<group>"; };
 		8EA5A1C52AB18E2100AAE23C /* WDFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDFont.swift; sourceTree = "<group>"; };
 		8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
 		8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
@@ -192,12 +202,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E146D9E2ADE76650002A120 /* QnaWrite */ = {
+			isa = PBXGroup;
+			children = (
+				8E146D9F2ADE76820002A120 /* QnaWriteViewController.swift */,
+			);
+			path = QnaWrite;
+			sourceTree = "<group>";
+		};
 		8E7539CE2ABBFAF3004F979D /* Review */ = {
 			isa = PBXGroup;
 			children = (
 				8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */,
 				8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */,
 				8EB01A7D2AC2E60D00DA41DC /* ReviewListTableViewCell.swift */,
+				8E0127302ADC2DE4006CDDB1 /* Auth.swift */,
+				8E01272E2ADC2DAA006CDDB1 /* AlbumInfo.swift */,
+				8E01272C2ADC2DA4006CDDB1 /* PhotoService.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -276,6 +297,7 @@
 				8E94FFF72AC1DBB2006B8E9E /* QnaTableViewCell.swift */,
 				8E94FFF52AC1D2B5006B8E9E /* ShowQnaViewController.swift */,
 				8E94FFF92AC1F5D0006B8E9E /* ComentTableViewCell.swift */,
+				8E146D9E2ADE76650002A120 /* QnaWrite */,
 			);
 			path = Qna;
 			sourceTree = "<group>";
@@ -387,9 +409,6 @@
 				CC62A1FF2AB671FD0005A676 /* ResettingPasswordViewController.swift */,
 				CC334FE22AD3FB36000243B5 /* ResettingPasswordEndViewController.swift */,
 				CC334FE02AD3F993000243B5 /* Match.swift */,
-				CC2FDCD92AD597FC004537C7 /* UserTokenManager.swift */,
-				8E0127262ADC0C25006CDDB1 /* UserInfoData.swift */,
-				8E0127282ADC0C4E006CDDB1 /* AuthorityDto.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -432,6 +451,10 @@
 				CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */,
 				CC1183782AB14AFF00CE4BD2 /* ViewController.swift */,
 				8E7539EA2ABDDA18004F979D /* TestViewController.swift */,
+				CC2FDCD92AD597FC004537C7 /* UserTokenManager.swift */,
+				8E0127262ADC0C25006CDDB1 /* UserInfoData.swift */,
+				8E0127282ADC0C4E006CDDB1 /* AuthorityDto.swift */,
+				8E9B42972ADD8C3C00CD5012 /* ReviewData.swift */,
 				CC90BE9B2AD1555F0054113E /* ApplyList */,
 				CC056AC02ACC958000593174 /* Login */,
 				CC056ABF2ACC956E00593174 /* Signup */,
@@ -614,6 +637,7 @@
 				8E94FFF62AC1D2B5006B8E9E /* ShowQnaViewController.swift in Sources */,
 				8E7B41862AC04DAA00560B86 /* CompanyInfoViewController.swift in Sources */,
 				CC334FE12AD3F993000243B5 /* Match.swift in Sources */,
+				8E146DA02ADE76820002A120 /* QnaWriteViewController.swift in Sources */,
 				8E7B41842AC04C6F00560B86 /* PrivacyPolicyViewController.swift in Sources */,
 				8E0127272ADC0C25006CDDB1 /* UserInfoData.swift in Sources */,
 				8EE728C52AC40C63002C46B3 /* SignupModel.swift in Sources */,
@@ -623,11 +647,13 @@
 				8EF3BCE82ACD5AE70022DBC8 /* ShowFaqViewController.swift in Sources */,
 				CC2FDCDA2AD597FC004537C7 /* UserTokenManager.swift in Sources */,
 				8E7539EB2ABDDA18004F979D /* TestViewController.swift in Sources */,
+				8E0127312ADC2DE4006CDDB1 /* Auth.swift in Sources */,
 				CC6C34BF2AD297DB000A420F /* AllIdFindViewController.swift in Sources */,
 				CC62A1F82AB671700005A676 /* IdFindViewController.swift in Sources */,
 				8EB01A7E2AC2E60D00DA41DC /* ReviewListTableViewCell.swift in Sources */,
 				8E7539DE2ABBFB06004F979D /* SettingsViewController.swift in Sources */,
 				8E0127292ADC0C4E006CDDB1 /* AuthorityDto.swift in Sources */,
+				8E9B42982ADD8C3C00CD5012 /* ReviewData.swift in Sources */,
 				8E94FFFA2AC1F5D0006B8E9E /* ComentTableViewCell.swift in Sources */,
 				8EE855EE2AD04928007ECE13 /* AdressEditViewController.swift in Sources */,
 				CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */,
@@ -651,6 +677,7 @@
 				CC62A1FC2AB671CD0005A676 /* RequestInfoViewController.swift in Sources */,
 				8EB01A812AC31F8800DA41DC /* MyReviewTableViewCell.swift in Sources */,
 				CCB27ED32AB8F40C0053EA0B /* Request.swift in Sources */,
+				8E01272D2ADC2DA4006CDDB1 /* PhotoService.swift in Sources */,
 				8E7B41912AC0806900560B86 /* NoticeTableViewCell.swift in Sources */,
 				8E7539E72ABC0CE9004F979D /* ServiceViewController.swift in Sources */,
 				8E7B41892AC052FD00560B86 /* NoticeViewController.swift in Sources */,
@@ -662,6 +689,7 @@
 				CC1183752AB14AFF00CE4BD2 /* AppDelegate.swift in Sources */,
 				CC62A1FE2AB671E90005A676 /* RequestViewController.swift in Sources */,
 				8E94FFF82AC1DBB2006B8E9E /* QnaTableViewCell.swift in Sources */,
+				8E01272F2ADC2DAA006CDDB1 /* AlbumInfo.swift in Sources */,
 				8EE728C32AC40BF4002C46B3 /* LoginModel.swift in Sources */,
 				CC334FE32AD3FB36000243B5 /* ResettingPasswordEndViewController.swift in Sources */,
 				8E7539E52ABBFB06004F979D /* MypageGuestViewController.swift in Sources */,

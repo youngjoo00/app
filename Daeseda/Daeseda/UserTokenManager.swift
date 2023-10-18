@@ -1,10 +1,3 @@
-//
-//  UserTokenManager.swift
-//  Daeseda
-//
-//  Created by 축신효상 on 2023/10/10.
-//
-
 import Foundation
 
 class UserTokenManager {
