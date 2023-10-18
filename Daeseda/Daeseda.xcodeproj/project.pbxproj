@@ -87,6 +87,8 @@
 		CC6C34BF2AD297DB000A420F /* AllIdFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C34BE2AD297DB000A420F /* AllIdFindViewController.swift */; };
 		CC6C34C32AD29A04000A420F /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C34C22AD29A04000A420F /* PaymentViewController.swift */; };
 		CC6C34C52AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6C34C42AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift */; };
+		CC98661F2ADF7BA400CCD67B /* AlbumInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC98661E2ADF7BA400CCD67B /* AlbumInfo.swift */; };
+		CC9866232ADF7C1700CCD67B /* Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9866222ADF7C1700CCD67B /* Struct.swift */; };
 		CC98E5F02ADBEAE2004E1E11 /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC98E5EF2ADBEAE2004E1E11 /* OrderListViewController.swift */; };
 		CC98E5F22ADC456C004E1E11 /* OrderListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC98E5F12ADC456C004E1E11 /* OrderListTableViewCell.swift */; };
 		CC98E5F42ADC6C90004E1E11 /* DeliveryInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC98E5F32ADC6C90004E1E11 /* DeliveryInfoViewController.swift */; };
@@ -181,6 +183,8 @@
 		CC6C34BE2AD297DB000A420F /* AllIdFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllIdFindViewController.swift; sourceTree = "<group>"; };
 		CC6C34C22AD29A04000A420F /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		CC6C34C42AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResettingPasswordInfoViewController.swift; sourceTree = "<group>"; };
+		CC98661E2ADF7BA400CCD67B /* AlbumInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumInfo.swift; sourceTree = "<group>"; };
+		CC9866222ADF7C1700CCD67B /* Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Struct.swift; sourceTree = "<group>"; };
 		CC98E5EF2ADBEAE2004E1E11 /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
 		CC98E5F12ADC456C004E1E11 /* OrderListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListTableViewCell.swift; sourceTree = "<group>"; };
 		CC98E5F32ADC6C90004E1E11 /* DeliveryInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryInfoViewController.swift; sourceTree = "<group>"; };
@@ -218,7 +222,8 @@
 				8EB01A7D2AC2E60D00DA41DC /* ReviewListTableViewCell.swift */,
 				8E0127302ADC2DE4006CDDB1 /* Auth.swift */,
 				8E01272C2ADC2DA4006CDDB1 /* PhotoService.swift */,
-				8EB204F62ADF7E4300760A3F /* AlbumInfo.swift */,
+
+				CC98661E2ADF7BA400CCD67B /* AlbumInfo.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 		8EE728C12AC40BBD002C46B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CC9866222ADF7C1700CCD67B /* Struct.swift */,
 				8EE728C22AC40BF4002C46B3 /* LoginModel.swift */,
 				8EE728C42AC40C63002C46B3 /* SignupModel.swift */,
 			);
@@ -639,6 +645,7 @@
 				CC334FE12AD3F993000243B5 /* Match.swift in Sources */,
 				8E146DA02ADE76820002A120 /* QnaWriteViewController.swift in Sources */,
 				8E7B41842AC04C6F00560B86 /* PrivacyPolicyViewController.swift in Sources */,
+				CC9866232ADF7C1700CCD67B /* Struct.swift in Sources */,
 				8E0127272ADC0C25006CDDB1 /* UserInfoData.swift in Sources */,
 				8EE728C52AC40C63002C46B3 /* SignupModel.swift in Sources */,
 				8E7539E12ABBFB06004F979D /* CustomerServiceViewController.swift in Sources */,
@@ -683,6 +690,7 @@
 				8E7B41892AC052FD00560B86 /* NoticeViewController.swift in Sources */,
 				8EE855F52AD06B38007ECE13 /* EditHomeTableViewCell.swift in Sources */,
 				8EA5A1C62AB18E2100AAE23C /* WDFont.swift in Sources */,
+				CC98661F2ADF7BA400CCD67B /* AlbumInfo.swift in Sources */,
 				8EE855F72AD06B42007ECE13 /* EditOtherAdressTableViewCell.swift in Sources */,
 				8E546DF72AC13C8B00DD353E /* ShowNoticeViewController.swift in Sources */,
 				8E7539DF2ABBFB06004F979D /* MyReviewViewController.swift in Sources */,

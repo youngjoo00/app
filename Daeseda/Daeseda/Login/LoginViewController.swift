@@ -89,6 +89,7 @@ class LoginViewController: UIViewController {
                     if let token = response.value?.token {
                         UserTokenManager.shared.saveToken(token: token)
                         print("토큰 값 : \(token)")
+                        print("로그인 성공")
                         
                         mainVC.modalPresentationStyle = .fullScreen
                         self.present(mainVC, animated: true, completion: nil)

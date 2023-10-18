@@ -279,6 +279,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="설정 주소 &gt;"/>
+                                <connections>
+                                    <action selector="goAddress:" destination="np5-Y3-bLw" eventType="touchUpInside" id="Igd-ZF-wy8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8B6-LV-DaF"/>

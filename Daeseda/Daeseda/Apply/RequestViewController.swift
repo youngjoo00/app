@@ -9,23 +9,6 @@ import UIKit
 import Alamofire
 
 
-struct ClothesCount: Codable {
-    let clothes: Clothes
-    let count: Int
-}
-
-struct Clothes: Codable {
-    let clothesId: Int
-    let clothesName: String
-    let categoryId: Int
-}
-
-struct Category : Codable {
-    let categoryId : Int
-    let categoryName : String
-}
-
-
 class RequestViewController: UIViewController {
     
     override func viewDidLoad() {
