@@ -300,6 +300,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="MainTabBar" automaticallyAdjustsScrollViewInsets="NO" id="KXF-dI-knK" customClass="MainTabBarViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="pqQ-h3-bAp"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ben-D3-uJd">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -770,7 +771,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="l1j-Qo-2Vh" kind="relationship" relationship="rootViewController" id="h6Z-pW-6wN"/>
+                        <segue destination="l1j-Qo-2Vh" kind="relationship" relationship="rootViewController" id="R4n-yv-ODz"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="btm-HY-ld1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2826,9 +2827,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQa-MK-MbH">
-                                <rect key="frame" x="16" y="322.66666666666669" width="75" height="50.333333333333314"/>
+                                <rect key="frame" x="16" y="322.66666666666669" width="149.66666666666666" height="50.333333333333314"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Q&amp;A">
+                                <buttonConfiguration key="configuration" style="filled" title="Q&amp;A 게시판">
                                     <fontDescription key="titleFontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="25"/>
                                     <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2842,7 +2843,7 @@
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oAV-MI-aV9">
-                                <rect key="frame" x="342.66666666666669" y="255.33333333333334" width="12.333333333333314" height="16.666666666666657"/>
+                                <rect key="frame" x="342.66666666666669" y="255.33333333333329" width="12.333333333333314" height="16.666666666666828"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BFa-1L-lw4">
@@ -4078,14 +4079,6 @@
                                     <constraint firstAttribute="height" constant="3" id="xHs-vg-CAE"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="내용" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l4k-8s-k6t">
-                                <rect key="frame" x="16" y="216" width="343" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="Suz-hH-6iQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="제목" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RK7-LX-gMo">
                                 <rect key="frame" x="16" y="158" width="343" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -4096,27 +4089,35 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="내용" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KeZ-pb-LkX">
+                                <rect key="frame" x="16" y="216" width="343" height="546"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YFM-CL-SHv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="YFM-CL-SHv" firstAttribute="bottom" secondItem="KeZ-pb-LkX" secondAttribute="bottom" constant="16" id="5sC-9W-aQ8"/>
                             <constraint firstItem="RK7-LX-gMo" firstAttribute="leading" secondItem="YFM-CL-SHv" secondAttribute="leading" constant="16" id="8wz-hl-Dob"/>
                             <constraint firstItem="Nzq-dw-ap6" firstAttribute="leading" secondItem="YFM-CL-SHv" secondAttribute="leading" id="DyH-sO-oZT"/>
                             <constraint firstItem="R6U-E9-rbR" firstAttribute="leading" secondItem="YFM-CL-SHv" secondAttribute="leading" constant="16" id="E1h-B2-I0N"/>
                             <constraint firstItem="Nzq-dw-ap6" firstAttribute="trailing" secondItem="YFM-CL-SHv" secondAttribute="trailing" id="Hck-Py-uqW"/>
                             <constraint firstItem="Nzq-dw-ap6" firstAttribute="top" secondItem="RK7-LX-gMo" secondAttribute="bottom" constant="5" id="HsB-pS-Y10"/>
-                            <constraint firstItem="l4k-8s-k6t" firstAttribute="top" secondItem="Nzq-dw-ap6" secondAttribute="bottom" constant="16" id="Ien-We-gCz"/>
+                            <constraint firstItem="KeZ-pb-LkX" firstAttribute="top" secondItem="Nzq-dw-ap6" secondAttribute="bottom" constant="16" id="Ysz-R5-n6R"/>
+                            <constraint firstItem="YFM-CL-SHv" firstAttribute="trailing" secondItem="KeZ-pb-LkX" secondAttribute="trailing" constant="16" id="b6H-c9-ZdI"/>
                             <constraint firstItem="YFM-CL-SHv" firstAttribute="trailing" secondItem="RK7-LX-gMo" secondAttribute="trailing" constant="16" id="i5Z-tV-hoJ"/>
-                            <constraint firstItem="l4k-8s-k6t" firstAttribute="leading" secondItem="YFM-CL-SHv" secondAttribute="leading" constant="16" id="iU9-Fc-bBr"/>
                             <constraint firstItem="R6U-E9-rbR" firstAttribute="top" secondItem="YFM-CL-SHv" secondAttribute="top" constant="14" id="quq-Ys-EqO"/>
-                            <constraint firstItem="YFM-CL-SHv" firstAttribute="trailing" secondItem="l4k-8s-k6t" secondAttribute="trailing" constant="16" id="rU8-KW-nBL"/>
+                            <constraint firstItem="KeZ-pb-LkX" firstAttribute="leading" secondItem="YFM-CL-SHv" secondAttribute="leading" constant="16" id="tLN-OB-9xn"/>
                             <constraint firstItem="RK7-LX-gMo" firstAttribute="top" secondItem="R6U-E9-rbR" secondAttribute="bottom" constant="16" id="yRf-n9-cXL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Q&amp;A" id="Gc0-KI-7Kf"/>
                     <connections>
                         <outlet property="qnaWriteCategoryTF" destination="R6U-E9-rbR" id="t4a-Ol-SUC"/>
-                        <outlet property="qnaWriteContentTF" destination="l4k-8s-k6t" id="eKL-Jq-kVL"/>
+                        <outlet property="qnaWriteContentTV" destination="KeZ-pb-LkX" id="Qpq-CW-LH3"/>
                         <outlet property="qnaWriteTitleTF" destination="RK7-LX-gMo" id="gLf-LM-dbT"/>
                     </connections>
                 </viewController>

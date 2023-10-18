@@ -10,13 +10,21 @@ struct QnaWriteData: Codable {
 class QnaWriteViewController: UIViewController {
     
     let url = "http://localhost:8888/board/register"
+    let textViewPlaceHolder = "텍스트를 입력하세요"
     
+    @IBOutlet weak var qnaWriteContentTV: UITextView!
     @IBOutlet weak var qnaWriteCategoryTF: UITextField!
-    @IBOutlet weak var qnaWriteContentTF: UITextField!
     @IBOutlet weak var qnaWriteTitleTF: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.qnaWriteContentTV.layer.borderWidth = 1.0
+        self.qnaWriteContentTV.layer.borderColor = UIColor.lightGray.cgColor
+        
+        // 텍스트 뷰에 플레이스홀더 기능 추가
+        qnaWriteContentTV.addPlaceHolder(textViewPlaceHolder)
+        qnaWriteContentTV.delegate = self
         
         let qnaWritePostBtnItem = UIBarButtonItem(
             title: "등록",
@@ -31,7 +39,7 @@ class QnaWriteViewController: UIViewController {
         // 텍스트 필드에서 값을 가져와서 QnaWriteData 구조체에 할당
         guard let category = qnaWriteCategoryTF.text,
               let title = qnaWriteTitleTF.text,
-              let content = qnaWriteContentTF.text else {
+              let content = qnaWriteContentTV.text, content != textViewPlaceHolder else {
             print("모든 필드를 채워주세요.")
             return
         }
@@ -53,6 +61,30 @@ class QnaWriteViewController: UIViewController {
                 }
         } else {
             print("Token not available.")
+        }
+    }
+}
+
+// UITextViewDelegate를 활용하여 플레이스홀더 처리
+extension UITextView {
+    func addPlaceHolder(_ placeholder: String) {
+        self.text = placeholder
+        self.textColor = UIColor.lightGray
+    }
+}
+
+extension QnaWriteViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == textViewPlaceHolder {
+            textView.text = ""
+            textView.textColor = UIColor.black
+        }
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = textViewPlaceHolder
+            textView.textColor = UIColor.lightGray
         }
     }
 }
