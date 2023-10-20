@@ -12,7 +12,6 @@ class QnaTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var isPublicLabel: UILabel!
     @IBOutlet weak var comentLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     

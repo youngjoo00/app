@@ -68,6 +68,12 @@ class AddressSearchViewController: UIViewController {
         moreAdressVC.zonecode = zonecode
         navigationController?.pushViewController(moreAdressVC, animated: true)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 탭 바를 숨깁니다.
+        tabBarController?.tabBar.isHidden = true
+    }
 }
 
 // 주소 검색 후 선택하였을 경우 호출
