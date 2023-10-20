@@ -18,9 +18,6 @@ class MoreAdressViewController: UIViewController {
     
     let url = "http://localhost:8888/users/address/create"
     
-    @IBOutlet weak var moreAdressStackView: UIStackView!
-    @IBOutlet weak var moreAdressOtherBtn: UIButton!
-    @IBOutlet weak var moreAdressHomeBtn: UIButton!
     @IBOutlet weak var moreAdressNicknameTF: UITextField!
     @IBOutlet weak var moreAdressTF: UITextField!
     @IBOutlet weak var moreAdressLabel: UILabel!
@@ -40,38 +37,6 @@ class MoreAdressViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
         view.addGestureRecognizer(tapGesture)
         
-        removeBorderFromButton(moreAdressHomeBtn)
-        removeBorderFromButton(moreAdressOtherBtn)
-        
-    }
-    
-    
-    @IBAction func MoreAdressHomeBtn(_ sender: UIButton) {
-        if isHomeButtonSelected {
-            return
-        }
-        
-        isHomeButtonSelected = true
-        isOtherButtonSelected = false
-        isHome = true
-        addBorderToButton(moreAdressHomeBtn)
-        removeBorderFromButton(moreAdressOtherBtn)
-        
-        moreAdressNicknameTF.isHidden = true
-    }
-    
-    @IBAction func MoreAdressOtherBtn(_ sender: UIButton) {
-        if isOtherButtonSelected {
-            return
-        }
-        
-        isHomeButtonSelected = false
-        isOtherButtonSelected = true
-        isHome = false
-        addBorderToButton(moreAdressOtherBtn)
-        removeBorderFromButton(moreAdressHomeBtn)
-        
-        moreAdressNicknameTF.isHidden = false
     }
     
     
@@ -102,7 +67,7 @@ class MoreAdressViewController: UIViewController {
                             
                             // 주소 등록이 완료된 후
                             NotificationCenter.default.post(name: NSNotification.Name("AddressDataUpdated"), object: nil)
-
+                            
                             self.navigationController?.popToRootViewController(animated: true)
                             
                         case .failure(let error):

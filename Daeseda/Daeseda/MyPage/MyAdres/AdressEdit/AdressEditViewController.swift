@@ -7,8 +7,6 @@ class AdressEditViewController: UIViewController {
     
     var selectedIndexPath: IndexPath?
     var addressData = [Address]()
-    var homeTitle = "우리 집"
-    var homeAddress = "서울시 노원구 초안산로 12"
     
     @IBOutlet weak var addressEditTableView: UITableView!
     
@@ -54,24 +52,12 @@ class AdressEditViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let editMoreAddressVC = storyboard.instantiateViewController(withIdentifier: "EditMoreAdress") as? EditMoreAdressViewController {
-            if tappedIndexPath.row == 0 {
-                // 첫 번째 셀 (집)을 편집하는 경우
-                editMoreAddressVC.indexPath = tappedIndexPath
-                editMoreAddressVC.titleText = homeTitle
-                editMoreAddressVC.adressText = homeAddress
-                editMoreAddressVC.adressText = homeAddress
-                editMoreAddressVC.isHome = true
-                editMoreAddressVC.nickname = nil
-            } else {
-                // 다른 주소 셀을 편집하는 경우
-                let otherAddressIndex = tappedIndexPath.row - 1
-                editMoreAddressVC.indexPath = tappedIndexPath
-                editMoreAddressVC.titleText = addressData[otherAddressIndex].addressName
-                editMoreAddressVC.adressText = addressData[otherAddressIndex].addressDetail
-                editMoreAddressVC.adressText = addressData[otherAddressIndex].addressDetail
-                editMoreAddressVC.isHome = false
-                editMoreAddressVC.nickname = addressData[otherAddressIndex].addressName
-            }
+            let otherAddressIndex = tappedIndexPath.row
+            
+            editMoreAddressVC.indexPath = tappedIndexPath
+            editMoreAddressVC.titleText = addressData[otherAddressIndex].addressName
+            editMoreAddressVC.adressText = addressData[otherAddressIndex].addressDetail
+            editMoreAddressVC.nickname = addressData[otherAddressIndex].addressName
             
             self.navigationController?.pushViewController(editMoreAddressVC, animated: true)
         }
@@ -90,39 +76,35 @@ class AdressEditViewController: UIViewController {
             // 주소를 삭제하는 작업을 수행
             // 작업 후 테이블 뷰를 업데이트해야 할 수 있습니다.
             
-            if indexPath.row == 0 {
-                self?.homeTitle = "우리 집"
-                self?.homeAddress = ""
-            } else {
-                let otherAddressIndex = indexPath.row - 1
-                self?.addressData.remove(at: otherAddressIndex)
+            let otherAddressIndex = indexPath.row
+            
+            self?.addressData.remove(at: otherAddressIndex)
+            
+            let delUrl = "http://localhost:8888/users/address/delete"
+            
+            // 1. 토큰 가져오기
+            if let token = UserTokenManager.shared.getToken() {
                 
-                let delUrl = "http://localhost:8888/users/address/delete"
+                // 2. Bearer Token을 설정합니다.
+                let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
                 
-                // 1. 토큰 가져오기
-                if let token = UserTokenManager.shared.getToken() {
-                    
-                    // 2. Bearer Token을 설정합니다.
-                    let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
-                    
-                    // 3. 서버에서 삭제 요청을 보냅니다.
-                    AF.request(delUrl, method: .delete, headers: headers).response { response in
-                        switch response.result {
-                        case .success:
-                            // 요청이 성공한 경우
-                            print("userDel Successful")
-                            
-                            // 토큰 삭제
-                            UserTokenManager.shared.clearToken()
-                            
-                        case .failure(let error):
-                            // 요청이 실패한 경우
-                            print("Error: \(error.localizedDescription)")
-                        }
+                // 3. 서버에서 삭제 요청을 보냅니다.
+                AF.request(delUrl, method: .delete, headers: headers).response { response in
+                    switch response.result {
+                    case .success:
+                        // 요청이 성공한 경우
+                        print("userDel Successful")
+                        
+                        // 토큰 삭제
+                        UserTokenManager.shared.clearToken()
+                        
+                    case .failure(let error):
+                        // 요청이 실패한 경우
+                        print("Error: \(error.localizedDescription)")
                     }
-                } else {
-                    print("Token not available.")
                 }
+            } else {
+                print("Token not available.")
             }
             
             // 삭제 작업 후 테이블 뷰 업데이트
@@ -134,7 +116,13 @@ class AdressEditViewController: UIViewController {
         alertController.addAction(deleteAction)
         
         // 알림창 표시
-        present(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // 탭 바를 숨깁니다.
+        tabBarController?.tabBar.isHidden = true
     }
 }
 
@@ -154,34 +142,22 @@ extension AdressEditViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 + addressData.count
+        return addressData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let editHomeCell = tableView.dequeueReusableCell(withIdentifier: "editHomeCell", for: indexPath) as! EditHomeTableViewCell
-            
-            editHomeCell.editHomeTitleLabel.text = homeTitle
-            editHomeCell.editHomeAdressLabel.text = homeAddress
-            
-            let houseImage = UIImage(systemName: "house")
-            editHomeCell.editHomeImageView.image = houseImage
-            
-            return editHomeCell
-        } else {
-            let editOtherCell = tableView.dequeueReusableCell(withIdentifier: "editOtherCell", for: indexPath) as! EditOtherAdressTableViewCell
-            
-            let otherAddressIndex = indexPath.row - 1
-            editOtherCell.editOtherTitleLabel.text = addressData[otherAddressIndex].addressName
-            editOtherCell.editOtherAdressLabel.text = addressData[otherAddressIndex].addressDetail
-            
-            let addressImage = UIImage(systemName: "mappin.and.ellipse")
-            editOtherCell.editOtherImageView.image = addressImage
-            
-            editOtherCell.editOtherEditBtn.tag = indexPath.row
-            editOtherCell.editOtherDelBtn.tag = indexPath.row
-            
-            return editOtherCell
-        }
+        let editOtherCell = tableView.dequeueReusableCell(withIdentifier: "editOtherCell", for: indexPath) as! EditOtherAdressTableViewCell
+        
+        let otherAddressIndex = indexPath.row
+        editOtherCell.editOtherTitleLabel.text = addressData[otherAddressIndex].addressName
+        editOtherCell.editOtherAdressLabel.text = addressData[otherAddressIndex].addressDetail
+        
+        let addressImage = UIImage(systemName: "mappin.and.ellipse")
+        editOtherCell.editOtherImageView.image = addressImage
+        
+        editOtherCell.editOtherEditBtn.tag = indexPath.row
+        editOtherCell.editOtherDelBtn.tag = indexPath.row
+        
+        return editOtherCell
     }
 }

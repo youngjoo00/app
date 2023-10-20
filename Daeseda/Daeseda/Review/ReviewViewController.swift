@@ -134,10 +134,10 @@ extension ReviewViewController: UITableViewDataSource {
         reviewListCell.reviewListTextLabel.text = review.reviewContent
         
         // 버튼의 타이틀을 라벨 값으로 설정
-        let selectedCategory = "category"
+        let selectedCategory = review.categories
         reviewListCell.reviewListCategoryButton.setTitle(selectedCategory, for: .normal)
         
-        reviewListCell.reviewListNicknameLabel.text = "\(review.userId)"
+        reviewListCell.reviewListNicknameLabel.text = review.userNickname
         
         // 별점 이미지 뷰 채우기
         let rating = review.rating ?? 0.0 // 별점이 null인 경우를 고려

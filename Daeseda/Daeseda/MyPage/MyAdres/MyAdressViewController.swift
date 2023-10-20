@@ -5,9 +5,7 @@ class MyAdressViewController: UIViewController {
     
     let url = "http://localhost:8888/users/address/list"
     var selectedIndexPath: IndexPath?
-    var adressArr = [Address]()
-    let homeTitle = "우리 집"
-    let homeAdress = "서울시 노원구 초안산로 12"
+    var addressArr = [Address]()
     
     @IBOutlet weak var myAdresSearchBar: UISearchBar!
     @IBOutlet weak var myAdressTableView: UITableView!
@@ -23,15 +21,14 @@ class MyAdressViewController: UIViewController {
             navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
         }
         
-        let adressEditBarBtn = UIBarButtonItem(
+        let addressEditBarBtn = UIBarButtonItem(
             title: "편집",
             style: .plain,
             target: self,
-            action: #selector(adressEditBarBtnTab)
+            action: #selector(addressEditBarBtnTab)
         )
         
-        
-        navigationItem.rightBarButtonItem = adressEditBarBtn
+        navigationItem.rightBarButtonItem = addressEditBarBtn
         
         selectedIndexPath = IndexPath(row: 0, section: 0)
         
@@ -39,17 +36,17 @@ class MyAdressViewController: UIViewController {
         myAdressTableView.dataSource = self
         myAdresSearchBar.delegate = self
         
-        getAdressData()
+        getAddressesData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleAddressDataUpdated(_:)), name: NSNotification.Name("AddressDataUpdated"), object: nil)
     }
     
     @objc func handleAddressDataUpdated(_ notification: Notification) {
-        getAdressData()
+        getAddressesData()
         myAdressTableView.reloadData()
     }
     
-    func getAdressData() {
+    func getAddressesData() {
         if let token = UserTokenManager.shared.getToken() {
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
             
@@ -57,7 +54,7 @@ class MyAdressViewController: UIViewController {
                 switch response.result {
                 case .success(let addressData):
                     // 요청이 성공한 경우
-                    self.adressArr = addressData
+                    self.addressArr = addressData
                     self.myAdressTableView.reloadData() // 테이블 뷰를 업데이트
                 case .failure(let error):
                     // 요청이 실패한 경우
@@ -69,10 +66,9 @@ class MyAdressViewController: UIViewController {
         }
     }
     
-    
-    @objc func adressEditBarBtnTab(_ sender: UIBarButtonItem) {
-        guard let adressEditVC = storyboard?.instantiateViewController(withIdentifier: "AdressEdit") as? AdressEditViewController else { return }
-        navigationController?.pushViewController(adressEditVC, animated: true)
+    @objc func addressEditBarBtnTab(_ sender: UIBarButtonItem) {
+        guard let addressEditVC = storyboard?.instantiateViewController(withIdentifier: "AdressEdit") as? AdressEditViewController else { return }
+        navigationController?.pushViewController(addressEditVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,8 +92,6 @@ extension MyAdressViewController: UITableViewDelegate {
             selectedIndexPath = indexPath
         }
         myAdressTableView.reloadData()
-        
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -111,49 +105,26 @@ extension MyAdressViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // 주소 데이터의 개수 + 1(우리 집)을 반환
-        return adressArr.count + 1
+        return addressArr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            // 우리 집 주소를 표시
-            let myHomeCell = tableView.dequeueReusableCell(withIdentifier: "myHomeCell", for: indexPath) as! MyHomeTableViewCell
-            
-            myHomeCell.homeTitleLabel.text = homeTitle // 고정값 대신에 "우리 집" 표시
-            myHomeCell.homeAdressLabel.text = homeAdress // 우리 집의 주소는 서버에서 받은 데이터로 표시
-            
-            let houseImage = UIImage(systemName: "house")
-            let checkImage = UIImage(systemName: "checkmark.circle.fill")
-            
-            myHomeCell.homeImageView.image = houseImage
-            myHomeCell.homeCheckImageView.isHidden = selectedIndexPath != indexPath
-            myHomeCell.homeCheckImageView.image = checkImage
-            
-            return myHomeCell
-        } else {
-            // 다른 주소들을 표시
-            let myAdressCell = tableView.dequeueReusableCell(withIdentifier: "myAdressCell", for: indexPath) as! MyAdressTableViewCell
-            
-            // 섹션을 2개 사용해서 home값을 제외한 인덱스를 새로 정의
-            let otherAdressIndex = indexPath.row - 1
-            
-            // 서버에서 받은 주소 데이터를 사용
-            myAdressCell.adressTitleLabel.text = adressArr[otherAdressIndex].addressName
-            myAdressCell.adressAdressLabel.text = adressArr[otherAdressIndex].addressDetail
-            
-            let adressImage = UIImage(systemName: "mappin.and.ellipse")
-            let checkImage = UIImage(systemName: "checkmark.circle.fill")
-            
-            myAdressCell.adressImageView.image = adressImage
-            myAdressCell.adressCheckImageView.isHidden = selectedIndexPath != indexPath
-            myAdressCell.adressCheckImageView.image = checkImage
-            
-            return myAdressCell
-        }
+        let myAdressCell = tableView.dequeueReusableCell(withIdentifier: "myAdressCell", for: indexPath) as! MyAdressTableViewCell
+        
+        // 서버에서 받은 주소 데이터를 사용
+        myAdressCell.adressTitleLabel.text = addressArr[indexPath.row].addressName
+        myAdressCell.adressAdressLabel.text = addressArr[indexPath.row].addressDetail
+        
+        let adressImage = UIImage(systemName: "mappin.and.ellipse")
+        let checkImage = UIImage(systemName: "checkmark.circle.fill")
+        
+        myAdressCell.adressImageView.image = adressImage
+        myAdressCell.adressCheckImageView.isHidden = selectedIndexPath != indexPath
+        myAdressCell.adressCheckImageView.image = checkImage
+        
+        return myAdressCell
     }
 }
-
 
 extension MyAdressViewController: UISearchBarDelegate {
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {

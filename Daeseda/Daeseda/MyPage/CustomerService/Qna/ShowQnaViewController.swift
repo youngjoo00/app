@@ -1,20 +1,6 @@
 import UIKit
 import Alamofire
 
-struct ComentData: Codable {
-    var replyId: Int
-    var userId: Int
-    var boardId: Int
-    var replyContent: String
-    var regDate: String
-    var modDate: String
-}
-
-struct ComentPostData: Codable {
-    var boardId: Int
-    var replyContent: String
-}
-
 class ShowQnaViewController: UIViewController {
     
     @IBOutlet weak var comentWritePostBtn: UIButton!
@@ -26,8 +12,8 @@ class ShowQnaViewController: UIViewController {
     @IBOutlet weak var qnaText: UILabel!
     @IBOutlet weak var qnaTime: UILabel!
     @IBOutlet weak var qnaNickname: UILabel!
-    @IBOutlet weak var isPublic: UILabel!
     @IBOutlet weak var qnaComentCount: UILabel!
+    @IBOutlet weak var qnaCategory: UILabel!
     
     var comentList : [ComentData] = []
     var qnaTitleString: String?
@@ -35,7 +21,7 @@ class ShowQnaViewController: UIViewController {
     var qnaTextString: String?
     var qnaTimeString: String?
     var qnaNicknameString: String?
-    var isPublicString: String?
+    var qnaCategoryString: String?
     var qnaComentCountString: String?
     var showQnaId: Int?
     var originalStackViewBottomConstraint: NSLayoutConstraint?
@@ -84,7 +70,7 @@ class ShowQnaViewController: UIViewController {
         qnaText.text = qnaTextString
         qnaTime.text = qnaTimeString
         qnaNickname.text = qnaNicknameString
-        isPublic.text = isPublicString
+        qnaCategory.text = qnaCategoryString
         qnaComentCount.text = "댓글 " + (qnaComentCountString ?? "0")
     }
     
@@ -213,7 +199,7 @@ extension ShowQnaViewController: UITableViewDataSource {
         
         comentCell.comentDateLabel.text = formatDate(dateString: coments.regDate)
         comentCell.comentTextLabel.text = coments.replyContent
-        comentCell.comentNicknameLabel.text = "\(coments.userId)"
+        comentCell.comentNicknameLabel.text = coments.userNickname
         comentCell.comentTimeLabel.text = formatTime(timeString: coments.regDate)
         
         return comentCell

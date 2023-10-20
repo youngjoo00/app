@@ -4,17 +4,13 @@ class EditMoreAdressViewController: UIViewController {
     
     var indexPath: IndexPath?
     var address: String?
-    var isEditHome: Bool?
     var isEditHomeButtonSelected = false
     var isEditOtherButtonSelected = false
     
     var titleText: String?
     var adressText: String?
-    var isHome: Bool?
     var nickname: String?
     
-    @IBOutlet weak var editMoreAdressOtherBtn: UIButton!
-    @IBOutlet weak var editMoreAdressHomeBtn: UIButton!
     @IBOutlet weak var editMoreAdressNicknameTF: UITextField!
     @IBOutlet weak var editMoreAdressTF: UITextField!
     @IBOutlet weak var editMoreAdressLabel: UILabel!
@@ -27,7 +23,6 @@ class EditMoreAdressViewController: UIViewController {
         editMoreAdressTitle.text = titleText
         editMoreAdressLabel.text = adressText
         editMoreAdressTF.text = adressText
-        isEditHome = isHome
         editMoreAdressNicknameTF.text = nickname
         
         editMoreAdressNicknameTF.delegate = self
@@ -36,50 +31,13 @@ class EditMoreAdressViewController: UIViewController {
         // 배경을 터치했을 때 키보드 내리기 위한 UITapGestureRecognizer 추가
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBackgroundTap))
         view.addGestureRecognizer(tapGesture)
+
         
-        if isEditHome == true {
-            addBorderToButton(editMoreAdressHomeBtn)
-            removeBorderFromButton(editMoreAdressOtherBtn)
-            editMoreAdressNicknameTF.isHidden = true
-        } else {
-            addBorderToButton(editMoreAdressOtherBtn)
-            removeBorderFromButton(editMoreAdressHomeBtn)
-        }
-        
-    }
-    
-    @IBAction func editMoreAdressHomeBtn(_ sender: UIButton) {
-        if isEditHomeButtonSelected {
-            return
-        }
-        
-        isEditHomeButtonSelected = true
-        isEditOtherButtonSelected = false
-        isEditHome = true
-        addBorderToButton(editMoreAdressHomeBtn)
-        removeBorderFromButton(editMoreAdressOtherBtn)
-        
-        editMoreAdressNicknameTF.isHidden = true
-    }
-    
-    @IBAction func editMoreAdressOtherBtn(_ sender: UIButton) {
-        if isEditOtherButtonSelected {
-            return
-        }
-        
-        isEditHomeButtonSelected = false
-        isEditOtherButtonSelected = true
-        isEditHome = false
-        addBorderToButton(editMoreAdressOtherBtn)
-        removeBorderFromButton(editMoreAdressHomeBtn)
-        
-        editMoreAdressNicknameTF.isHidden = false
     }
     
     @IBAction func editMoreAdressComplete(_ sender: UIButton) {
 
         print(editMoreAdressTF.text!)
-        print(isEditHome!)
         print(editMoreAdressNicknameTF.text!)
         // 이전 화면으로 돌아가기
         self.navigationController?.popViewController(animated: true)
