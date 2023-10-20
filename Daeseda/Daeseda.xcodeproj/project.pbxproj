@@ -11,6 +11,7 @@
 		8E01272D2ADC2DA4006CDDB1 /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E01272C2ADC2DA4006CDDB1 /* PhotoService.swift */; };
 		8E0127312ADC2DE4006CDDB1 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0127302ADC2DE4006CDDB1 /* Auth.swift */; };
 		8E146DA02ADE76820002A120 /* QnaWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E146D9F2ADE76820002A120 /* QnaWriteViewController.swift */; };
+		8E4393A82AE2900700AE6E9F /* QnaEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4393A72AE2900700AE6E9F /* QnaEditViewController.swift */; };
 		8E546DF72AC13C8B00DD353E /* ShowNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E546DF62AC13C8B00DD353E /* ShowNoticeViewController.swift */; };
 		8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */; };
 		8E7539D22ABBFAF3004F979D /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */; };
@@ -100,6 +101,7 @@
 		8E01272C2ADC2DA4006CDDB1 /* PhotoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		8E0127302ADC2DE4006CDDB1 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		8E146D9F2ADE76820002A120 /* QnaWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnaWriteViewController.swift; sourceTree = "<group>"; };
+		8E4393A72AE2900700AE6E9F /* QnaEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnaEditViewController.swift; sourceTree = "<group>"; };
 		8E546DF62AC13C8B00DD353E /* ShowNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNoticeViewController.swift; sourceTree = "<group>"; };
 		8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +211,14 @@
 			path = QnaWrite;
 			sourceTree = "<group>";
 		};
+		8E4393A92AE2901000AE6E9F /* QnaEdit */ = {
+			isa = PBXGroup;
+			children = (
+				8E4393A72AE2900700AE6E9F /* QnaEditViewController.swift */,
+			);
+			path = QnaEdit;
+			sourceTree = "<group>";
+		};
 		8E7539CE2ABBFAF3004F979D /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +307,7 @@
 				8E94FFF52AC1D2B5006B8E9E /* ShowQnaViewController.swift */,
 				8E94FFF92AC1F5D0006B8E9E /* ComentTableViewCell.swift */,
 				8E146D9E2ADE76650002A120 /* QnaWrite */,
+				8E4393A92AE2901000AE6E9F /* QnaEdit */,
 			);
 			path = Qna;
 			sourceTree = "<group>";
@@ -647,6 +658,7 @@
 				8E146DA02ADE76820002A120 /* QnaWriteViewController.swift in Sources */,
 				8E7B41842AC04C6F00560B86 /* PrivacyPolicyViewController.swift in Sources */,
 				CC9866232ADF7C1700CCD67B /* Struct.swift in Sources */,
+				8E4393A82AE2900700AE6E9F /* QnaEditViewController.swift in Sources */,
 				8EE728C52AC40C63002C46B3 /* SignupModel.swift in Sources */,
 				8E7539E12ABBFB06004F979D /* CustomerServiceViewController.swift in Sources */,
 				CC98E5F42ADC6C90004E1E11 /* DeliveryInfoViewController.swift in Sources */,
