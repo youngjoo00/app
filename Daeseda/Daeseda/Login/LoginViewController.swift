@@ -97,6 +97,7 @@ class LoginViewController: UIViewController {
                     }
                 case .failure(let error):
                     print("Error: \(error)")
+                    self.errorMessage.text = "아이디 혹은 비밀번호가 일치하지 않습니다."
                 }
             }
 

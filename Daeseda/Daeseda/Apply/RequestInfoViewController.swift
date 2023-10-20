@@ -19,7 +19,7 @@ class RequestInfoViewController: UIViewController {
         
         addressTextField.isEnabled = false
         
-        print(selectedClothesCount)
+        print(selectClothesCount)
     }
     
     var selectDate : String = ""
@@ -27,12 +27,12 @@ class RequestInfoViewController: UIViewController {
     var selectWay : String = ""
     var deliveryDate : String = ""
     var totalPrdeliveryLocationice : String = ""
-    var selectedClothesCount: [ClothesCount] = []
     var deliveryLocation : String = ""
-    var selectedAddress: [Address] = []
+//    var selectClothesCount : [ClothesCount] = []
     
-    var addressInfo = Address(addressId: 0, addressName: "집", addressDetail: "경기도 동두천시", addressZipcode: "12345")
-    
+    var selectClothesCount = [ClothesCount(clothes: Clothes(clothesId: 0, clothesName: "", categoryId: 0), count: 0)]
+    var addressInfo = Address(addressId: 0, addressName: "", addressDetail: "", addressZipcode: "")
+        
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var addressDetailTextField: UITextField!
     @IBOutlet weak var placeTextField: UITextField!
@@ -47,32 +47,16 @@ class RequestInfoViewController: UIViewController {
     }
     
     @objc func addressNotification(_ notification: Notification) {
-        if let data = notification.userInfo as? [String: Any] {
-            if let address = data["address"] as? String,
-               let zonecode = data["zonecode"] as? String {
-                addressTextField.text = address
-                addressInfo = Address(addressId: 0, addressName: "", addressDetail: address, addressZipcode: zonecode)
-                self.dismiss(animated: true, completion: nil)
-                
-            }
-        }
+        addressInfo = notification.object as! Address
+        //        addressTextField.text = addressInfo.
+        print(notification.object)
+        print(addressInfo)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func goAddress(_ sender: Any) {
         guard let addressVC = storyboard?.instantiateViewController(withIdentifier: "MyAdress") as? MyAdressViewController else { return }
         self.present(addressVC, animated: true)
-    }
-    
-    @objc func postAddressData(_ notification: Notification) {
-        if let data = notification.userInfo as? [String: Any] {
-            if let address = data["address"] as? String,
-               let zonecode = data["zonecode"] as? String {
-                addressTextField.text = address
-                addressInfo = Address(addressId: 0, addressName: "", addressDetail: address, addressZipcode: zonecode)
-                self.dismiss(animated: true, completion: nil)
-                
-            }
-        }
     }
     
     func textLabel(){
@@ -128,38 +112,35 @@ class RequestInfoViewController: UIViewController {
         
         let alert = UIAlertController(title:"완료되었습니다!",message: "세탁 주문이 완료되었습니다. \n이후 결제를 진행해주세요.",preferredStyle: UIAlertController.Style.alert)
         
-        let newOrder = Order(address: addressInfo, clothesCount: selectedClothesCount, totalPrice: 0, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: totalPrdeliveryLocationice)
+        let newOrder = Order(address: addressInfo, clothesCount: selectClothesCount, totalPrice: 0, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: totalPrdeliveryLocationice)
         
-        
+        let url = "http://localhost:8888/orders/request"
+
         //확인 버튼 만들기
         let ok = UIAlertAction(title: "확인", style: .default, handler: { action in
-            //            AF.request(self.url, method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
-            //                .validate(statusCode: 200..<300)
-            //                .response { response in
-            //                    switch response.result {
-            //                    case .success:
-            //                        // status code만 뽑아오기
-            //                        if let statusCode = response.response?.statusCode {
-            //                            print("HTTP Status Code: \(statusCode)")
-            //                            print("response 란 무엇인가 : \(response)")
-            //                            print("response.response 란 무엇인가 : \(response.response!)")
-            //                            print("\n")
-            //                        }
-            //
-            //                        // 헤더 값 뽑아오기
-            //                        if let responseHeaders = response.response?.allHeaderFields as? [String: String] {
-            //                            for (key, value) in responseHeaders {
-            //                                print("Header \(key): \(value)")
-            //                            }
-            //                        }
-            //
-            //
-            //                    case .failure(let error):
-            //                        print("Error: \(error)")
-            //                    }
-            //                }
             
             print(newOrder)
+            
+            if let token = UserTokenManager.shared.getToken(){
+                let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+                
+                AF.request(url, method: .post, parameters: newOrder, encoder: JSONParameterEncoder.default, headers: headers)
+                    .validate(statusCode: 200..<300)
+                    .response { response in
+                        switch response.result {
+                        case .success:
+                            // status code만 뽑아오기
+                            if let statusCode = response.response?.statusCode {
+                                print("Success: \(statusCode)")
+                                print(newOrder)
+                            }
+                            
+                        case .failure(let error):
+                            print("Error: \(error)")
+                        }
+                    }
+            }
+            
         })
         
         //확인 버튼 경고창에 추가하기

@@ -101,6 +101,20 @@ class JoinEmailViewController: UIViewController {
         }
     }
     
+    @IBAction func sendCode(_ sender: Any) {
+        NetworkManager.shared.sendEmailForVerification(email: emailTextField.text!) { result in
+                switch result {
+                case .success(let verificationCode):
+                    // 서버로부터 받은 인증 코드를 처리
+                    print("서버에서 받은 인증 코드: \(verificationCode)")
+                    // 여기서는 인증 코드를 활용하여 이메일 인증 프로세스를 진행하면 됩니다.
+                case .failure(let error):
+                    // 에러 처리
+                    print("에러: \(error)")
+                }
+            }
+    }
+    
     // 입력이 끝난 후 중복 이메일 확인하는 코드 구현
 //    @IBAction func emailTextFieldDidEndOnExit(_ sender: UITextField) {
 //

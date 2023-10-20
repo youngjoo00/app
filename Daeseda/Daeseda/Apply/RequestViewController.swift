@@ -155,7 +155,7 @@ class RequestViewController: UIViewController {
         
         if let countText = self.countTextField.text, let count = Int(countText) {
             let clothesCount = [ClothesCount(clothes: clothes, count: count)]
-            requestInfoVC.selectedClothesCount = clothesCount
+            requestInfoVC.selectClothesCount = clothesCount
         } else {
             print("수량 int형 변형 오류")
         }

@@ -92,6 +92,10 @@ extension MyAdressViewController: UITableViewDelegate {
             selectedIndexPath = indexPath
         }
         myAdressTableView.reloadData()
+        
+        var postAdderssData = addressArr[indexPath.row]
+        
+        NotificationCenter.default.post(name:NSNotification.Name("postAddressNotification"), object: postAdderssData)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
