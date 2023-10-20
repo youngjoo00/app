@@ -14,8 +14,12 @@ class ShowQnaViewController: UIViewController {
     @IBOutlet weak var qnaNickname: UILabel!
     @IBOutlet weak var qnaComentCount: UILabel!
     @IBOutlet weak var qnaCategory: UILabel!
+    @IBOutlet weak var qnaEditBtn: UIButton!
+    @IBOutlet weak var qnaDelBtn: UIButton!
     
+    var qnaList : [QnaListData] = []
     var comentList : [ComentData] = []
+    var myInfo: UserInfoData?
     var qnaTitleString: String?
     var qnaDateString: String?
     var qnaTextString: String?
@@ -25,11 +29,11 @@ class ShowQnaViewController: UIViewController {
     var qnaComentCountString: String?
     var showQnaId: Int?
     var originalStackViewBottomConstraint: NSLayoutConstraint?
+    var isSettingMenuVisible = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        updateUI()
         
         comentTableView.dataSource = self
         comentTableView.delegate = self
@@ -37,6 +41,11 @@ class ShowQnaViewController: UIViewController {
         comentTableView.rowHeight = UITableView.automaticDimension
         comentTableView.estimatedRowHeight = UITableView.automaticDimension
         
+        qnaEditBtn.isHidden = true
+        qnaDelBtn.isHidden = true
+        
+        getQnaList()
+        getMyInfoData()
         getComent()
         
         // 키보드 관련 알림을 등록
@@ -54,7 +63,8 @@ class ShowQnaViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // 탭 바를 숨깁니다.
+        
+        getQnaList()
         tabBarController?.tabBar.isHidden = true
     }
     
@@ -64,15 +74,162 @@ class ShowQnaViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    @objc func showSettingMenu() {
+        isSettingMenuVisible.toggle() // 상태 변수를 토글
+        
+        // UI 업데이트
+        updateUI()
+    }
+    
+    @IBAction func qnaEditBtnTouch(_ sender: UIButton) {
+        // Storyboard에서 QnaEditVC의 스토리보드 식별자를 확인합니다.
+        let storyboard = UIStoryboard(name: "Main", bundle: nil) // Main은 사용 중인 스토리보드 이름에 따라 변경하세요.
+        
+        if let qnaEditVC = storyboard.instantiateViewController(withIdentifier: "QnaEdit") as? QnaEditViewController {
+            // QnaEditVC에 필요한 데이터를 전달 (예: qnaTitleString, qnaTextString 등)
+            qnaEditVC.qnaEditTitle = qnaTitleString
+            qnaEditVC.qnaEditContent = qnaTextString
+            qnaEditVC.qnaEditCategory = qnaCategoryString
+            qnaEditVC.qnaEditId = showQnaId
+            
+            // QnaEditVC로 화면 전환
+            navigationController?.pushViewController(qnaEditVC, animated: true)
+        }
+    }
+    
+    
+    @IBAction func qnaDelBtnTouch(_ sender: Any) {
+        showDeleteConfirmationAlert()
+    }
+    
+    func showDeleteConfirmationAlert() {
+        let alertController = UIAlertController(title: "게시글 삭제", message: "정말 게시글을 삭제하시겠습니까?", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+            self.performReviewDel()
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func performReviewDel() {
+        if let showQnaId = showQnaId {
+            let url = "http://localhost:8888/board/\(showQnaId)"
+            
+            if let token = UserTokenManager.shared.getToken() {
+                print("Token: \(token)")
+                
+                let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+                
+                AF.request(url, method: .delete, headers: headers).response { response in
+                    switch response.result {
+                    case .success:
+                        // 요청이 성공한 경우
+                        print("Qna Deleted Successfully")
+                        // 리뷰 삭제 후 리뷰 목록을 업데이트
+                        self.navigationController?.popViewController(animated: true)
+                    case .failure(let error):
+                        // 요청이 실패한 경우
+                        print("Error: \(error.localizedDescription)")
+                    }
+                }
+            } else {
+                print("Token not available.")
+            }
+        }
+    }
+    
+    func getQnaList() {
+        if let url = URL(string: "http://localhost:8888/board/list") {
+            AF.request(url).responseDecodable(of: [QnaListData].self) { response in
+                switch response.result {
+                case .success(let data):
+                    self.qnaList = data
+                    self.matchShowQnaData()
+                case .failure(let error):
+                    print("데이터 가져오기 실패: \(error)")
+                }
+            }
+        }
+    }
+    
+    func matchShowQnaData() {
+        if let showQnaId = showQnaId {
+            if let matchedQna = qnaList.first(where: { $0.boardId == showQnaId }) {
+                qnaTitleString = matchedQna.boardTitle
+                qnaDateString = formatDate(dateString: matchedQna.regDate)
+                qnaTextString = matchedQna.boardContent
+                qnaTimeString = formatTime(timeString: matchedQna.regDate)
+                qnaNicknameString = matchedQna.userNickname
+                qnaCategoryString = matchedQna.boardCategory
+                
+                updateUI()
+            }
+        }
+    }
+    
     func updateUI() {
         qnaTitle.text = qnaTitleString
         qnaDate.text = qnaDateString
         qnaText.text = qnaTextString
         qnaTime.text = qnaTimeString
         qnaNickname.text = qnaNicknameString
-        qnaCategory.text = qnaCategoryString
+        if let category = qnaCategoryString {
+            qnaCategory.text = "[\(category)]"
+        } else {
+            qnaCategory.text = "[카테고리 없음]"
+        }
+
         qnaComentCount.text = "댓글 " + (qnaComentCountString ?? "0")
+        
+        if let myNickname = myInfo?.userNickname {
+            if myNickname == qnaNicknameString {
+                
+                // 시스템 "ellipsis" 이미지를 사용
+                let ellipsisBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(showSettingMenu))
+                navigationItem.rightBarButtonItem = ellipsisBarButtonItem
+                
+                // 수정 및 삭제 버튼을 숨기거나 표시
+                qnaEditBtn.isHidden = !isSettingMenuVisible
+                qnaDelBtn.isHidden = !isSettingMenuVisible
+            }
+        }
+        
     }
+    
+    
+    
+    func getMyInfoData() {
+        let url = "http://localhost:8888/users/myInfo"
+        // 1. 토큰 가져오기
+        if let token = UserTokenManager.shared.getToken() {
+            print("Token: \(token)")
+            
+            // 2. Bearer Token을 설정합니다.
+            let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+            
+            // 3. 서버에서 유저 정보를 가져오는 요청
+            AF.request(url, headers: headers).responseDecodable(of: UserInfoData.self) { response in
+                switch response.result {
+                case .success(let userInfo):
+                    // 요청이 성공한 경우
+                    self.myInfo = userInfo
+                    self.updateUI()
+                case .failure(let error):
+                    // 요청이 실패한 경우
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
+        } else {
+            print("Token not available.")
+        }
+    }
+    
     
     func getComent() {
         if let url = URL(string: "http://localhost:8888/reply/list") {
@@ -149,9 +306,9 @@ class ShowQnaViewController: UIViewController {
         comentWriteTF.resignFirstResponder() // 현재 First Responder 해제
         comentWriteTF.text = ""
     }
-
     
-
+    
+    
     
     // 키보드가 나타날 때 스택 뷰를 올림
     @objc func keyboardWillShow(notification: NSNotification) {
