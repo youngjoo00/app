@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class JoinEmailViewController: UIViewController {
 
@@ -21,6 +22,8 @@ class JoinEmailViewController: UIViewController {
     @IBOutlet weak var emailErrorMessage: UILabel!
     
     var postId: String = ""
+    var postEmail: Email?
+    var checkEmail: CheckEmail?
     
     func label(){
         
@@ -102,27 +105,45 @@ class JoinEmailViewController: UIViewController {
     }
     
     @IBAction func sendCode(_ sender: Any) {
-        NetworkManager.shared.sendEmailForVerification(email: emailTextField.text!) { result in
-                switch result {
+        let url = "http://localhost:8888/users/mailAuthentication"
+        if let emailText = emailTextField.text {
+            postEmail = Email(userEmail: emailText)
+        }
+
+        
+        AF.request(url, method: .post, parameters: postEmail)
+            .responseString { response in
+                switch response.result {
                 case .success(let verificationCode):
-                    // 서버로부터 받은 인증 코드를 처리
-                    print("서버에서 받은 인증 코드: \(verificationCode)")
-                    // 여기서는 인증 코드를 활용하여 이메일 인증 프로세스를 진행하면 됩니다.
+                   print(verificationCode)
                 case .failure(let error):
-                    // 에러 처리
-                    print("에러: \(error)")
+                    print(error)
                 }
-            }
+        }
     }
     
-    // 입력이 끝난 후 중복 이메일 확인하는 코드 구현
-//    @IBAction func emailTextFieldDidEndOnExit(_ sender: UITextField) {
-//
-//    }
+    
+    @IBAction func checkEmail(_ sender: Any) {
+        let url = "http://localhost:8888/users/mailConfirm"
+        if let emailText = emailTextField.text, let codeText = emailTextField.text {
+            checkEmail = CheckEmail(userEmail: emailText, code: codeText)
+        }
 
+        
+        AF.request(url, method: .post, parameters: checkEmail)
+            .responseString { response in
+                switch response.result {
+                case .success(let verificationCode):
+                   print(verificationCode)
+                case .failure(let error):
+                    print(error)
+                }
+        }
+    }
+    
     
     func nextButton(){
-        var nextButton = UIButton()
+        let nextButton = UIButton()
         nextButton.frame = CGRect(x: 0, y: 0, width: 250, height: 34)
         nextButton.layer.backgroundColor = UIColor(red: 0.365, green: 0.553, blue: 0.949, alpha: 1).cgColor
         nextButton.layer.cornerRadius = 10

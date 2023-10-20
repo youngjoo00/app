@@ -68,7 +68,6 @@
 		CC11837C2AB14AFF00CE4BD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC11837A2AB14AFF00CE4BD2 /* Main.storyboard */; };
 		CC11837E2AB14B0400CE4BD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC11837D2AB14B0400CE4BD2 /* Assets.xcassets */; };
 		CC1183812AB14B0400CE4BD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC11837F2AB14B0400CE4BD2 /* LaunchScreen.storyboard */; };
-		CC1E82232AE2B24D002294D9 /* EmailContify.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC1E82222AE2B24D002294D9 /* EmailContify.swift */; };
 		CC2FDCDA2AD597FC004537C7 /* UserTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2FDCD92AD597FC004537C7 /* UserTokenManager.swift */; };
 		CC334FE12AD3F993000243B5 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC334FE02AD3F993000243B5 /* Match.swift */; };
 		CC334FE32AD3FB36000243B5 /* ResettingPasswordEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC334FE22AD3FB36000243B5 /* ResettingPasswordEndViewController.swift */; };
@@ -94,6 +93,8 @@
 		CCB27ECD2AB8A9A10053EA0B /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */; };
 		CCB27ED32AB8F40C0053EA0B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB27ED22AB8F40C0053EA0B /* Request.swift */; };
 		CCE9847C2ACE92EE0005F97F /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCE9847B2ACE92EE0005F97F /* AddressSearchViewController.swift */; };
+		CCFF87762AE2FEFD00F1B347 /* UseWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFF87752AE2FEFD00F1B347 /* UseWayViewController.swift */; };
+		CCFF87782AE300DB00F1B347 /* PriceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFF87772AE300DB00F1B347 /* PriceListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,7 +164,6 @@
 		CC11837D2AB14B0400CE4BD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC1183802AB14B0400CE4BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC1183822AB14B0400CE4BD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC1E82222AE2B24D002294D9 /* EmailContify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailContify.swift; sourceTree = "<group>"; };
 		CC2FDCD92AD597FC004537C7 /* UserTokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTokenManager.swift; sourceTree = "<group>"; };
 		CC334FE02AD3F993000243B5 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		CC334FE22AD3FB36000243B5 /* ResettingPasswordEndViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResettingPasswordEndViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +189,8 @@
 		CCB27ECC2AB8A9A10053EA0B /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		CCB27ED22AB8F40C0053EA0B /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		CCE9847B2ACE92EE0005F97F /* AddressSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
+		CCFF87752AE2FEFD00F1B347 /* UseWayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseWayViewController.swift; sourceTree = "<group>"; };
+		CCFF87772AE300DB00F1B347 /* PriceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,7 +377,6 @@
 				CC9866222ADF7C1700CCD67B /* Struct.swift */,
 				8EE728C22AC40BF4002C46B3 /* LoginModel.swift */,
 				8EE728C42AC40C63002C46B3 /* SignupModel.swift */,
-				CC1E82222AE2B24D002294D9 /* EmailContify.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -469,6 +470,8 @@
 				CC1183742AB14AFF00CE4BD2 /* AppDelegate.swift */,
 				CC1183762AB14AFF00CE4BD2 /* SceneDelegate.swift */,
 				CC11837A2AB14AFF00CE4BD2 /* Main.storyboard */,
+				CCFF87772AE300DB00F1B347 /* PriceListViewController.swift */,
+				CCFF87752AE2FEFD00F1B347 /* UseWayViewController.swift */,
 				CC62A2152AB72F140005A676 /* MainTabBarViewController.swift */,
 				CC1183782AB14AFF00CE4BD2 /* ViewController.swift */,
 				8E7539EA2ABDDA18004F979D /* TestViewController.swift */,
@@ -663,8 +666,8 @@
 				8E7539E12ABBFB06004F979D /* CustomerServiceViewController.swift in Sources */,
 				CC98E5F42ADC6C90004E1E11 /* DeliveryInfoViewController.swift in Sources */,
 				8EE855F02AD0540B007ECE13 /* MyHomeTableViewCell.swift in Sources */,
-				CC1E82232AE2B24D002294D9 /* EmailContify.swift in Sources */,
 				8EF3BCE82ACD5AE70022DBC8 /* ShowFaqViewController.swift in Sources */,
+				CCFF87762AE2FEFD00F1B347 /* UseWayViewController.swift in Sources */,
 				CC2FDCDA2AD597FC004537C7 /* UserTokenManager.swift in Sources */,
 				8E7539EB2ABDDA18004F979D /* TestViewController.swift in Sources */,
 				8E0127312ADC2DE4006CDDB1 /* Auth.swift in Sources */,
@@ -683,6 +686,7 @@
 				CC62A2102AB7232D0005A676 /* JoinInfo1ViewController.swift in Sources */,
 				8E7B418B2AC0532B00560B86 /* FaqViewController.swift in Sources */,
 				CC6C34C52AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift in Sources */,
+				CCFF87782AE300DB00F1B347 /* PriceListViewController.swift in Sources */,
 				8E7539E02ABBFB06004F979D /* MypageUserViewController.swift in Sources */,
 				8E7B418F2AC0536200560B86 /* QnaViewController.swift in Sources */,
 				CCE9847C2ACE92EE0005F97F /* AddressSearchViewController.swift in Sources */,

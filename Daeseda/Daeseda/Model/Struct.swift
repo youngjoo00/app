@@ -1,6 +1,15 @@
 
 import Foundation
 
+struct Email: Codable {
+    let userEmail: String
+}
+
+struct CheckEmail: Codable {
+    let userEmail: String
+    let code: String
+}
+
 struct UserData: Codable {
     let userEmail: String
     let userName: String

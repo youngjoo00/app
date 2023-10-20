@@ -18,6 +18,7 @@ class RequestInfoViewController: UIViewController {
         endButton()
         
         addressTextField.isEnabled = false
+        addressDetailTextField.isEnabled = false
         
         print(selectClothesCount)
     }
@@ -28,7 +29,6 @@ class RequestInfoViewController: UIViewController {
     var deliveryDate : String = ""
     var totalPrdeliveryLocationice : String = ""
     var deliveryLocation : String = ""
-//    var selectClothesCount : [ClothesCount] = []
     
     var selectClothesCount = [ClothesCount(clothes: Clothes(clothesId: 0, clothesName: "", categoryId: 0), count: 0)]
     var addressInfo = Address(addressId: 0, addressName: "", addressDetail: "", addressZipcode: "")
@@ -49,7 +49,8 @@ class RequestInfoViewController: UIViewController {
     @objc func addressNotification(_ notification: Notification) {
         addressInfo = notification.object as! Address
         //        addressTextField.text = addressInfo.
-        print(notification.object)
+        addressDetailTextField.text = addressInfo.addressDetail
+        
         print(addressInfo)
         self.dismiss(animated: true, completion: nil)
     }
@@ -208,11 +209,5 @@ extension RequestInfoViewController : UITextFieldDelegate, UIPickerViewDelegate,
         
         // 키보드 내리기
         placeTextField.resignFirstResponder()
-    }
-    
-    @IBAction func etcTextFieldEditingDidEnd(_ sender: Any) {
-        let etc = etcTextField.text
-        let place = placeTextField.text
-        
     }
 }
