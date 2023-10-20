@@ -1,12 +1,6 @@
 import UIKit
 import Alamofire
 
-struct addressCreateData : Codable {
-    var addressName : String
-    var addressDetail : String
-    var addressZipcode : String
-}
-
 class MoreAdressViewController: UIViewController {
     
     var indexPath: IndexPath?
@@ -44,9 +38,10 @@ class MoreAdressViewController: UIViewController {
         // 주소 등록에 필요한 데이터 생성
         if let nickname = moreAdressNicknameTF.text,
            let detailAddress = moreAdressTF.text,
-           let labelText = moreAdressLabel.text {
+           let roadAddress = moreAdressLabel.text {
             
-            let addressData = addressCreateData(addressName: nickname,
+            let addressData = AddressCreateData(addressName: nickname,
+                                                addressRoad: roadAddress,
                                                 addressDetail: detailAddress,
                                                 addressZipcode: zonecode ?? "")
             
@@ -77,11 +72,6 @@ class MoreAdressViewController: UIViewController {
             } else {
                 print("Token not available.")
             }
-        }
-        
-        // 나머지 코드는 그대로 유지
-        if let isHomeBtn = isHome {
-            print("우리 집? : \(isHomeBtn)")
         }
         
         // MyAdressVC로 이동

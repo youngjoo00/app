@@ -31,7 +31,7 @@ class RequestInfoViewController: UIViewController {
     var deliveryLocation : String = ""
     var selectedAddress: [Address] = []
     
-    var addressInfo = Address(addressId: 0, addressName: "집", addressDetail: "경기도 동두천시", addressZipcode: "12345")
+    var addressInfo = Address(addressId: 0, addressName: "집", addressRoad: "",addressDetail: "경기도 동두천시", addressZipcode: "12345")
     
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var addressDetailTextField: UITextField!
@@ -51,7 +51,7 @@ class RequestInfoViewController: UIViewController {
             if let address = data["address"] as? String,
                let zonecode = data["zonecode"] as? String {
                 addressTextField.text = address
-                addressInfo = Address(addressId: 0, addressName: "", addressDetail: address, addressZipcode: zonecode)
+                addressInfo = Address(addressId: 0, addressName: "", addressRoad: "",addressDetail: address, addressZipcode: zonecode)
                 self.dismiss(animated: true, completion: nil)
                 
             }
@@ -68,7 +68,7 @@ class RequestInfoViewController: UIViewController {
             if let address = data["address"] as? String,
                let zonecode = data["zonecode"] as? String {
                 addressTextField.text = address
-                addressInfo = Address(addressId: 0, addressName: "", addressDetail: address, addressZipcode: zonecode)
+                //addressInfo = Address(addressId: 0, addressName: "", addressDetail: address, addressZipcode: zonecode)
                 self.dismiss(animated: true, completion: nil)
                 
             }
