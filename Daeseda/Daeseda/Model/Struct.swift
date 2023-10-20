@@ -74,6 +74,12 @@ struct ComentPostData: Codable {
     let replyContent: String
 }
 
+struct QnaEditData: Codable {
+    let boardId: Int
+    let boardCategory: String
+    let boardTitle: String
+    let boardContent: String
+}
 struct ReviewData: Codable {
     let reviewId: Int
     let userId: Int

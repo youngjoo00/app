@@ -41,6 +41,7 @@ class QnaViewController: UIViewController {
         }
     }
     
+    
     func getQnaList() {
         
         if let url = URL(string: "http://localhost:8888/board/list") {
@@ -106,12 +107,6 @@ extension QnaViewController: UITableViewDelegate {
             
             let qnaWriteData = qnaList[indexPath.row]
             
-            showQnaVC.qnaTitleString = qnaWriteData.boardTitle
-            showQnaVC.qnaDateString = formatDate(dateString: qnaWriteData.regDate)
-            showQnaVC.qnaTextString = qnaWriteData.boardContent
-            showQnaVC.qnaNicknameString = qnaWriteData.userNickname
-            showQnaVC.qnaTimeString = formatTime(timeString: qnaWriteData.regDate)
-            showQnaVC.qnaCategoryString = qnaWriteData.boardCategory
             showQnaVC.showQnaId = qnaWriteData.boardId
             self.navigationController?.pushViewController(showQnaVC, animated: true)
         }
