@@ -53,12 +53,25 @@ class MyAdressViewController: UIViewController {
             AF.request(url, headers: headers).responseDecodable(of: [Address].self) { response in
                 switch response.result {
                 case .success(let addressData):
+                    let addresses = addressData.map { address in
+                        var modifiedAddress = address
+                        if address.addressRoad == nil {
+                            modifiedAddress.addressRoad = ""
+                        }
+                        return modifiedAddress
+                    }
                     // 요청이 성공한 경우
-                    self.addressArr = addressData
+                    self.addressArr = addresses
                     self.myAdressTableView.reloadData() // 테이블 뷰를 업데이트
                 case .failure(let error):
                     // 요청이 실패한 경우
-                    print("Error: \(error.localizedDescription)")
+                    if let data = response.data {
+                        let errorMessage = String(data: data, encoding: .utf8)
+                        print("Error: \(error.localizedDescription)")
+                        print("Error Response Data: \(errorMessage ?? "N/A")")
+                    } else {
+                        print("Error: \(error.localizedDescription)")
+                    }
                 }
             }
         } else {
