@@ -64,7 +64,12 @@ class ShowQnaViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // 이전 데이터를 초기화
+        qnaList.removeAll()
+        comentList.removeAll()
+        
         getQnaList()
+        getComent()
         tabBarController?.tabBar.isHidden = true
     }
     
@@ -72,6 +77,59 @@ class ShowQnaViewController: UIViewController {
         super.viewWillDisappear(animated)
         // 다른 화면으로 이동할 때 탭 바를 다시 보이게 합니다.
         tabBarController?.tabBar.isHidden = false
+    }
+    
+    @IBAction func comentDelBtn(_ sender: UIButton) {
+        // 버튼의 슈퍼뷰인 셀의 indexPath를 찾습니다.
+        if let cell = sender.superview?.superview as? ComentTableViewCell,
+           let indexPath = comentTableView.indexPath(for: cell) {
+            let comentToDelete = comentList[indexPath.row]
+            let replyIdToDelete = comentToDelete.replyId
+            print("comentToDelte : \(comentToDelete)")
+            print("replyIdToDelete : \(replyIdToDelete)")
+            // replyIdToDelete을 사용하여 댓글 삭제 작업 수행
+            comentConfirmationAlert(replyId: replyIdToDelete)
+        }
+    }
+    
+    func comentConfirmationAlert(replyId: Int) {
+        let alertController = UIAlertController(title: "게시글 삭제", message: "정말 게시글을 삭제하시겠습니까?", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+            self.performComentDel(replyId: replyId)
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func performComentDel(replyId: Int) {
+        let url = "http://localhost:8888/reply/\(replyId)"
+        
+        if let token = UserTokenManager.shared.getToken() {
+            print("Token: \(token)")
+            
+            let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+            
+            AF.request(url, method: .delete, headers: headers).response { response in
+                switch response.result {
+                case .success:
+                    // 요청이 성공한 경우
+                    print("Qna Deleted Successfully")
+                    self.getComent()
+                case .failure(let error):
+                    // 요청이 실패한 경우
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
+        } else {
+            print("Token not available.")
+        }
+        
     }
     
     @objc func showSettingMenu() {
@@ -106,7 +164,7 @@ class ShowQnaViewController: UIViewController {
         let alertController = UIAlertController(title: "게시글 삭제", message: "정말 게시글을 삭제하시겠습니까?", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
-            self.performReviewDel()
+            self.performQnaDel()
         }
         
         let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
@@ -117,7 +175,7 @@ class ShowQnaViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    func performReviewDel() {
+    func performQnaDel() {
         if let showQnaId = showQnaId {
             let url = "http://localhost:8888/board/\(showQnaId)"
             
@@ -131,7 +189,6 @@ class ShowQnaViewController: UIViewController {
                     case .success:
                         // 요청이 성공한 경우
                         print("Qna Deleted Successfully")
-                        // 리뷰 삭제 후 리뷰 목록을 업데이트
                         self.navigationController?.popViewController(animated: true)
                     case .failure(let error):
                         // 요청이 실패한 경우
@@ -174,32 +231,42 @@ class ShowQnaViewController: UIViewController {
     }
     
     func updateUI() {
-        qnaTitle.text = qnaTitleString
-        qnaDate.text = qnaDateString
-        qnaText.text = qnaTextString
-        qnaTime.text = qnaTimeString
-        qnaNickname.text = qnaNicknameString
-        if let category = qnaCategoryString {
-            qnaCategory.text = "[\(category)]"
-        } else {
-            qnaCategory.text = "[카테고리 없음]"
-        }
-
-        qnaComentCount.text = "댓글 " + (qnaComentCountString ?? "0")
-        
-        if let myNickname = myInfo?.userNickname {
-            if myNickname == qnaNicknameString {
+        DispatchQueue.main.async { // 메인 스레드에서 실행
+            self.qnaTitle.text = self.qnaTitleString
+            self.qnaDate.text = self.qnaDateString
+            self.qnaText.text = self.qnaTextString
+            self.qnaTime.text = self.qnaTimeString
+            self.qnaNickname.text = self.qnaNicknameString
+            if let category = self.qnaCategoryString {
+                self.qnaCategory.text = "[\(category)]"
+            } else {
+                self.qnaCategory.text = "[카테고리 없음]"
+            }
+            self.qnaComentCount.text = "댓글 " + (self.qnaComentCountString ?? "0")
+            
+            if let myNickname = self.myInfo?.userNickname {
+                if myNickname == self.qnaNicknameString {
+                    // 시스템 "ellipsis" 이미지를 사용
+                    let ellipsisBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(self.showSettingMenu))
+                    self.navigationItem.rightBarButtonItem = ellipsisBarButtonItem
+                    
+                    // 수정 및 삭제 버튼을 숨기거나 표시
+                    self.qnaEditBtn.isHidden = !self.isSettingMenuVisible
+                    self.qnaDelBtn.isHidden = !self.isSettingMenuVisible
+                }
                 
-                // 시스템 "ellipsis" 이미지를 사용
-                let ellipsisBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(showSettingMenu))
-                navigationItem.rightBarButtonItem = ellipsisBarButtonItem
-                
-                // 수정 및 삭제 버튼을 숨기거나 표시
-                qnaEditBtn.isHidden = !isSettingMenuVisible
-                qnaDelBtn.isHidden = !isSettingMenuVisible
+                if self.comentList.contains(where: { $0.userNickname == myNickname }) {
+                    // 댓글 작성자가 현재 사용자와 동일한 경우 버튼을 표시
+                    for (index, comentData) in self.comentList.enumerated() {
+                        if comentData.userNickname == myNickname {
+                            if let cell = self.comentTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ComentTableViewCell {
+                                cell.comentDelBtn.isHidden = false
+                            }
+                        }
+                    }
+                }
             }
         }
-        
     }
     
     
@@ -359,6 +426,15 @@ extension ShowQnaViewController: UITableViewDataSource {
         comentCell.comentNicknameLabel.text = coments.userNickname
         comentCell.comentTimeLabel.text = formatTime(timeString: coments.regDate)
         
+        if let myNickname = myInfo?.userNickname {
+            print("myNickname :",myNickname)
+            if coments.userNickname == myNickname {
+                // 댓글 작성자가 현재 사용자와 동일한 경우 버튼을 표시
+                comentCell.comentDelBtn.isHidden = false
+            } else {
+                comentCell.comentDelBtn.isHidden = true
+            }
+        }
         return comentCell
     }
 }

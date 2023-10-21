@@ -6,7 +6,11 @@ class ReviewViewController: UIViewController {
     let url = "http://localhost:8888/review/list"
     var reviews: [ReviewData] = []
     
-    let allCategorys = [
+    // 피커뷰와 관련된 변수
+    var categoryPickerView: UIPickerView?
+    var selectedCategory: String?
+    
+    let reviewCategorys = [
         "전체",
         "생활빨래",
         "가방",
@@ -19,10 +23,7 @@ class ReviewViewController: UIViewController {
     ]
     
     @IBOutlet weak var reviewListTableView: UITableView!
-    
-    @IBOutlet weak var reviewCategoryButton: UIButton!
-    @IBOutlet weak var reviewCategoryPickerView: UIPickerView!
-    
+    @IBOutlet weak var reviewCategoryTF: UITextField!
     @IBOutlet weak var reviewListCount: UILabel!
     
     override func viewDidLoad() {
@@ -30,12 +31,12 @@ class ReviewViewController: UIViewController {
         reviewListTableView.dataSource = self
         reviewListTableView.delegate = self
         
-        reviewCategoryPickerView.delegate = self
-        reviewCategoryPickerView.dataSource = self
-        reviewCategoryPickerView.isHidden = true
         reviewListTableView.rowHeight = UITableView.automaticDimension
         reviewListTableView.estimatedRowHeight = UITableView.automaticDimension
         
+        reviewCategoryTF.layer.cornerRadius = 13
+        reviewCategoryTF.clipsToBounds = true
+
         // 타이틀 텍스트 폰트 조절
         if let navigationBar = self.navigationController?.navigationBar {
             let font = WDFont.GmarketBold.of(size: 30)
@@ -43,13 +44,12 @@ class ReviewViewController: UIViewController {
         }
         
         getReviewData()
-        
-        
+        setupCategoryPickerView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         // 화면이 나타날 때 리뷰 목록을 리로드
         getReviewData()
     }
@@ -62,6 +62,8 @@ class ReviewViewController: UIViewController {
                 case .success(let data):
                     do {
                         self.reviews = try JSONDecoder().decode([ReviewData].self, from: data)
+                        // 내림차순 정렬
+                        self.reviews.sort { $0.reviewId > $1.reviewId }
                         self.reviewListTableView.reloadData()
                         self.reviewListCount.text = "\(self.reviews.count)"
                     } catch {
@@ -78,19 +80,35 @@ class ReviewViewController: UIViewController {
         showReviewWriteViewController()
     }
     
-    @IBAction func reviewCategoryBtn(_ sender: UIButton) {
-        showCategoryPicker()
-    }
-    
-    func showCategoryPicker() {
-        reviewCategoryPickerView.isHidden = false
-    }
-    
-    
     func showReviewWriteViewController() {
         // ReviewWriteViewController를 스토리보드에서 가져와서 푸시
         guard let reviewWriteVC = storyboard?.instantiateViewController(withIdentifier: "ReviewWrite") as? ReviewWriteViewController else { return }
         navigationController?.pushViewController(reviewWriteVC, animated: true)
+    }
+    
+    // 피커뷰 설정
+    func setupCategoryPickerView() {
+        categoryPickerView = UIPickerView()
+        categoryPickerView?.delegate = self
+        categoryPickerView?.dataSource = self
+        reviewCategoryTF.text = reviewCategorys[0]
+        reviewCategoryTF.inputView = categoryPickerView
+        createToolbar()
+    }
+    
+    func createToolbar() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "선택", style: .done, target: self, action: #selector(doneButtonTapped))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        
+        reviewCategoryTF.inputAccessoryView = toolBar
+    }
+    
+    @objc func doneButtonTapped() {
+        reviewCategoryTF.resignFirstResponder()
     }
 }
 
@@ -106,7 +124,6 @@ extension ReviewViewController: UITableViewDelegate {
 extension ReviewViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return reviews.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -114,6 +131,7 @@ extension ReviewViewController: UITableViewDataSource {
         
         let review = reviews[indexPath.row]
         print("review 데이터 : \(review)")
+        
         // 날짜 포맷팅
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
@@ -139,7 +157,7 @@ extension ReviewViewController: UITableViewDataSource {
         
         reviewListCell.reviewListNicknameLabel.text = review.userNickname
         
-        // 별점 이미지 뷰 채우기
+        // 별젘 이미지 뷰 채우기
         let rating = review.rating ?? 0.0 // 별점이 null인 경우를 고려
         for (index, imageView) in reviewListCell.reviewListStarRatingImageView.enumerated() {
             if Float(index) < rating {
@@ -151,31 +169,23 @@ extension ReviewViewController: UITableViewDataSource {
         
         return reviewListCell
     }
-    
-    
 }
 
-extension ReviewViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return allCategorys[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedCategory = allCategorys[row]
-        reviewCategoryButton.setTitle(selectedCategory, for: .normal)
-        reviewCategoryPickerView.isHidden = true
-    }
-}
-
-
-extension ReviewViewController : UIPickerViewDataSource {
+extension ReviewViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return allCategorys.count
+        return reviewCategorys.count
     }
     
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return reviewCategorys[row]
+    }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        reviewCategoryTF.text = reviewCategorys[row]
+        selectedCategory = reviewCategorys[row]
+    }
 }
