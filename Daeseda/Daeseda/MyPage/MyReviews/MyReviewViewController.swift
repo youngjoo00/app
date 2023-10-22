@@ -6,6 +6,22 @@ class MyReviewViewController: UIViewController {
     var myReviews: [ReviewData] = []
     var myInfo: UserInfoData?
     
+    var categoryPickerView: UIPickerView?
+    var selectedCategory: String?
+    
+    let reviewCategorys = [
+        "전체",
+        "생활빨래",
+        "가방",
+        "신발",
+        "코트",
+        "대형이불",
+        "등등등1",
+        "등등등2",
+        "등등등3",
+    ]
+    
+    @IBOutlet weak var myReviewCategoryTF: UITextField!
     @IBOutlet weak var myReviewCountLabel: UILabel!
     @IBOutlet weak var myReviewTableView: UITableView!
     
@@ -17,13 +33,16 @@ class MyReviewViewController: UIViewController {
         
         myReviewTableView.rowHeight = UITableView.automaticDimension
         myReviewTableView.estimatedRowHeight = UITableView.automaticDimension
+        
+        setupCategoryPickerView()
+        getMyInfoData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getMyReviewData()
         // 탭 바를 숨깁니다.
         tabBarController?.tabBar.isHidden = true
-        getMyInfoData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,9 +51,28 @@ class MyReviewViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    func setupCategoryPickerView() {
+        categoryPickerView = UIPickerView()
+        categoryPickerView?.delegate = self
+        categoryPickerView?.dataSource = self
+        myReviewCategoryTF.text = reviewCategorys[0]
+        myReviewCategoryTF.inputView = categoryPickerView
+        createToolbar()
+    }
     
-    @IBAction func myReviewCategoryBtn(_ sender: UIButton) {
+    func createToolbar() {
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
         
+        let doneButton = UIBarButtonItem(title: "선택", style: .plain, target: self, action: #selector(doneButtonTapped))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        
+        myReviewCategoryTF.inputAccessoryView = toolBar
+    }
+    
+    @objc func doneButtonTapped() {
+        myReviewCategoryTF.resignFirstResponder()
     }
     
     func getMyReviewData() {
@@ -46,6 +84,7 @@ class MyReviewViewController: UIViewController {
                     do {
                         self.myReviews = try JSONDecoder().decode([ReviewData].self, from: data)
                         self.matchReviewsWithUserInfo() // 사용자 정보와 리뷰를 일치시킴
+                        self.myReviews.sort { $0.reviewId > $1.reviewId }
                         self.myReviewTableView.reloadData()
                         self.myReviewCountLabel.text = "\(self.myReviews.count)"
                     } catch {
@@ -95,7 +134,6 @@ class MyReviewViewController: UIViewController {
             }
 
             myReviews = matchedReviews
-            self.myReviewTableView.reloadData()
         }
     }
     
@@ -213,3 +251,21 @@ extension MyReviewViewController: UITableViewDataSource {
     }
 }
 
+extension MyReviewViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return reviewCategorys.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return reviewCategorys[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        myReviewCategoryTF.text = reviewCategorys[row]
+        selectedCategory = reviewCategorys[row]
+    }
+}

@@ -33,6 +33,7 @@ class QnaViewController: UIViewController {
         
         // 화면이 나타날 때 리뷰 목록을 리로드
         getQnaList()
+        getComent()
     }
     
     @objc func showQnaWriteBtn() {

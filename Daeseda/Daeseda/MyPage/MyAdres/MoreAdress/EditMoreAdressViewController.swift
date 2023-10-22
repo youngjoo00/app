@@ -8,7 +8,8 @@ class EditMoreAdressViewController: UIViewController {
     var isEditOtherButtonSelected = false
     
     var titleText: String?
-    var adressText: String?
+    var roadAddressText: String?
+    var detailAdressText: String?
     var nickname: String?
     
     @IBOutlet weak var editMoreAdressNicknameTF: UITextField!
@@ -21,8 +22,8 @@ class EditMoreAdressViewController: UIViewController {
         
 
         editMoreAdressTitle.text = titleText
-        editMoreAdressLabel.text = adressText
-        editMoreAdressTF.text = adressText
+        editMoreAdressLabel.text = roadAddressText
+        editMoreAdressTF.text = detailAdressText
         editMoreAdressNicknameTF.text = nickname
         
         editMoreAdressNicknameTF.delegate = self

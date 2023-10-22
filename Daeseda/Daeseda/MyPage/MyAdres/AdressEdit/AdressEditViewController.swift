@@ -56,7 +56,8 @@ class AdressEditViewController: UIViewController {
             
             editMoreAddressVC.indexPath = tappedIndexPath
             editMoreAddressVC.titleText = addressData[otherAddressIndex].addressName
-            editMoreAddressVC.adressText = addressData[otherAddressIndex].addressDetail
+            editMoreAddressVC.roadAddressText = addressData[otherAddressIndex].addressRoad
+            editMoreAddressVC.detailAdressText = addressData[otherAddressIndex].addressDetail
             editMoreAddressVC.nickname = addressData[otherAddressIndex].addressName
             
             self.navigationController?.pushViewController(editMoreAddressVC, animated: true)
