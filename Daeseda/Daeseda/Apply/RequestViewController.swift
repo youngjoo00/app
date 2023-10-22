@@ -16,7 +16,10 @@ class RequestViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         
         fetchCategoryInfo()
-        fetchClothesInfo()
+        
+        applyClothesListTableView.dataSource = self
+        applyClothesListTableView.delegate = self
+        
         nextButton()
         textLabel()
         setupPicker()
@@ -52,6 +55,9 @@ class RequestViewController: UIViewController {
     
     @IBOutlet weak var countTextField: UITextField!
     
+    
+    @IBOutlet weak var applyClothesListTableView: UITableView!
+    
     var way : String = ""
     var deliveryDate : String = ""
     var categoryIdMapping = [String: Int]()
@@ -59,8 +65,11 @@ class RequestViewController: UIViewController {
     var selectCategoryId : Int = 0
     
     var clothesIdMapping = [String: Int]()
+    var clothesPirceMapping = [String: Int]()
     var clothesNames: [String] = []
     var selectClothesId : Int = 0
+    
+    var totalClothesCount : [ClothesCount] = []
     
     func fetchCategoryInfo(){
         AF.request("http://localhost:8888/category/list").responseDecodable(of: [Category].self) { response in
@@ -79,26 +88,59 @@ class RequestViewController: UIViewController {
         }
     }
     
-    func fetchClothesInfo(){
-        AF.request("http://localhost:8888/clothes/list").responseDecodable(of: [Clothes].self) { response in
+    func fetchClothesInfo(categoryId: Int) {
+        AF.request("http://localhost:8888/clothes/list").responseDecodable(of: [GetClothes].self) { response in
             switch response.result {
             case .success(let clothes):
-                for cloth in clothes {
+                self.clothesNames.removeAll()
+                // categoryId값에 따라 필터링
+                let filteredClothes = clothes.filter { $0.categoryId == categoryId }
+                
+                for cloth in filteredClothes {
                     let clothesName = cloth.clothesName
                     let clothesId = cloth.clothesId
                     self.clothesIdMapping[clothesName] = clothesId
+                    self.clothesPirceMapping[clothesName] = Int(cloth.clothesPrice)
                     self.clothesNames.append(clothesName)
-                    
                 }
-                print("Clothes Names: \(self.clothesNames)")
-
+                print("Clothes Names: \(filteredClothes)")
+                print(self.clothesNames)
+                
             case .failure(let error):
                 print("Error: \(error)")
             }
         }
     }
-
     
+    
+    @IBAction func addClothes(_ sender: Any) {
+        if let categoryName = categoryTextField.text, let categoryId = categoryIdMapping[categoryName] {
+            selectCategoryId = categoryId
+            print("Selected Category ID: \(categoryId)")
+        } else {
+            print("Invalid or unrecognized category name.")
+        }
+        
+        if let clothesName = clothesTextField.text, let clothesId = clothesIdMapping[clothesName] {
+            selectClothesId = clothesId
+            print("Selected clothes ID: \(clothesId)")
+        } else {
+            print("Invalid or unrecognized category name.")
+        }
+        
+        let clothes = Clothes(clothesId: selectClothesId, clothesName: clothesTextField.text!, categoryId: selectCategoryId)
+        
+        if let countText = self.countTextField.text, let count = Int(countText) {
+            let clothesCount = ClothesCount(clothes: clothes, count: count)
+            self.totalClothesCount.append(clothesCount)
+        } else {
+            print("수량 int형 변형 오류")
+        }
+        
+        print(totalClothesCount)
+        self.applyClothesListTableView.reloadData()
+        
+    }
     
     func nextButton(){
         let nextButton = UIButton()
@@ -131,39 +173,30 @@ class RequestViewController: UIViewController {
         naxtText.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
     }
     @objc func requestInfoVC() {
-        if let categoryName = categoryTextField.text, let categoryId = categoryIdMapping[categoryName] {
-            selectCategoryId = categoryId
-            print("Selected Category ID: \(categoryId)")
-        } else {
-            print("Invalid or unrecognized category name.")
-        }
-
-        if let clothesName = clothesTextField.text, let clothesId = clothesIdMapping[clothesName] {
-           selectClothesId = clothesId
-            print("Selected clothes ID: \(clothesId)")
-        } else {
-            print("Invalid or unrecognized category name.")
-        }
-        
-        let clothes = Clothes(clothesId: selectClothesId, clothesName: clothesTextField.text!, categoryId: selectCategoryId)
-        
         guard  let requestInfoVC = storyboard?.instantiateViewController(withIdentifier: "requestInfo") as? RequestInfoViewController else { return }
         requestInfoVC.selectDate = self.dateTextField.text!
         requestInfoVC.selectTime = self.timeTextField.text!
         requestInfoVC.selectWay = self.way
         requestInfoVC.deliveryDate = self.deliveryDate
-        
-        if let countText = self.countTextField.text, let count = Int(countText) {
-            let clothesCount = [ClothesCount(clothes: clothes, count: count)]
-            requestInfoVC.selectClothesCount = clothesCount
-        } else {
-            print("수량 int형 변형 오류")
-        }
-
+        requestInfoVC.totalClothesCount = self.totalClothesCount
+        requestInfoVC.totalPrice = calculateTotalPrice()
         
         self.navigationController?.pushViewController(requestInfoVC, animated: true)
     }
     
+    func calculateTotalPrice() -> Int {
+        var totalPrice = 0
+
+        for clothesCount in totalClothesCount {
+            let clothesName = clothesCount.clothes.clothesName
+            if let price = clothesPirceMapping[clothesName] {
+                totalPrice += price * clothesCount.count
+            }
+        }
+
+        return totalPrice
+    }
+
     func textLabel() {
         
         let title = UILabel()
@@ -255,7 +288,7 @@ class RequestViewController: UIViewController {
         let timeToolBar = UIToolbar()
         let categoryToolBar = UIToolbar()
         let clothesToolBar = UIToolbar()
-
+        
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let dateDoneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dateDoneButtonHandeler))
         let timeDoneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(timeDoneButtonHandeler))
@@ -329,7 +362,7 @@ class RequestViewController: UIViewController {
 extension RequestViewController : UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
     private func dateFormat(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy - MM - dd"
+        formatter.dateFormat = "yyyy-MM-dd"
         
         return formatter.string(from: date)
     }
@@ -383,36 +416,67 @@ extension RequestViewController : UITextFieldDelegate, UIPickerViewDelegate, UIP
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-            return 1
+        return 1
+    }
+    
+    // UIPickerView에서 행 수 설정
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == categoryPicker {
+            return categoryNames.count
+        } else if pickerView == clothesPicker {
+            return clothesNames.count
         }
-
-        // UIPickerView에서 행 수 설정
-        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            if pickerView == categoryPicker {
-                return categoryNames.count
-            } else if pickerView == clothesPicker {
-                return clothesNames.count
+        return 0
+    }
+    
+    // UIPickerView에 표시할 타이틀 설정
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == categoryPicker {
+            return categoryNames[row]
+        } else if pickerView == clothesPicker {
+            
+            return clothesNames[row]
+        }
+        return nil
+    }
+    
+    // UIPickerView에서 선택된 항목 처리
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == categoryPicker {
+            categoryTextField.text = categoryNames[row]
+            if let categoryName = categoryTextField.text, let categoryId = categoryIdMapping[categoryName] {
+                fetchClothesInfo(categoryId: categoryId)
+                print("Selected Category ID: \(categoryId)")
+            } else {
+                print("Invalid or unrecognized category name.")
             }
-            return 0
+        } else if pickerView == clothesPicker {
+            clothesTextField.text = clothesNames[row]
         }
+    }
+    
+}
 
-        // UIPickerView에 표시할 타이틀 설정
-        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            if pickerView == categoryPicker {
-                return categoryNames[row]
-            } else if pickerView == clothesPicker {
-                return clothesNames[row]
+extension RequestViewController : UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return totalClothesCount.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "applyClothesListCell", for: indexPath) as! ApplyClothesListTableViewCell
+        
+        let clothesCount = totalClothesCount[indexPath.row]
+        
+        let categoryId = clothesCount.clothes.categoryId
+        if let categoryName = categoryNames.first(where: { categoryIdMapping[$0] == categoryId }) {
+                cell.categoryLabel.text = categoryName
             }
-            return nil
-        }
 
-        // UIPickerView에서 선택된 항목 처리
-        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            if pickerView == categoryPicker {
-                categoryTextField.text = categoryNames[row]
-            } else if pickerView == clothesPicker {
-                clothesTextField.text = clothesNames[row]
-            }
-        }
-
+        cell.clothesLabel.text = clothesCount.clothes.clothesName
+        cell.countLabel.text = String(clothesCount.count)
+        
+        return cell
+    }
+    
+    
 }

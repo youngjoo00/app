@@ -9,17 +9,20 @@ import UIKit
 import Alamofire
 
 class JoinEmailViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         label()
-
+        
     }
     
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailErrorMessage: UILabel!
+    
+    
+    @IBOutlet weak var codeTextField: UITextField!
     
     var postId: String = ""
     var postEmail: Email?
@@ -35,7 +38,7 @@ class JoinEmailViewController: UIViewController {
         title.lineBreakMode = .byWordWrapping
         // Line height: 25 pt
         title.text = "Welcome!"
-
+        
         self.view.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.widthAnchor.constraint(equalToConstant: 300).isActive = true
@@ -51,7 +54,7 @@ class JoinEmailViewController: UIViewController {
         subTitle.lineBreakMode = .byWordWrapping
         // Line height: 25 pt
         subTitle.text = "양식에 맞추어 회원정보를 입력해주세요."
-
+        
         self.view.addSubview(subTitle)
         subTitle.translatesAutoresizingMaskIntoConstraints = false
         subTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 38).isActive = true
@@ -63,7 +66,7 @@ class JoinEmailViewController: UIViewController {
         email.font = UIFont(name: "NotoSansKR-Regular", size: 20)
         // Line height: 24.2 pt
         email.text = "이메일"
-
+        
         self.view.addSubview(email)
         email.translatesAutoresizingMaskIntoConstraints = false
         email.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
@@ -76,7 +79,7 @@ class JoinEmailViewController: UIViewController {
         check.font = UIFont(name: "NotoSansKR-Regular", size: 20)
         // Line height: 24.2 pt
         check.text = "인증번호"
-
+        
         self.view.addSubview(check)
         check.translatesAutoresizingMaskIntoConstraints = false
         check.widthAnchor.constraint(equalToConstant: 82.22).isActive = true
@@ -85,7 +88,7 @@ class JoinEmailViewController: UIViewController {
         check.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 310).isActive = true
         
     }
-
+    
     // 입력에 따라 이메일 형식 확인
     @IBAction func emailTextFieldEditingChanged(_ sender: Any) {
         
@@ -99,7 +102,6 @@ class JoinEmailViewController: UIViewController {
                 emailErrorMessage.text = "이메일을 정확히 입력해주세요."
             } else {
                 emailErrorMessage.text = " "
-                nextButton()
             }
         }
     }
@@ -109,15 +111,17 @@ class JoinEmailViewController: UIViewController {
         if let emailText = emailTextField.text {
             postEmail = Email(userEmail: emailText)
         }
-
         
-        AF.request(url, method: .post, parameters: postEmail)
-            .responseString { response in
-                switch response.result {
-                case .success(let verificationCode):
-                   print(verificationCode)
-                case .failure(let error):
-                    print(error)
+        if let unwrappedEmail = postEmail {
+            print(unwrappedEmail)
+            AF.request(url, method: .post, parameters: unwrappedEmail, encoder: JSONParameterEncoder.default)
+                .responseString { response in
+                    switch response.result {
+                    case .success(let verificationCode):
+                        print(verificationCode)
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
         }
     }
@@ -125,18 +129,22 @@ class JoinEmailViewController: UIViewController {
     
     @IBAction func checkEmail(_ sender: Any) {
         let url = "http://localhost:8888/users/mailConfirm"
-        if let emailText = emailTextField.text, let codeText = emailTextField.text {
+        if let emailText = emailTextField.text, let codeText = codeTextField.text {
             checkEmail = CheckEmail(userEmail: emailText, code: codeText)
         }
-
         
-        AF.request(url, method: .post, parameters: checkEmail)
-            .responseString { response in
-                switch response.result {
-                case .success(let verificationCode):
-                   print(verificationCode)
-                case .failure(let error):
-                    print(error)
+        
+        if let unwrappedCheckEmail = checkEmail {
+            print(unwrappedCheckEmail)
+            AF.request(url, method: .post, parameters: unwrappedCheckEmail, encoder: JSONParameterEncoder.default)
+                .responseString { response in
+                    switch response.result {
+                    case .success(let verificationCode):
+                        self.nextButton()
+                        print(verificationCode)
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
         }
     }

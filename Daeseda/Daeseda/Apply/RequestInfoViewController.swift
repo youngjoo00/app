@@ -20,17 +20,19 @@ class RequestInfoViewController: UIViewController {
         addressTextField.isEnabled = false
         addressDetailTextField.isEnabled = false
         
-        print(selectClothesCount)
+        print(totalPrice)
     }
     
     var selectDate : String = ""
     var selectTime : String = ""
     var selectWay : String = ""
     var deliveryDate : String = ""
+    var totalClothesCount : [ClothesCount] = []
+    var totalPrice: Int = 0
+    
     var totalPrdeliveryLocationice : String = ""
     var deliveryLocation : String = ""
     
-    var selectClothesCount = [ClothesCount(clothes: Clothes(clothesId: 0, clothesName: "", categoryId: 0), count: 0)]
     var addressInfo = Address(addressId: 0, addressName: "", addressDetail: "", addressZipcode: "")
         
     @IBOutlet weak var addressTextField: UITextField!
@@ -109,11 +111,11 @@ class RequestInfoViewController: UIViewController {
     
     @objc func endVC() {
         
-        totalPrdeliveryLocationice =  "\(placeTextField.text!), \(etcTextField.text!)"
+        totalPrdeliveryLocationice =  "\(placeTextField.text!) \(etcTextField.text!)"
         
         let alert = UIAlertController(title:"완료되었습니다!",message: "세탁 주문이 완료되었습니다. \n이후 결제를 진행해주세요.",preferredStyle: UIAlertController.Style.alert)
         
-        let newOrder = Order(address: addressInfo, clothesCount: selectClothesCount, totalPrice: 0, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: totalPrdeliveryLocationice)
+        let newOrder = Order(address: addressInfo, clothesCount: totalClothesCount, totalPrice: 1000, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: totalPrdeliveryLocationice)
         
         let url = "http://localhost:8888/orders/request"
 
