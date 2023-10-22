@@ -1,6 +1,15 @@
 
 import Foundation
 
+struct Email: Codable {
+    let userEmail: String
+}
+
+struct CheckEmail: Codable {
+    let userEmail: String
+    let code: String
+}
+
 struct UserData: Codable {
     let userEmail: String
     let userName: String
@@ -18,6 +27,20 @@ struct Order: Codable {
     let deliveryDate: String
     let deliveryLocation: String
 }
+
+struct OrderList: Codable {
+    let orderId: Int
+    let user: UserInfoData
+    let address: Address
+    let clothesCount: [ClothesCount]?
+    let orderStatus: String
+    let totalPrice: Int
+    let washingMethod: String
+    let pickupDate: String
+    let deliveryDate: String
+    let deliveryLocation: String
+}
+
 
 struct Address: Codable {
     var addressId: Int
@@ -38,9 +61,20 @@ struct Clothes: Codable {
     let categoryId: Int
 }
 
+struct GetClothes: Codable {
+    let clothesId: Int
+    let clothesName: String
+    let categoryId: Int
+    let clothesPrice: String
+}
+
 struct Category : Codable {
     let categoryId : Int
     let categoryName : String
+}
+
+struct AuthorityDto: Codable {
+    let authorityName: String
 }
 
 struct QnaListData: Codable {
@@ -93,10 +127,6 @@ struct ReviewData: Codable {
     let reviewContent: String?
     let regDate: String
     let modDate: String
-}
-
-struct AuthorityDto: Codable {
-    var authorityName: String
 }
 
 struct UserInfoData: Codable {

@@ -85,9 +85,6 @@ extension AddressSearchViewController: WKScriptMessageHandler {
             zonecode = data["zonecode"] as? String ?? ""
         }
         
-        let userInfo: [String: Any] = ["address": address, "zonecode": zonecode]
-        NotificationCenter.default.post(name:NSNotification.Name("postAddressNotification"), object: nil, userInfo: userInfo)
-        
         let addressData : [String: Any] = ["address" : roadAddress, "zonecode" : zonecode]
         
         NotificationCenter.default.post(name: NSNotification.Name("postAddressNotification"), object: addressData)

@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         requestButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 297).isActive = true
         
         // 버튼을 누를 때 RequestViewController 화면 전환
-        requestButton.addTarget(self, action: #selector(showRequestViewController), for: .touchUpInside)
+        requestButton.addTarget(self, action: #selector(requestVC), for: .touchUpInside)
         
         // 신청 라벨
         let requestText = UILabel()
@@ -141,6 +141,9 @@ class ViewController: UIViewController {
         priceButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 210).isActive = true
         priceButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 304).isActive = true
         
+        priceButton.addTarget(self, action: #selector(priceListVC), for: .touchUpInside)
+
+        
         //가격표 라벨
         let priceText = UILabel()
         priceText.frame = CGRect(x: 0, y: 0, width: 162, height: 35)
@@ -169,6 +172,8 @@ class ViewController: UIViewController {
         useButton.heightAnchor.constraint(equalToConstant: 90).isActive = true
         useButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 210).isActive = true
         useButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 422).isActive = true
+        
+        useButton.addTarget(self, action: #selector(useWayVC), for: .touchUpInside)
 
         // 이용방법 라벨
         // Auto layout, variables, and unit scale are not yet supported
@@ -189,9 +194,19 @@ class ViewController: UIViewController {
 
     }
     
-    @objc func showRequestViewController() {
+    @objc func requestVC() {
         guard  let requestVC = storyboard?.instantiateViewController(withIdentifier: "request") as? RequestViewController else { return }
         self.navigationController?.pushViewController(requestVC, animated: true)
+    }
+    
+    @objc func useWayVC() {
+        guard  let useWayVC = storyboard?.instantiateViewController(withIdentifier: "useWay") as? UseWayViewController else { return }
+        self.navigationController?.pushViewController(useWayVC, animated: true)
+    }
+    
+    @objc func priceListVC() {
+        guard  let priceListVC = storyboard?.instantiateViewController(withIdentifier: "priceList") as? PriceListViewController else { return }
+        self.navigationController?.pushViewController(priceListVC, animated: true)
     }
     
     func loginButton(){
