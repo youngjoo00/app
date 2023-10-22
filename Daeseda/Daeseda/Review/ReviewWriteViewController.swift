@@ -22,7 +22,7 @@ class ReviewWriteViewController: UIViewController {
     @IBOutlet var reviewStarRatingBtns: [UIButton]!
     @IBOutlet weak var reviewTextView: UITextView!
     @IBOutlet weak var reviewWriteCategoryBtn: UIButton!
-    @IBOutlet weak var reviewWriteCategoryPickerView: UIPickerView!
+
     var rating: Float = 1.0 // 최소 별점을 1로 설정
     
     override func viewDidLoad() {
@@ -45,10 +45,6 @@ class ReviewWriteViewController: UIViewController {
         }
         
         updateStarUI()
-        
-        reviewWriteCategoryPickerView.delegate = self
-        reviewWriteCategoryPickerView.dataSource = self
-        reviewWriteCategoryPickerView.isHidden = true
         
         self.title = "리뷰 작성"
     }
@@ -82,7 +78,7 @@ class ReviewWriteViewController: UIViewController {
             print("Please enter review content.")
             return
         }
-        let orderId: Int = 2 // orderId는 가져와서 써야하는데 임의로 설정
+        let orderId: Int = 4 // orderId는 가져와서 써야하는데 임의로 설정
         
         // 토큰 가져오기
         if let token = UserTokenManager.shared.getToken() {
@@ -155,34 +151,8 @@ class ReviewWriteViewController: UIViewController {
     }
     
     @IBAction func reviewWriteCategoryBtn(_ sender: UIButton) {
-        showWriteCategoryPicker()
     }
     
-    func showWriteCategoryPicker() {
-        reviewWriteCategoryPickerView.isHidden = false
-    }
-}
-
-extension ReviewWriteViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return allCategorys[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let selectedCategory = allCategorys[row]
-        reviewWriteCategoryBtn.setTitle(selectedCategory, for: .normal)
-        reviewWriteCategoryPickerView.isHidden = true
-    }
-}
-
-extension ReviewWriteViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return allCategorys.count
-    }
 }
 
 extension ReviewWriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

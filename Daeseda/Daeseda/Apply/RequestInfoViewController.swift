@@ -32,8 +32,10 @@ class RequestInfoViewController: UIViewController {
     
     var totalPrdeliveryLocationice : String = ""
     var deliveryLocation : String = ""
+
+    var selectedAddress: [Address] = []
     
-    var addressInfo = Address(addressId: 0, addressName: "", addressDetail: "", addressZipcode: "")
+    var addressInfo = Address(addressId: 0, addressName: "", addressRoad: "",addressDetail: "", addressZipcode: "")
         
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var addressDetailTextField: UITextField!
@@ -43,18 +45,15 @@ class RequestInfoViewController: UIViewController {
     let placePicker = UIPickerView()
     let place = ["현관문 앞(공동현관X)", "현관문 앞(공동현관O)", "경비실", "기타"]
     
-    @IBAction func addressSearchButton(_ sender: Any) {
-        guard let addressSearchVC = storyboard?.instantiateViewController(withIdentifier: "addressSearch") as? AddressSearchViewController else { return }
-        self.present(addressSearchVC, animated: true)
-    }
-    
     @objc func addressNotification(_ notification: Notification) {
+
         addressInfo = notification.object as! Address
-        //        addressTextField.text = addressInfo.
+        addressTextField.text = addressInfo.addressRoad
         addressDetailTextField.text = addressInfo.addressDetail
         
         print(addressInfo)
         self.dismiss(animated: true, completion: nil)
+
     }
     
     @IBAction func goAddress(_ sender: Any) {

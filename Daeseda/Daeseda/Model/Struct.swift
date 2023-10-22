@@ -45,6 +45,7 @@ struct OrderList: Codable {
 struct Address: Codable {
     var addressId: Int
     var addressName: String
+    var addressRoad: String?
     var addressDetail: String
     var addressZipcode: String
 }
@@ -138,6 +139,7 @@ struct UserInfoData: Codable {
 
 struct AddressCreateData: Codable {
     var addressName: String
+    var addressRoad: String
     var addressDetail: String
     var addressZipcode: String
 }
