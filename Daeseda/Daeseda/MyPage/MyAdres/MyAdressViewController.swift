@@ -41,6 +41,7 @@ class MyAdressViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleAddressDataUpdated(_:)), name: NSNotification.Name("AddressDataUpdated"), object: nil)
     }
     
+
     @objc func handleAddressDataUpdated(_ notification: Notification) {
         getAddressesData()
         myAdressTableView.reloadData()
@@ -86,6 +87,8 @@ class MyAdressViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        getAddressesData()
         // 탭 바를 숨깁니다.
         tabBarController?.tabBar.isHidden = true
     }
