@@ -376,7 +376,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="CdD-Bi-T4U" kind="relationship" relationship="viewControllers" id="Hkr-zH-g9g"/>
-                        <segue destination="20a-jw-U2m" kind="relationship" relationship="viewControllers" id="I9Z-Lo-MMg"/>
+                        <segue destination="61N-eP-0Sd" kind="relationship" relationship="viewControllers" id="I9Z-Lo-MMg"/>
                         <segue destination="3kG-qM-dYl" kind="relationship" relationship="viewControllers" id="Iv6-IJ-uaV"/>
                         <segue destination="o9D-iW-fKG" kind="relationship" relationship="viewControllers" id="Zj5-Xw-TJb"/>
                         <segue destination="4FG-cc-rQD" kind="relationship" relationship="viewControllers" id="24y-wn-WP1"/>
@@ -514,7 +514,7 @@
             </objects>
             <point key="canvasLocation" x="-583" y="759"/>
         </scene>
-        <!--orderList-->
+        <!--Order List View Controller-->
         <scene sceneID="YQE-bW-Fnj">
             <objects>
                 <viewController storyboardIdentifier="OrderList" id="20a-jw-U2m" customClass="OrderListViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
@@ -523,7 +523,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E13-iO-SH2">
-                                <rect key="frame" x="0.0" y="100" width="375" height="629"/>
+                                <rect key="frame" x="0.0" y="144" width="375" height="585"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderListCell" rowHeight="334" id="1aV-u3-p2u" customClass="OrderListTableViewCell" customModule="Daeseda" customModuleProvider="target">
@@ -667,14 +667,14 @@
                             <constraint firstItem="E13-iO-SH2" firstAttribute="top" secondItem="GR9-9I-jjk" secondAttribute="top" constant="50" id="xS1-FS-i0K"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="orderList" id="zB9-sB-npb"/>
+                    <navigationItem key="navigationItem" id="Fnh-9t-K0Y"/>
                     <connections>
                         <outlet property="orderListTableView" destination="E13-iO-SH2" id="XM3-bm-YDx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhA-We-oeV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-583" y="2243"/>
+            <point key="canvasLocation" x="-1415" y="2243"/>
         </scene>
         <!--마이페이지-->
         <scene sceneID="0VN-bF-Xpa">
@@ -1805,7 +1805,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="09U-5B-BxI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1524" y="2243"/>
+            <point key="canvasLocation" x="2466.4000000000001" y="2242.6108374384239"/>
         </scene>
         <!--My Page Guest View Controller-->
         <scene sceneID="Osy-bD-5PT">
@@ -1886,7 +1886,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AZO-ho-9iy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2441" y="2243"/>
+            <point key="canvasLocation" x="3383.1999999999998" y="2242.6108374384239"/>
         </scene>
         <!--My Review View Controller-->
         <scene sceneID="kBp-yn-M1T">
@@ -2717,7 +2717,7 @@
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="oAV-MI-aV9">
-                                <rect key="frame" x="342.66666666666669" y="255.33333333333329" width="12.333333333333314" height="16.666666666666828"/>
+                                <rect key="frame" x="342.66666666666669" y="255.33333333333334" width="12.333333333333314" height="16.666666666666657"/>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BFa-1L-lw4">
@@ -3603,7 +3603,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="052-t4-al9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2242" y="2243"/>
+            <point key="canvasLocation" x="-3079" y="2243"/>
         </scene>
         <!--Price List View Controller-->
         <scene sceneID="voy-v0-c4a">
@@ -3889,7 +3889,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBb-sd-cPJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1415" y="2243"/>
+            <point key="canvasLocation" x="-2242" y="2243"/>
         </scene>
         <!--Resetting Password View Controller-->
         <scene sceneID="lMb-Lx-br3">
@@ -4335,6 +4335,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fc-2m-lEe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="8407" y="5075"/>
+        </scene>
+        <!--orderList-->
+        <scene sceneID="2V2-7Z-Rde">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="61N-eP-0Sd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="orderList" id="zB9-sB-npb"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z9K-j9-cJb">
+                        <rect key="frame" x="0.0" y="50" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="20a-jw-U2m" kind="relationship" relationship="rootViewController" id="DYd-L5-MQG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c1T-o7-7iT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-583" y="2243"/>
         </scene>
     </scenes>
     <resources>

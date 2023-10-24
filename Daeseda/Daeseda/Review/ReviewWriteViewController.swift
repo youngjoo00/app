@@ -24,6 +24,7 @@ class ReviewWriteViewController: UIViewController {
     @IBOutlet weak var reviewWriteCategoryBtn: UIButton!
 
     var rating: Float = 1.0 // 최소 별점을 1로 설정
+    var orderId: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
