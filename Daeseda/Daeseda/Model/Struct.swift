@@ -109,6 +109,12 @@ struct ComentPostData: Codable {
     let replyContent: String
 }
 
+struct ComentEditData: Codable {
+    let replyId : Int
+    let boardId : Int
+    let replyContent : String
+}
+
 struct QnaEditData: Codable {
     let boardId: Int
     let boardCategory: String

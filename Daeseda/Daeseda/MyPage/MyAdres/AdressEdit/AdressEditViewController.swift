@@ -78,38 +78,34 @@ class AdressEditViewController: UIViewController {
             // 작업 후 테이블 뷰를 업데이트해야 할 수 있습니다.
             
             let otherAddressIndex = indexPath.row
-            
-            self?.addressData.remove(at: otherAddressIndex)
+            let addressDelData = self?.addressData[otherAddressIndex]
             
             let delUrl = "http://localhost:8888/users/address/delete"
             
             // 1. 토큰 가져오기
             if let token = UserTokenManager.shared.getToken() {
-                
                 // 2. Bearer Token을 설정합니다.
                 let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
                 
                 // 3. 서버에서 삭제 요청을 보냅니다.
-                AF.request(delUrl, method: .delete, headers: headers).response { response in
-                    switch response.result {
-                    case .success:
-                        // 요청이 성공한 경우
-                        print("userDel Successful")
-                        
-                        // 토큰 삭제
-                        UserTokenManager.shared.clearToken()
-                        
-                    case .failure(let error):
-                        // 요청이 실패한 경우
-                        print("Error: \(error.localizedDescription)")
+                if let addressDelData = addressDelData {
+                    AF.request(delUrl, method: .delete, parameters: addressDelData, encoder: JSONParameterEncoder.default, headers: headers).response { response in
+                        switch response.result {
+                        case .success:
+                            // 요청이 성공한 경우
+                            print("Address Deletion Successful")
+                            self?.getAdressEditData()
+                            // 삭제 작업 후 테이블 뷰 업데이트
+                            self?.addressEditTableView.reloadData()
+                        case .failure(let error):
+                            // 요청이 실패한 경우
+                            print("Error: \(error.localizedDescription)")
+                        }
                     }
                 }
             } else {
                 print("Token not available.")
             }
-            
-            // 삭제 작업 후 테이블 뷰 업데이트
-            self?.addressEditTableView.reloadData()
         }
         
         // 액션을 알림창에 추가

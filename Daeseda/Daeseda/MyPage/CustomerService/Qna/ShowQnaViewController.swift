@@ -17,6 +17,7 @@ class ShowQnaViewController: UIViewController {
     @IBOutlet weak var qnaEditBtn: UIButton!
     @IBOutlet weak var qnaDelBtn: UIButton!
     
+    
     var qnaList : [QnaListData] = []
     var comentList : [ComentData] = []
     var myInfo: UserInfoData?
@@ -30,7 +31,8 @@ class ShowQnaViewController: UIViewController {
     var showQnaId: Int?
     var originalStackViewBottomConstraint: NSLayoutConstraint?
     var isSettingMenuVisible = false
-    
+    var selectedComentIndex: Int?
+    var isEditingComment = false  // 수정 중인 댓글 여부를 나타내는 플래그
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +45,7 @@ class ShowQnaViewController: UIViewController {
         
         qnaEditBtn.isHidden = true
         qnaDelBtn.isHidden = true
+        comentWritePostBtn.setTitle("등록", for: .normal)
         
         getQnaList()
         getMyInfoData()
@@ -79,6 +82,26 @@ class ShowQnaViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    @IBAction func comentEditBtn(_ sender: UIButton) {
+        // 버튼의 슈퍼뷰인 셀의 indexPath를 찾습니다.
+        if let cell = sender.superview?.superview as? ComentTableViewCell,
+           let indexPath = comentTableView.indexPath(for: cell) {
+            selectedComentIndex = indexPath.row
+            let comentToEdit = comentList[indexPath.row]
+            let replyIdToEdit = comentToEdit.replyId
+            print("comentToEdit : \(comentToEdit)")
+            print("replyIdToEdit : \(replyIdToEdit)")
+            
+            isEditingComment = true
+            comentWritePostBtn.setTitle("수정", for: .normal)  // "수정"으로 버튼 텍스트 변경
+            comentWriteTF.text = comentList[indexPath.row].replyContent
+            comentWriteTF.becomeFirstResponder()
+            
+            // replyIdToDelete을 사용하여 댓글 삭제 작업 수행
+            // comentEditConfirmationAlert(replyId: replyIdToEdit)
+        }
+    }
+    
     @IBAction func comentDelBtn(_ sender: UIButton) {
         // 버튼의 슈퍼뷰인 셀의 indexPath를 찾습니다.
         if let cell = sender.superview?.superview as? ComentTableViewCell,
@@ -88,11 +111,11 @@ class ShowQnaViewController: UIViewController {
             print("comentToDelte : \(comentToDelete)")
             print("replyIdToDelete : \(replyIdToDelete)")
             // replyIdToDelete을 사용하여 댓글 삭제 작업 수행
-            comentConfirmationAlert(replyId: replyIdToDelete)
+            comentDelConfirmationAlert(replyId: replyIdToDelete)
         }
     }
     
-    func comentConfirmationAlert(replyId: Int) {
+    func comentDelConfirmationAlert(replyId: Int) {
         let alertController = UIAlertController(title: "게시글 삭제", message: "정말 게시글을 삭제하시겠습니까?", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
@@ -261,6 +284,7 @@ class ShowQnaViewController: UIViewController {
                         if comentData.userNickname == myNickname {
                             if let cell = self.comentTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? ComentTableViewCell {
                                 cell.comentDelBtn.isHidden = false
+                                cell.comentEditBtn.isHidden = false
                             }
                         }
                     }
@@ -342,17 +366,67 @@ class ShowQnaViewController: UIViewController {
     
     
     @IBAction func comentWritePostBtn(_ sender: UIButton) {
-        let comentPostUrl = "http://localhost:8888/reply/register"
+        if let index = selectedComentIndex {
+            updateComentAtIndex(index)
+            
+        } else {
+            createNewComent()
+        }
+        comentWriteTF.text = ""
+        selectedComentIndex = nil
         
-        // 텍스트 필드에서 값을 가져와서 ComentPostData 구조체에 할당
+    }
+    
+    // 댓글 업데이트 함수
+    func updateComentAtIndex(_ index: Int) {
+        let comentToUpdate = comentList[index]
+        let replyIdToUpdate = comentToUpdate.replyId
+        
+        guard let boardId = showQnaId,
+              let replyContent = comentWriteTF.text else {
+            showAlert("댓글 내용을 입력하세요.")
+            return
+        }
+        
+        let comentEditData = ComentEditData(replyId: replyIdToUpdate, boardId: boardId, replyContent: replyContent)
+        
+        print(comentEditData)
+        
+        let url = "http://localhost:8888/reply/\(replyIdToUpdate)"
+        
+        if let token = UserTokenManager.shared.getToken() {
+            let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+            
+            AF.request(url, method: .put, parameters: comentEditData, encoder: JSONParameterEncoder.default, headers: headers)
+                .response { response in
+                    switch response.result {
+                    case .success:
+                        DispatchQueue.main.async {
+                            self.comentWritePostBtn.setTitle("등록", for: .normal)
+                        }
+                        self.comentWriteTF.resignFirstResponder()
+                        print("댓글 수정 성공")
+                        self.getComent()
+                    case .failure(let error):
+                        print("Error: \(error.localizedDescription)")
+                    }
+                }
+        } else {
+            print("Token not available.")
+        }
+    }
+    
+    // 일반 댓글 작성 함수
+    func createNewComent() {
         guard let replyContent = comentWriteTF.text, !replyContent.isEmpty,
-              let boardId = showQnaId
-        else {
-            print("모든 필드를 채워주세요.")
+              let boardId = showQnaId else {
+            showAlert("댓글 내용을 입력하세요.")
             return
         }
         
         let comentData = ComentPostData(boardId: boardId, replyContent: replyContent)
+        
+        let comentPostUrl = "http://localhost:8888/reply/register"
         
         if let token = UserTokenManager.shared.getToken() {
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
@@ -361,20 +435,23 @@ class ShowQnaViewController: UIViewController {
                 .response { response in
                     switch response.result {
                     case .success:
-                        print("등록 성공")
+                        print("댓글 작성 성공")
                         self.getComent()
                     case .failure(let error):
-                        print("등록 실패: \(error.localizedDescription)")
+                        print("댓글 작성 실패: \(error.localizedDescription)")
                     }
                 }
         } else {
             print("Token not available.")
         }
-        comentWriteTF.resignFirstResponder() // 현재 First Responder 해제
-        comentWriteTF.text = ""
     }
     
-    
+    func showAlert(_ message: String) {
+        let alertController = UIAlertController(title: "알림", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
     
     
     // 키보드가 나타날 때 스택 뷰를 올림
@@ -393,7 +470,28 @@ class ShowQnaViewController: UIViewController {
     
     // 다른 영역 터치 시 키보드 내리기
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
-        comentWriteTF.resignFirstResponder() // 현재 First Responder 해제
+        if isEditingComment {
+            let alertController = UIAlertController(title: "수정 취소", message: "수정 중인 댓글을 취소하시겠습니까?", preferredStyle: .alert)
+            
+            let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
+                // "확인"을 눌렀을 때 실행할 코드 추가 (예: 편집 상태 초기화)
+                self.isEditingComment = false
+                self.comentWritePostBtn.setTitle("등록", for: .normal)
+                self.comentWriteTF.text = ""
+                self.comentWriteTF.resignFirstResponder()
+            }
+            
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel) { _ in
+                // "취소"를 눌렀을 때 실행할 코드 추가 (예: 아무 작업 없음)
+            }
+            
+            alertController.addAction(confirmAction)
+            alertController.addAction(cancelAction)
+            
+            present(alertController, animated: true, completion: nil)
+        } else {
+            comentWriteTF.resignFirstResponder() // 현재 First Responder 해제
+        }
     }
     
 }
@@ -431,8 +529,10 @@ extension ShowQnaViewController: UITableViewDataSource {
             if coments.userNickname == myNickname {
                 // 댓글 작성자가 현재 사용자와 동일한 경우 버튼을 표시
                 comentCell.comentDelBtn.isHidden = false
+                comentCell.comentEditBtn.isHidden = false
             } else {
                 comentCell.comentDelBtn.isHidden = true
+                comentCell.comentEditBtn.isHidden = true
             }
         }
         return comentCell
