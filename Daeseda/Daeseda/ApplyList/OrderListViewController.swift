@@ -32,6 +32,8 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
     
     var segmentIndex: Int = 0
     
+    var postOrderId : Int = 0
+    
     func fetchCategoryInfo(){
         if let token = UserTokenManager.shared.getToken(){
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
@@ -77,7 +79,7 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
 }
 extension OrderListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        //        print(indexPath.row)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -136,6 +138,7 @@ extension OrderListViewController: UITableViewDataSource{
             cell.button.removeTarget(self, action: #selector(payment), for: .touchUpInside)
             cell.button.removeTarget(self, action: #selector(deliveryInfo), for: .touchUpInside)
             cell.button.addTarget(self, action: #selector(reviewWrite), for: .touchUpInside)
+            
         }
         
         return cell
@@ -164,12 +167,19 @@ extension OrderListViewController: UITableViewDataSource{
         
     }
     
-    @objc func reviewWrite() {
-        print("리뷰작성")
-        guard  let reviewWriteVC = self.storyboard?.instantiateViewController(withIdentifier: "ReviewWrite") as? ReviewWriteViewController else { return }
-        
-        present(reviewWriteVC, animated: true, completion: nil)
+    @objc func reviewWrite(_ sender: UIButton) {
+        // 버튼을 포함하는 셀의 indexPath를 가져옵니다.
+        if let indexPath = self.orderListTableView.indexPath(for: sender.superview?.superview as! UITableViewCell) {
+            
+            let orderNumText = num[indexPath.row]
+            
+            if let orderNum = Int(orderNumText) {
+                guard let reviewWriteVC = self.storyboard?.instantiateViewController(withIdentifier: "ReviewWrite") as? ReviewWriteViewController else { return }
+                reviewWriteVC.orderId = orderNum
+                print(orderNum)
+                
+                present(reviewWriteVC, animated: true, completion: nil)
+            }
+        }
     }
-    
-    
 }
