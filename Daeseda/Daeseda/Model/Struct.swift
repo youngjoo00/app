@@ -32,7 +32,7 @@ struct OrderList: Codable {
     let orderId: Int
     let user: UserInfoData
     let address: Address
-    let clothesCount: [ClothesCount]?
+    let clothesCount: [ClothesCount]
     let orderStatus: String
     let totalPrice: Int
     let washingMethod: String

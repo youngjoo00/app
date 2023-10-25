@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         let view = UILabel()
         view.frame = CGRect(x: 0, y: 0, width: 158, height: 37)
         view.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        view.font = UIFont(name: "GmarketSansTTFBold", size: 30)
+        view.font = UIFont(name: "GmarketSansTTFBold", size: 23)
         // Line height: 30 pt
         
         view.text = "서비스 이용"
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         let view2 = UILabel()
         view2.frame = CGRect(x: 0, y: 0, width: 152, height: 38)
         view2.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        view2.font = UIFont(name: "GmarketSansTTFBold", size: 30)
+        view2.font = UIFont(name: "GmarketSansTTFBold", size: 23)
         // Line height: 30 pt
         view2.text = "리뷰"
 
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
         requestButton.translatesAutoresizingMaskIntoConstraints = false
         requestButton.widthAnchor.constraint(equalToConstant: 170).isActive = true
         requestButton.heightAnchor.constraint(equalToConstant: 221).isActive = true
-        requestButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 21).isActive = true
+        requestButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
         requestButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 297).isActive = true
         
         // 버튼을 누를 때 RequestViewController 화면 전환
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         let requestText = UILabel()
         requestText.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         requestText.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        requestText.font = UIFont(name: "GmarketSansTTFBold", size: 25)
+        requestText.font = UIFont(name: "GmarketSansTTFBold", size: 20)
         requestText.numberOfLines = 0
         requestText.lineBreakMode = .byWordWrapping
         // Line height: 25 pt
@@ -87,14 +87,12 @@ class ViewController: UIViewController {
 
         self.view.addSubview(requestText)
         requestText.translatesAutoresizingMaskIntoConstraints = false
-        requestText.widthAnchor.constraint(equalToConstant: 164).isActive = true
-        requestText.heightAnchor.constraint(equalToConstant: 208).isActive = true
-        requestText.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 33).isActive = true
-        requestText.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 250).isActive = true
+        requestText.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40).isActive = true
+        requestText.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 330).isActive = true
         
         // 신청 이미지
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: 91, height: 102)
+        view.frame = CGRect(x: 0, y: 0, width: 85, height: 95)
         let requstImage = UIImage(named: "신청버튼")?.cgImage
         let layer0 = CALayer()
         layer0.contents = requstImage
@@ -138,7 +136,7 @@ class ViewController: UIViewController {
         priceButton.translatesAutoresizingMaskIntoConstraints = false
         priceButton.widthAnchor.constraint(equalToConstant: 162).isActive = true
         priceButton.heightAnchor.constraint(equalToConstant: 90).isActive = true
-        priceButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 210).isActive = true
+        priceButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         priceButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 304).isActive = true
         
         priceButton.addTarget(self, action: #selector(priceListVC), for: .touchUpInside)
@@ -148,7 +146,7 @@ class ViewController: UIViewController {
         let priceText = UILabel()
         priceText.frame = CGRect(x: 0, y: 0, width: 162, height: 35)
         priceText.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        priceText.font = UIFont(name: "GmarketSansTTFBold", size: 25)
+        priceText.font = UIFont(name: "GmarketSansTTFBold", size: 20)
         // Line height: 25 pt
         priceText.textAlignment = .center
         priceText.text = "가격표"
@@ -170,7 +168,7 @@ class ViewController: UIViewController {
         useButton.translatesAutoresizingMaskIntoConstraints = false
         useButton.widthAnchor.constraint(equalToConstant: 162).isActive = true
         useButton.heightAnchor.constraint(equalToConstant: 90).isActive = true
-        useButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 210).isActive = true
+        useButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         useButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 422).isActive = true
         
         useButton.addTarget(self, action: #selector(useWayVC), for: .touchUpInside)
@@ -180,7 +178,7 @@ class ViewController: UIViewController {
         let useText = UILabel()
         useText.frame = CGRect(x: 0, y: 0, width: 162, height: 34)
         useText.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        useText.font = UIFont(name: "GmarketSansTTFBold", size: 25)
+        useText.font = UIFont(name: "GmarketSansTTFBold", size: 20)
         // Line height: 25 pt
         useText.textAlignment = .center
         useText.text = "이용방법"
@@ -210,10 +208,20 @@ class ViewController: UIViewController {
     }
     
     func loginButton(){
-        let nextButton = UIBarButtonItem(title: "로그인", style: .plain, target: self, action: #selector(LoginVC))
-        navigationItem.rightBarButtonItem = nextButton
-//        navigationItem.rightBarButtonItem?.tintColor = UIColor.white
-//        navigationItem.rightBarButtonItem?.back
+        let nextButton = UIButton(type: .custom)
+        nextButton.frame = CGRect(x: 0, y: 0, width: 60, height: 30) // 버튼의 크기 설정
+        nextButton.setTitle("로그인", for: .normal)
+        nextButton.backgroundColor = UIColor(red: 0.365, green: 0.553, blue: 0.949, alpha: 1)
+        nextButton.setTitleColor(UIColor.black, for: .normal)
+        nextButton.layer.cornerRadius = 15
+        nextButton.addTarget(self, action: #selector(LoginVC), for: .touchUpInside) // 버튼 탭 액션 추가
+
+        // 커스텀 버튼을 UIBarButtonItem로 변환
+        let customBarButtonItem = UIBarButtonItem(customView: nextButton)
+
+        // 네비게이션 바에 추가
+        navigationItem.rightBarButtonItem = customBarButtonItem
+        
     }
     
     @objc func LoginVC() {

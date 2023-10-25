@@ -80,27 +80,27 @@ class MyAdressViewController: UIViewController {
         }
     }
     
-    func postAddressDefalut() {
-        let addressDefalutUrl = "http://localhost:8888/users/address/setting"
-        
-//        let addressDefalutData = AddressDefalutData(addressId: postAdderssData.addressId)
-        
-        if let token = UserTokenManager.shared.getToken() {
-            let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
-            
-            AF.request(addressDefalutUrl, method: .post, parameters: addressDefalutData, encoder: JSONParameterEncoder.default, headers: headers)
-                .response { response in
-                    switch response.result {
-                    case .success:
-                        print("등록 성공")
-                    case .failure(let error):
-                        print("등록 실패: \(error.localizedDescription)")
-                    }
-                }
-        } else {
-            print("Token not available.")
-        }
-    }
+//    func postAddressDefalut() {
+//        let addressDefalutUrl = "http://localhost:8888/users/address/setting"
+//        
+//        let addressDefalutData = AddressDefalutData(addressId: Int)
+//        
+//        if let token = UserTokenManager.shared.getToken() {
+//            let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+//            
+//            AF.request(addressDefalutUrl, method: .post, parameters: addressDefalutData, encoder: JSONParameterEncoder.default, headers: headers)
+//                .response { response in
+//                    switch response.result {
+//                    case .success:
+//                        print("등록 성공")
+//                    case .failure(let error):
+//                        print("등록 실패: \(error.localizedDescription)")
+//                    }
+//                }
+//        } else {
+//            print("Token not available.")
+//        }
+//    }
     @objc func addressEditBarBtnTab(_ sender: UIBarButtonItem) {
         guard let addressEditVC = storyboard?.instantiateViewController(withIdentifier: "AdressEdit") as? AdressEditViewController else { return }
         navigationController?.pushViewController(addressEditVC, animated: true)
