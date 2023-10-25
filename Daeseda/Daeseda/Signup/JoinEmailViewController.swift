@@ -14,7 +14,7 @@ class JoinEmailViewController: UIViewController {
         super.viewDidLoad()
         
         label()
-        
+        nextButton()
     }
     
     

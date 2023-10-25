@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         let view = UILabel()
         view.frame = CGRect(x: 0, y: 0, width: 158, height: 37)
         view.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        view.font = UIFont(name: "GmarketSans-Bold", size: 30)
+        view.font = UIFont(name: "GmarketSansTTFBold", size: 30)
         // Line height: 30 pt
         
         view.text = "서비스 이용"
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         let view2 = UILabel()
         view2.frame = CGRect(x: 0, y: 0, width: 152, height: 38)
         view2.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        view2.font = UIFont(name: "GmarketSans-Bold", size: 30)
+        view2.font = UIFont(name: "GmarketSansTTFBold", size: 30)
         // Line height: 30 pt
         view2.text = "리뷰"
 
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
         let requestText = UILabel()
         requestText.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         requestText.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        requestText.font = UIFont(name: "GmarketSans-Bold", size: 25)
+        requestText.font = UIFont(name: "GmarketSansTTFBold", size: 25)
         requestText.numberOfLines = 0
         requestText.lineBreakMode = .byWordWrapping
         // Line height: 25 pt
@@ -148,7 +148,7 @@ class ViewController: UIViewController {
         let priceText = UILabel()
         priceText.frame = CGRect(x: 0, y: 0, width: 162, height: 35)
         priceText.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        priceText.font = UIFont(name: "GmarketSans-Bold", size: 25)
+        priceText.font = UIFont(name: "GmarketSansTTFBold", size: 25)
         // Line height: 25 pt
         priceText.textAlignment = .center
         priceText.text = "가격표"
@@ -180,7 +180,7 @@ class ViewController: UIViewController {
         let useText = UILabel()
         useText.frame = CGRect(x: 0, y: 0, width: 162, height: 34)
         useText.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        useText.font = UIFont(name: "GmarketSans-Bold", size: 25)
+        useText.font = UIFont(name: "GmarketSansTTFBold", size: 25)
         // Line height: 25 pt
         useText.textAlignment = .center
         useText.text = "이용방법"
@@ -212,6 +212,8 @@ class ViewController: UIViewController {
     func loginButton(){
         let nextButton = UIBarButtonItem(title: "로그인", style: .plain, target: self, action: #selector(LoginVC))
         navigationItem.rightBarButtonItem = nextButton
+//        navigationItem.rightBarButtonItem?.tintColor = UIColor.white
+//        navigationItem.rightBarButtonItem?.back
     }
     
     @objc func LoginVC() {
@@ -220,8 +222,7 @@ class ViewController: UIViewController {
     }
 
     let scrollView = UIScrollView()
-    let pageControl = UIPageControl()
-
+    
     func banner() {
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
         scrollView.isPagingEnabled = true // 페이지별로 스크롤
@@ -240,31 +241,12 @@ class ViewController: UIViewController {
         scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(images.count), height: scrollView.frame.height)
         view.addSubview(scrollView)
 
-        // UIPageControl 추가
-        pageControl.numberOfPages = images.count
-        pageControl.currentPageIndicatorTintColor = UIColor(named: "FFC965") // 해당
-        pageControl.currentPage = 0
-        pageControl.frame = CGRect(x: 0, y: scrollView.frame.maxY - 30, width: scrollView.frame.width, height: 30)
-        pageControl.addTarget(self, action: #selector(pageControlDidChange), for: .valueChanged)
-        view.addSubview(pageControl)
-        
-
     }
+    
     @objc func pageControlDidChange(_ sender: UIPageControl) {
         let x = CGFloat(sender.currentPage) * scrollView.frame.size.width
         scrollView.setContentOffset(CGPoint(x: x, y: 0), animated: true)
     }
-    
-    //현재 페이지를 pageControl의 currentPage 속성에 설정
-    func selectedPage(currentPage: Int) {
-        pageControl.currentPage = currentPage
-    }
-    
-    //현재 페이지를 업데이트
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageWidth = scrollView.frame.size.width
-        let currentPage = Int((scrollView.contentOffset.x + pageWidth / 2) / pageWidth)
-        pageControl.currentPage = currentPage
-    }
+
 }
 
