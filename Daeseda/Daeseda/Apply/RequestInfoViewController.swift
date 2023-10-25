@@ -57,7 +57,7 @@ class RequestInfoViewController: UIViewController {
     }
     
     @IBAction func goAddress(_ sender: Any) {
-        guard let addressVC = storyboard?.instantiateViewController(withIdentifier: "MyAdress") as? MyAdressViewController else { return }
+        guard let addressVC = storyboard?.instantiateViewController(withIdentifier: "MyAddressList") as? MyAddressListViewController else { return }
         self.present(addressVC, animated: true)
     }
     
