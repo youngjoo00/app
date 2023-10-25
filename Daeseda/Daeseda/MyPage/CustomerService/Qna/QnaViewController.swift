@@ -129,6 +129,7 @@ extension QnaViewController: UITableViewDataSource {
         
         let qnaData = qnaList[indexPath.row]
         
+        
         let matchingComents = comentList.filter { $0.boardId == qnaData.boardId }
         let comentCount = matchingComents.count
         
