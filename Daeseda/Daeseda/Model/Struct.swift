@@ -45,9 +45,10 @@ struct OrderList: Codable {
 struct Address: Codable {
     var addressId: Int
     var addressName: String
-    var addressRoad: String?
+    var addressRoad: String
     var addressDetail: String
     var addressZipcode: String
+    var defaultAddress: Bool
 }
 
 struct ClothesCount: Codable {
@@ -167,8 +168,4 @@ struct AddressCreateData: Codable {
     var addressRoad: String
     var addressDetail: String
     var addressZipcode: String
-}
-
-struct AddressDefalutData: Codable {
-    let addressId: Int
 }

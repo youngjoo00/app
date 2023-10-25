@@ -35,7 +35,7 @@ class RequestInfoViewController: UIViewController {
 
     var selectedAddress: [Address] = []
     
-    var addressInfo = Address(addressId: 0, addressName: "", addressRoad: "",addressDetail: "", addressZipcode: "")
+    var addressInfo = Address(addressId: 0, addressName: "", addressRoad: "",addressDetail: "", addressZipcode: "", defaultAddress: false)
         
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var addressDetailTextField: UITextField!
