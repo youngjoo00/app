@@ -20,7 +20,13 @@ class MypageUserViewController: UIViewController {
         
         getMyData()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getMyData()
+    }
+    
     func getMyData() {
         // 1. 토큰 가져오기
         if let token = UserTokenManager.shared.getToken() {
