@@ -49,7 +49,7 @@ class MypageUserViewController: UIViewController {
     func updateUI(with userInfo: UserInfoData) {
         myNicknameLabel.text = userInfo.userNickname
         myPhoneLabel.text = userInfo.userPhone
-        myAddressLabel.text = "선택된 주소 부분"
+        myAddressLabel.text = userInfo.addressDto.addressDetail
     }
     
     

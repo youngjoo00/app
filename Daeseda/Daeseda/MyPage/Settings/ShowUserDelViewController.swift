@@ -5,9 +5,27 @@ class ShowUserDelViewController: UIViewController {
     
     var mainTabBarController: MainTabBarViewController!
     
+    var userCheckDelBtn: Bool = false {
+        didSet {
+            // userCheckDelBtn 값이 변경될 때마다 버튼의 이미지와 색상을 업데이트합니다.
+            let imageName = userCheckDelBtn ? "checkmark.circle.fill" : "checkmark.circle"
+            let tintColor = userCheckDelBtn ? UIColor(hex: 0x5D8DF2) : UIColor.lightGray
+            
+            userDelCheckBtn.setImage(UIImage(systemName: imageName), for: .normal)
+            userDelCheckBtn.tintColor = tintColor
+            
+            // userCheckDelBtn 값에 따라 lastUserDelBtn 버튼의 활성화/비활성화 상태를 변경합니다.
+            lastUserDelBtn.isEnabled = userCheckDelBtn
+            lastUserDelBtn.tintColor = userCheckDelBtn ? UIColor(hex: 0x5D8DF2) : UIColor.lightGray
+        }
+    }
+    
+    @IBOutlet weak var lastUserDelBtn: UIButton!
+    @IBOutlet weak var userDelCheckBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        userCheckDelBtn = false
     }
     
     @IBAction func closeBtn(_ sender: UIButton) {
@@ -15,42 +33,22 @@ class ShowUserDelViewController: UIViewController {
     }
     
     @IBAction func lastUserDelBtn(_ sender: UIButton) {
-        
-        let url = "http://localhost:8888/users/delete"
-        
-        // 1. 토큰 가져오기
-        if let token = UserTokenManager.shared.getToken() {
-            print("Token: \(token)")
-            
-            // 2. Bearer Token을 설정합니다.
-            let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
-            
-            // 3. 서버에서 삭제 요청을 보냅니다.
-            AF.request(url, method: .delete, headers: headers).response { response in
-                switch response.result {
-                case .success:
-                    // 요청이 성공한 경우
-                    print("userDel Successful")
-                    
-                    // 토큰 삭제
-                    UserTokenManager.shared.clearToken()
-                    
-                    if let mainTabBarController = self.presentingViewController as? MainTabBarViewController {
-                        mainTabBarController.showPage()
-                    } else {
-                        print("MainTabBarViewController not found.")
-                    }
-                    
-                    self.dismiss(animated: true, completion: nil)
-                case .failure(let error):
-                    // 요청이 실패한 경우
-                    print("Error: \(error.localizedDescription)")
-                }
-            }
-        } else {
-            print("Token not available.")
-        }
+        // ...
     }
     
-    
+    @IBAction func userDelCheckBtn(_ sender: UIButton) {
+        userCheckDelBtn.toggle()
+    }
+
+}
+
+extension UIColor {
+    convenience init(hex: Int, alpha: CGFloat = 1.0) {
+        self.init(
+            red: CGFloat((hex & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((hex & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(hex & 0x0000FF) / 255.0,
+            alpha: alpha
+        )
+    }
 }
