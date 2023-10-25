@@ -34,6 +34,7 @@
 		8E94FFF62AC1D2B5006B8E9E /* ShowQnaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94FFF52AC1D2B5006B8E9E /* ShowQnaViewController.swift */; };
 		8E94FFF82AC1DBB2006B8E9E /* QnaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94FFF72AC1DBB2006B8E9E /* QnaTableViewCell.swift */; };
 		8E94FFFA2AC1F5D0006B8E9E /* ComentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94FFF92AC1F5D0006B8E9E /* ComentTableViewCell.swift */; };
+		8EA4192B2AE8DDA300A95D99 /* MyAddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4192A2AE8DDA300A95D99 /* MyAddressListViewController.swift */; };
 		8EA5A1C62AB18E2100AAE23C /* WDFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C52AB18E2100AAE23C /* WDFont.swift */; };
 		8EA5A1D42AB18FA300AAE23C /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */; };
 		8EA5A1D52AB18FA300AAE23C /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */; };
@@ -127,6 +128,7 @@
 		8E94FFF52AC1D2B5006B8E9E /* ShowQnaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowQnaViewController.swift; sourceTree = "<group>"; };
 		8E94FFF72AC1DBB2006B8E9E /* QnaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnaTableViewCell.swift; sourceTree = "<group>"; };
 		8E94FFF92AC1F5D0006B8E9E /* ComentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComentTableViewCell.swift; sourceTree = "<group>"; };
+		8EA4192A2AE8DDA300A95D99 /* MyAddressListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressListViewController.swift; sourceTree = "<group>"; };
 		8EA5A1C52AB18E2100AAE23C /* WDFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDFont.swift; sourceTree = "<group>"; };
 		8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
 		8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				8EE855EF2AD0540B007ECE13 /* MyHomeTableViewCell.swift */,
 				8EE855F12AD05BD1007ECE13 /* MyAdressTableViewCell.swift */,
 				CCE9847B2ACE92EE0005F97F /* AddressSearchViewController.swift */,
+				8EA4192A2AE8DDA300A95D99 /* MyAddressListViewController.swift */,
 				8EE855F32AD0690F007ECE13 /* AdressEdit */,
 				8EE7E6262AD2A77600700A82 /* MoreAdress */,
 			);
@@ -684,6 +687,7 @@
 				8E94FFFA2AC1F5D0006B8E9E /* ComentTableViewCell.swift in Sources */,
 				8EE855EE2AD04928007ECE13 /* AdressEditViewController.swift in Sources */,
 				CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */,
+				8EA4192B2AE8DDA300A95D99 /* MyAddressListViewController.swift in Sources */,
 				8E7539E32ABBFB06004F979D /* MyInfoViewController.swift in Sources */,
 				8E7539E42ABBFB06004F979D /* MyAdressViewController.swift in Sources */,
 				CC6C34C32AD29A04000A420F /* PaymentViewController.swift in Sources */,
