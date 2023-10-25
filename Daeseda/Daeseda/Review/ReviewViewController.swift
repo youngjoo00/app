@@ -5,6 +5,7 @@ class ReviewViewController: UIViewController {
     
     let url = "http://localhost:8888/review/list"
     var reviews: [ReviewData] = []
+    var reviewCategory: [ReviewCategoryData] = []
     
     // 피커뷰와 관련된 변수
     var categoryPickerView: UIPickerView?
@@ -75,6 +76,25 @@ class ReviewViewController: UIViewController {
             }
     }
     
+    func getReviewCategoryData() {
+        let reviewCategoryUrl = ""
+        
+        AF.request(url, method: .get)
+            .validate(statusCode: 200..<300)
+            .responseData { response in
+                switch response.result {
+                case .success(let data):
+                    do {
+                        self.reviews = try JSONDecoder().decode([ReviewData].self, from: data)
+                        
+                    } catch {
+                        print("Failed to decode reviews: \(error)")
+                    }
+                case .failure(let error):
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
+    }
     @IBAction func reviewWriteButton(_ sender: UIButton) {
         // ReviewWriteViewController로 이동하는 메서드 호출
         showReviewWriteViewController()
