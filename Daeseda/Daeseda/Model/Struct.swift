@@ -126,7 +126,6 @@ struct ReviewData: Codable {
     let reviewId: Int
     let userId: Int
     let imageUrl: String
-    let categories: String?
     let orderId: Int
     let rating: Float?
     let userNickname: String?
@@ -138,7 +137,7 @@ struct ReviewData: Codable {
 struct ReviewCategoryData: Codable {
     let reviewCategoryId: Int
     let reviewId: Int
-    let categories: [Categories]
+    let categories: Categories
 }
 
 struct Categories: Codable {

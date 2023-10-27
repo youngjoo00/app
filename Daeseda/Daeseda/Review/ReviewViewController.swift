@@ -5,7 +5,7 @@ class ReviewViewController: UIViewController {
     
     let url = "http://localhost:8888/review/list"
     var reviews: [ReviewData] = []
-    var reviewCategory: [ReviewCategoryData] = []
+    var reviewCategory: [Categories] = []
     
     // 피커뷰와 관련된 변수
     var categoryPickerView: UIPickerView?
@@ -37,7 +37,7 @@ class ReviewViewController: UIViewController {
         
         reviewCategoryTF.layer.cornerRadius = 13
         reviewCategoryTF.clipsToBounds = true
-
+        
         // 타이틀 텍스트 폰트 조절
         if let navigationBar = self.navigationController?.navigationBar {
             let font = WDFont.GmarketBold.of(size: 30)
@@ -46,6 +46,7 @@ class ReviewViewController: UIViewController {
         
         getReviewData()
         setupCategoryPickerView()
+        print("리뷰 카테고리 : ", self.reviewCategory)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +54,7 @@ class ReviewViewController: UIViewController {
         
         // 화면이 나타날 때 리뷰 목록을 리로드
         getReviewData()
+        
     }
     
     func getReviewData() {
@@ -63,38 +65,61 @@ class ReviewViewController: UIViewController {
                 case .success(let data):
                     do {
                         self.reviews = try JSONDecoder().decode([ReviewData].self, from: data)
-                        // 내림차순 정렬
+                        // 리뷰를 내림차순으로 정렬합니다.
                         self.reviews.sort { $0.reviewId > $1.reviewId }
-                        self.reviewListTableView.reloadData()
-                        self.reviewListCount.text = "\(self.reviews.count)"
+                        print("reviews: ", self.reviews)
+                        
+                        // 리뷰 카테고리를 저장할 배열을 초기화하고 빈 요소로 채웁니다.
+                        self.reviewCategory = Array(repeating: Categories(categoryId: 0, categoryName: ""), count: self.reviews.count)
+                        
+                        
+                        // 리뷰 카테고리를 가져오기 위해 각 리뷰에 대한 인덱스와 함께 getReviewCategory를 호출합니다.
+                        for (index, review) in self.reviews.enumerated() {
+                            self.getReviewCategory(reviewId: review.reviewId, index: index)
+                        }
                     } catch {
-                        print("Failed to decode reviews: \(error)")
+                        print("리뷰 디코딩 실패: \(error)")
                     }
                 case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
+                    print("에러: \(error.localizedDescription)")
                 }
             }
     }
     
-    func getReviewCategoryData() {
-        let reviewCategoryUrl = ""
-        
-        AF.request(url, method: .get)
+    func getReviewCategory(reviewId: Int, index: Int) {
+        let reviewCategoryUrl = "http://localhost:8888/review-category/\(reviewId)"
+        AF.request(reviewCategoryUrl, method: .get)
             .validate(statusCode: 200..<300)
             .responseData { response in
                 switch response.result {
                 case .success(let data):
                     do {
-                        self.reviews = try JSONDecoder().decode([ReviewData].self, from: data)
+                        let reviewCategoryData = try JSONDecoder().decode([ReviewCategoryData].self, from: data)
+                        if let firstCategory = reviewCategoryData.first {
+                            self.reviewCategory[index] = firstCategory.categories
+                        }
                         
+                        // 모든 리뷰 카테고리 데이터를 수집한 후에 테이블 뷰를 업데이트합니다.
+                        if self.reviewCategory.allSatisfy({ $0.categoryId != 0 && $0.categoryName != "" }) {
+                            self.reviewListTableView.reloadData()
+                        }
+                        
+                        print("reviewCategory: ", self.reviewCategory)
                     } catch {
-                        print("Failed to decode reviews: \(error)")
+                        print("리뷰 카테고리 디코딩 실패: \(error)")
                     }
                 case .failure(let error):
-                    print("Error: \(error.localizedDescription)")
+                    print("에러: \(error.localizedDescription)")
                 }
             }
     }
+    
+    
+    
+    
+    
+    
+    
     @IBAction func reviewWriteButton(_ sender: UIButton) {
         // ReviewWriteViewController로 이동하는 메서드 호출
         showReviewWriteViewController()
@@ -171,9 +196,12 @@ extension ReviewViewController: UITableViewDataSource {
         
         reviewListCell.reviewListTextLabel.text = review.reviewContent
         
-        // 버튼의 타이틀을 라벨 값으로 설정
-        let selectedCategory = review.categories
-        reviewListCell.reviewListCategoryButton.setTitle(selectedCategory, for: .normal)
+        // 리뷰 카테고리를 버튼 타이틀로 설정
+//        if let category = self.reviewCategory[review.reviewId] {
+//            reviewListCell.reviewListCategoryButton.setTitle(category, for: .normal)
+//        } else {
+//            reviewListCell.reviewListCategoryButton.setTitle("카테고리 없음", for: .normal)
+//        }
         
         reviewListCell.reviewListNicknameLabel.text = review.userNickname
         

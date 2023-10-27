@@ -231,9 +231,9 @@ extension MyReviewViewController: UITableViewDataSource {
         
         myReviewsCell.myReviewTextLabel.text = review.reviewContent
         
-        // 리뷰 데이터에서 실제 카테고리 데이터를 사용하도록 수정해야 합니다.
-        let selectedCategory = review.categories // 실제 리뷰 데이터에서 카테고리 데이터를 사용하도록 수정
-        myReviewsCell.myReviewCategoryBtn.setTitle(selectedCategory, for: .normal)
+//        // 리뷰 데이터에서 실제 카테고리 데이터를 사용하도록 수정해야 합니다.
+//        let selectedCategory = review.categories // 실제 리뷰 데이터에서 카테고리 데이터를 사용하도록 수정
+//        myReviewsCell.myReviewCategoryBtn.setTitle(selectedCategory, for: .normal)
         
         myReviewsCell.myReviewNicknameLabel.text = review.userNickname
         
