@@ -77,6 +77,8 @@ class ReviewViewController: UIViewController {
                         for (index, review) in self.reviews.enumerated() {
                             self.getReviewCategory(reviewId: review.reviewId, index: index)
                         }
+                        
+                        self.reviewListCount.text = "\(self.reviews.count)"
                     } catch {
                         print("리뷰 디코딩 실패: \(error)")
                     }
