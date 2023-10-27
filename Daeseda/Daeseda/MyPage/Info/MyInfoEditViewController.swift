@@ -8,6 +8,12 @@ class MyInfoEditViewController: UIViewController {
         
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tabBarController?.tabBar.isHidden = true
+    }
+    
     func setupUI() {
         // UI 요소 생성
         let idLabel = createLabel(text: "아이디", textColor: .black, font: UIFont.systemFont(ofSize: 16))

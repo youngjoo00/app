@@ -152,7 +152,7 @@ struct UserInfoData: Codable {
     let userNickname: String
     let userPhone: String
     let authorityDtoSet: [AuthorityDto]
-    let addressDto: addressDto
+    let addressDto: addressDto?
 }
 
 struct addressDto: Codable {

@@ -11,6 +11,19 @@ class MyInfoViewController: UIViewController {
         getMyInfo()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // 다른 화면으로 이동할 때 탭 바를 다시 보이게 합니다.
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     func getMyInfo() {
         // 1. 토큰 가져오기
         if let token = UserTokenManager.shared.getToken() {
