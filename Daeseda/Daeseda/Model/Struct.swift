@@ -168,3 +168,8 @@ struct AddressCreateData: Codable {
     var addressDetail: String
     var addressZipcode: String
 }
+
+struct ReviewWithCategory {
+    let review: ReviewData
+    let category: Categories
+}
