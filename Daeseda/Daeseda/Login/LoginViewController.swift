@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
     func joinButton(){
         let joinButton = UIButton()
         joinButton.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
-        joinButton.setTitle("회원가입→", for: .normal) // 버튼 텍스트 설정
+        joinButton.setTitle("회원가입 →", for: .normal) // 버튼 텍스트 설정
         joinButton.setTitleColor(UIColor(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         joinButton.titleLabel?.font = UIFont(name: "NotoSans-Regular", size: 10)
         joinButton.addTarget(self, action: #selector(joinAgree), for: .touchUpInside)
@@ -142,7 +142,7 @@ class LoginViewController: UIViewController {
         idForgetButton.translatesAutoresizingMaskIntoConstraints = false
         idForgetButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         idForgetButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        idForgetButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 85).isActive = true
+        idForgetButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 78).isActive = true
         idForgetButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 560).isActive = true
         
         let passwordForgetButton = UIButton()
@@ -160,7 +160,7 @@ class LoginViewController: UIViewController {
         passwordForgetButton.translatesAutoresizingMaskIntoConstraints = false
         passwordForgetButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
         passwordForgetButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        passwordForgetButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -85).isActive = true
+        passwordForgetButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -78).isActive = true
         passwordForgetButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 560).isActive = true
 
     }

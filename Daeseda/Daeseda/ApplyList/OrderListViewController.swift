@@ -17,7 +17,7 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
         orderListTableView.dataSource = self
         
         fetchCategoryInfo()
-        
+        print("1")
     }
     
     
@@ -35,6 +35,8 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
     var postOrderId : Int = 0
     
     func fetchCategoryInfo(){
+        print("a")
+        
         if let token = UserTokenManager.shared.getToken(){
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
             
@@ -47,6 +49,7 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
                     self.price.removeAll()
                     self.state.removeAll()
                     self.finish.removeAll()
+                    
                     for order in orderList {
                         let id = order.orderId
                         let pickup = order.pickupDate
@@ -55,14 +58,22 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
                         let state = order.orderStatus
                         let finish = order.deliveryDate
                         
+                        
                         self.num.append(String(id))
                         self.orderDate.append(pickup)
                         self.service.append(service)
                         self.price.append(String(price))
                         self.state.append(state)
                         self.finish.append(finish)
+                        
+                        if let authorityDtoSet = order.user.authorityDtoSet {
+                            print(authorityDtoSet)
+                        }
+                        
+                        print(order)
                     }
                     self.orderListTableView.reloadData()
+                    
                 case .failure(let error):
                     print("Error: \(error)")
                 }
@@ -108,6 +119,8 @@ extension OrderListViewController: UITableViewDataSource{
         cell.state.text = state[indexPath.row]
         cell.finishDate.text = finish[indexPath.row]
         cell.button.isHidden = true
+        
+        print(cell.orderNum.text)
         
         if segmentIndex == 0 {
             cell.finishDateLabel.isHidden = true

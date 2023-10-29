@@ -27,6 +27,7 @@ class PriceListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
+        self.navigationItem.title = "가격표"
         
         applyButton()
         
@@ -135,7 +136,13 @@ class PriceListViewController: UIViewController {
     }
     @objc func requestVC() {
         guard  let requestVC = storyboard?.instantiateViewController(withIdentifier: "request") as? RequestViewController else { return }
-        self.navigationController?.pushViewController(requestVC, animated: true)
+        
+        if var viewControllers = self.navigationController?.viewControllers{
+            viewControllers.removeLast()
+            viewControllers.append(requestVC)
+            
+            self.navigationController?.setViewControllers(viewControllers, animated: true)
+        }
     }
     
 }

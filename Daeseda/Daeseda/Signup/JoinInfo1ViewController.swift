@@ -17,6 +17,16 @@ class JoinInfo1ViewController: UIViewController {
         nextButton()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "회원가입"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = .none
+    }
+    
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
@@ -65,94 +75,92 @@ class JoinInfo1ViewController: UIViewController {
         let id = UILabel()
         id.frame = CGRect(x: 0, y: 0, width: 80, height: 41)
         id.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        id.font = UIFont(name: "NotoSansKR-Regular", size: 20)
+        id.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 24.2 pt
         id.text = "아이디"
         
         self.view.addSubview(id)
         id.translatesAutoresizingMaskIntoConstraints = false
-        id.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
+        id.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
         id.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200).isActive = true
         
         let name = UILabel()
         name.frame = CGRect(x: 0, y: 0, width: 40, height: 41)
         name.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        name.font = UIFont(name: "NotoSansKR-Regular", size: 20)
+        name.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 24.2 pt
         name.text = "이름"
         
         self.view.addSubview(name)
         name.translatesAutoresizingMaskIntoConstraints = false
-        name.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        name.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 250).isActive = true
+        name.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+        name.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 260).isActive = true
         
         let nickname = UILabel()
         nickname.frame = CGRect(x: 0, y: 0, width: 61.69, height: 42.29)
         nickname.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        nickname.font = UIFont(name: "NotoSansKR-Regular", size: 20)
+        nickname.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 24.2 pt
         nickname.text = "닉네임"
         
         self.view.addSubview(nickname)
         nickname.translatesAutoresizingMaskIntoConstraints = false
-        nickname.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        nickname.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 300).isActive = true
+        nickname.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+        nickname.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 320).isActive = true
         
         let password = UILabel()
         password.frame = CGRect(x: 0, y: 0, width: 80, height: 41)
         password.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        password.font = UIFont(name: "NotoSansKR-Regular", size: 20)
+        password.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 24.2 pt
         password.text = "비밀번호"
         
         self.view.addSubview(password)
         password.translatesAutoresizingMaskIntoConstraints = false
-        password.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
+        password.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
         password.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 410).isActive = true
         
         let checkPassword = UILabel()
         checkPassword.frame = CGRect(x: 0, y: 0, width: 131, height: 41)
         checkPassword.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        checkPassword.font = UIFont(name: "NotoSansKR-Regular", size: 20)
+        checkPassword.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 24.2 pt
         checkPassword.text = "비밀번호 확인"
         
         self.view.addSubview(checkPassword)
         checkPassword.translatesAutoresizingMaskIntoConstraints = false
-        checkPassword.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
+        checkPassword.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
         checkPassword.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 520).isActive = true
     }
     
     func nextButton(){
-        let nextButton = UIButton()
-        nextButton.frame = CGRect(x: 0, y: 0, width: 250, height: 34)
-        nextButton.layer.backgroundColor = UIColor(red: 0.365, green: 0.553, blue: 0.949, alpha: 1).cgColor
-        nextButton.layer.cornerRadius = 10
-        
-        self.view.addSubview(nextButton)
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
-        nextButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70).isActive = true
-        nextButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
-        nextButton.addTarget(self, action: #selector(joinInfo2VC), for: .touchUpInside)
-        
-        
-        let naxtText = UILabel()
-        naxtText.frame = CGRect(x: 0, y: 0, width: 37, height: 27)
-        naxtText.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        naxtText.font = UIFont(name: "NotoSans-Regular", size: 20)
-        // Line height: 27.24 pt
-        naxtText.textAlignment = .center
-        naxtText.text = "다음"
-        
-        self.view.addSubview(naxtText)
-        naxtText.translatesAutoresizingMaskIntoConstraints = false
-        naxtText.widthAnchor.constraint(equalToConstant: 37).isActive = true
-        naxtText.heightAnchor.constraint(equalToConstant: 27).isActive = true
-        naxtText.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
-        naxtText.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
-    }
+            let nextButton = UIButton()
+            nextButton.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
+            nextButton.layer.backgroundColor = UIColor(red: 0.365, green: 0.553, blue: 0.949, alpha: 1).cgColor
+            nextButton.layer.cornerRadius = 20
+            
+            self.view.addSubview(nextButton)
+            nextButton.translatesAutoresizingMaskIntoConstraints = false
+            nextButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            nextButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            nextButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            nextButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
+            nextButton.addTarget(self, action: #selector(joinInfo2VC), for: .touchUpInside)
+            
+            
+            let naxtText = UILabel()
+            naxtText.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
+            naxtText.textColor = UIColor.white
+            naxtText.font = UIFont(name: "NotoSansKR-Bold", size: 40)
+            // Line height: 27.24 pt
+            naxtText.textAlignment = .center
+            naxtText.text = "다음"
+            
+            self.view.addSubview(naxtText)
+            naxtText.translatesAutoresizingMaskIntoConstraints = false
+            naxtText.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
+            naxtText.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
+        }
     
     @objc func joinInfo2VC() {
         guard  let joinInfo2VC = storyboard?.instantiateViewController(withIdentifier: "joinInfo2") as? JoinInfo2ViewController else { return }

@@ -30,9 +30,9 @@ struct Order: Codable {
 
 struct OrderList: Codable {
     let orderId: Int
-    let user: UserInfoData
+    var user: UserInfoData
     let address: Address
-    let clothesCount: [ClothesCount]?
+    let clothesCount: [ClothesCount]
     let orderStatus: String
     let totalPrice: Int
     let washingMethod: String
@@ -40,7 +40,6 @@ struct OrderList: Codable {
     let deliveryDate: String
     let deliveryLocation: String
 }
-
 
 struct Address: Codable {
     var addressId: Int
@@ -75,7 +74,7 @@ struct Category : Codable {
 }
 
 struct AuthorityDto: Codable {
-    let authorityName: String
+    var authorityName: String
 }
 
 struct QnaListData: Codable {
@@ -150,7 +149,7 @@ struct UserInfoData: Codable {
     let userName: String
     let userNickname: String
     let userPhone: String
-    let authorityDtoSet: [AuthorityDto]
+    var authorityDtoSet: [AuthorityDto]?
     let addressDto: addressDto?
 }
 
