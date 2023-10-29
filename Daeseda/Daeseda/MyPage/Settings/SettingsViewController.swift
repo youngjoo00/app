@@ -9,6 +9,18 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.isHidden = true
+        self.navigationItem.title = "설정"
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+            
+        self.navigationItem.title = .none
+    }
+    
     @IBAction func ServiceButton(_ sender: UIButton) {
         // 1. 스토리보드에서 ServiceViewController의 식별자를 확인합니다.
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

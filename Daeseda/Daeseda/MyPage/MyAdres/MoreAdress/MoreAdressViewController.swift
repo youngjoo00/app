@@ -33,7 +33,11 @@ class MoreAdressViewController: UIViewController {
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = "주소 등록"
+    }
     @IBAction func moreAdressCompleteBtn(_ sender: UIButton) {
         // 주소 등록에 필요한 데이터 생성
         if let nickname = moreAdressNicknameTF.text,

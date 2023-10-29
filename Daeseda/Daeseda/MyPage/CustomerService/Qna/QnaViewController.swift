@@ -31,9 +31,18 @@ class QnaViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tabBarController?.tabBar.isHidden = true
+        self.navigationItem.title = "Q&A"
         // 화면이 나타날 때 리뷰 목록을 리로드
         getQnaList()
         getComent()
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+            
+        self.navigationItem.title = .none
     }
     
     @objc func showQnaWriteBtn() {

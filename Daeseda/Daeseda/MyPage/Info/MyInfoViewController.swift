@@ -14,24 +14,25 @@ class MyInfoViewController: UIViewController {
         myInfoTableView.delegate = self
         myInfoTableView.dataSource = self
         
-        self.title = "내 정보 설정"
 
-        if let navigationBar = self.navigationController?.navigationBar {
-            let font = WDFont.GmarketBold.of(size: 30)
-            navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
-        }
+        
         getMyInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.navigationItem.title = "내 정보 설정"
+        if let navigationBar = self.navigationController?.navigationBar {
+            let font = WDFont.GmarketBold.of(size: 30)
+            navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
+        }
         tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        self.navigationItem.title = .none
         // 다른 화면으로 이동할 때 탭 바를 다시 보이게 합니다.
         tabBarController?.tabBar.isHidden = false
     }
