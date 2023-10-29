@@ -6,6 +6,18 @@ class CustomerServiceViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = "고객센터"
+        tabBarController?.tabBar.isHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+            
+        self.navigationItem.title = .none
+    }
+    
     @IBAction func noticeButton(_ sender: UIButton) {
         // NoticeViewController의 스토리보드 ID를 사용하여 초기화
         if let noticeVC = storyboard?.instantiateViewController(withIdentifier: "Notice") as? NoticeViewController {
