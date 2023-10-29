@@ -16,13 +16,23 @@ class JoinEmailViewController: UIViewController {
         label()
         nextButton()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "회원가입"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = .none
+    }
     
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailErrorMessage: UILabel!
     
-    
     @IBOutlet weak var codeTextField: UITextField!
+    @IBOutlet weak var codeErrorMessage: UILabel!
     
     var postId: String = ""
     var postEmail: Email?
@@ -63,20 +73,20 @@ class JoinEmailViewController: UIViewController {
         let email = UILabel()
         email.frame = CGRect(x: 0, y: 0, width: 98.51, height: 41.11)
         email.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        email.font = UIFont(name: "NotoSansKR-Regular", size: 20)
+        email.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 24.2 pt
         email.text = "이메일"
         
         self.view.addSubview(email)
         email.translatesAutoresizingMaskIntoConstraints = false
-        email.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
+        email.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
         email.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200).isActive = true
         
         // Auto layout, variables, and unit scale are not yet supported
         let check = UILabel()
         check.frame = CGRect(x: 0, y: 0, width: 82.22, height: 42.66)
         check.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        check.font = UIFont(name: "NotoSansKR-Regular", size: 20)
+        check.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 24.2 pt
         check.text = "인증번호"
         
@@ -84,7 +94,7 @@ class JoinEmailViewController: UIViewController {
         check.translatesAutoresizingMaskIntoConstraints = false
         check.widthAnchor.constraint(equalToConstant: 82.22).isActive = true
         check.heightAnchor.constraint(equalToConstant: 42).isActive = true
-        check.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
+        check.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
         check.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 310).isActive = true
         
     }
@@ -119,6 +129,7 @@ class JoinEmailViewController: UIViewController {
                     switch response.result {
                     case .success(let verificationCode):
                         print(verificationCode)
+                        self.emailErrorMessage.text = verificationCode
                     case .failure(let error):
                         print(error)
                     }
@@ -141,8 +152,10 @@ class JoinEmailViewController: UIViewController {
                     switch response.result {
                     case .success(let verificationCode):
                         self.nextButton()
+                        self.codeErrorMessage.isHidden = true
                         print(verificationCode)
                     case .failure(let error):
+                        self.codeErrorMessage.text = "인증번호가 일치하지 않습니다."
                         print(error)
                     }
                 }
@@ -151,35 +164,33 @@ class JoinEmailViewController: UIViewController {
     
     
     func nextButton(){
-        let nextButton = UIButton()
-        nextButton.frame = CGRect(x: 0, y: 0, width: 250, height: 34)
-        nextButton.layer.backgroundColor = UIColor(red: 0.365, green: 0.553, blue: 0.949, alpha: 1).cgColor
-        nextButton.layer.cornerRadius = 10
-        
-        self.view.addSubview(nextButton)
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
-        nextButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70).isActive = true
-        nextButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
-        nextButton.addTarget(self, action: #selector(joinInfo1VC), for: .touchUpInside)
-        
-        
-        let naxtText = UILabel()
-        naxtText.frame = CGRect(x: 0, y: 0, width: 37, height: 27)
-        naxtText.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        naxtText.font = UIFont(name: "NotoSans-Regular", size: 20)
-        // Line height: 27.24 pt
-        naxtText.textAlignment = .center
-        naxtText.text = "다음"
-        
-        self.view.addSubview(naxtText)
-        naxtText.translatesAutoresizingMaskIntoConstraints = false
-        naxtText.widthAnchor.constraint(equalToConstant: 37).isActive = true
-        naxtText.heightAnchor.constraint(equalToConstant: 27).isActive = true
-        naxtText.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
-        naxtText.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
-    }
+            let nextButton = UIButton()
+            nextButton.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
+            nextButton.layer.backgroundColor = UIColor(red: 0.365, green: 0.553, blue: 0.949, alpha: 1).cgColor
+            nextButton.layer.cornerRadius = 20
+            
+            self.view.addSubview(nextButton)
+            nextButton.translatesAutoresizingMaskIntoConstraints = false
+            nextButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
+            nextButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+            nextButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+            nextButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
+            nextButton.addTarget(self, action: #selector(joinInfo1VC), for: .touchUpInside)
+            
+            
+            let naxtText = UILabel()
+            naxtText.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
+            naxtText.textColor = UIColor.white
+            naxtText.font = UIFont(name: "NotoSansKR-Bold", size: 40)
+            // Line height: 27.24 pt
+            naxtText.textAlignment = .center
+            naxtText.text = "다음"
+            
+            self.view.addSubview(naxtText)
+            naxtText.translatesAutoresizingMaskIntoConstraints = false
+            naxtText.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
+            naxtText.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
+        }
     @objc func joinInfo1VC() {
         guard  let joinInfo1VC = storyboard?.instantiateViewController(withIdentifier: "joinInfo1") as? JoinInfo1ViewController else { return }
         joinInfo1VC.postId = self.emailTextField.text!

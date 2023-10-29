@@ -1,28 +1,28 @@
 import UIKit
 
 class UseWayViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarController?.tabBar.isHidden = true
-
+        self.navigationItem.title = "이용방법"
+        
         applyButton()
         imageVeiw()
-         scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: 1200)
-
-//           scrollView.delegate = self
+        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: 1200)
+        
     }
     
     
     @IBOutlet weak var scrollView: UIScrollView!
     
     func imageVeiw(){
-        let imageView = UIImageView(image: UIImage(named: "이용방법_사진")) 
-                scrollView.addSubview(imageView)
+        let imageView = UIImageView(image: UIImage(named: "이용방법_사진"))
+        scrollView.addSubview(imageView)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-               imageView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-               imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
     }
     
     func applyButton(){
@@ -55,6 +55,12 @@ class UseWayViewController: UIViewController {
     }
     @objc func requestVC() {
         guard  let requestVC = storyboard?.instantiateViewController(withIdentifier: "request") as? RequestViewController else { return }
-        self.navigationController?.pushViewController(requestVC, animated: true)
+        
+        if var viewControllers = self.navigationController?.viewControllers{
+            viewControllers.removeLast()
+            viewControllers.append(requestVC)
+            
+            self.navigationController?.setViewControllers(viewControllers, animated: true)
+        }
     }
 }

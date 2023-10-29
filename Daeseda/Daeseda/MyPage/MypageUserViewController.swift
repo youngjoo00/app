@@ -11,7 +11,8 @@ class MypageUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("addressDto\(addressDto.self)")
+
         // 타이틀 텍스트 폰트 조절
         if let navigationBar = self.navigationController?.navigationBar {
             let font = WDFont.GmarketBold.of(size: 30)
@@ -20,7 +21,13 @@ class MypageUserViewController: UIViewController {
         
         getMyData()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        getMyData()
+    }
+    
     func getMyData() {
         // 1. 토큰 가져오기
         if let token = UserTokenManager.shared.getToken() {

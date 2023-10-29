@@ -23,11 +23,10 @@ class JoinAgreeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         nextButton()
-        self.navigationItem.title = "회원가입"
         
         serviceLabel.text = serviceText
         infoLabel.text = infoText
-
+        
         let serviceLabelSize = serviceLabel.sizeThatFits(CGSize(width: serviceScrollView.frame.size.width, height: serviceScrollView.frame.size.height))
         
         let infoLabelSize = infoLabel.sizeThatFits(CGSize(width: infoScrollView.frame.size.width, height: infoScrollView.frame.size.height))
@@ -37,31 +36,41 @@ class JoinAgreeViewController: UIViewController {
         
         infoLabel.frame.size = infoLabelSize
         infoScrollView.contentSize = infoLabelSize
-
+        
         print(serviceBool)
         print(infoBool)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "회원가입 동의"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = .none
     }
     
     
     @IBAction func serviceAgree(_ sender: Any) {
         serviceBool.toggle() // 토글 상태 변경
-
-                if serviceBool {
-                    serviceButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-                } else {
-                    serviceButton.setImage(UIImage(systemName: "circle"), for: .normal)
-                }
+        
+        if serviceBool {
+            serviceButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+        } else {
+            serviceButton.setImage(UIImage(systemName: "circle"), for: .normal)
+        }
         print(serviceBool)
     }
-
+    
     @IBAction func infoAgree(_ sender: Any) {
         infoBool.toggle() // 토글 상태 변경
-
-                if infoBool {
-                    infoButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
-                } else {
-                    infoButton.setImage(UIImage(systemName: "circle"), for: .normal)
-                }
+        
+        if infoBool {
+            infoButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
+        } else {
+            infoButton.setImage(UIImage(systemName: "circle"), for: .normal)
+        }
         print(infoBool)
     }
     func nextButton(){
@@ -237,6 +246,7 @@ class JoinAgreeViewController: UIViewController {
     
     let infoText = """
 대세다 개인정보 처리방침
+
 “개인정보 처리방침”이란 이용자가 안심하고 서비스를 이용할 수 있도록 회사가 준수해야 할 지침을 의미하며, 카카오는 개인정보처리자가 준수하여야 하는 대한민국의 관계 법령 및 개인정보보호 규정, 가이드라인을 준수하여 개인정보 처리방침을 제공합니다.
 
 카카오는 이용자의 동의를 기반으로 개인정보를 수집·이용 및 제공하고 있습니다. 이용자의 권리(개인정보 자기결정권)를 적극적으로 보장하기 위해 개인정보 처리방침을 알기 쉽게 제공할 수 있도록 다양한 노력을 기울이고 있으며, 이러한 노력의 일환으로 카카오의 주요 개인정보 처리 관련 정보를 라벨링으로 제공합니다.

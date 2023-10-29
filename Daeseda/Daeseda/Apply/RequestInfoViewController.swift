@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class RequestInfoViewController: UIViewController {
+class RequestInfoViewController: UIViewController, UISheetPresentationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,16 @@ class RequestInfoViewController: UIViewController {
         print(totalPrice)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "세탁 신청"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = .none
+    }
+    
     var selectDate : String = ""
     var selectTime : String = ""
     var selectWay : String = ""
@@ -32,49 +42,81 @@ class RequestInfoViewController: UIViewController {
     
     var totalPrdeliveryLocationice : String = ""
     var deliveryLocation : String = ""
-
+    
     var selectedAddress: [Address] = []
     
-    var addressInfo = Address(addressId: 0, addressName: "", addressRoad: "",addressDetail: "", addressZipcode: "")
-        
+    var addressInfo = Address(addressId: 0, addressName: "", addressRoad: "",addressDetail: "", addressZipcode: "", defaultAddress: false)
+    
     @IBOutlet weak var addressTextField: UITextField!
     @IBOutlet weak var addressDetailTextField: UITextField!
     @IBOutlet weak var placeTextField: UITextField!
     @IBOutlet weak var etcTextField: UITextField!
     
+    
+    
     let placePicker = UIPickerView()
     let place = ["현관문 앞(공동현관X)", "현관문 앞(공동현관O)", "경비실", "기타"]
     
     @objc func addressNotification(_ notification: Notification) {
-
+        
         addressInfo = notification.object as! Address
         addressTextField.text = addressInfo.addressRoad
         addressDetailTextField.text = addressInfo.addressDetail
         
         print(addressInfo)
         self.dismiss(animated: true, completion: nil)
-
+        
     }
     
     @IBAction func goAddress(_ sender: Any) {
-        guard let addressVC = storyboard?.instantiateViewController(withIdentifier: "MyAdress") as? MyAdressViewController else { return }
-        self.present(addressVC, animated: true)
+        
+        guard let addressVC = storyboard?.instantiateViewController(withIdentifier: "MyAddressList") as? MyAddressListViewController else { return }
+        
+        addressVC.modalPresentationStyle = .pageSheet
+        
+        if let sheet = addressVC.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.delegate = self
+            sheet.prefersGrabberVisible = true
+        }
+        
+        present(addressVC, animated: true, completion: nil)
     }
     
     func textLabel(){
         
-        let nameLabel = UILabel()
-        nameLabel.frame = CGRect(x: 0, y: 0, width: 37, height: 27)
-        nameLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        nameLabel.font = UIFont(name: "NotoSans-Regular", size: 20)
-        // Line height: 27.24 pt
-        nameLabel.textAlignment = .center
-        nameLabel.text = "이름"
+        let title = UILabel()
+        title.frame = CGRect(x: 0, y: 0, width: 300, height: 50)
+        title.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        title.font = UIFont(name: "GmarketSansTTFMedium", size: 30)
+        title.numberOfLines = 0
+        title.lineBreakMode = .byWordWrapping
+        // Line height: 25 pt
+        title.text = "쉽고 간편한\n세탁 서비스"
+        
+        self.view.addSubview(title)
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 38).isActive = true
+        title.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true
+        
+        let subTitle = UILabel()
+        subTitle.frame = CGRect(x: 0, y: 0, width: 300, height: 50)
+        subTitle.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        subTitle.font = UIFont(name: "GmarketSansTTFLight", size: 15)
+        subTitle.numberOfLines = 0
+        subTitle.lineBreakMode = .byWordWrapping
+        // Line height: 25 pt
+        subTitle.text = "양식에 맞추어 정보를 입력하세요."
+        
+        self.view.addSubview(subTitle)
+        subTitle.translatesAutoresizingMaskIntoConstraints = false
+        subTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 38).isActive = true
+        subTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 170).isActive = true
         
         let addressLabel = UILabel()
         addressLabel.frame = CGRect(x: 0, y: 0, width: 131, height: 27)
         addressLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        addressLabel.font = UIFont(name: "NotoSans-Regular", size: 20)
+        addressLabel.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 27.24 pt
         addressLabel.text = "수거/배송주소"
         
@@ -82,7 +124,7 @@ class RequestInfoViewController: UIViewController {
         addressLabel.translatesAutoresizingMaskIntoConstraints = false
         addressLabel.widthAnchor.constraint(equalToConstant: 131).isActive = true
         addressLabel.heightAnchor.constraint(equalToConstant: 27).isActive = true
-        addressLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
+        addressLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
         addressLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 220).isActive = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(addressNotification(_:)), name: NSNotification.Name("postAddressNotification"), object: nil)
@@ -90,7 +132,7 @@ class RequestInfoViewController: UIViewController {
         let placeLabel = UILabel()
         placeLabel.frame = CGRect(x: 0, y: 0, width: 131, height: 27)
         placeLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        placeLabel.font = UIFont(name: "NotoSans-Regular", size: 20)
+        placeLabel.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 27.24 pt
         placeLabel.text = "베송 위치"
         
@@ -98,8 +140,8 @@ class RequestInfoViewController: UIViewController {
         placeLabel.translatesAutoresizingMaskIntoConstraints = false
         placeLabel.widthAnchor.constraint(equalToConstant: 131).isActive = true
         placeLabel.heightAnchor.constraint(equalToConstant: 27).isActive = true
-        placeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        placeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 320).isActive = true
+        placeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+        placeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 375).isActive = true
         
     }
     
@@ -117,7 +159,7 @@ class RequestInfoViewController: UIViewController {
         let newOrder = Order(address: addressInfo, clothesCount: totalClothesCount, totalPrice: 1000, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: totalPrdeliveryLocationice)
         
         let url = "http://localhost:8888/orders/request"
-
+        
         //확인 버튼 만들기
         let ok = UIAlertAction(title: "확인", style: .default, handler: { action in
             
@@ -142,6 +184,8 @@ class RequestInfoViewController: UIViewController {
                         }
                     }
             }
+            
+            self.navigationController?.popToRootViewController(animated: true)
             
         })
         
