@@ -156,7 +156,7 @@ class RequestInfoViewController: UIViewController, UISheetPresentationController
         
         let alert = UIAlertController(title:"완료되었습니다!",message: "세탁 주문이 완료되었습니다. \n이후 결제를 진행해주세요.",preferredStyle: UIAlertController.Style.alert)
         
-        let newOrder = Order(address: addressInfo, clothesCount: totalClothesCount, totalPrice: 1000, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: totalPrdeliveryLocationice)
+        let newOrder = Order(address: addressInfo, clothesCount: totalClothesCount, totalPrice: self.totalPrice, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: totalPrdeliveryLocationice)
         
         let url = "http://localhost:8888/orders/request"
         

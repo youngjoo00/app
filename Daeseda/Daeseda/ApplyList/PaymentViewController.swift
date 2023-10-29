@@ -28,15 +28,16 @@ class PaymentViewController: UIViewController {
     
     public var scrollViewBottomAnchorConstraint: NSLayoutConstraint?
     
-    let paymentInfo = DefaultPaymentRequest(
-           amount: 10000,  // 결제 금액 (원)
-           orderId: "ORDER1234",  // 주문 번호
-           orderName: "상품 설명"  // 상품 설명
-       )
+    
+    var amount: Int = 0
+    var orderId: String = ""
+    var orderName: String = "대세다-대신 세탁해드립니다."
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(amount)
+        print(orderId)
+        print(orderName)
         widget.delegate = self
         
         view.backgroundColor = .white
@@ -69,7 +70,7 @@ class PaymentViewController: UIViewController {
         button.setTitle("결제하기", for: .normal)
         button.addTarget(self, action: #selector(requestPayment), for: .touchUpInside)
         
-        let paymentMethods = widget.renderPaymentMethods(amount: PaymentMethodWidget.Amount(value: 10000))
+        let paymentMethods = widget.renderPaymentMethods(amount: PaymentMethodWidget.Amount(value: Double(self.amount)))
         let agreement = widget.renderAgreement()
         
         stackView.addArrangedSubview(paymentMethods)
@@ -95,8 +96,8 @@ class PaymentViewController: UIViewController {
     
     @objc func requestPayment() {
         widget.requestPayment(info: DefaultWidgetPaymentInfo(
-            orderId: "2VAhXURbYbiKwX5ybfrLr",
-            orderName: "토스 티셔츠 외 2건"))
+            orderId: self.orderId,
+            orderName: self.orderName))
     }
 
 }
@@ -108,9 +109,7 @@ extension PaymentViewController: TossPaymentsDelegate {
 
     public func handleSuccessResult(_ success: TossPaymentsResult.Success) {
         print("결제 성공")
-        print("paymentKey: \(success.paymentKey)")
-        print("orderId: \(success.orderId)")
-        print("amount: \(success.amount)")
+        print(success)
         
         self.dismiss(animated: true, completion: nil)
     }
