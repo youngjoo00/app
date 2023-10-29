@@ -18,6 +18,7 @@ class MypageUserViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tabBarController?.tabBar.isHidden = false
         self.navigationItem.title = "마이페이지"
         // 타이틀 텍스트 폰트 조절
         if let navigationBar = self.navigationController?.navigationBar {
