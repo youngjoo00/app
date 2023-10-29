@@ -42,6 +42,7 @@ class MypageUserViewController: UIViewController {
                 case .success(let userInfo):
                     // 요청이 성공한 경우
                     self.updateUI(with: userInfo)
+                    
                 case .failure(let error):
                     // 요청이 실패한 경우
                     print("Error: \(error.localizedDescription)")
@@ -56,8 +57,27 @@ class MypageUserViewController: UIViewController {
     func updateUI(with userInfo: UserInfoData) {
         myNicknameLabel.text = userInfo.userNickname
         myPhoneLabel.text = userInfo.userPhone
-        myAddressLabel.text = userInfo.addressDto.addressDetail
+        
+        if let addressDto = userInfo.addressDto {
+            do {
+                let encoder = JSONEncoder()
+                encoder.outputFormatting = .prettyPrinted
+                let addressData = try encoder.encode(addressDto.addressDetail)
+                if var addressJSON = String(data: addressData, encoding: .utf8) {
+                    // 큰따옴표를 제거
+                    addressJSON = String(addressJSON.dropFirst().dropLast())
+                    myAddressLabel.text = addressJSON
+                    print(addressJSON)
+                }
+            } catch {
+                print("Failed to encode addressDto to JSON: \(error.localizedDescription)")
+                myAddressLabel.text = "기본주소가 설정되어 있지 않습니다."
+            }
+        } else {
+            myAddressLabel.text = "기본주소가 설정되어 있지 않습니다."
+        }
     }
+
     
     
     

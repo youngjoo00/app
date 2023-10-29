@@ -212,7 +212,7 @@ class ReviewWriteViewController: UIViewController {
                 switch response.result {
                 case .success:
                     print("ReviewWrite Success")
-                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
                 case .failure(let error):
                     print("Error: \(error.localizedDescription)")
                 }

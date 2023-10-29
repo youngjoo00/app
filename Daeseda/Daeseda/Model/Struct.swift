@@ -125,7 +125,6 @@ struct ReviewData: Codable {
     let reviewId: Int
     let userId: Int
     let imageUrl: String
-    let categories: String?
     let orderId: Int
     let rating: Float?
     let userNickname: String?
@@ -137,7 +136,7 @@ struct ReviewData: Codable {
 struct ReviewCategoryData: Codable {
     let reviewCategoryId: Int
     let reviewId: Int
-    let categories: [Categories]
+    let categories: Categories
 }
 
 struct Categories: Codable {
@@ -150,8 +149,13 @@ struct UserInfoData: Codable {
     let userName: String
     let userNickname: String
     let userPhone: String
+<<<<<<< HEAD
     var authorityDtoSet: [AuthorityDto]?
     let addressDto: addressDto
+=======
+    let authorityDtoSet: [AuthorityDto]
+    let addressDto: addressDto?
+>>>>>>> f6da96af2ae3333bb2ea7152161e4f5dfa7d8414
 }
 
 struct addressDto: Codable {
@@ -167,4 +171,9 @@ struct AddressCreateData: Codable {
     var addressRoad: String
     var addressDetail: String
     var addressZipcode: String
+}
+
+struct ReviewWithCategory {
+    let review: ReviewData
+    let category: Categories
 }
