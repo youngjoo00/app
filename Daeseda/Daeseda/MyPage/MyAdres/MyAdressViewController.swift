@@ -14,12 +14,6 @@ class MyAdressViewController: UIViewController {
         super.viewDidLoad()
 
         self.myAdresSearchBar.searchBarStyle = .minimal
-        self.title = "주소 설정"
-
-        if let navigationBar = self.navigationController?.navigationBar {
-            let font = WDFont.GmarketBold.of(size: 30)
-            navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
-        }
 
         let addressEditBarBtn = UIBarButtonItem(
             title: "편집",
@@ -41,6 +35,27 @@ class MyAdressViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(self.handleAddressDataUpdated(_:)), name: NSNotification.Name("AddressDataUpdated"), object: nil)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationItem.title = "주소 목록"
+        if let navigationBar = self.navigationController?.navigationBar {
+            let font = WDFont.GmarketBold.of(size: 30)
+            navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
+        }
+        getAddressesData()
+        // 탭 바를 숨깁니다.
+        tabBarController?.tabBar.isHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        // 다른 화면으로 이동할 때 탭 바를 다시 보이게 합니다.
+        tabBarController?.tabBar.isHidden = false
+        self.navigationItem.title = .none
+
+    }
+    
     @objc func handleAddressDataUpdated(_ notification: Notification) {
         getAddressesData()
         myAdressTableView.reloadData()
@@ -99,20 +114,6 @@ class MyAdressViewController: UIViewController {
     @objc func addressEditBarBtnTab(_ sender: UIBarButtonItem) {
         guard let addressEditVC = storyboard?.instantiateViewController(withIdentifier: "AdressEdit") as? AdressEditViewController else { return }
         navigationController?.pushViewController(addressEditVC, animated: true)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        getAddressesData()
-        // 탭 바를 숨깁니다.
-        tabBarController?.tabBar.isHidden = true
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // 다른 화면으로 이동할 때 탭 바를 다시 보이게 합니다.
-        tabBarController?.tabBar.isHidden = false
     }
 }
 

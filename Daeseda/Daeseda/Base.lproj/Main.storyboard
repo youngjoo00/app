@@ -1679,14 +1679,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="avL-0p-I3R">
-                                <rect key="frame" x="16" y="720.33333333333337" width="343" height="57.666666666666629"/>
+
+                                <rect key="frame" x="37.666666666666657" y="688" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="GfF-Ja-h39"/>
+                                    <constraint firstAttribute="width" constant="300" id="XDw-sw-NkG"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="등록">
                                     <backgroundConfiguration key="background" cornerRadius="25">
                                         <color key="backgroundColor" red="0.40784314269999999" green="0.54901963470000004" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="30"/>
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -1700,7 +1705,7 @@
                         <constraints>
                             <constraint firstItem="DHA-6J-9p0" firstAttribute="leading" secondItem="Ydt-Hv-kb6" secondAttribute="leading" constant="16" id="0vZ-MZ-7Dq"/>
                             <constraint firstItem="cj3-Fx-BFg" firstAttribute="leading" secondItem="Ydt-Hv-kb6" secondAttribute="leading" constant="16" id="2Ff-Jc-0C5"/>
-                            <constraint firstItem="avL-0p-I3R" firstAttribute="leading" secondItem="Ydt-Hv-kb6" secondAttribute="leading" constant="16" id="9Gf-bH-n0t"/>
+                            <constraint firstItem="avL-0p-I3R" firstAttribute="bottom" secondItem="Ydt-Hv-kb6" secondAttribute="bottom" constant="-50" id="8WL-Q7-OOh"/>
                             <constraint firstItem="CJz-26-SwK" firstAttribute="leading" secondItem="Ydt-Hv-kb6" secondAttribute="leading" constant="16" id="Ats-Tt-OAq"/>
                             <constraint firstItem="chT-5q-BSI" firstAttribute="top" secondItem="DHA-6J-9p0" secondAttribute="bottom" constant="8" id="Hl5-jO-EfY"/>
                             <constraint firstItem="iCI-U3-74L" firstAttribute="top" secondItem="chT-5q-BSI" secondAttribute="bottom" constant="30" id="Mba-bA-Nf1"/>
@@ -1709,10 +1714,9 @@
                             <constraint firstItem="chT-5q-BSI" firstAttribute="leading" secondItem="Ydt-Hv-kb6" secondAttribute="leading" constant="16" id="bL2-Bk-tFk"/>
                             <constraint firstItem="1x9-8Y-ctj" firstAttribute="leading" secondItem="Ydt-Hv-kb6" secondAttribute="leading" constant="16" id="bpe-gv-HAm"/>
                             <constraint firstItem="iCI-U3-74L" firstAttribute="leading" secondItem="Ydt-Hv-kb6" secondAttribute="leading" constant="16" id="eMm-QN-ePD"/>
-                            <constraint firstItem="Ydt-Hv-kb6" firstAttribute="bottom" secondItem="avL-0p-I3R" secondAttribute="bottom" id="ffg-po-3d3"/>
                             <constraint firstItem="CJz-26-SwK" firstAttribute="top" secondItem="iCI-U3-74L" secondAttribute="bottom" constant="18" id="gGv-75-eD7"/>
-                            <constraint firstItem="Ydt-Hv-kb6" firstAttribute="trailing" secondItem="avL-0p-I3R" secondAttribute="trailing" constant="16" id="hVA-VG-LuK"/>
                             <constraint firstItem="yce-PU-n4Z" firstAttribute="centerY" secondItem="cj3-Fx-BFg" secondAttribute="centerY" id="hZU-yb-VIo"/>
+                            <constraint firstItem="avL-0p-I3R" firstAttribute="centerX" secondItem="jlw-A6-piK" secondAttribute="centerX" id="lOP-on-1Nc"/>
                             <constraint firstItem="Ydt-Hv-kb6" firstAttribute="trailing" secondItem="CJz-26-SwK" secondAttribute="trailing" constant="16" id="pDb-gp-jMS"/>
                             <constraint firstItem="DHA-6J-9p0" firstAttribute="top" secondItem="1x9-8Y-ctj" secondAttribute="bottom" constant="20" id="x45-Ck-xbZ"/>
                             <constraint firstItem="1x9-8Y-ctj" firstAttribute="top" secondItem="cj3-Fx-BFg" secondAttribute="bottom" constant="20" id="xX5-1C-mis"/>
@@ -2120,14 +2124,18 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtk-4Q-Jhy">
-                                <rect key="frame" x="16" y="720.33333333333337" width="343" height="57.666666666666629"/>
+                                <rect key="frame" x="37.666666666666657" y="722" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="5py-p1-N3W"/>
+                                    <constraint firstAttribute="height" constant="40" id="Qyh-Lu-Ndn"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="완료">
                                     <backgroundConfiguration key="background" cornerRadius="25">
                                         <color key="backgroundColor" red="0.40784314269999999" green="0.54901963470000004" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="30"/>
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -2150,11 +2158,11 @@
                         <viewLayoutGuide key="safeArea" id="0du-c6-mil"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="0du-c6-mil" firstAttribute="trailing" secondItem="rtk-4Q-Jhy" secondAttribute="trailing" constant="16" id="30A-c0-agW"/>
                             <constraint firstItem="W1f-QW-d20" firstAttribute="top" secondItem="VoZ-m9-byO" secondAttribute="bottom" constant="35" id="6DC-bN-LHm"/>
+                            <constraint firstItem="rtk-4Q-Jhy" firstAttribute="centerX" secondItem="XPq-4S-0CF" secondAttribute="centerX" id="9g2-QW-nv6"/>
                             <constraint firstItem="VoZ-m9-byO" firstAttribute="top" secondItem="0du-c6-mil" secondAttribute="top" constant="16" id="CnV-JP-Fdb"/>
                             <constraint firstItem="wqF-3b-3Pr" firstAttribute="centerY" secondItem="VoZ-m9-byO" secondAttribute="centerY" id="L7q-4X-z4R"/>
-                            <constraint firstItem="rtk-4Q-Jhy" firstAttribute="bottom" secondItem="0du-c6-mil" secondAttribute="bottom" id="LH3-37-Wap"/>
+                            <constraint firstAttribute="bottom" secondItem="rtk-4Q-Jhy" secondAttribute="bottom" constant="50" id="Njp-3B-vcV"/>
                             <constraint firstItem="pbJ-O5-CGu" firstAttribute="top" secondItem="xWb-fx-qtJ" secondAttribute="bottom" constant="16" id="PgN-4O-hIL"/>
                             <constraint firstItem="VoZ-m9-byO" firstAttribute="leading" secondItem="0du-c6-mil" secondAttribute="leading" constant="16" id="SCs-TZ-2ue"/>
                             <constraint firstItem="wqF-3b-3Pr" firstAttribute="leading" secondItem="VoZ-m9-byO" secondAttribute="trailing" constant="10" id="T0l-ly-vFy"/>
@@ -2167,7 +2175,6 @@
                             <constraint firstItem="0du-c6-mil" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wqF-3b-3Pr" secondAttribute="trailing" constant="16" id="jYK-Jg-Z1S"/>
                             <constraint firstItem="0du-c6-mil" firstAttribute="trailing" secondItem="pbJ-O5-CGu" secondAttribute="trailing" constant="16" id="rfy-Rc-Hcj"/>
                             <constraint firstItem="pbJ-O5-CGu" firstAttribute="leading" secondItem="0du-c6-mil" secondAttribute="leading" constant="16" id="wpr-DB-Rc0"/>
-                            <constraint firstItem="rtk-4Q-Jhy" firstAttribute="leading" secondItem="0du-c6-mil" secondAttribute="leading" constant="16" id="zif-9R-IyF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5EP-P4-MkI"/>
@@ -2399,14 +2406,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNb-vX-KT0">
-                                <rect key="frame" x="16" y="729" width="343" height="49"/>
+
+                                <rect key="frame" x="37.666666666666657" y="688" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="P1H-AY-cxl"/>
+                                    <constraint firstAttribute="width" constant="300" id="aVi-G5-o0C"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="변경 완료">
                                     <backgroundConfiguration key="background" cornerRadius="25">
                                         <color key="backgroundColor" red="0.40784314269999999" green="0.54901963470000004" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="30"/>
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -2418,14 +2430,13 @@
                         <viewLayoutGuide key="safeArea" id="10h-dC-Qcf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="10h-dC-Qcf" firstAttribute="trailing" secondItem="hNb-vX-KT0" secondAttribute="trailing" constant="16" id="FOw-i4-Xce"/>
+                            <constraint firstItem="hNb-vX-KT0" firstAttribute="bottom" secondItem="10h-dC-Qcf" secondAttribute="bottom" constant="-50" id="2x2-L8-q2y"/>
                             <constraint firstItem="TiG-tp-xqm" firstAttribute="top" secondItem="10h-dC-Qcf" secondAttribute="top" constant="20" id="MIS-Oz-oFE"/>
                             <constraint firstItem="iXA-TQ-cAc" firstAttribute="leading" secondItem="10h-dC-Qcf" secondAttribute="leading" constant="16" id="TLK-9T-oLo"/>
-                            <constraint firstItem="hNb-vX-KT0" firstAttribute="leading" secondItem="10h-dC-Qcf" secondAttribute="leading" constant="16" id="Tck-Vf-ZHW"/>
                             <constraint firstItem="TiG-tp-xqm" firstAttribute="leading" secondItem="10h-dC-Qcf" secondAttribute="leading" constant="16" id="aLC-cs-InB"/>
-                            <constraint firstItem="10h-dC-Qcf" firstAttribute="bottom" secondItem="hNb-vX-KT0" secondAttribute="bottom" id="abn-oO-fCV"/>
                             <constraint firstItem="iXA-TQ-cAc" firstAttribute="top" secondItem="TiG-tp-xqm" secondAttribute="bottom" constant="10" id="guu-F6-Kkf"/>
                             <constraint firstItem="10h-dC-Qcf" firstAttribute="trailing" secondItem="iXA-TQ-cAc" secondAttribute="trailing" constant="16" id="lEP-eX-gZX"/>
+                            <constraint firstItem="hNb-vX-KT0" firstAttribute="centerX" secondItem="b0A-og-K7C" secondAttribute="centerX" id="qRO-4S-fZG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Oo6-dA-Fip"/>
@@ -3203,14 +3214,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vf-F1-qA3">
-                                <rect key="frame" x="16" y="720.33333333333337" width="343" height="57.666666666666629"/>
+                                <rect key="frame" x="37.666666666666657" y="688" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Bo8-L0-BOm"/>
+                                    <constraint firstAttribute="height" constant="40" id="CWd-L1-WSz"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="탈퇴하기">
                                     <backgroundConfiguration key="background" cornerRadius="25">
                                         <color key="backgroundColor" red="0.40784314269999999" green="0.54901963470000004" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="30"/>
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -3267,6 +3282,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dbm-Ly-rDE" firstAttribute="centerX" secondItem="h9w-Nn-MNk" secondAttribute="centerX" id="12a-2W-4EE"/>
+                            <constraint firstItem="5Vf-F1-qA3" firstAttribute="bottom" secondItem="pkU-ez-UvM" secondAttribute="bottom" constant="-50" id="2V3-xq-s3Y"/>
                             <constraint firstItem="pkU-ez-UvM" firstAttribute="trailing" secondItem="Z7Y-xA-hSU" secondAttribute="trailing" constant="16" id="3nW-Jx-WoQ"/>
                             <constraint firstItem="TUA-of-U3S" firstAttribute="leading" secondItem="pkU-ez-UvM" secondAttribute="leading" constant="16" id="EAL-f1-eKF"/>
                             <constraint firstItem="2Bs-y5-oVY" firstAttribute="centerY" secondItem="TUA-of-U3S" secondAttribute="centerY" id="ExN-bd-ZNf"/>
@@ -3276,10 +3292,8 @@
                             <constraint firstItem="Z7Y-xA-hSU" firstAttribute="leading" secondItem="NAf-Ai-dMm" secondAttribute="leading" constant="-5" id="akG-P4-h2O"/>
                             <constraint firstItem="Z7Y-xA-hSU" firstAttribute="top" secondItem="NAf-Ai-dMm" secondAttribute="bottom" constant="10" id="fy8-H3-HvY"/>
                             <constraint firstItem="NAf-Ai-dMm" firstAttribute="top" secondItem="dbm-Ly-rDE" secondAttribute="bottom" constant="40" id="hdr-WX-CXg"/>
+                            <constraint firstItem="5Vf-F1-qA3" firstAttribute="centerX" secondItem="h9w-Nn-MNk" secondAttribute="centerX" id="hov-z8-ayP"/>
                             <constraint firstItem="2Bs-y5-oVY" firstAttribute="leading" secondItem="TUA-of-U3S" secondAttribute="trailing" id="mvw-fj-96C"/>
-                            <constraint firstItem="5Vf-F1-qA3" firstAttribute="leading" secondItem="pkU-ez-UvM" secondAttribute="leading" constant="16" id="oVx-E2-26x"/>
-                            <constraint firstItem="pkU-ez-UvM" firstAttribute="bottom" secondItem="5Vf-F1-qA3" secondAttribute="bottom" id="qnK-Bz-Q9r"/>
-                            <constraint firstItem="pkU-ez-UvM" firstAttribute="trailing" secondItem="5Vf-F1-qA3" secondAttribute="trailing" constant="16" id="sFO-EQ-SHg"/>
                             <constraint firstItem="NAf-Ai-dMm" firstAttribute="leading" secondItem="pkU-ez-UvM" secondAttribute="leading" constant="16" id="tBG-s0-TaR"/>
                             <constraint firstItem="Iea-u3-ujJ" firstAttribute="leading" secondItem="pkU-ez-UvM" secondAttribute="leading" constant="8" id="yJ7-fl-qYo"/>
                         </constraints>
@@ -4776,14 +4790,18 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbu-pQ-E26">
-                                <rect key="frame" x="16" y="720.33333333333337" width="343" height="57.666666666666629"/>
+                                <rect key="frame" x="37.666666666666657" y="688" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="PoR-la-3lY"/>
+                                    <constraint firstAttribute="height" constant="40" id="aef-sX-rHf"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="완료">
                                     <backgroundConfiguration key="background" cornerRadius="25">
                                         <color key="backgroundColor" red="0.40784314269999999" green="0.54901963470000004" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="30"/>
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -4811,17 +4829,16 @@
                             <constraint firstItem="Ajc-LQ-sX9" firstAttribute="leading" secondItem="Ca0-ef-P9H" secondAttribute="leading" constant="16" id="5do-nd-OXp"/>
                             <constraint firstItem="bga-BP-aip" firstAttribute="top" secondItem="Dbi-kT-f96" secondAttribute="bottom" constant="35" id="7me-Y2-b1p"/>
                             <constraint firstItem="p0b-QP-CEd" firstAttribute="leading" secondItem="Ca0-ef-P9H" secondAttribute="leading" constant="16" id="91S-Y9-dgh"/>
-                            <constraint firstItem="Ca0-ef-P9H" firstAttribute="trailing" secondItem="Hbu-pQ-E26" secondAttribute="trailing" constant="16" id="AAa-Uh-EqO"/>
                             <constraint firstItem="qDi-Np-x30" firstAttribute="top" secondItem="bga-BP-aip" secondAttribute="bottom" constant="16" id="Cws-eH-6i8"/>
-                            <constraint firstItem="Hbu-pQ-E26" firstAttribute="leading" secondItem="Ca0-ef-P9H" secondAttribute="leading" constant="16" id="FB3-uV-8Wm"/>
+                            <constraint firstItem="Hbu-pQ-E26" firstAttribute="bottom" secondItem="Ca0-ef-P9H" secondAttribute="bottom" constant="-50" id="HDH-VY-rEt"/>
                             <constraint firstItem="E8h-gT-s8N" firstAttribute="centerY" secondItem="Dbi-kT-f96" secondAttribute="centerY" id="HFm-OQ-NG2"/>
                             <constraint firstItem="Ca0-ef-P9H" firstAttribute="trailing" secondItem="p0b-QP-CEd" secondAttribute="trailing" constant="16" id="IPW-C9-3ex"/>
                             <constraint firstItem="bga-BP-aip" firstAttribute="leading" secondItem="Ca0-ef-P9H" secondAttribute="leading" constant="16" id="JcO-Zl-fok"/>
-                            <constraint firstItem="Hbu-pQ-E26" firstAttribute="bottom" secondItem="Ca0-ef-P9H" secondAttribute="bottom" id="Oou-qN-aG0"/>
                             <constraint firstItem="p0b-QP-CEd" firstAttribute="top" secondItem="Ajc-LQ-sX9" secondAttribute="bottom" constant="16" id="WcT-jD-3Ve"/>
                             <constraint firstItem="Ajc-LQ-sX9" firstAttribute="top" secondItem="qDi-Np-x30" secondAttribute="bottom" constant="35" id="XQr-3s-jBN"/>
                             <constraint firstItem="qDi-Np-x30" firstAttribute="leading" secondItem="Ca0-ef-P9H" secondAttribute="leading" constant="16" id="eSp-I9-NAG"/>
                             <constraint firstItem="fzV-ha-9Nd" firstAttribute="top" secondItem="Ca0-ef-P9H" secondAttribute="top" constant="10" id="fT0-LO-1lm"/>
+                            <constraint firstItem="Hbu-pQ-E26" firstAttribute="centerX" secondItem="Rgt-P2-F9h" secondAttribute="centerX" id="nG5-6u-iLu"/>
                             <constraint firstItem="E8h-gT-s8N" firstAttribute="leading" secondItem="Dbi-kT-f96" secondAttribute="trailing" constant="10" id="tEi-AQ-z5J"/>
                             <constraint firstItem="Dbi-kT-f96" firstAttribute="leading" secondItem="Ca0-ef-P9H" secondAttribute="leading" constant="16" id="tc8-ME-F3w"/>
                             <constraint firstItem="Ca0-ef-P9H" firstAttribute="trailing" secondItem="qDi-Np-x30" secondAttribute="trailing" constant="38" id="tgZ-Ig-maC"/>
@@ -5046,14 +5063,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vLB-Ec-Sr5">
-                                <rect key="frame" x="16" y="729" width="343" height="49"/>
+
+                                <rect key="frame" x="37.666666666666657" y="688" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="kcC-33-Cdz"/>
+                                    <constraint firstAttribute="width" constant="300" id="tze-ib-tRd"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="변경 완료">
                                     <backgroundConfiguration key="background" cornerRadius="25">
                                         <color key="backgroundColor" red="0.40784314269999999" green="0.54901963470000004" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="30"/>
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -5065,13 +5087,12 @@
                         <viewLayoutGuide key="safeArea" id="9bN-uO-hqd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="9bN-uO-hqd" firstAttribute="bottom" secondItem="vLB-Ec-Sr5" secondAttribute="bottom" id="1tu-l3-xqK"/>
                             <constraint firstItem="Gpg-I8-lR1" firstAttribute="leading" secondItem="9bN-uO-hqd" secondAttribute="leading" constant="16" id="LB1-eC-fgK"/>
                             <constraint firstItem="Gpg-I8-lR1" firstAttribute="top" secondItem="9bN-uO-hqd" secondAttribute="top" constant="20" id="O5j-fB-htN"/>
+                            <constraint firstItem="vLB-Ec-Sr5" firstAttribute="centerX" secondItem="7Bp-WO-s7n" secondAttribute="centerX" id="OTS-G6-u4K"/>
                             <constraint firstItem="9bN-uO-hqd" firstAttribute="trailing" secondItem="4XM-0k-gPg" secondAttribute="trailing" constant="16" id="YFQ-yf-Ygc"/>
-                            <constraint firstItem="9bN-uO-hqd" firstAttribute="trailing" secondItem="vLB-Ec-Sr5" secondAttribute="trailing" constant="16" id="cVr-n2-XYH"/>
                             <constraint firstItem="4XM-0k-gPg" firstAttribute="leading" secondItem="9bN-uO-hqd" secondAttribute="leading" constant="16" id="eRo-ih-SiJ"/>
-                            <constraint firstItem="vLB-Ec-Sr5" firstAttribute="leading" secondItem="9bN-uO-hqd" secondAttribute="leading" constant="16" id="lMM-Tl-uNj"/>
+                            <constraint firstItem="vLB-Ec-Sr5" firstAttribute="bottom" secondItem="9bN-uO-hqd" secondAttribute="bottom" constant="-50" id="hYB-de-GTb"/>
                             <constraint firstItem="4XM-0k-gPg" firstAttribute="top" secondItem="Gpg-I8-lR1" secondAttribute="bottom" constant="10" id="wNa-bE-dPI"/>
                         </constraints>
                     </view>
@@ -5105,14 +5126,19 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bp-zy-mxG">
-                                <rect key="frame" x="16" y="729" width="343" height="49"/>
+
+                                <rect key="frame" x="37.666666666666657" y="688" width="300" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="d7j-ud-r4h"/>
+                                    <constraint firstAttribute="width" constant="300" id="kwI-yF-3qC"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="변경 완료">
                                     <backgroundConfiguration key="background" cornerRadius="25">
                                         <color key="backgroundColor" red="0.40784314269999999" green="0.54901963470000004" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="30"/>
+                                    <fontDescription key="titleFontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="20"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -5124,14 +5150,13 @@
                         <viewLayoutGuide key="safeArea" id="SoQ-d0-gEB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="SoQ-d0-gEB" firstAttribute="bottom" secondItem="7bp-zy-mxG" secondAttribute="bottom" id="0xf-yO-tAw"/>
+                            <constraint firstItem="7bp-zy-mxG" firstAttribute="bottom" secondItem="SoQ-d0-gEB" secondAttribute="bottom" constant="-50" id="3RU-pj-uMO"/>
                             <constraint firstItem="ms7-Vt-s3C" firstAttribute="top" secondItem="Pn4-bx-zrv" secondAttribute="bottom" constant="10" id="7R2-g1-MwU"/>
+                            <constraint firstItem="7bp-zy-mxG" firstAttribute="centerX" secondItem="wg9-bH-RJO" secondAttribute="centerX" id="DiC-zI-D6z"/>
                             <constraint firstItem="SoQ-d0-gEB" firstAttribute="trailing" secondItem="ms7-Vt-s3C" secondAttribute="trailing" constant="16" id="YPG-Bh-L7U"/>
                             <constraint firstItem="Pn4-bx-zrv" firstAttribute="leading" secondItem="SoQ-d0-gEB" secondAttribute="leading" constant="16" id="Zw9-St-944"/>
                             <constraint firstItem="Pn4-bx-zrv" firstAttribute="top" secondItem="SoQ-d0-gEB" secondAttribute="top" constant="20" id="kgp-f1-6Ya"/>
                             <constraint firstItem="ms7-Vt-s3C" firstAttribute="leading" secondItem="SoQ-d0-gEB" secondAttribute="leading" constant="16" id="l5P-Yy-qXJ"/>
-                            <constraint firstItem="7bp-zy-mxG" firstAttribute="leading" secondItem="SoQ-d0-gEB" secondAttribute="leading" constant="16" id="sYL-B0-Odo"/>
-                            <constraint firstItem="SoQ-d0-gEB" firstAttribute="trailing" secondItem="7bp-zy-mxG" secondAttribute="trailing" constant="16" id="w0E-sx-gfi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hFz-3Y-fgl"/>
