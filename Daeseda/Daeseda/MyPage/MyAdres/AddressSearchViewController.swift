@@ -72,9 +72,16 @@ class AddressSearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationItem.title = "주소 검색"
         configureUI()
         // 탭 바를 숨깁니다.
         tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+            
+        self.navigationItem.title = .none
     }
 }
 

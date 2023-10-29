@@ -17,10 +17,18 @@ class NicknameEditViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+        
+        self.navigationItem.title = "닉네임 변경"
         
         updateButtonState()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationItem.title = .none
+    }
     @objc func textFieldDidChange(_ textField: UITextField) {
         updateButtonState()
     }

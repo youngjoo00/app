@@ -51,6 +51,12 @@ class MyAddressListViewController: UIViewController {
         // 탭 바를 숨깁니다.
         tabBarController?.tabBar.isHidden = true
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+            
+        self.navigationItem.title = .none
+    }
 }
 
 extension MyAddressListViewController: UITableViewDelegate {

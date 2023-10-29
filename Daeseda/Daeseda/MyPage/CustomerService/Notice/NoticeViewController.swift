@@ -30,6 +30,17 @@ class NoticeViewController: UIViewController {
         getNoticeData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+            
+        self.navigationItem.title = .none
+    }
     func getNoticeData() {
         let getUrl = url
         

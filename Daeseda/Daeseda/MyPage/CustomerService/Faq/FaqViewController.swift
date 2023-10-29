@@ -42,6 +42,17 @@ class FaqViewController: UIViewController {
         faqTableView.reloadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+            
+        self.navigationItem.title = .none
+    }
     @IBAction func categoryButtonTapped(_ sender: UIButton) {
         if let category = sender.titleLabel?.text {
             loadFAQData(category: category)

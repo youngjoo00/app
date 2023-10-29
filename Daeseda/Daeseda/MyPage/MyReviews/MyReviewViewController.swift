@@ -40,6 +40,8 @@ class MyReviewViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.navigationItem.title = "내가 쓴 리뷰"
         getMyReviewData()
         filterReviewsByCategory()
         // 탭 바를 숨깁니다.
@@ -50,6 +52,7 @@ class MyReviewViewController: UIViewController {
         super.viewWillDisappear(animated)
         // 다른 화면으로 이동할 때 탭 바를 다시 보이게 합니다.
         tabBarController?.tabBar.isHidden = false
+        self.navigationItem.title = .none
     }
     
     func setupCategoryPickerView() {
