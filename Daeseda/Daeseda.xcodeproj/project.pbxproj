@@ -35,6 +35,13 @@
 		8E94FFF82AC1DBB2006B8E9E /* QnaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94FFF72AC1DBB2006B8E9E /* QnaTableViewCell.swift */; };
 		8E94FFFA2AC1F5D0006B8E9E /* ComentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E94FFF92AC1F5D0006B8E9E /* ComentTableViewCell.swift */; };
 		8EA4192B2AE8DDA300A95D99 /* MyAddressListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4192A2AE8DDA300A95D99 /* MyAddressListViewController.swift */; };
+		8EA4192D2AEE593B00A95D99 /* NicknameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4192C2AEE593B00A95D99 /* NicknameTableViewCell.swift */; };
+		8EA4192F2AEE595000A95D99 /* NameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4192E2AEE595000A95D99 /* NameTableViewCell.swift */; };
+		8EA419312AEE595F00A95D99 /* PhoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA419302AEE595F00A95D99 /* PhoneTableViewCell.swift */; };
+		8EA419332AEE596900A95D99 /* EmailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA419322AEE596900A95D99 /* EmailTableViewCell.swift */; };
+		8EA419362AEE618E00A95D99 /* NicknameEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA419352AEE618D00A95D99 /* NicknameEditViewController.swift */; };
+		8EA419382AEE619900A95D99 /* NameEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA419372AEE619900A95D99 /* NameEditViewController.swift */; };
+		8EA4193A2AEE61A900A95D99 /* PhoneEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA419392AEE61A900A95D99 /* PhoneEditViewController.swift */; };
 		8EA5A1C62AB18E2100AAE23C /* WDFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C52AB18E2100AAE23C /* WDFont.swift */; };
 		8EA5A1D42AB18FA300AAE23C /* NotoSansKR-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */; };
 		8EA5A1D52AB18FA300AAE23C /* NotoSansKR-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */; };
@@ -129,6 +136,13 @@
 		8E94FFF72AC1DBB2006B8E9E /* QnaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnaTableViewCell.swift; sourceTree = "<group>"; };
 		8E94FFF92AC1F5D0006B8E9E /* ComentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComentTableViewCell.swift; sourceTree = "<group>"; };
 		8EA4192A2AE8DDA300A95D99 /* MyAddressListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAddressListViewController.swift; sourceTree = "<group>"; };
+		8EA4192C2AEE593B00A95D99 /* NicknameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameTableViewCell.swift; sourceTree = "<group>"; };
+		8EA4192E2AEE595000A95D99 /* NameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTableViewCell.swift; sourceTree = "<group>"; };
+		8EA419302AEE595F00A95D99 /* PhoneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTableViewCell.swift; sourceTree = "<group>"; };
+		8EA419322AEE596900A95D99 /* EmailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTableViewCell.swift; sourceTree = "<group>"; };
+		8EA419352AEE618D00A95D99 /* NicknameEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameEditViewController.swift; sourceTree = "<group>"; };
+		8EA419372AEE619900A95D99 /* NameEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameEditViewController.swift; sourceTree = "<group>"; };
+		8EA419392AEE61A900A95D99 /* PhoneEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneEditViewController.swift; sourceTree = "<group>"; };
 		8EA5A1C52AB18E2100AAE23C /* WDFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDFont.swift; sourceTree = "<group>"; };
 		8EA5A1C82AB18FA200AAE23C /* NotoSansKR-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.ttf"; sourceTree = "<group>"; };
 		8EA5A1C92AB18FA200AAE23C /* NotoSansKR-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Regular.ttf"; sourceTree = "<group>"; };
@@ -271,7 +285,12 @@
 			isa = PBXGroup;
 			children = (
 				8E7539DB2ABBFB06004F979D /* MyInfoViewController.swift */,
+				8EA4192C2AEE593B00A95D99 /* NicknameTableViewCell.swift */,
+				8EA4192E2AEE595000A95D99 /* NameTableViewCell.swift */,
+				8EA419302AEE595F00A95D99 /* PhoneTableViewCell.swift */,
+				8EA419322AEE596900A95D99 /* EmailTableViewCell.swift */,
 				8E7539DA2ABBFB06004F979D /* MyInfoEditViewController.swift */,
+				8EA419342AEE616700A95D99 /* InfoEdit */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -318,6 +337,16 @@
 				8E4393A92AE2901000AE6E9F /* QnaEdit */,
 			);
 			path = Qna;
+			sourceTree = "<group>";
+		};
+		8EA419342AEE616700A95D99 /* InfoEdit */ = {
+			isa = PBXGroup;
+			children = (
+				8EA419352AEE618D00A95D99 /* NicknameEditViewController.swift */,
+				8EA419372AEE619900A95D99 /* NameEditViewController.swift */,
+				8EA419392AEE61A900A95D99 /* PhoneEditViewController.swift */,
+			);
+			path = InfoEdit;
 			sourceTree = "<group>";
 		};
 		8EA5A1C42AB18DBE00AAE23C /* Util */ = {
@@ -658,6 +687,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EF3BCEA2ACD5B010022DBC8 /* FaqTableViewCell.swift in Sources */,
+				8EA419332AEE596900A95D99 /* EmailTableViewCell.swift in Sources */,
 				8E7539E22ABBFB06004F979D /* MyInfoEditViewController.swift in Sources */,
 				CC98E5F22ADC456C004E1E11 /* OrderListTableViewCell.swift in Sources */,
 				CC62A2002AB671FD0005A676 /* ResettingPasswordViewController.swift in Sources */,
@@ -668,11 +698,13 @@
 				8E7B41862AC04DAA00560B86 /* CompanyInfoViewController.swift in Sources */,
 				CC334FE12AD3F993000243B5 /* Match.swift in Sources */,
 				8E146DA02ADE76820002A120 /* QnaWriteViewController.swift in Sources */,
+				8EA419362AEE618E00A95D99 /* NicknameEditViewController.swift in Sources */,
 				8E7B41842AC04C6F00560B86 /* PrivacyPolicyViewController.swift in Sources */,
 				CC9866232ADF7C1700CCD67B /* Struct.swift in Sources */,
 				8E4393A82AE2900700AE6E9F /* QnaEditViewController.swift in Sources */,
 				8EE728C52AC40C63002C46B3 /* SignupModel.swift in Sources */,
 				8E7539E12ABBFB06004F979D /* CustomerServiceViewController.swift in Sources */,
+				8EA4192F2AEE595000A95D99 /* NameTableViewCell.swift in Sources */,
 				CC98E5F42ADC6C90004E1E11 /* DeliveryInfoViewController.swift in Sources */,
 				8EE855F02AD0540B007ECE13 /* MyHomeTableViewCell.swift in Sources */,
 				8EF3BCE82ACD5AE70022DBC8 /* ShowFaqViewController.swift in Sources */,
@@ -686,15 +718,18 @@
 				8E7539DE2ABBFB06004F979D /* SettingsViewController.swift in Sources */,
 				8E94FFFA2AC1F5D0006B8E9E /* ComentTableViewCell.swift in Sources */,
 				8EE855EE2AD04928007ECE13 /* AdressEditViewController.swift in Sources */,
+				8EA419382AEE619900A95D99 /* NameEditViewController.swift in Sources */,
 				CC62A2162AB72F140005A676 /* MainTabBarViewController.swift in Sources */,
 				8EA4192B2AE8DDA300A95D99 /* MyAddressListViewController.swift in Sources */,
 				8E7539E32ABBFB06004F979D /* MyInfoViewController.swift in Sources */,
 				8E7539E42ABBFB06004F979D /* MyAdressViewController.swift in Sources */,
+				8EA419312AEE595F00A95D99 /* PhoneTableViewCell.swift in Sources */,
 				CC6C34C32AD29A04000A420F /* PaymentViewController.swift in Sources */,
 				CCB27ECB2AB8A47F0053EA0B /* APICollection.swift in Sources */,
 				CC62A20C2AB7230D0005A676 /* JoinAgreeViewController.swift in Sources */,
 				CC62A2102AB7232D0005A676 /* JoinInfo1ViewController.swift in Sources */,
 				8E7B418B2AC0532B00560B86 /* FaqViewController.swift in Sources */,
+				8EA4193A2AEE61A900A95D99 /* PhoneEditViewController.swift in Sources */,
 				CC6C34C52AD2B4DF000A420F /* ResettingPasswordInfoViewController.swift in Sources */,
 				CCFF87782AE300DB00F1B347 /* PriceListViewController.swift in Sources */,
 				8E7539E02ABBFB06004F979D /* MypageUserViewController.swift in Sources */,
@@ -716,6 +751,7 @@
 				8EE855F52AD06B38007ECE13 /* EditHomeTableViewCell.swift in Sources */,
 				8EA5A1C62AB18E2100AAE23C /* WDFont.swift in Sources */,
 				CC98661F2ADF7BA400CCD67B /* AlbumInfo.swift in Sources */,
+				8EA4192D2AEE593B00A95D99 /* NicknameTableViewCell.swift in Sources */,
 				8EE855F72AD06B42007ECE13 /* EditOtherAdressTableViewCell.swift in Sources */,
 				8E546DF72AC13C8B00DD353E /* ShowNoticeViewController.swift in Sources */,
 				8E7539DF2ABBFB06004F979D /* MyReviewViewController.swift in Sources */,
