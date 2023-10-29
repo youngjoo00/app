@@ -57,7 +57,7 @@ class MypageUserViewController: UIViewController {
     func updateUI(with userInfo: UserInfoData) {
         myNicknameLabel.text = userInfo.userNickname
         myPhoneLabel.text = userInfo.userPhone
-        
+
         if let addressDto = userInfo.addressDto {
             do {
                 let encoder = JSONEncoder()

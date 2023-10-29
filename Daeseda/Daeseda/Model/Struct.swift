@@ -149,13 +149,8 @@ struct UserInfoData: Codable {
     let userName: String
     let userNickname: String
     let userPhone: String
-<<<<<<< HEAD
     var authorityDtoSet: [AuthorityDto]?
-    let addressDto: addressDto
-=======
-    let authorityDtoSet: [AuthorityDto]
     let addressDto: addressDto?
->>>>>>> f6da96af2ae3333bb2ea7152161e4f5dfa7d8414
 }
 
 struct addressDto: Codable {

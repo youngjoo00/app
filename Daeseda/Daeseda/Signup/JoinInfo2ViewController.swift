@@ -28,15 +28,20 @@ class JoinInfo2ViewController: UIViewController {
     
     let url = "http://localhost:8888/users/signup"
     
-    @IBOutlet weak var phoneTextField: UITextField!
+    
+    @IBOutlet weak var phoneStartTextField: UITextField!
+    @IBOutlet weak var phoneFirstTextField: UITextField!
+    @IBOutlet weak var phoneSecondTextField: UITextField!
     
     @IBOutlet weak var phoneErrorMessage: UILabel!
     
     
     @IBAction func phoneTextFieldEditingChanged(_ sender: Any) {
-        if let phone = phoneTextField.text{
+        if let phoneStart = phoneStartTextField.text ,let phoneFirst = phoneFirstTextField.text ,let phoneSecond = phoneSecondTextField.text{
             let pattern = "^01[0-1, 7][0-9]{7,8}$"
             let regex = try!NSRegularExpression(pattern: pattern)
+            
+            let phone = "\(phoneStart)\(phoneFirst)\(phoneSecond)"
             
             let match = regex.firstMatch(in: phone, range: NSRange(phone.startIndex..., in: phone))
             
@@ -44,7 +49,7 @@ class JoinInfo2ViewController: UIViewController {
                 phoneErrorMessage.text = "휴대번호를 정확히 입력해주세요."
             } else {
                 phoneErrorMessage.text = " "
-                userPhone = phone
+                userPhone = "\(phoneStart)-\(phoneFirst)-\(phoneSecond)"
             }
         }
         
@@ -97,20 +102,20 @@ class JoinInfo2ViewController: UIViewController {
         phone.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
         phone.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 200).isActive = true
         
-        let check = UILabel()
-        check.frame = CGRect(x: 0, y: 0, width: 82.22, height: 42.66)
-        check.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        check.font = UIFont(name: "NotoSansKR-Regular", size: 18)
-        // Line height: 24.2 pt
-        check.text = "인증번호"
-        
-        self.view.addSubview(check)
-        check.translatesAutoresizingMaskIntoConstraints = false
-        check.widthAnchor.constraint(equalToConstant: 82.22).isActive = true
-        check.heightAnchor.constraint(equalToConstant: 27).isActive = true
-        check.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
-        check.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 310).isActive = true
-        
+//        let check = UILabel()
+//        check.frame = CGRect(x: 0, y: 0, width: 82.22, height: 42.66)
+//        check.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+//        check.font = UIFont(name: "NotoSansKR-Regular", size: 18)
+//        // Line height: 24.2 pt
+//        check.text = "인증번호"
+//        
+//        self.view.addSubview(check)
+//        check.translatesAutoresizingMaskIntoConstraints = false
+//        check.widthAnchor.constraint(equalToConstant: 82.22).isActive = true
+//        check.heightAnchor.constraint(equalToConstant: 27).isActive = true
+//        check.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+//        check.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 310).isActive = true
+//        
     }
     
     func endButton(){

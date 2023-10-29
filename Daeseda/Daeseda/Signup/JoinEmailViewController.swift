@@ -123,7 +123,7 @@ class JoinEmailViewController: UIViewController {
         }
         
         if let unwrappedEmail = postEmail {
-            print(unwrappedEmail)
+//            print(unwrappedEmail)
             AF.request(url, method: .post, parameters: unwrappedEmail, encoder: JSONParameterEncoder.default)
                 .responseString { response in
                     switch response.result {
