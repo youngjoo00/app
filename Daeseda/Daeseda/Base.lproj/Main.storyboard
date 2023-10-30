@@ -585,11 +585,11 @@
             </objects>
             <point key="canvasLocation" x="-948" y="-797.29064039408865"/>
         </scene>
-        <!--main-->
+        <!--홈-->
         <scene sceneID="tXQ-Kd-syW">
             <objects>
                 <navigationController storyboardIdentifier="MainNC" automaticallyAdjustsScrollViewInsets="NO" id="CdD-Bi-T4U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="main" id="0rH-Xj-9Nq"/>
+                    <tabBarItem key="tabBarItem" title="홈" image="house" catalog="system" id="0rH-Xj-9Nq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PNC-Oi-OXT">
                         <rect key="frame" x="0.0" y="50" width="375" height="44"/>
@@ -930,11 +930,11 @@
             </objects>
             <point key="canvasLocation" x="1489" y="1497"/>
         </scene>
-        <!--review-->
+        <!--리뷰-->
         <scene sceneID="Pvd-8x-P73">
             <objects>
                 <navigationController storyboardIdentifier="ReviewNC" automaticallyAdjustsScrollViewInsets="NO" id="3kG-qM-dYl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="review" id="mdK-0m-DDf"/>
+                    <tabBarItem key="tabBarItem" title="리뷰" image="note" catalog="system" id="mdK-0m-DDf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="G5K-1I-uP6">
                         <rect key="frame" x="0.0" y="50" width="375" height="44"/>
@@ -949,11 +949,11 @@
             </objects>
             <point key="canvasLocation" x="545" y="783"/>
         </scene>
-        <!--mypage-->
+        <!--마이페이지-->
         <scene sceneID="ptt-Dk-mAc">
             <objects>
                 <navigationController storyboardIdentifier="MypageUserNC" automaticallyAdjustsScrollViewInsets="NO" id="o9D-iW-fKG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="mypage" id="8QA-1D-05K"/>
+                    <tabBarItem key="tabBarItem" title="마이페이지" image="person" catalog="system" id="8QA-1D-05K"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="QmL-G4-h4N">
                         <rect key="frame" x="0.0" y="50" width="375" height="44"/>
@@ -1397,7 +1397,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9q-is-1TZ">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9q-is-1TZ">
                                 <rect key="frame" x="255.66666666666666" y="110.66666666666669" width="103.33333333333334" height="49"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <state key="normal" title="Button"/>
@@ -2236,7 +2236,7 @@
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZV-we-vKn">
-                                                    <rect key="frame" x="298" y="19.333333333333329" width="29.666666666666686" height="24.666666666666671"/>
+                                                    <rect key="frame" x="299" y="19.333333333333329" width="28.666666666666686" height="24.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -2274,7 +2274,7 @@
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sD2-aX-O6s">
-                                                    <rect key="frame" x="298" y="19.333333333333329" width="29.666666666666686" height="24.666666666666671"/>
+                                                    <rect key="frame" x="299" y="19.333333333333329" width="28.666666666666686" height="24.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -2312,7 +2312,7 @@
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pve-5z-6hc">
-                                                    <rect key="frame" x="298" y="19.333333333333329" width="29.666666666666686" height="24.666666666666671"/>
+                                                    <rect key="frame" x="299" y="19.333333333333329" width="28.666666666666686" height="24.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -2346,7 +2346,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="testa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qty-ma-nFf">
-                                                    <rect key="frame" x="300.33333333333331" y="19.333333333333329" width="38.666666666666686" height="24.666666666666671"/>
+                                                    <rect key="frame" x="301.33333333333331" y="19.333333333333329" width="37.666666666666686" height="24.666666666666671"/>
                                                     <fontDescription key="fontDescription" name="NotoSansKR-Regular" family="Noto Sans KR" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -2499,11 +2499,11 @@
             </objects>
             <point key="canvasLocation" x="3182" y="1496"/>
         </scene>
-        <!--mypage-->
+        <!--마이페이지-->
         <scene sceneID="hW1-Le-Vmr">
             <objects>
                 <navigationController storyboardIdentifier="MypageGuestNC" id="4FG-cc-rQD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="mypage" id="m3L-zx-Ckg"/>
+                    <tabBarItem key="tabBarItem" title="마이페이지" image="person" catalog="system" id="m3L-zx-Ckg"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="taS-Up-moT">
                         <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -3438,11 +3438,11 @@
                                 <rect key="frame" x="0.0" y="94" width="375" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noticeCell" rowHeight="66" id="xV2-2q-bHf" customClass="NoticeTableViewCell" customModule="Daeseda" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="375" height="66"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noticeCell" rowHeight="79" id="xV2-2q-bHf" customClass="NoticeTableViewCell" customModule="Daeseda" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="375" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xV2-2q-bHf" id="Otj-JW-UMr">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000년 00월 00일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNH-sn-41k">
@@ -3458,7 +3458,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Lhw-hF-qZT">
-                                                    <rect key="frame" x="342.66666666666669" y="24.999999999999996" width="12.333333333333314" height="16.666666666666661"/>
+                                                    <rect key="frame" x="342.66666666666669" y="31.333333333333336" width="12.333333333333314" height="16.66666666666665"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                             </subviews>
@@ -3836,7 +3836,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IND-lL-WES">
-                                                    <rect key="frame" x="342.33333333333331" y="21" width="12.333333333333314" height="16.666666666666664"/>
+                                                    <rect key="frame" x="342.33333333333331" y="30.999999999999993" width="12.333333333333314" height="16.66666666666665"/>
                                                     <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[0]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHF-Te-8TB">
@@ -3848,7 +3848,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ea2-LJ-ccR" firstAttribute="leading" secondItem="HKW-lk-0QK" secondAttribute="leading" constant="18" id="6HI-3D-14V"/>
-                                                <constraint firstItem="IND-lL-WES" firstAttribute="top" secondItem="HKW-lk-0QK" secondAttribute="topMargin" constant="8" id="6zp-yJ-VmZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="IND-lL-WES" secondAttribute="trailing" constant="0.33000000000000002" id="7Zq-xa-Wyf"/>
                                                 <constraint firstItem="pHF-Te-8TB" firstAttribute="leading" secondItem="ea2-LJ-ccR" secondAttribute="trailing" constant="5" id="Ewa-Uq-v9y"/>
                                                 <constraint firstItem="XJc-bE-a5k" firstAttribute="leading" secondItem="HKW-lk-0QK" secondAttribute="leadingMargin" id="JRv-vn-3Mo"/>
@@ -3856,6 +3855,7 @@
                                                 <constraint firstItem="OMr-vW-Y4t" firstAttribute="leading" secondItem="XJc-bE-a5k" secondAttribute="trailing" constant="10" id="Oag-q7-N3u"/>
                                                 <constraint firstItem="3gX-5Y-eB7" firstAttribute="top" secondItem="ea2-LJ-ccR" secondAttribute="bottom" constant="5" id="Q1U-hQ-CDz"/>
                                                 <constraint firstItem="ea2-LJ-ccR" firstAttribute="top" secondItem="HKW-lk-0QK" secondAttribute="top" constant="10" id="QBj-8S-t9u"/>
+                                                <constraint firstItem="IND-lL-WES" firstAttribute="centerY" secondItem="HKW-lk-0QK" secondAttribute="centerY" id="Svk-rU-06m"/>
                                                 <constraint firstItem="OMr-vW-Y4t" firstAttribute="top" secondItem="ea2-LJ-ccR" secondAttribute="bottom" constant="5" id="YUa-n3-yaq"/>
                                                 <constraint firstItem="pHF-Te-8TB" firstAttribute="top" secondItem="HKW-lk-0QK" secondAttribute="top" constant="10" id="edw-ED-e0y"/>
                                                 <constraint firstItem="IND-lL-WES" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pHF-Te-8TB" secondAttribute="trailing" constant="16" id="rqn-oY-QAt"/>
@@ -5025,11 +5025,11 @@
             </objects>
             <point key="canvasLocation" x="8407" y="5075"/>
         </scene>
-        <!--orderList-->
+        <!--주문내역-->
         <scene sceneID="2V2-7Z-Rde">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="61N-eP-0Sd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="orderList" id="zB9-sB-npb"/>
+                    <tabBarItem key="tabBarItem" title="주문내역" id="zB9-sB-npb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z9K-j9-cJb">
                         <rect key="frame" x="0.0" y="50" width="375" height="44"/>
@@ -5182,7 +5182,10 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="house" catalog="system" width="128" height="104"/>
         <image name="mappin.and.ellipse" catalog="system" width="117" height="128"/>
+        <image name="note" catalog="system" width="128" height="107"/>
+        <image name="person" catalog="system" width="128" height="121"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="로그인" width="120" height="120"/>
