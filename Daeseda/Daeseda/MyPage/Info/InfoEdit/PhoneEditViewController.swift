@@ -4,6 +4,8 @@ import Alamofire
 class PhoneEditViewController: UIViewController {
     
     var phoneData: String?
+    let phoneNumberRegex = "^(01[0-9])-?([0-9]{3,4})-?([0-9]{4})$"
+    var phoneLast: String?
     
     @IBOutlet weak var phoneEditCompleteBtn: UIButton!
     @IBOutlet weak var phoneEditTF: UITextField!
@@ -36,22 +38,29 @@ class PhoneEditViewController: UIViewController {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         updateButtonState()
+        print(self.phoneEditTF.text!)
     }
     
     func updateButtonState() {
         if let phone = phoneEditTF.text {
-            if phone.isEmpty || phone == phoneData {
+            let isPhone = phone.range(of: phoneNumberRegex, options: .regularExpression) != nil
+            if phone.isEmpty || phone == phoneData || !isPhone {
                 phoneEditCompleteBtn.tintColor = UIColor.lightGray
                 phoneEditCompleteBtn.isEnabled = false
             } else {
                 phoneEditCompleteBtn.tintColor = UIColor(hex: 0x007AFF)
                 phoneEditCompleteBtn.isEnabled = true
             }
+            
+            if isPhone {
+                let formattedPhone = formatPhone(phone)
+                phoneLast = formattedPhone
+            }
         }
     }
     
     func patchPhone() {
-        if let phone = phoneEditTF.text {
+        if let phone = phoneLast {
             let url = "http://localhost:8888/users/name"
             
             // 1. 토큰 가져오기
@@ -82,6 +91,12 @@ class PhoneEditViewController: UIViewController {
         }
     }
     
+    func formatPhone(_ phone: String) -> String {
+        let formattedPhone = phone.replacingOccurrences(of: phoneNumberRegex, with: "$1-$2-$3", options: .regularExpression)
+        return formattedPhone
+    }
+
+
     
     @IBAction func phoneEditCompleteBtn(_ sender: UIButton) {
         patchPhone()
