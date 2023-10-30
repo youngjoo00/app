@@ -71,7 +71,7 @@ extension NoticeViewController: UITableViewDelegate {
         self.present(showNoticeVC, animated: true, completion: nil)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 80
     }
 }
 

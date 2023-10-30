@@ -11,7 +11,6 @@ class MypageUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
         print("addressDto\(addressDto.self)")
 
         // 타이틀 텍스트 폰트 조절
@@ -19,8 +18,6 @@ class MypageUserViewController: UIViewController {
             let font = WDFont.GmarketBold.of(size: 30)
             navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
         }
-=======
->>>>>>> 2bc7be44eb8c105218aa26710651821fb48bf67d
         
         getMyData()
     }

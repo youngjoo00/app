@@ -2,7 +2,7 @@ import UIKit
 import Alamofire
 
 class NameEditViewController: UIViewController {
-
+    
     var nameData: String?
     
     @IBOutlet weak var nameEditCompleteBtn: UIButton!
@@ -10,7 +10,11 @@ class NameEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // 터치 제스처 추가: 키보드 외의 영역 터치 시 키보드 내리기
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tapGesture)
+        
         // 텍스트 필드에 대한 이벤트 핸들러 설정
         nameEditTF.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -18,9 +22,9 @@ class NameEditViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
-
+        
         self.navigationItem.title = "이름 변경"
-
+        
         updateButtonState()
     }
     
@@ -82,5 +86,9 @@ class NameEditViewController: UIViewController {
     @IBAction func nameEditCompleteBtn(_ sender: UIButton) {
         patchName()
     }
-
+    
+    // 다른 영역 터치 시 키보드 내리기
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        nameEditTF.resignFirstResponder() // 현재 First Responder 해제
+    }
 }
