@@ -61,7 +61,10 @@ class MyAddressListViewController: UIViewController {
 
 extension MyAddressListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let selectedAddress = addressArr[indexPath.row]
+
+                    // Notification을 생성하고 데이터를 담아 보냅니다.
+        NotificationCenter.default.post(name: NSNotification.Name("postAddressNotification"), object: selectedAddress)
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

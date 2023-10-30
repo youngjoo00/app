@@ -20,6 +20,8 @@ class RequestViewController: UIViewController {
         applyClothesListTableView.dataSource = self
         applyClothesListTableView.delegate = self
         
+        listLabel.isHidden = true
+        
         nextButton()
         textLabel()
         setupPicker()
@@ -35,6 +37,16 @@ class RequestViewController: UIViewController {
             deliveryDate = dateFormat(date: newDate)
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "세탁 신청"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationItem.title = .none
     }
     
     @IBOutlet weak var dateTextField: UITextField!
@@ -54,6 +66,9 @@ class RequestViewController: UIViewController {
     
     
     @IBOutlet weak var countTextField: UITextField!
+    
+    
+    @IBOutlet weak var listLabel: UILabel!
     
     
     @IBOutlet weak var applyClothesListTableView: UITableView!
@@ -130,48 +145,53 @@ class RequestViewController: UIViewController {
         
         let clothes = Clothes(clothesId: selectClothesId, clothesName: clothesTextField.text!, categoryId: selectCategoryId)
         
-        if let countText = self.countTextField.text, let count = Int(countText) {
+        if let countText = countTextField.text, let count = Int(countText) {
             let clothesCount = ClothesCount(clothes: clothes, count: count)
             self.totalClothesCount.append(clothesCount)
         } else {
             print("수량 int형 변형 오류")
         }
         
-        print(totalClothesCount)
+        listLabel.isHidden = false
+
+        
+        categoryTextField.text = ""
+        clothesTextField.text = ""
+        countTextField.text = ""
+        
         self.applyClothesListTableView.reloadData()
         
     }
     
     func nextButton(){
         let nextButton = UIButton()
-        nextButton.frame = CGRect(x: 0, y: 0, width: 250, height: 34)
+        nextButton.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
         nextButton.layer.backgroundColor = UIColor(red: 0.365, green: 0.553, blue: 0.949, alpha: 1).cgColor
-        nextButton.layer.cornerRadius = 10
+        nextButton.layer.cornerRadius = 20
         
         self.view.addSubview(nextButton)
         nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: 34).isActive = true
-        nextButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70).isActive = true
+        nextButton.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        nextButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         nextButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -50).isActive = true
         nextButton.addTarget(self, action: #selector(requestInfoVC), for: .touchUpInside)
         
         
         let naxtText = UILabel()
-        naxtText.frame = CGRect(x: 0, y: 0, width: 37, height: 27)
-        naxtText.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        naxtText.font = UIFont(name: "NotoSans-Regular", size: 20)
+        naxtText.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
+        naxtText.textColor = UIColor.white
+        naxtText.font = UIFont(name: "NotoSansKR-Bold", size: 40)
         // Line height: 27.24 pt
         naxtText.textAlignment = .center
         naxtText.text = "다음"
         
         self.view.addSubview(naxtText)
         naxtText.translatesAutoresizingMaskIntoConstraints = false
-        naxtText.widthAnchor.constraint(equalToConstant: 37).isActive = true
-        naxtText.heightAnchor.constraint(equalToConstant: 27).isActive = true
         naxtText.centerXAnchor.constraint(equalTo: nextButton.centerXAnchor).isActive = true
         naxtText.centerYAnchor.constraint(equalTo: nextButton.centerYAnchor).isActive = true
     }
+    
     @objc func requestInfoVC() {
         guard  let requestInfoVC = storyboard?.instantiateViewController(withIdentifier: "requestInfo") as? RequestInfoViewController else { return }
         requestInfoVC.selectDate = self.dateTextField.text!
@@ -226,59 +246,60 @@ class RequestViewController: UIViewController {
         subTitle.translatesAutoresizingMaskIntoConstraints = false
         subTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 38).isActive = true
         subTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 170).isActive = true
+        
         let dateLabel = UILabel()
         dateLabel.frame = CGRect(x: 0, y: 0, width: 56, height: 27)
         dateLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        dateLabel.font = UIFont(name: "NotoSans-Regular", size: 20)
+        dateLabel.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 27.24 pt
         dateLabel.textAlignment = .center
         dateLabel.text = "수거일"
         
         self.view.addSubview(dateLabel)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        dateLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        dateLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 225).isActive = true
+        dateLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+        dateLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 220).isActive = true
         
         let timeLabel = UILabel()
         timeLabel.frame = CGRect(x: 0, y: 0, width: 37, height: 27)
         timeLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        timeLabel.font = UIFont(name: "NotoSans-Regular", size: 20)
+        timeLabel.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 27.24 pt
         timeLabel.textAlignment = .center
         timeLabel.text = "시간"
         
         self.view.addSubview(timeLabel)
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
-        timeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        timeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 290).isActive = true
+        timeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+        timeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 280).isActive = true
         
         // Auto layout, variables, and unit scale are not yet supported
         let typeLabel = UILabel()
         typeLabel.frame = CGRect(x: 0, y: 0, width: 74, height: 27)
         typeLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        typeLabel.font = UIFont(name: "NotoSans-Regular", size: 20)
+        typeLabel.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 27.24 pt
         typeLabel.textAlignment = .center
         typeLabel.text = "세탁종류"
         
         self.view.addSubview(typeLabel)
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        typeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        typeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 355).isActive = true
+        typeLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+        typeLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 340).isActive = true
         
         // Auto layout, variables, and unit scale are not yet supported
         let categoryLabel = UILabel()
         categoryLabel.frame = CGRect(x: 0, y: 0, width: 74, height: 27)
         categoryLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-        categoryLabel.font = UIFont(name: "NotoSans-Regular", size: 20)
+        categoryLabel.font = UIFont(name: "NotoSansKR-Regular", size: 18)
         // Line height: 27.24 pt
         categoryLabel.textAlignment = .center
-        categoryLabel.text = "카테고리"
+        categoryLabel.text = "신청 품목"
         
         self.view.addSubview(categoryLabel)
         categoryLabel.translatesAutoresizingMaskIntoConstraints = false
-        categoryLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 35).isActive = true
-        categoryLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 420).isActive = true
+        categoryLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
+        categoryLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 400).isActive = true
         
     }
     

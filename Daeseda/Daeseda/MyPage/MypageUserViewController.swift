@@ -11,6 +11,16 @@ class MypageUserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
+        print("addressDto\(addressDto.self)")
+
+        // 타이틀 텍스트 폰트 조절
+        if let navigationBar = self.navigationController?.navigationBar {
+            let font = WDFont.GmarketBold.of(size: 30)
+            navigationBar.titleTextAttributes = [NSAttributedString.Key.font: font]
+        }
+=======
+>>>>>>> 2bc7be44eb8c105218aa26710651821fb48bf67d
         
         getMyData()
     }
@@ -18,6 +28,7 @@ class MypageUserViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tabBarController?.tabBar.isHidden = false
         self.navigationItem.title = "마이페이지"
         // 타이틀 텍스트 폰트 조절
         if let navigationBar = self.navigationController?.navigationBar {
@@ -61,7 +72,7 @@ class MypageUserViewController: UIViewController {
     func updateUI(with userInfo: UserInfoData) {
         myNicknameLabel.text = userInfo.userNickname
         myPhoneLabel.text = userInfo.userPhone
-        
+
         if let addressDto = userInfo.addressDto {
             do {
                 let encoder = JSONEncoder()

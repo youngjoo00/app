@@ -87,7 +87,6 @@ class MyAdressViewController: UIViewController {
         }
     }
 
-
     func postAddressDefalut(selectedAddress: Address) {
         let addressDefalutUrl = "http://localhost:8888/users/address/setting"
 
