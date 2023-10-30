@@ -36,6 +36,10 @@ class ReviewWriteViewController: UIViewController {
         )
         navigationItem.rightBarButtonItem = reviewWriteBarBtnItem
         
+        // 터치 제스처 추가: 키보드 외의 영역 터치 시 키보드 내리기
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tapGesture)
+        
         self.reviewTextView.layer.borderWidth = 1.0
         self.reviewTextView.layer.borderColor = UIColor.black.cgColor
         
@@ -47,6 +51,8 @@ class ReviewWriteViewController: UIViewController {
         updateStarUI()
         
         self.title = "리뷰 작성"
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -223,6 +229,10 @@ class ReviewWriteViewController: UIViewController {
         }
     }
     
+    // 다른 영역 터치 시 키보드 내리기
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        reviewTextView.resignFirstResponder() // 현재 First Responder 해제
+    }
 }
 
 extension ReviewWriteViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

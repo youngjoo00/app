@@ -2,7 +2,7 @@ import UIKit
 import Alamofire
 
 class PhoneEditViewController: UIViewController {
-
+    
     var phoneData: String?
     
     @IBOutlet weak var phoneEditCompleteBtn: UIButton!
@@ -10,7 +10,11 @@ class PhoneEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // 터치 제스처 추가: 키보드 외의 영역 터치 시 키보드 내리기
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tapGesture)
+        
         // 텍스트 필드에 대한 이벤트 핸들러 설정
         phoneEditTF.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -18,9 +22,9 @@ class PhoneEditViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tabBarController?.tabBar.isHidden = true
-
+        
         self.navigationItem.title = "전화번호 변경"
-
+        
         updateButtonState()
     }
     
@@ -82,6 +86,9 @@ class PhoneEditViewController: UIViewController {
     @IBAction func phoneEditCompleteBtn(_ sender: UIButton) {
         patchPhone()
     }
-   
-
+    
+    // 다른 영역 터치 시 키보드 내리기
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        phoneEditTF.resignFirstResponder() // 현재 First Responder 해제
+    }
 }

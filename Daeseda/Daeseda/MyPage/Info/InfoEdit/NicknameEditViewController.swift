@@ -11,6 +11,9 @@ class NicknameEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 터치 제스처 추가: 키보드 외의 영역 터치 시 키보드 내리기
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tapGesture)
         // 텍스트 필드에 대한 이벤트 핸들러 설정
         nicknameEditTF.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -82,5 +85,10 @@ class NicknameEditViewController: UIViewController {
     
     @IBAction func nicknameEditCompleteBtn(_ sender: UIButton) {
         patchNickname()
+    }
+    
+    // 다른 영역 터치 시 키보드 내리기
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        nicknameEditTF.resignFirstResponder() // 현재 First Responder 해제
     }
 }
