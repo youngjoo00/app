@@ -3,7 +3,7 @@ import Alamofire
 
 class AdressEditViewController: UIViewController {
     
-    let url = "http://localhost:8888/users/address/list"
+    let endPoint = "/users/address/list"
     
     var selectedIndexPath: IndexPath?
     var addressData = [Address]()
@@ -28,10 +28,11 @@ class AdressEditViewController: UIViewController {
     }
     
     func getAdressEditData() {
+        let fullURL = baseURL.baseURLString + self.endPoint
         if let token = UserTokenManager.shared.getToken() {
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
             
-            AF.request(url, headers: headers).responseDecodable(of: [Address].self) { response in
+            AF.request(fullURL, headers: headers).responseDecodable(of: [Address].self) { response in
                 switch response.result {
                 case .success(let addressData):
                     // 요청이 성공한 경우
@@ -80,7 +81,7 @@ class AdressEditViewController: UIViewController {
             let otherAddressIndex = indexPath.row
             let addressDelData = self?.addressData[otherAddressIndex]
             
-            let delUrl = "http://localhost:8888/users/address/delete"
+            let delUrl = baseURL.baseURLString + "/users/address/delete"
             
             // 1. 토큰 가져오기
             if let token = UserTokenManager.shared.getToken() {

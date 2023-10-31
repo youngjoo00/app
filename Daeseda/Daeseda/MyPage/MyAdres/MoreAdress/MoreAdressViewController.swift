@@ -10,7 +10,7 @@ class MoreAdressViewController: UIViewController {
     var isHomeButtonSelected = false
     var isOtherButtonSelected = false
     
-    let url = "http://localhost:8888/users/address/create"
+    let endPoint = "/users/address/create"
     
     @IBOutlet weak var moreAdressNicknameTF: UITextField!
     @IBOutlet weak var moreAdressTF: UITextField!
@@ -55,9 +55,10 @@ class MoreAdressViewController: UIViewController {
                 
                 // 2. Bearer Token을 설정합니다.
                 let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+                let fullURL = baseURL.baseURLString + self.endPoint
                 
                 // 3. 서버에 주소 등록 요청을 보냅니다.
-                AF.request(url, method: .post, parameters: addressData, encoder: JSONParameterEncoder.default, headers: headers)
+                AF.request(fullURL, method: .post, parameters: addressData, encoder: JSONParameterEncoder.default, headers: headers)
                     .validate(statusCode: 200..<300)
                     .response { response in
                         switch response.result {

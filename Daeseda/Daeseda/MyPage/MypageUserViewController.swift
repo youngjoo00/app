@@ -3,7 +3,7 @@ import Alamofire
 
 class MypageUserViewController: UIViewController {
     
-    let url = "http://localhost:8888/users/myInfo"
+    let endPoint = "/users/myInfo"
     
     @IBOutlet weak var myNicknameLabel: UILabel!
     @IBOutlet weak var myPhoneLabel: UILabel!
@@ -41,6 +41,7 @@ class MypageUserViewController: UIViewController {
         self.navigationItem.title = .none
     }
     func getMyData() {
+        let fullURL = baseURL.baseURLString + self.endPoint
         // 1. 토큰 가져오기
         if let token = UserTokenManager.shared.getToken() {
             print("Token: \(token)")
@@ -49,7 +50,7 @@ class MypageUserViewController: UIViewController {
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
             
             // 3. 서버에서 유저 정보를 가져오는 요청
-            AF.request(url, headers: headers).responseDecodable(of: UserInfoData.self) { response in
+            AF.request(fullURL, headers: headers).responseDecodable(of: UserInfoData.self) { response in
                 switch response.result {
                 case .success(let userInfo):
                     // 요청이 성공한 경우

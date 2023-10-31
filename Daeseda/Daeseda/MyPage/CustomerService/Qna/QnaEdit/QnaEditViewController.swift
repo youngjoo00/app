@@ -53,7 +53,7 @@ class QnaEditViewController: UIViewController {
         
         if let qnaEditId = self.qnaEditId {
             // 옵셔널 바인딩 내부에서 qnaEditId를 사용하여 URL을 생성
-            let url = "http://localhost:8888/board/\(qnaEditId)"
+            let url = baseURL.baseURLString + "/board/\(qnaEditId)"
             
             // 나머지 코드는 그대로 유지
             guard let category = qnaEditCategoryTF.text,

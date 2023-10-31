@@ -67,7 +67,7 @@ class ReviewWriteViewController: UIViewController {
     
     // 리뷰 등록
     @objc func reviewPostBtn(_ sender: UIBarButtonItem) {
-        let url = "http://localhost:8888/review/register"
+        let url = baseURL.baseURLString + "/review/register"
         
         // 이미지 파일 (이미지 파일을 준비하고, 이미지 데이터로 변환해야 함)
         guard let image = reviewUploadImage.image, let imageData = image.jpegData(compressionQuality: 1) else {
@@ -162,7 +162,7 @@ class ReviewWriteViewController: UIViewController {
     }
     
     @IBAction func reviewWriteCompleteBtn(_ sender: UIButton) {
-        let url = "http://localhost:8888/review/register"
+        let url = baseURL.baseURLString + "/review/register"
         
         // 이미지 파일 (이미지 파일을 준비하고, 이미지 데이터로 변환해야 함)
         guard let image = reviewUploadImage.image, let imageData = image.jpegData(compressionQuality: 1) else {

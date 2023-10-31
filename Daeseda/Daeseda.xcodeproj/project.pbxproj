@@ -12,6 +12,7 @@
 		8E0127312ADC2DE4006CDDB1 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0127302ADC2DE4006CDDB1 /* Auth.swift */; };
 		8E146DA02ADE76820002A120 /* QnaWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E146D9F2ADE76820002A120 /* QnaWriteViewController.swift */; };
 		8E4393A82AE2900700AE6E9F /* QnaEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4393A72AE2900700AE6E9F /* QnaEditViewController.swift */; };
+		8E45F23A2AF0BEFB00BA51EC /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E45F2392AF0BEFB00BA51EC /* URL.swift */; };
 		8E546DF72AC13C8B00DD353E /* ShowNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E546DF62AC13C8B00DD353E /* ShowNoticeViewController.swift */; };
 		8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */; };
 		8E7539D22ABBFAF3004F979D /* ReviewWriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */; };
@@ -113,6 +114,7 @@
 		8E0127302ADC2DE4006CDDB1 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		8E146D9F2ADE76820002A120 /* QnaWriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnaWriteViewController.swift; sourceTree = "<group>"; };
 		8E4393A72AE2900700AE6E9F /* QnaEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QnaEditViewController.swift; sourceTree = "<group>"; };
+		8E45F2392AF0BEFB00BA51EC /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		8E546DF62AC13C8B00DD353E /* ShowNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNoticeViewController.swift; sourceTree = "<group>"; };
 		8E7539CF2ABBFAF3004F979D /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		8E7539D02ABBFAF3004F979D /* ReviewWriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewWriteViewController.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				CC9866222ADF7C1700CCD67B /* Struct.swift */,
 				8EE728C22AC40BF4002C46B3 /* LoginModel.swift */,
 				8EE728C42AC40C63002C46B3 /* SignupModel.swift */,
+				8E45F2392AF0BEFB00BA51EC /* URL.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				CC98E5F02ADBEAE2004E1E11 /* OrderListViewController.swift in Sources */,
 				CC1183792AB14AFF00CE4BD2 /* ViewController.swift in Sources */,
 				8E7539D12ABBFAF3004F979D /* ReviewViewController.swift in Sources */,
+				8E45F23A2AF0BEFB00BA51EC /* URL.swift in Sources */,
 				8EF312CE2AD94C3000E9D682 /* ShowUserDelViewController.swift in Sources */,
 				CC62A2122AB723390005A676 /* JoinInfo2ViewController.swift in Sources */,
 				CC62A1FC2AB671CD0005A676 /* RequestInfoViewController.swift in Sources */,
