@@ -1670,7 +1670,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1x9-8Y-ctj">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="towel" translatesAutoresizingMaskIntoConstraints="NO" id="1x9-8Y-ctj">
                                 <rect key="frame" x="16" y="128" width="200" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="937-T7-drg"/>
@@ -5206,6 +5206,7 @@
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
+        <image name="towel" width="640" height="427"/>
         <image name="로그인" width="512" height="512"/>
         <image name="체크" width="80" height="80"/>
         <systemColor name="labelColor">
