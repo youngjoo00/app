@@ -604,7 +604,7 @@
             </objects>
             <point key="canvasLocation" x="-583" y="759"/>
         </scene>
-        <!--orderList-->
+        <!--주문내역-->
         <scene sceneID="YQE-bW-Fnj">
             <objects>
                 <viewController storyboardIdentifier="OrderList" id="20a-jw-U2m" customClass="OrderListViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
@@ -771,7 +771,7 @@
                             <constraint firstItem="E13-iO-SH2" firstAttribute="trailing" secondItem="GR9-9I-jjk" secondAttribute="trailing" id="Yb2-Ps-Yir"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="orderList" id="LZU-dk-3a7"/>
+                    <tabBarItem key="tabBarItem" title="주문내역" image="list.bullet.clipboard" catalog="system" id="LZU-dk-3a7"/>
                     <navigationItem key="navigationItem" id="Fnh-9t-K0Y"/>
                     <connections>
                         <outlet property="orderListTableView" destination="E13-iO-SH2" id="XM3-bm-YDx"/>
@@ -949,7 +949,7 @@
         <scene sceneID="Pvd-8x-P73">
             <objects>
                 <navigationController storyboardIdentifier="ReviewNC" automaticallyAdjustsScrollViewInsets="NO" id="3kG-qM-dYl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="리뷰" image="note" catalog="system" id="mdK-0m-DDf"/>
+                    <tabBarItem key="tabBarItem" title="리뷰" image="hand.thumbsup" catalog="system" id="mdK-0m-DDf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="G5K-1I-uP6">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -5200,9 +5200,10 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="hand.thumbsup" catalog="system" width="123" height="128"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="list.bullet.clipboard" catalog="system" width="103" height="128"/>
         <image name="mappin.and.ellipse" catalog="system" width="117" height="128"/>
-        <image name="note" catalog="system" width="128" height="107"/>
         <image name="person" catalog="system" width="128" height="121"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
