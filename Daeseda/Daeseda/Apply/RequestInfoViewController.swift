@@ -158,7 +158,7 @@ class RequestInfoViewController: UIViewController, UISheetPresentationController
         
         let newOrder = Order(address: addressInfo, clothesCount: totalClothesCount, totalPrice: self.totalPrice, washingMethod: self.selectWay, pickupDate: self.selectDate, deliveryDate: self.deliveryDate, deliveryLocation: totalPrdeliveryLocationice)
         
-        let url = "\(baseURL.self)/orders/request"
+        let url = "\(baseURL.baseURLString)/orders/request"
         
         //확인 버튼 만들기
         let ok = UIAlertAction(title: "확인", style: .default, handler: { action in

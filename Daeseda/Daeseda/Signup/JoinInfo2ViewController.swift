@@ -132,7 +132,7 @@ class JoinInfo2ViewController: UIViewController {
         
         //확인 버튼 만들기
         let ok = UIAlertAction(title: "확인", style: .default, handler: { action in
-            AF.request("\(baseURL.self)/users/signup", method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
+            AF.request("\(baseURL.baseURLString)/users/signup", method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
                 .validate(statusCode: 200..<300)
                 .response { response in
                     switch response.result {

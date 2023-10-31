@@ -16,8 +16,13 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
         orderListTableView.delegate = self
         orderListTableView.dataSource = self
         
-        fetchCategoryInfo()
         print("1")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        fetchCategoryInfo()
     }
     
     
@@ -42,7 +47,7 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
         if let token = UserTokenManager.shared.getToken(){
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
             
-            AF.request("\(baseURL.self)/orders/list", headers: headers).responseDecodable(of: [OrderList].self) { response in
+            AF.request("\(baseURL.baseURLString)/orders/list", headers: headers).responseDecodable(of: [OrderList].self) { response in
                 switch response.result {
                 case .success(let orderList):
                     self.num.removeAll()
