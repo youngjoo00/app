@@ -28,6 +28,8 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
     var state: [String] = []
     var finish: [String] = []
     
+    var buttonHidden : String = "true"
+    
     @IBOutlet weak var orderListTableView: UITableView!
     
     var segmentIndex: Int = 0
@@ -96,7 +98,11 @@ extension OrderListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // 여기서 셀의 높이를 동적으로 설정
         if segmentIndex == 0 {
-            return 180 // 원하는 높이로 변경
+            if buttonHidden == "true" {
+                return 180
+            } else {
+                return 210
+            }
         } else {
             return 250 // 원하는 높이로 변경
         }
@@ -120,15 +126,14 @@ extension OrderListViewController: UITableViewDataSource{
         cell.finishDate.text = finish[indexPath.row]
         cell.button.isHidden = true
         
-        print(cell.orderNum.text)
-        
         if segmentIndex == 0 {
             cell.finishDateLabel.isHidden = true
             cell.finishDate.isHidden = true
             
-            if cell.state.text == "Cash" {
+            if cell.state.text == "ORDER" {
                 
                 cell.button.isHidden = false
+                buttonHidden = "false"
                 cell.button.setTitle("결제 >", for: .normal)
                 cell.button.removeTarget(self, action: #selector(deliveryInfo), for: .touchUpInside)
                 cell.button.removeTarget(self, action: #selector(reviewWrite), for: .touchUpInside)
@@ -137,6 +142,7 @@ extension OrderListViewController: UITableViewDataSource{
             } else if cell.state.text == "Complete"{
                 
                 cell.button.isHidden = false
+                buttonHidden = "false"
                 cell.button.setTitle("배송정보 >", for: .normal)
                 cell.button.removeTarget(self, action: #selector(payment), for: .touchUpInside)
                 cell.button.removeTarget(self, action: #selector(reviewWrite), for: .touchUpInside)
@@ -147,6 +153,7 @@ extension OrderListViewController: UITableViewDataSource{
             cell.finishDateLabel.isHidden = false
             cell.finishDate.isHidden = false
             cell.button.isHidden = false
+            buttonHidden = "false"
             cell.button.setTitle("리뷰작성 >", for: .normal)
             cell.button.removeTarget(self, action: #selector(payment), for: .touchUpInside)
             cell.button.removeTarget(self, action: #selector(deliveryInfo), for: .touchUpInside)
@@ -158,10 +165,21 @@ extension OrderListViewController: UITableViewDataSource{
         
     }
     
-    @objc func payment() {
-        guard  let paymentVC = self.storyboard?.instantiateViewController(withIdentifier: "Payment") as? PaymentViewController else { return }
-        
-        present(paymentVC, animated: true, completion: nil)
+    @objc func payment(_ sender: UIButton) {
+        if let indexPath = self.orderListTableView.indexPath(for: sender.superview?.superview as! UITableViewCell) {
+            
+            let orderId = num[indexPath.row]
+            let price = price[indexPath.row]
+            
+            if let amount = Int(price) {
+                guard  let paymentVC = self.storyboard?.instantiateViewController(withIdentifier: "Payment") as? PaymentViewController else { return }
+                
+//                paymentVC.orderId = orderId
+                paymentVC.amount = amount
+                
+                present(paymentVC, animated: true, completion: nil)
+            }
+        }
         
     }
     

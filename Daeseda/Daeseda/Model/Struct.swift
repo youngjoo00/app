@@ -172,3 +172,15 @@ struct ReviewWithCategory {
     let review: ReviewData
     let category: Categories
 }
+
+struct CardInfo: Codable {
+    let cardName: String
+    let cardNumber: String
+    let order: OrderId
+    let paidAmount: Int
+    let payMethod: String
+}
+
+struct OrderId: Codable {
+    let orderId: Int
+}
