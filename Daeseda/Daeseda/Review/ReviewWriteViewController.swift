@@ -168,10 +168,10 @@ class ReviewWriteViewController: UIViewController {
         let url = baseURL.baseURLString + "/review/register"
         
         // 이미지 파일 (이미지 파일을 준비하고, 이미지 데이터로 변환해야 함)
-//        guard let image = reviewUploadImage.image, let imageData = image.jpegData(compressionQuality: 1) else {
-//            print("Please select an image or failed to convert image to data.")
-//            return
-//        }
+        guard let image = reviewUploadImage.image, let imageData = image.jpegData(compressionQuality: 1) else {
+            print("Please select an image or failed to convert image to data.")
+            return
+        }
         
         // 리뷰 데이터 생성
         guard let reviewTitle = title else {
@@ -197,7 +197,7 @@ class ReviewWriteViewController: UIViewController {
             AF.upload(
                 multipartFormData: { multipartFormData in
                     // 이미지를 추가하는 부분은 그대로 둡니다.
-//                    multipartFormData.append(imageData, withName: "image", fileName: "reviewImage.jpg", mimeType: "image/jpeg")
+                    multipartFormData.append(imageData, withName: "image", fileName: "reviewImage.jpg", mimeType: "image/jpeg")
                     
                     // 리뷰 데이터를 `multipart/form-data` 형식으로 보냅니다.
                     if let reviewTitleData = reviewTitle.data(using: .utf8) {
