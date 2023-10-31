@@ -42,7 +42,7 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
         if let token = UserTokenManager.shared.getToken(){
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
             
-            AF.request("http://localhost:8888/orders/list", headers: headers).responseDecodable(of: [OrderList].self) { response in
+            AF.request("\(baseURL.self)/orders/list", headers: headers).responseDecodable(of: [OrderList].self) { response in
                 switch response.result {
                 case .success(let orderList):
                     self.num.removeAll()

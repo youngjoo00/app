@@ -151,7 +151,7 @@ class JoinInfo1ViewController: UIViewController {
             let naxtText = UILabel()
             naxtText.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
             naxtText.textColor = UIColor.white
-            naxtText.font = UIFont(name: "NotoSansKR-Bold", size: 40)
+            naxtText.font = UIFont(name: "NotoSansKR-Bold", size: 20)
             // Line height: 27.24 pt
             naxtText.textAlignment = .center
             naxtText.text = "다음"

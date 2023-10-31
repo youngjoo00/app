@@ -87,7 +87,7 @@ class RequestViewController: UIViewController {
     var totalClothesCount : [ClothesCount] = []
     
     func fetchCategoryInfo(){
-        AF.request("http://localhost:8888/category/list").responseDecodable(of: [Category].self) { response in
+        AF.request("\(baseURL.self)/category/list").responseDecodable(of: [Category].self) { response in
             switch response.result {
             case .success(let categories):
                 for category in categories {
@@ -104,7 +104,7 @@ class RequestViewController: UIViewController {
     }
     
     func fetchClothesInfo(categoryId: Int) {
-        AF.request("http://localhost:8888/clothes/list").responseDecodable(of: [GetClothes].self) { response in
+        AF.request("\(baseURL.self)/clothes/list").responseDecodable(of: [GetClothes].self) { response in
             switch response.result {
             case .success(let clothes):
                 self.clothesNames.removeAll()
@@ -181,7 +181,7 @@ class RequestViewController: UIViewController {
         let naxtText = UILabel()
         naxtText.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
         naxtText.textColor = UIColor.white
-        naxtText.font = UIFont(name: "NotoSansKR-Bold", size: 40)
+        naxtText.font = UIFont(name: "NotoSansKR-Bold", size: 20)
         // Line height: 27.24 pt
         naxtText.textAlignment = .center
         naxtText.text = "다음"
