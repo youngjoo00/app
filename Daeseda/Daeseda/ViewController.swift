@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         d()
         but()
         banner()
+        review()
         loginButton()
         
     }
@@ -271,7 +272,7 @@ class ViewController: UIViewController {
     }
     
     func review(){
-        reviewScrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 200)
+//        reviewScrollView.frame = CGRect(x: 0, y: view.frame, width: view.frame.width, height: 200)
         reviewScrollView.isPagingEnabled = true // 페이지별로 스크롤
         
         for i in 0..<tittle.count {
