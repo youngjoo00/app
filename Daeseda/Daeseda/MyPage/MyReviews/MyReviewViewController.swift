@@ -314,9 +314,9 @@ extension MyReviewViewController: UITableViewDataSource {
             }
             
             // ReviewData의 구조에 따라서 이 부분을 수정해야 할 수 있습니다.
-            let imageName = review.imageUrl
-            let image = UIImage(named: imageName)
-            myReviewsCell.myReviewImage.image = image
+//            let imageName = review.imageUrl
+//            let image = UIImage(named: imageName)
+//            myReviewsCell.myReviewImage.image = image
             
             myReviewsCell.myReviewTextLabel.text = review.reviewContent
             

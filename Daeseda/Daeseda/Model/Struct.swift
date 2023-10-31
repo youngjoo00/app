@@ -129,7 +129,7 @@ struct QnaEditData: Codable {
 struct ReviewData: Codable {
     let reviewId: Int
     let userId: Int
-    let imageUrl: String
+//    let imageUrl: String
     let orderId: Int
     let rating: Float?
     let userNickname: String?

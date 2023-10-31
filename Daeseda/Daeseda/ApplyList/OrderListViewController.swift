@@ -180,7 +180,7 @@ extension OrderListViewController: UITableViewDataSource{
                 guard  let paymentVC = self.storyboard?.instantiateViewController(withIdentifier: "Payment") as? PaymentViewController else { return }
                 
 //                paymentVC.orderId = orderId
-                paymentVC.amount = amount
+//                paymentVC.amount = amount
                 
                 present(paymentVC, animated: true, completion: nil)
             }
