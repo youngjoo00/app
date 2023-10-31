@@ -3,7 +3,7 @@ import Alamofire
 
 class MyAdressViewController: UIViewController {
 
-    let url = "http://localhost:8888/users/address/list"
+    let endPoint = "/users/address/list"
     var selectedIndexPath: IndexPath?
     var addressArr = [Address]()
 
@@ -62,10 +62,12 @@ class MyAdressViewController: UIViewController {
     }
 
     func getAddressesData() {
+        let fullURL = baseURL.baseURLString + self.endPoint
+        
         if let token = UserTokenManager.shared.getToken() {
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
 
-            AF.request(url, headers: headers).responseDecodable(of: [Address].self) { response in
+            AF.request(fullURL, headers: headers).responseDecodable(of: [Address].self) { response in
                 switch response.result {
                 case .success(let addressData):
                     // 요청이 성공한 경우
@@ -88,7 +90,7 @@ class MyAdressViewController: UIViewController {
     }
 
     func postAddressDefalut(selectedAddress: Address) {
-        let addressDefalutUrl = "http://localhost:8888/users/address/setting"
+        let addressDefalutUrl = baseURL.baseURLString + "/users/address/setting"
 
         let parameters = Address(addressId: selectedAddress.addressId, addressName: selectedAddress.addressName, addressRoad: selectedAddress.addressRoad, addressDetail: selectedAddress.addressDetail, addressZipcode: selectedAddress.addressZipcode, defaultAddress: selectedAddress.defaultAddress)
 

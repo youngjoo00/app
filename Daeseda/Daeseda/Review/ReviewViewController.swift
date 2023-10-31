@@ -3,7 +3,7 @@ import Alamofire
 
 class ReviewViewController: UIViewController {
     
-    let url = "http://localhost:8888/review/list"
+    let endPoint = "/review/list"
     var reviews: [ReviewData] = []
     var reviewCategory: [Categories] = []
     var reviewsWithCategory: [ReviewWithCategory] = []  // ReviewWithCategory 배열 선언
@@ -56,7 +56,9 @@ class ReviewViewController: UIViewController {
     }
     
     func getReviewData() {
-        AF.request(url, method: .get)
+        let fullURL = baseURL.baseURLString + endPoint
+        
+        AF.request(fullURL, method: .get)
             .validate(statusCode: 200..<300)
             .responseData { response in
                 switch response.result {
@@ -99,7 +101,7 @@ class ReviewViewController: UIViewController {
     }
     
     func getReviewCategory(reviewId: Int, index: Int) {
-        let reviewCategoryUrl = "http://localhost:8888/review-category/\(reviewId)"
+        let reviewCategoryUrl = baseURL.baseURLString + "/review-category/\(reviewId)"
         AF.request(reviewCategoryUrl, method: .get)
             .validate(statusCode: 200..<300)
             .responseData { response in

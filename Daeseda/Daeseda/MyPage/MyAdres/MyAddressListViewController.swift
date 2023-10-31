@@ -3,7 +3,7 @@ import Alamofire
 
 class MyAddressListViewController: UIViewController {
 
-    let url = "http://localhost:8888/users/address/list"
+    let endPoint = "/users/address/list"
 
     var addressArr = [Address]()
 
@@ -19,10 +19,12 @@ class MyAddressListViewController: UIViewController {
     }
     
     func getAddressListData() {
+        let fullURL = baseURL.baseURLString + self.endPoint
+        
         if let token = UserTokenManager.shared.getToken() {
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
 
-            AF.request(url, headers: headers).responseDecodable(of: [Address].self) { response in
+            AF.request(fullURL, headers: headers).responseDecodable(of: [Address].self) { response in
                 switch response.result {
                 case .success(let addressData):
                     // 요청이 성공한 경우

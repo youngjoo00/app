@@ -2,7 +2,7 @@ import UIKit
 import Alamofire
 
 class MyReviewViewController: UIViewController {
-    let url = "http://localhost:8888/review/list"
+    let endPoint = "/review/list"
     var myReviews: [ReviewData] = []
     var myReviewCategory: [Categories] = []
     var myReviewsWithCategory: [ReviewWithCategory] = []  // ReviewWithCategory 배열 선언
@@ -81,7 +81,9 @@ class MyReviewViewController: UIViewController {
     }
     
     func getMyReviewData() {
-        AF.request(url, method: .get)
+        let fullURL = baseURL.baseURLString + self.endPoint
+        
+        AF.request(fullURL, method: .get)
             .validate(statusCode: 200..<300)
             .responseData { response in
                 switch response.result {
@@ -126,7 +128,7 @@ class MyReviewViewController: UIViewController {
     }
     
     func getReviewCategory(reviewId: Int, index: Int) {
-        let reviewCategoryUrl = "http://localhost:8888/review-category/\(reviewId)"
+        let reviewCategoryUrl = baseURL.baseURLString + "/review-category/\(reviewId)"
         AF.request(reviewCategoryUrl, method: .get)
             .validate(statusCode: 200..<300)
             .responseData { response in
@@ -181,7 +183,7 @@ class MyReviewViewController: UIViewController {
     }
     
     func getMyInfoData() {
-        let url = "http://localhost:8888/users/myInfo"
+        let url = baseURL.baseURLString + "/users/myInfo"
         // 1. 토큰 가져오기
         if let token = UserTokenManager.shared.getToken() {
             print("Token: \(token)")
@@ -246,7 +248,7 @@ class MyReviewViewController: UIViewController {
     }
     
     func performReviewDel(reviewId: Int) {
-        let url = "http://localhost:8888/review/\(reviewId)"
+        let url = baseURL.baseURLString + "/review/\(reviewId)"
         
         // 1. 토큰 가져오기
         if let token = UserTokenManager.shared.getToken() {

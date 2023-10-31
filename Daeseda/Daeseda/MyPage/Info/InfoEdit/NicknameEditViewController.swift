@@ -4,7 +4,6 @@ import Alamofire
 class NicknameEditViewController: UIViewController {
     
     var nicknameData: String?
-    
     @IBOutlet weak var nicknameEditCompleteBtn: UIButton!
     @IBOutlet weak var nicknameEditTF: UITextField!
     
@@ -51,8 +50,10 @@ class NicknameEditViewController: UIViewController {
     }
     
     func patchNickname() {
+        let endPoint = "/users/nickname"
+        
         if let nickname = nicknameEditTF.text {
-            let url = "http://localhost:8888/users/nickname"
+            let fullURL = baseURL.baseURLString + endPoint
             
             // 1. 토큰 가져오기
             if let token = UserTokenManager.shared.getToken() {
@@ -65,7 +66,7 @@ class NicknameEditViewController: UIViewController {
                 let parameters: [String: String] = ["userNickname": nickname]
                 
                 // 4. 서버로 PATCH 요청 보내기
-                AF.request(url, method: .patch, parameters: parameters, encoder: JSONParameterEncoder.default, headers: headers)
+                AF.request(fullURL, method: .patch, parameters: parameters, encoder: JSONParameterEncoder.default, headers: headers)
                     .validate(statusCode: 200..<300)
                     .response { response in
                         switch response.result {

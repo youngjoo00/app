@@ -60,8 +60,10 @@ class PhoneEditViewController: UIViewController {
     }
     
     func patchPhone() {
+        let endPoint = "/users/name"
+        
         if let phone = phoneLast {
-            let url = "http://localhost:8888/users/name"
+            let fullUrl = baseURL.baseURLString + endPoint
             
             // 1. 토큰 가져오기
             if let token = UserTokenManager.shared.getToken() {
@@ -74,7 +76,7 @@ class PhoneEditViewController: UIViewController {
                 let parameters: [String: String] = ["userPhone": phone]
                 
                 // 4. 서버로 PATCH 요청 보내기
-                AF.request(url, method: .patch, parameters: parameters, encoder: JSONParameterEncoder.default, headers: headers)
+                AF.request(fullUrl, method: .patch, parameters: parameters, encoder: JSONParameterEncoder.default, headers: headers)
                     .validate(statusCode: 200..<300)
                     .response { response in
                         switch response.result {

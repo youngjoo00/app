@@ -12,7 +12,7 @@ struct noticeData: Codable {
 
 class NoticeViewController: UIViewController {
     
-    let url: String = "http://localhost:8888/notice/list"
+    let endPoint = "/notice/list"
     var notices: [noticeData] = []
     
     @IBOutlet weak var noticeTableView: UITableView!
@@ -42,9 +42,9 @@ class NoticeViewController: UIViewController {
         self.navigationItem.title = .none
     }
     func getNoticeData() {
-        let getUrl = url
+        let fullURL = baseURL.baseURLString + self.endPoint
         
-        AF.request(getUrl).responseDecodable(of: [noticeData].self) { response in
+        AF.request(fullURL).responseDecodable(of: [noticeData].self) { response in
             switch response.result {
             case .success(let fetchedNotices):
                 // fetchedNotices를 noticeId를 기준으로 내림차순 정렬
