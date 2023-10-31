@@ -198,7 +198,7 @@ extension ReviewViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500
+        return 180
     }
 }
 
@@ -227,9 +227,9 @@ extension ReviewViewController: UITableViewDataSource {
             }
             
             // 이미지 파일 이름을 바로 사용
-            let imageName = review.imageUrl
-            let image = UIImage(named: imageName)
-            reviewListCell.reviewListImageView.image = image
+//            let imageName = review.imageUrl
+//            let image = UIImage(named: imageName)
+//            reviewListCell.reviewListImageView.image = image
             
             reviewListCell.reviewListTextLabel.text = review.reviewContent
             
