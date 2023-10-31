@@ -14,12 +14,11 @@ struct DefaultPaymentRequest : Codable{
     var orderName : String
 }
 
-
 class PaymentViewController: UIViewController {
     
     private lazy var widget: PaymentWidget = PaymentWidget(
         clientKey: "test_ck_DLJOpm5QrlxB21Qen2LrPNdxbWnY",
-        customerKey: "EPUx4U0_zvKaGMZkA7uF_"
+        customerKey: "test_sk_Poxy1XQL8RgbOm7JRk437nO5Wmlg"
     )
     
     public lazy var scrollView = UIScrollView()
@@ -30,8 +29,12 @@ class PaymentViewController: UIViewController {
     
     
     var amount: Int = 0
-    var orderId: String = ""
+//    var orderId: String = "2VAhXURbYbiKwX5ybfrLr", a4CWyWY5m89PNxh7xJwhk1
+    var orderId: String = "a4CWyWY5m89PNxh7xJwhk3"
     var orderName: String = "대세다-대신 세탁해드립니다."
+    
+    var cardName: String = ""
+    var cardNumber: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +69,7 @@ class PaymentViewController: UIViewController {
             stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
         
-//        view.addSubview(button)
+        view.addSubview(button)
         button.setTitle("결제하기", for: .normal)
         button.addTarget(self, action: #selector(requestPayment), for: .touchUpInside)
         
@@ -98,8 +101,12 @@ class PaymentViewController: UIViewController {
         widget.requestPayment(info: DefaultWidgetPaymentInfo(
             orderId: self.orderId,
             orderName: self.orderName))
+        
+        fetchDataForOrderId(orderId: self.orderId)
+
     }
 
+    
 }
 extension PaymentViewController: TossPaymentsDelegate {
 
@@ -110,6 +117,8 @@ extension PaymentViewController: TossPaymentsDelegate {
     public func handleSuccessResult(_ success: TossPaymentsResult.Success) {
         print("결제 성공")
         print(success)
+        postData(paymentKey: success.paymentKey, orderId: self.orderId, amount: self.amount)
+        fetchDataForOrderId(orderId: self.orderId)
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -121,4 +130,75 @@ extension PaymentViewController: TossPaymentsDelegate {
         print("orderId: \(fail.orderId)")
 
     }
+    
+    func postData(paymentKey:String, orderId : String, amount: Int){
+        let urlString = "https://api.tosspayments.com/v1/payments/confirm"
+//        let paymentKey = "5zJ4xY7m0kODnyRpQWGrN2xqGlNvLrKwv1M9ENjbeoPaZdL6"
+//        let orderId = "a4CWyWY5m89PNxh7xJwhk1"
+//        let amount = 15000
+        let authorizationHeader = "Basic dGVzdF9za19Qb3h5MVhRTDhSZ2JPbTdKUms0MzduTzVXbWxnOg=="
+        let idempotencyKey = "a6a498c4-6f61-4183-a2ff-80176e69a067"
+
+        if let url = URL(string: urlString) {
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            
+            // 설정할 헤더들
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.setValue(authorizationHeader, forHTTPHeaderField: "Authorization")
+            request.setValue(idempotencyKey, forHTTPHeaderField: "Idempotency-Key")
+            
+            // 요청 본문 데이터
+            let requestBody: [String: Any] = ["paymentKey": paymentKey, "orderId": orderId, "amount": amount]
+            if let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) {
+                request.httpBody = jsonData
+            }
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else if let data = data {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("PostResponse: \(responseString)")
+                    }
+                }
+            }
+            
+            task.resume()
+        } else {
+            print("Invalid URL")
+        }
+    }
+    
+    func fetchDataForOrderId(orderId: String) {
+        // 기본 URL
+        let baseUrlString = "https://api.tosspayments.com/v1/payments/orders"
+
+        // URL 구성
+        if let url = URL(string: "\(baseUrlString)/\(orderId)") {
+            var request = URLRequest(url: url)
+
+            // HTTP 메서드 설정
+            request.httpMethod = "GET"
+
+            // Authorization 헤더 설정
+            let credentials = "dGVzdF9za196WExrS0V5cE5BcldtbzUwblgzbG1lYXhZRzVSOg=="
+            request.setValue("Basic \(credentials)", forHTTPHeaderField: "Authorization")
+
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                } else if let data = data {
+                    if let responseString = String(data: data, encoding: .utf8) {
+                        print("Response: \(responseString)")
+                    }
+                }
+            }
+
+            task.resume()
+        } else {
+            print("Invalid URL")
+        }
+    }
+    
 }

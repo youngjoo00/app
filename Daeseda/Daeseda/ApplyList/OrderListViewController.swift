@@ -130,7 +130,7 @@ extension OrderListViewController: UITableViewDataSource{
             cell.finishDateLabel.isHidden = true
             cell.finishDate.isHidden = true
             
-            if cell.state.text == "CASH" {
+            if cell.state.text == "ORDER" {
                 
                 cell.button.isHidden = false
                 buttonHidden = "false"
@@ -174,7 +174,7 @@ extension OrderListViewController: UITableViewDataSource{
             if let amount = Int(price) {
                 guard  let paymentVC = self.storyboard?.instantiateViewController(withIdentifier: "Payment") as? PaymentViewController else { return }
                 
-                paymentVC.orderId = orderId
+//                paymentVC.orderId = orderId
                 paymentVC.amount = amount
                 
                 present(paymentVC, animated: true, completion: nil)
