@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
         
         let loginLabel = UILabel()
         loginLabel.frame = CGRect(x: 0, y: 0, width: 56, height: 27)
-        loginLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        loginLabel.textColor = UIColor.white
         loginLabel.font = UIFont(name: "NotoSans-Regular", size: 20)
         // Line height: 27.24 pt
         loginLabel.textAlignment = .center
@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
         
         guard let mainVC = storyboard?.instantiateViewController(withIdentifier: "MainTabBar") as? MainTabBarViewController else { return }
         
-        AF.request(url, method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
+        AF.request("\(baseURL.self)/users/authenticate", method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: ResponseType.self) { (response: AFDataResponse<ResponseType>) in
                 switch response.result {

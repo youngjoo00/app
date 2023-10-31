@@ -26,7 +26,8 @@ class JoinInfo2ViewController: UIViewController {
     var userEmail : String = ""
     var userPhone : String = ""
     
-    let url = "http://localhost:8888/users/signup"
+//    let url = "http://localhost:8888/users/signup"
+    let url = "http://42.201.98.204/users/signup"
     
     
     @IBOutlet weak var phoneStartTextField: UITextField!
@@ -131,7 +132,7 @@ class JoinInfo2ViewController: UIViewController {
         
         //확인 버튼 만들기
         let ok = UIAlertAction(title: "확인", style: .default, handler: { action in
-            AF.request(self.url, method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
+            AF.request("\(baseURL.self)/users/signup", method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
                 .validate(statusCode: 200..<300)
                 .response { response in
                     switch response.result {

@@ -117,7 +117,7 @@ class JoinEmailViewController: UIViewController {
     }
     
     @IBAction func sendCode(_ sender: Any) {
-        let url = "http://localhost:8888/users/mailAuthentication"
+        let url = "\(baseURL.self)/users/mailAuthentication"
         if let emailText = emailTextField.text {
             postEmail = Email(userEmail: emailText)
         }
@@ -139,7 +139,7 @@ class JoinEmailViewController: UIViewController {
     
     
     @IBAction func checkEmail(_ sender: Any) {
-        let url = "http://localhost:8888/users/mailConfirm"
+        let url = "\(baseURL.self)/users/mailConfirm"
         if let emailText = emailTextField.text, let codeText = codeTextField.text {
             checkEmail = CheckEmail(userEmail: emailText, code: codeText)
         }
@@ -181,7 +181,7 @@ class JoinEmailViewController: UIViewController {
             let naxtText = UILabel()
             naxtText.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
             naxtText.textColor = UIColor.white
-            naxtText.font = UIFont(name: "NotoSansKR-Bold", size: 40)
+            naxtText.font = UIFont(name: "NotoSansKR-Bold", size: 20)
             // Line height: 27.24 pt
             naxtText.textAlignment = .center
             naxtText.text = "다음"

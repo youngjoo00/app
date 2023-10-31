@@ -123,7 +123,7 @@ class PriceListViewController: UIViewController {
         
         let naxtText = UILabel()
         naxtText.frame = CGRect(x: 0, y: 0, width: 37, height: 27)
-        naxtText.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        naxtText.textColor = UIColor.white
         naxtText.font = UIFont(name: "NotoSansKR-Black", size: 20)
         // Line height: 27.24 pt
         naxtText.textAlignment = .center
