@@ -54,7 +54,7 @@ class QnaViewController: UIViewController {
     
     func getQnaList() {
         
-        if let url = URL(string: "http://localhost:8888/board/list") {
+        if let url = URL(string: baseURL.baseURLString + "/board/list") {
             AF.request(url).responseDecodable(of: [QnaListData].self) { response in
                 switch response.result {
                 case .success(let data):
@@ -68,7 +68,7 @@ class QnaViewController: UIViewController {
     }
     
     func getComent() {
-        if let url = URL(string: "http://localhost:8888/reply/list") {
+        if let url = URL(string: baseURL.baseURLString + "/reply/list") {
             AF.request(url).responseDecodable(of: [ComentData].self) { response in
                 switch response.result {
                 case .success(let data):

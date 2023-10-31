@@ -3,7 +3,7 @@ import Alamofire
 
 class QnaWriteViewController: UIViewController {
     
-    let url = "http://localhost:8888/board/register"
+    let endPoint = "/board/register"
     let textViewPlaceHolder = "텍스트를 입력하세요"
     
     @IBOutlet weak var qnaWriteContentTV: UITextView!
@@ -61,8 +61,9 @@ class QnaWriteViewController: UIViewController {
         
         if let token = UserTokenManager.shared.getToken() {
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
+            let fullURL = baseURL.baseURLString + self.endPoint
             
-            AF.request(url, method: .post, parameters: qnaData, encoder: JSONParameterEncoder.default, headers: headers)
+            AF.request(fullURL, method: .post, parameters: qnaData, encoder: JSONParameterEncoder.default, headers: headers)
                 .response { response in
                     switch response.result {
                     case .success:

@@ -201,14 +201,14 @@ class ShowQnaViewController: UIViewController {
     
     func performQnaDel() {
         if let showQnaId = showQnaId {
-            let url = "http://localhost:8888/board/\(showQnaId)"
+            let fullURL = baseURL.baseURLString + "/board/\(showQnaId)"
             
             if let token = UserTokenManager.shared.getToken() {
                 print("Token: \(token)")
                 
                 let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
                 
-                AF.request(url, method: .delete, headers: headers).response { response in
+                AF.request(fullURL, method: .delete, headers: headers).response { response in
                     switch response.result {
                     case .success:
                         // 요청이 성공한 경우
@@ -226,7 +226,7 @@ class ShowQnaViewController: UIViewController {
     }
     
     func getQnaList() {
-        if let url = URL(string: "http://localhost:8888/board/list") {
+        if let url = URL(string: baseURL.baseURLString + "/board/list") {
             AF.request(url).responseDecodable(of: [QnaListData].self) { response in
                 switch response.result {
                 case .success(let data):
@@ -297,7 +297,7 @@ class ShowQnaViewController: UIViewController {
     
     
     func getMyInfoData() {
-        let url = "http://localhost:8888/users/myInfo"
+        let url = baseURL.baseURLString + "/users/myInfo"
         // 1. 토큰 가져오기
         if let token = UserTokenManager.shared.getToken() {
             print("Token: \(token)")
@@ -324,7 +324,7 @@ class ShowQnaViewController: UIViewController {
     
     
     func getComent() {
-        if let url = URL(string: "http://localhost:8888/reply/list") {
+        if let url = URL(string: baseURL.baseURLString + "/reply/list") {
             AF.request(url).responseDecodable(of: [ComentData].self) { response in
                 switch response.result {
                 case .success(let data):
@@ -393,7 +393,7 @@ class ShowQnaViewController: UIViewController {
         
         print(comentEditData)
         
-        let url = "http://localhost:8888/reply/\(replyIdToUpdate)"
+        let url = baseURL.baseURLString + "/reply/\(replyIdToUpdate)"
         
         if let token = UserTokenManager.shared.getToken() {
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]
@@ -427,7 +427,7 @@ class ShowQnaViewController: UIViewController {
         
         let comentData = ComentPostData(boardId: boardId, replyContent: replyContent)
         
-        let comentPostUrl = "http://localhost:8888/reply/register"
+        let comentPostUrl = baseURL.baseURLString + "/reply/register"
         
         if let token = UserTokenManager.shared.getToken() {
             let headers: HTTPHeaders = ["Authorization": "Bearer " + token]

@@ -51,8 +51,9 @@ class NameEditViewController: UIViewController {
     }
     
     func patchName() {
+        let endPoint = "/users/name"
         if let name = nameEditTF.text {
-            let url = "http://localhost:8888/users/name"
+            let fullURL = baseURL.baseURLString + endPoint
             
             // 1. 토큰 가져오기
             if let token = UserTokenManager.shared.getToken() {
@@ -65,7 +66,7 @@ class NameEditViewController: UIViewController {
                 let parameters: [String: String] = ["userName": name]
                 
                 // 4. 서버로 PATCH 요청 보내기
-                AF.request(url, method: .patch, parameters: parameters, encoder: JSONParameterEncoder.default, headers: headers)
+                AF.request(fullURL, method: .patch, parameters: parameters, encoder: JSONParameterEncoder.default, headers: headers)
                     .validate(statusCode: 200..<300)
                     .response { response in
                         switch response.result {

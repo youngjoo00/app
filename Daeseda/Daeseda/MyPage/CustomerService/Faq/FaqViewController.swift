@@ -16,7 +16,7 @@ class FaqViewController: UIViewController {
     var filteredFAQItems = [FAQItem]()  // 필터링된 결과를 저장할 배열
     var currentCategory: String?
     
-    let url: String = "http://localhost:8888/notice/list"
+    let endPoint = "/notice/list"
     
     @IBOutlet var faqCategoryBtns: [UIButton]!
     @IBOutlet weak var faqSearchBar: UISearchBar!
@@ -60,9 +60,9 @@ class FaqViewController: UIViewController {
     }
     
     func getFAQData() {
-        let getUrl = url
+        let fullURL = baseURL.baseURLString + self.endPoint
         
-        AF.request(getUrl).responseDecodable(of: [FAQItem].self) { response in
+        AF.request(fullURL).responseDecodable(of: [FAQItem].self) { response in
             switch response.result {
             case .success(let fetchedFAQ):
                 self.faqItems = fetchedFAQ
