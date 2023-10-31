@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
         
         guard let mainVC = storyboard?.instantiateViewController(withIdentifier: "MainTabBar") as? MainTabBarViewController else { return }
         
-        AF.request("\(baseURL.self)/users/authenticate", method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
+        AF.request("\(baseURL.baseURLString)/users/authenticate", method: .post, parameters: userData, encoder: JSONParameterEncoder.default)
             .validate(statusCode: 200..<300)
             .responseDecodable(of: ResponseType.self) { (response: AFDataResponse<ResponseType>) in
                 switch response.result {

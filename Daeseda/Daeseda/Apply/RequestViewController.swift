@@ -87,7 +87,7 @@ class RequestViewController: UIViewController {
     var totalClothesCount : [ClothesCount] = []
     
     func fetchCategoryInfo(){
-        AF.request("\(baseURL.self)/category/list").responseDecodable(of: [Category].self) { response in
+        AF.request("\(baseURL.baseURLString)/category/list").responseDecodable(of: [Category].self) { response in
             switch response.result {
             case .success(let categories):
                 for category in categories {
@@ -104,7 +104,7 @@ class RequestViewController: UIViewController {
     }
     
     func fetchClothesInfo(categoryId: Int) {
-        AF.request("\(baseURL.self)/clothes/list").responseDecodable(of: [GetClothes].self) { response in
+        AF.request("\(baseURL.baseURLString)/clothes/list").responseDecodable(of: [GetClothes].self) { response in
             switch response.result {
             case .success(let clothes):
                 self.clothesNames.removeAll()

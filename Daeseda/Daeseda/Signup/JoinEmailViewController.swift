@@ -117,7 +117,7 @@ class JoinEmailViewController: UIViewController {
     }
     
     @IBAction func sendCode(_ sender: Any) {
-        let url = "\(baseURL.self)/users/mailAuthentication"
+        let url = "\(baseURL.baseURLString)/users/mailAuthentication"
         if let emailText = emailTextField.text {
             postEmail = Email(userEmail: emailText)
         }
@@ -139,7 +139,7 @@ class JoinEmailViewController: UIViewController {
     
     
     @IBAction func checkEmail(_ sender: Any) {
-        let url = "\(baseURL.self)/users/mailConfirm"
+        let url = "\(baseURL.baseURLString)/users/mailConfirm"
         if let emailText = emailTextField.text, let codeText = codeTextField.text {
             checkEmail = CheckEmail(userEmail: emailText, code: codeText)
         }
