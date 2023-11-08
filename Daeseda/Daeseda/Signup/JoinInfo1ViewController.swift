@@ -14,7 +14,10 @@ class JoinInfo1ViewController: UIViewController {
         
         idTextField.text = postId
         label()
-        nextButton()
+        
+        passwordTextField.isSecureTextEntry = true
+        password2TextField.isSecureTextEntry = true
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -186,6 +189,7 @@ extension JoinInfo1ViewController : UITextFieldDelegate {
             password2ErrorMessage.text = "설정한 비밀번호와 일치하지 않습니다."
         } else {
             password2ErrorMessage.text = " "
+            nextButton()
         }
     }
     

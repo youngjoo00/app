@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ViewController: UIViewController {
     
@@ -16,8 +17,8 @@ class ViewController: UIViewController {
         d()
         but()
         banner()
-        review()
-        loginButton()
+        fetchReview()
+        //        loginButton()
         
     }
     
@@ -26,12 +27,96 @@ class ViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
         
     }
-    
-    var tittle:[String] = ["a", "s"]
-    var writeNick:[String] = ["1", "2"]
-    var Content:[String] = ["qwer", "asdf"]
+    var reviews: [ReviewData] = []
+    var reviewCategory: [Categories] = []
+    var reviewsWithCategory: [ReviewWithCategory] = []
     
     @IBOutlet weak var reviewScrollView: UIScrollView!
+    
+    func fetchReview(){
+        let endPoint = "/review/list"
+        
+        let fullURL = baseURL.baseURLString + endPoint
+        
+        AF.request(fullURL, method: .get)
+            .validate(statusCode: 200..<300)
+            .responseData { response in
+                switch response.result {
+                case .success(let data):
+                    do {
+                        self.reviews = try JSONDecoder().decode([ReviewData].self, from: data)
+                        // 리뷰를 내림차순으로 정렬합니다.
+                        self.reviews.sort { $0.reviewId > $1.reviewId }
+                        
+                        // 리뷰 카테고리를 저장할 배열을 초기화하고 빈 요소로 채웁니다.
+                        self.reviewCategory = Array(repeating: Categories(categoryId: 0, categoryName: ""), count: self.reviews.count)
+                        
+                        // 리뷰 카테고리를 가져오기 위해 각 리뷰에 대한 인덱스와 함께 getReviewCategory를 호출합니다.
+                        for (index, review) in self.reviews.enumerated() {
+                            self.getReviewCategory(reviewId: review.reviewId, index: index)
+                        }
+                        
+                        // 리뷰 및 카테고리를 결합하여 reviewsWithCategory 배열에 추가
+                        self.reviewsWithCategory = self.reviews.enumerated().map { (index, review) in
+                            return ReviewWithCategory(review: review, category: self.reviewCategory[index])
+                        }
+                        
+                        // 모든 리뷰 카테고리 데이터를 수집한 후에 테이블 뷰를 업데이트합니다.
+                        if self.reviewCategory.allSatisfy({ $0.categoryId != 0 && $0.categoryName != "" }) {
+                            // 리뷰와 카테고리 정보를 함께 담은 배열 생성
+                            self.reviewsWithCategory = self.combineReviewWithCategory()
+                        }
+                        print(self.reviewsWithCategory)
+                        self.review()
+                        
+                    } catch {
+                        print("리뷰 디코딩 실패: \(error)")
+                    }
+                case .failure(let error):
+                    print("에러: \(error.localizedDescription)")
+                }
+            }
+    }
+    
+    func getReviewCategory(reviewId: Int, index: Int) {
+        let reviewCategoryUrl = baseURL.baseURLString + "/review-category/\(reviewId)"
+        AF.request(reviewCategoryUrl, method: .get)
+            .validate(statusCode: 200..<300)
+            .responseData { response in
+                switch response.result {
+                case .success(let data):
+                    do {
+                        let reviewCategoryData = try JSONDecoder().decode([ReviewCategoryData].self, from: data)
+                        if let firstCategory = reviewCategoryData.first {
+                            self.reviewCategory[index] = firstCategory.categories
+                            print(self.reviewCategory[index])
+                        }
+                        
+                        // 모든 리뷰 카테고리 데이터를 수집한 후에 테이블 뷰를 업데이트합니다.
+                        if self.reviewCategory.allSatisfy({ $0.categoryId != 0 && $0.categoryName != "" }) {
+                            // 리뷰와 카테고리 정보를 함께 담은 배열 생성
+                            self.reviewsWithCategory = self.combineReviewWithCategory()
+                            
+                        }
+                    } catch {
+                        print("리뷰 카테고리 디코딩 실패: \(error)")
+                    }
+                case .failure(let error):
+                    print("에러: \(error.localizedDescription)")
+                }
+            }
+    }
+    
+    func combineReviewWithCategory() -> [ReviewWithCategory] {
+        var newData : [ReviewWithCategory] = []
+        
+        for (index, review) in self.reviews.enumerated() {
+            let category = self.reviewCategory[index]
+            newData.append(ReviewWithCategory(review: review, category: category))
+        }
+        
+        return newData
+    }
     
     
     func d() {
@@ -272,19 +357,66 @@ class ViewController: UIViewController {
     }
     
     func review(){
-//        reviewScrollView.frame = CGRect(x: 0, y: view.frame, width: view.frame.width, height: 200)
+        
+        reviewScrollView.frame = CGRect(x: 0, y: view.frame.height - 230, width: view.frame.width, height: 130)
         reviewScrollView.isPagingEnabled = true // 페이지별로 스크롤
         
-        for i in 0..<tittle.count {
-            let tittleLabel = UILabel()
+        for i in 0..<reviewsWithCategory.count {
+            let review = reviewsWithCategory[i].review
+            let category = reviewsWithCategory[i].category
+            
+            let titleLabel = UILabel()
+            let contentLabel = UILabel()
+            let dateLabel = UILabel()
+            var ratingImage = [UIImageView]()
             let xPos = reviewScrollView.frame.width * CGFloat(i)
             
-            tittleLabel.frame = CGRect(x: xPos, y: 0, width: reviewScrollView.frame.width, height: 200)
-            tittleLabel.text = tittle[i]
-            reviewScrollView.addSubview(tittleLabel)
+            titleLabel.font = UIFont(name: "NotoSansKR-SemiBold", size: 20)
+            titleLabel.frame = CGRect(x: xPos + 30, y: 0, width: reviewScrollView.frame.width, height: 30)
+            titleLabel.text = review.userNickname
+            reviewScrollView.addSubview(titleLabel)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+            
+            if let date = dateFormatter.date(from: review.regDate) {
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let formattedDate = dateFormatter.string(from: date)
+                dateLabel.text = formattedDate
+            } else {
+                dateLabel.text = "날짜 오류"
+            }
+            
+            dateLabel.textColor = UIColor.gray
+            dateLabel.font = UIFont(name: "NotoSansKR-Light", size: 16)
+            dateLabel.frame = CGRect(x: xPos + 30, y: 0, width: reviewScrollView.frame.width - 50, height: 30)
+            dateLabel.textAlignment = .right
+            reviewScrollView.addSubview(dateLabel)
+            
+            contentLabel.frame = CGRect(x: xPos + 50, y: 30, width: reviewScrollView.frame.width, height: 80)
+            contentLabel.text = review.reviewContent
+            reviewScrollView.addSubview(contentLabel)
+            
+            var rating = Float(review.rating ?? 0)
+            
+            for j in 0..<Int(rating) {
+                let starImage = UIImageView(image: UIImage(systemName: "star.fill"))
+                starImage.frame = CGRect(x: xPos + 30 + CGFloat(j * 25), y: 30, width: 20, height: 20)
+                starImage.tintColor = UIColor.systemYellow
+                ratingImage.append(starImage)
+                reviewScrollView.addSubview(starImage)
+            }
+            
+            for j in Int(rating)..<5 {
+                let starImage = UIImageView(image: UIImage(systemName: "star"))
+                starImage.frame = CGRect(x: xPos + 30 + CGFloat(j * 25), y: 30, width: 20, height: 20)
+//                starImage.tintColor = UIColor.yellow
+                ratingImage.append(starImage)
+                reviewScrollView.addSubview(starImage)
+            }
         }
         
-        reviewScrollView.contentSize = CGSize(width: reviewScrollView.frame.width * CGFloat(tittle.count), height: reviewScrollView.frame.height)
+        reviewScrollView.contentSize = CGSize(width: reviewScrollView.frame.width * CGFloat(reviewsWithCategory.count), height: reviewScrollView.frame.height)
         view.addSubview(reviewScrollView)
     }
     

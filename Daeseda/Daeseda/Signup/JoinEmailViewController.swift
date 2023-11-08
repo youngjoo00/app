@@ -14,7 +14,6 @@ class JoinEmailViewController: UIViewController {
         super.viewDidLoad()
         
         label()
-        nextButton()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -129,7 +128,7 @@ class JoinEmailViewController: UIViewController {
                     switch response.result {
                     case .success(let verificationCode):
                         print(verificationCode)
-                        self.emailErrorMessage.text = verificationCode
+//                        self.emailErrorMessage.text = verificationCode
                     case .failure(let error):
                         print(error)
                     }

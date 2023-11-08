@@ -35,7 +35,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mMC-05-9J7">
-                                <rect key="frame" x="16" y="553" width="343" height="158"/>
+                                <rect key="frame" x="25" y="566" width="343" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="0nt-sC-iuh"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="5zB-q0-HGi"/>
@@ -607,7 +607,7 @@
             </objects>
             <point key="canvasLocation" x="-583" y="759"/>
         </scene>
-        <!--orderList-->
+        <!--주문내역-->
         <scene sceneID="YQE-bW-Fnj">
             <objects>
                 <viewController storyboardIdentifier="OrderList" id="20a-jw-U2m" customClass="OrderListViewController" customModule="Daeseda" customModuleProvider="target" sceneMemberID="viewController">
@@ -774,7 +774,7 @@
                             <constraint firstItem="E13-iO-SH2" firstAttribute="trailing" secondItem="GR9-9I-jjk" secondAttribute="trailing" id="Yb2-Ps-Yir"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="orderList" id="LZU-dk-3a7"/>
+                    <tabBarItem key="tabBarItem" title="주문내역" image="list.bullet.clipboard" catalog="system" id="LZU-dk-3a7"/>
                     <navigationItem key="navigationItem" id="Fnh-9t-K0Y"/>
                     <connections>
                         <outlet property="orderListTableView" destination="E13-iO-SH2" id="XM3-bm-YDx"/>
@@ -1138,7 +1138,7 @@
                                     <action selector="emailTextFieldEditingChanged:" destination="oQq-dU-rrs" eventType="editingChanged" id="aAJ-7D-YqR"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rkskekfkqweqweqweqwe." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWb-ha-f5R">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWb-ha-f5R">
                                 <rect key="frame" x="161" y="198" width="182" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Sbp-wW-LP0"/>
@@ -1147,7 +1147,7 @@
                                 <color key="textColor" red="0.99215686270000003" green="0.2784313725" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rkskekfkqweqweqweqwe." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hP4-Bx-KQB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hP4-Bx-KQB">
                                 <rect key="frame" x="161" y="315" width="182" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="p7m-sO-G6K"/>
@@ -1231,7 +1231,7 @@
                                     <action selector="passwordTextFieldEditingChanged:" destination="wgK-bB-5eq" eventType="editingChanged" id="HTP-8K-BBa"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="qweqweqweqweqweqweqwewqe." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ral-Dq-NSE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ral-Dq-NSE">
                                 <rect key="frame" x="50" y="450" width="293" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="glM-My-z4D"/>
@@ -1240,7 +1240,7 @@
                                 <color key="textColor" red="0.99215686270000003" green="0.2784313725" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="qweqweqweqweqweqweqweqwe." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlG-1B-VMp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlG-1B-VMp">
                                 <rect key="frame" x="50" y="558" width="293" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="dCW-mp-fKN"/>
@@ -1249,7 +1249,7 @@
                                 <color key="textColor" red="0.99215686270000003" green="0.2784313725" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="qwerqwerqwerqwer." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqL-9y-vzu">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqL-9y-vzu">
                                 <rect key="frame" x="163" y="316" width="180" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="7Jp-OW-oZf"/>
@@ -1364,8 +1364,8 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" qwerqwerqwerqwer." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hym-4G-iBA">
-                                <rect key="frame" x="49.999999999999993" y="238" width="125.33333333333331" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hym-4G-iBA">
+                                <rect key="frame" x="50" y="238" width="3.6666666666666643" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="zto-zC-5mK"/>
                                 </constraints>
@@ -5062,25 +5062,6 @@
             </objects>
             <point key="canvasLocation" x="8407" y="5075"/>
         </scene>
-        <!--주문내역-->
-        <scene sceneID="2V2-7Z-Rde">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="61N-eP-0Sd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="주문내역" id="zB9-sB-npb"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z9K-j9-cJb">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="20a-jw-U2m" kind="relationship" relationship="rootViewController" id="DYd-L5-MQG"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c1T-o7-7iT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-583" y="2243"/>
-        </scene>
         <!--Name Edit View Controller-->
         <scene sceneID="nrq-3h-wuE">
             <objects>
@@ -5214,15 +5195,13 @@
             <point key="canvasLocation" x="4862" y="2243"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="D9i-Ef-5aw"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="checkmark.circle" catalog="system" width="128" height="123"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="circle" catalog="system" width="128" height="123"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="list.bullet.clipboard" catalog="system" width="103" height="128"/>
         <image name="mappin.and.ellipse" catalog="system" width="117" height="128"/>
         <image name="note" catalog="system" width="128" height="107"/>
         <image name="person" catalog="system" width="128" height="121"/>

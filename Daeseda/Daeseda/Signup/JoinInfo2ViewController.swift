@@ -17,6 +17,7 @@ class JoinInfo2ViewController: UIViewController {
         label()
         endButton()
         
+        
     }
     
     var userId : String = ""
