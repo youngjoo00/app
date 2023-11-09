@@ -66,14 +66,17 @@ class ReviewWriteViewController: UIViewController {
     }
     
     // 리뷰 등록
+
 //    @objc func reviewPostBtn(_ sender: UIBarButtonItem) {
 //        let url = baseURL.baseURLString + "/review/register"
 //
 //        // 이미지 파일 (이미지 파일을 준비하고, 이미지 데이터로 변환해야 함)
+
 //        guard let image = reviewUploadImage.image, let imageData = image.jpegData(compressionQuality: 1) else {
 //            print("Please select an image or failed to convert image to data.")
 //            return
 //        }
+
 //
 //        // 리뷰 데이터 생성
 //        guard let reviewTitle = title else {
@@ -135,7 +138,7 @@ class ReviewWriteViewController: UIViewController {
 //
 //
 //    }
-    
+
     @objc func starButtonTapped(_ sender: UIButton) {
         rating = Float(sender.tag) + 1.0
         updateStarUI()

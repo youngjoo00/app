@@ -16,7 +16,6 @@ class OrderListViewController: UIViewController, UISheetPresentationControllerDe
         orderListTableView.delegate = self
         orderListTableView.dataSource = self
         
-        print("1")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -135,7 +134,7 @@ extension OrderListViewController: UITableViewDataSource{
             cell.finishDateLabel.isHidden = true
             cell.finishDate.isHidden = true
             
-            if cell.state.text == "ORDER" {
+            if cell.state.text == "CASH" {
                 
                 cell.button.isHidden = false
                 buttonHidden = "false"
@@ -180,7 +179,7 @@ extension OrderListViewController: UITableViewDataSource{
                 guard  let paymentVC = self.storyboard?.instantiateViewController(withIdentifier: "Payment") as? PaymentViewController else { return }
                 
 //                paymentVC.orderId = orderId
-                paymentVC.amount = amount
+//                paymentVC.amount = amount
                 
                 present(paymentVC, animated: true, completion: nil)
             }
