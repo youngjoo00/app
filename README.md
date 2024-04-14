@@ -4,7 +4,8 @@
 
 ### 스크린샷
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/b5c1ed3b-66b9-4375-94f6-51a9209a223e/0e9dccb5-de59-4a72-87ed-ba5cbfa5fedd/Untitled.png)
+![대세다](https://github.com/youngjoo00/daeseda_app/assets/90439413/801bc623-3785-401c-97a7-334c2bad72c9)
+
 
 ### **앱 기능**
 
