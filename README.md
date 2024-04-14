@@ -4,7 +4,7 @@
 
 ### 스크린샷
 
-![대세다](https://github.com/youngjoo00/daeseda_app/assets/90439413/801bc623-3785-401c-97a7-334c2bad72c9)
+![대세다](https://github.com/youngjoo00/daeseda_app/assets/90439413/b35b172a-1ac5-45fd-84ac-abf7a79d303a)
 
 
 ### **앱 기능**
@@ -48,7 +48,6 @@
 - 회원 기능
     - 이메일 인증
     - 주소 API
-    - 회원 CRUD
 - 세탁 신청기능
     - 신청 - 결제 (실제 결제는 구현하지 않음)
 - 주문내역
